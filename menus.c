@@ -7,7 +7,8 @@ void menuBienvenida()
     printf("\n===========\nBIENVENID@\n===========\n\n");
     printf("Que quieres hacer?\n\n");
     printf(" 1. Iniciar sesion\n 2. Registrarse\n 3. Salir\n\n");
-    scanf("%d", &opcionBienvenida);
+    fgets(opcionChar, 2, stdin);
+    sscanf(opcionChar, "%d", &opcionInt);
 }
 
 void menuInicioSesion()
@@ -42,7 +43,9 @@ void menuPrincipal()
     printf("\n===============\nMENU PRINCIPAL\n===============\n\n");
     printf("Que quieres hacer?\n\n");
     printf(" 1. Ver el catalogo de una pelicula\n 2. Comprar entradas\n 3. Mis entradas\n 4. Modificar usuario\n 5. Salir\n\n");
-    //TODO: Implementar la funcionalidad de los botones
+    fgets(opcionChar, 2, stdin);
+    sscanf(opcionChar, "%d", &opcionInt);
+
 }
 
 

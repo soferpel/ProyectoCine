@@ -2,7 +2,8 @@
 #define MENUPRINCIPAL_H
 
 //variables para opciones de los menus
-int opcionBienvenida;
+int opcionInt;
+char opcionChar[2];   //Se llaman asi para diferenciarlas
 
 char nombre[16];
 char apellido[20];
