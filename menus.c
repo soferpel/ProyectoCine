@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "menus.h"
+#include "baseDeDatos.h"
 
 void menuBienvenida()
 {
@@ -35,6 +36,7 @@ void menuRegistro()
     fgets(nombreUsuario, 16, stdin);
     printf("Introduce tu contrasena: ");
     fgets(contrasena, 16, stdin);
+    guardarUsuario();
 
 }
 

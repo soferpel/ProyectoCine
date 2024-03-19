@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "menus.h"
+#include "baseDeDatos.h"
 
 int main(void)
 {
