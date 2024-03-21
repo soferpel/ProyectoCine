@@ -7,16 +7,16 @@ int main(void)
 {
 
     menuBienvenida();
-    switch (opcionInt)
+    switch (opcionIntBvda)
     {
     case 1:
         menuInicioSesion();
         //TODO si el usuario es correcto, mostrar menuPrincipal
-        menuPrincipal();
-        switch (opcionInt)
+        switch (opcionIntPpal)
         {
         case 1:
             //menuCatalogo();
+            printf("Comprar entradas\n");
             printf("Catalogo\n"); //Son textos informativos temporales hasta que se implementen las funciones
             break;
         case 2:
