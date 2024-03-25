@@ -22,7 +22,7 @@ void menuInicioSesion()
     fgets(contrasena, 16, stdin);
     printf("\n");
     printf("\n");
-    autenticacionExitosa = 1;
+    validarUsuario(nombreUsuario, contrasena);
 }
 
 void menuRegistro()
@@ -53,7 +53,7 @@ void menuAdministrador()
 void menuModificarDatos()
 {
     printf("\n============\nMODIFICAR DATOS\n============\n\n");
-    printf("Escribe el id de los datos a modificar?\n");
+    printf("Escribe el id de los datos a modificar: \n");
     fgets(id, 5, stdin);
     //funcion buscar id
 
