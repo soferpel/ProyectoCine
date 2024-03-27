@@ -22,7 +22,8 @@ void menuInicioSesion()
     fgets(contrasena, 16, stdin);
     printf("\n");
     printf("\n");
-    validarUsuario(nombreUsuario, contrasena);
+    validarUsuario();
+    autenticacionExitosa = 1;
 }
 
 void menuRegistro()

@@ -9,7 +9,7 @@ void guardarUsuario()
 {
     //Abrir la base de datos
     sqlite3 *db;
-    sqlite3_open("cine.db", &db);
+    int rc = sqlite3_open("cine.db", &db);
 
     //Insertar usuario
     sqlite3_stmt *stmt;
@@ -23,41 +23,52 @@ void guardarUsuario()
 
     sqlite3_step(stmt);
 
-
     sqlite3_finalize(stmt);
     sqlite3_close(db);
 }
 
-void validarUsuario(char nomUsuario[], char contrasenya[])
+void validarUsuario()
 {
-    //Abrir la base de datos
+    validacionUsuario = 0;
     sqlite3 *db;
-    sqlite3_open("cine.db", &db);
+    char *err_msg = 0;
+    int rc = sqlite3_open("cine.db", &db);
 
-    //Seleccionar los usarios registrados
-    sqlite3_stmt *stmt2;
-    char selectUsuarios[] = "SELECT NOM_USUARIO, CONTRASENA FROM USUARIO;";
-    sqlite3_prepare_v2(db, selectUsuarios, strlen(selectUsuarios) + 1, &stmt2, NULL);
-    
-    // sqlite3_bind_text(stmt2, 1, nomUsuario, strlen(nomUsuario) + 1, SQLITE_STATIC);
-    // sqlite3_bind_text(stmt2, 2, contrasenya, strlen(contrasenya) + 1, SQLITE_STATIC);
-    
-    sqlite3_step(stmt2);
+    if (rc != SQLITE_OK) {
+        fprintf(stderr, "Error al abrir la base de datos: %s\n", sqlite3_errmsg(db));
+        sqlite3_close(db);
+        return;
+    }
 
-    //Comprobar si el usuario y la contrasena son correctos
-    while(sqlite3_step(stmt2) == SQLITE_ROW)
-    {
-        printf("Usuario: %s\n", sqlite3_column_text(stmt2, 1));
-        if((char*)sqlite3_column_text(stmt2, 3) == nomUsuario && (char*)sqlite3_column_text(stmt2, 4) == contrasenya)
+    char *sql_select = "SELECT NOM_USUARIO, CONTRASENA FROM USUARIO;";
+    rc = sqlite3_exec(db, sql_select, callbackUsuario, 0, &err_msg);
+
+    if (rc != SQLITE_OK) {
+        fprintf(stderr, "Error al realizar la consulta SELECT: %s\n", err_msg);
+        sqlite3_free(err_msg);
+    }
+
+    if (validacionUsuario == 1) {
+        printf("El usuario es correcto\n");
+    } else {
+        printf("Usuario o contrasena incorrectos\n");
+        menuBienvenida();
+    }
+    sqlite3_close(db);
+}
+
+int callbackUsuario(void *data, int argc, char **argv, char **col_names) {
+
+    for (int i = 0; i < argc; i++) {
+        if (strcmp(nombreUsuario, argv[0]) == 0)
         {
-            autenticacionExitosa = 1;
-        } else
-        {
-            printf("Usuario o contrasena incorrectos o usuario no registrado\n");
-            menuInicioSesion();
+            if (strcmp(contrasena, argv[1]) == 0)
+            {
+                validacionUsuario = 1;
+                break;
+            }
         }
     }
 
-    sqlite3_finalize(stmt2);
-    sqlite3_close(db);
+    return validacionUsuario;
 }
