@@ -32,6 +32,12 @@ char nombreCine[20];
 char direccionCine[20];
 char ciudadCine[20];
 
+//SALA
+int idCine;
+char numeroSala[20];
+char nColumnasSala[20];
+char nFilasSala[20];
+
 //funciones de los menus
 void menuBienvenida();
 void menuInicioSesion();

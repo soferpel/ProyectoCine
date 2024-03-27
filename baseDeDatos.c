@@ -9,8 +9,8 @@ void crearTabla() {
     sqlite3 *db;
     char *error_message = 0;
     char *sentencia_sql0 = "CREATE TABLE IF NOT EXISTS USUARIO (ID_USUARIO INTEGER PRIMARY KEY, NOMBRE TEXT, RESPUESTA TEXT, CORREO TEXT, CONTRASENA TEXT);";
-    char *sentencia_sql1 = "CREATE TABLE IF NOT EXISTS PELICULA (ID_PELICULA INTEGER PRIMARY KEY, TITULO TEXT, SINOPSIS TEXT, HORARIO TEXT);";
-    char *sentencia_sql2 = "CREATE TABLE IF NOT EXISTS ACTOR (ID_ACTOR INTEGER PRIMARY KEY, ID_SALA INTEGER, ID_PELICULA, NOMBRE TEXT);";
+    char *sentencia_sql1 = "CREATE TABLE IF NOT EXISTS PELICULA (ID_PELICULA INTEGER PRIMARY KEY, ID_SALA INTEGER, TITULO TEXT, SINOPSIS TEXT, HORARIO TEXT);";
+    char *sentencia_sql2 = "CREATE TABLE IF NOT EXISTS ACTOR (ID_ACTOR INTEGER PRIMARY KEY, ID_PELICULA, NOMBRE TEXT);";
     char *sentencia_sql3 = "CREATE TABLE IF NOT EXISTS CINE (ID_CINE INTEGER PRIMARY KEY, NOMBRE TEXT, DIRECCION TEXT, CIUDAD TEXT);";
     char *sentencia_sql4 = "CREATE TABLE IF NOT EXISTS ASIENTO (ID_ASIENTO INTEGER PRIMARY KEY, ID_SALA INTEGER,  FILA TEXT, NUMERO TEXT, FECHA TEXT);";
     char *sentencia_sql5 = "CREATE TABLE IF NOT EXISTS SALA (ID_SALA INTEGER PRIMARY KEY, ID_CINE INTEGER, NUMERO TEXT, NCOLUMNAS TEXT, NFILAS TEXT);";
@@ -160,6 +160,25 @@ void anadirCine() {
 
     if (rc != SQLITE_OK) {
         fprintf(stderr, "Error al anadir el cine: %s\n", err_msg);
+        sqlite3_free(err_msg);
+    } else {
+        printf("Fila anadida correctamente\n");
+    }
+    sqlite3_close(db);
+}
+
+void anadirSala() {
+    sqlite3 *db;
+    char *err_msg = 0;
+    int rc = sqlite3_open("cine.db", &db);
+
+    char sql_anadir[100];
+    snprintf(sql_anadir, sizeof(sql_anadir), "INSERT INTO SALA (ID_CINE, NUMERO, NCOLUMNAS, NFILAS) VALUES ('%i', '%s', '%s', '%s');", idCine, numeroSala, nColumnasSala, nFilasSala);
+
+    rc = sqlite3_exec(db, sql_anadir, 0, 0, &err_msg);
+
+    if (rc != SQLITE_OK) {
+        fprintf(stderr, "Error al anadir LA SALA: %s\n", err_msg);
         sqlite3_free(err_msg);
     } else {
         printf("Fila anadida correctamente\n");
