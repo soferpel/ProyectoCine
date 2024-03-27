@@ -18,13 +18,19 @@ int opcionIntEliminar;
 char opcionCharEliminar[4];
 
 int autenticacionExitosa;
+int hayQueAnadirDatos;
 
 char nombre[16];
-char apellido[20];
-char nombreUsuario[16];
+char respuesta[20];
+char correo[16];
 char contrasena[16];
 char tabla[20];
 char id[5];
+
+//CINE
+char nombreCine[20];
+char direccionCine[20];
+char ciudadCine[20];
 
 //funciones de los menus
 void menuBienvenida();

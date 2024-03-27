@@ -18,7 +18,7 @@ void menuInicioSesion()
     printf("\n===============\nINICIAR SESION\n===============\n\n");
     printf("Introduce tu nombre de usuario: ");
     fgetc(stdin);
-    fgets(nombreUsuario, 16, stdin);
+    fgets(correo, 16, stdin);
     printf("Introduce tu contrasena: ");
     fgets(contrasena, 16, stdin);
     printf("\n");
@@ -32,10 +32,10 @@ void menuRegistro()
     printf("Introduce tu nombre: ");
     fgetc(stdin);
     fgets(nombre, 16, stdin);
-    printf("Introduce tu apellido: ");
-    fgets(apellido, 20, stdin);
-    printf("Introduce tu nombre de usuario: ");
-    fgets(nombreUsuario, 16, stdin);
+    printf("Respuesta de seguridad: Cual es tu pelicula favorita? ");
+    fgets(respuesta, 20, stdin);
+    printf("Introduce tu correo: ");
+    fgets(correo, 16, stdin);
     printf("Introduce tu contrasena: ");
     fgets(contrasena, 16, stdin);
     guardarUsuario();
@@ -95,11 +95,36 @@ void menuBorrarDatos()
 
 void menuAnadirDatos()
 {
+    hayQueAnadirDatos = 1;
     printf("\n============\nANADIR DATOS\n============\n\n");
     printf("Que Datos quieres anadir?\n\n");
     printf(" 1. Usuario\n 2. Asiento\n 3. Pelicula\n 4. Actor\n 5. Cine\n 6. Sala\n 7. Salir\n\n");
+    fflush(stdin);
     fgets(opcionCharAD, 2, stdin);
     sscanf(opcionCharAD, "%d", &opcionIntAD);
+}
+
+/*
+void menuAnadirAsientos()
+{
+    printf("\n============\nANADIR ASIENTOS\n============\n\n");
+    printf("A que sala pertenece este asiento?\n\n");
+    fgets(opcionCharAD, 2, stdin);
+}
+*/
+
+void menuAnadirCine()
+{
+    printf("\n============\nANADIR CINE\n============\n\n");
+    printf("Cual es el nombre del cine?\n");
+    fflush(stdin);
+    fgets(nombreCine, 20, stdin);
+    printf("Cual es la direccion del cine?\n");
+    fgets(direccionCine, 20, stdin);
+    printf("Cual es la ciudad del cine?\n");
+    fgets(ciudadCine, 20, stdin);
+    anadirCine();
+    hayQueAnadirDatos = 0;
 }
 
 void menuPrincipal()

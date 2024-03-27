@@ -5,23 +5,11 @@
 int programaOperando = 1;
 int main(void)
 {
+    crearTabla();
+    autenticacionExitosa = 0;
     while (programaOperando == 1)
     {
-        autenticacionExitosa = 0;
-        menuBienvenida();
-        switch (opcionIntBvda)
-        {
-            case 1:
-                menuInicioSesion();
-                break;
-             case 2:
-                menuRegistro();
-                    break;
-            case 3:
-                printf("\nAdios!\n");
-                programaOperando = 0;
-                break;
-        }
+        hayQueAnadirDatos = 0;
         if (autenticacionExitosa == 1)
         {
                 menuAdministrador();
@@ -39,35 +27,56 @@ int main(void)
                 case 3:
                     menuAnadirDatos();
                     printf("Anadir datos\n"); //Son textos informativos temporales hasta que se implementen las funciones
-                    switch (opcionIntAD)
+                    if (hayQueAnadirDatos == 1)
                     {
-                    case 1:
-                        menuRegistro();
-                        break;
-                    case 2:
-                        //menu añadir asiento
-                        break;
-                    case 3:
-                        break;
-                    case 4:
-                        break;
-                    case 5:
-                        break;
-                    case 6:
-                        break;
-                    case 7:
-                        printf("\nAdios!\n");
-                        programaOperando = 0;
-                        break;
+                        hayQueAnadirDatos = 0;
+                        switch (opcionIntAD)
+                        {
+                        case 1:
+                            menuRegistro();
+                            break;
+                        case 2:
+                            //menu añadir asiento
+                            break;
+                        case 3:
+                            break;
+                        case 4:
+                            break;
+                        case 5:
+                            menuAnadirCine();
+                            break;
+                        case 6:
+                            break;
+                        case 7:
+                            printf("\nAdios!\n");
+                            programaOperando = 0;
+                            break;
+                        }
                     }
                     break;
-
                 case 4:
                     printf("\nAdios!\n");
                     programaOperando = 0;
                     break;
             }   
-        }   
+        }  
+        else
+        {
+            menuBienvenida();
+            switch (opcionIntBvda)
+            {
+                case 1:
+                    menuInicioSesion();
+                    break;
+                 case 2:
+                    menuRegistro();
+                        break;
+                case 3:
+                    printf("\nAdios!\n");
+                    programaOperando = 0;
+                    break;
+            }
+        }
     }
 
     return 0;
