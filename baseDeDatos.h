@@ -5,6 +5,7 @@ char nomUsuario[20];
 char contrasenya[20];
 int validacionUsuario;
 
+void eliminarFila();
 void guardarUsuario();
 void validarUsuario();
 int callbackUsuario(void *data, int argc, char **argv, char **col_names);

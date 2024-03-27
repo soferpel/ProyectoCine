@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "menus.h"
 #include "baseDeDatos.h"
 
@@ -23,7 +24,6 @@ void menuInicioSesion()
     printf("\n");
     printf("\n");
     validarUsuario();
-    autenticacionExitosa = 1;
 }
 
 void menuRegistro()
@@ -39,7 +39,6 @@ void menuRegistro()
     printf("Introduce tu contrasena: ");
     fgets(contrasena, 16, stdin);
     guardarUsuario();
-    autenticacionExitosa = 1;
 }
 
 void menuAdministrador()
@@ -63,10 +62,35 @@ void menuModificarDatos()
 void menuBorrarDatos()
 {
     printf("\n============\nBORRAR DATOS\n============\n\n");
+    printf("De que tabla quieres eliminar datos?\n");
+    printf("1. Usuario\n2. Cine\n3. Actor\n4. Asiento\n5. Pelicula\n6. Sala\n\n");
+    fflush(stdin);
+    fgets(opcionCharEliminar, 4, stdin);
+    sscanf(opcionCharEliminar, "%d", &opcionIntEliminar);
+    switch (opcionIntEliminar)
+    {
+    case 1:
+        strcpy(tabla, "USUARIO");
+        break;
+    case 2:
+        strcpy(tabla, "CINE");
+        break;
+    case 3:
+        strcpy(tabla, "ACTOR");
+        break;
+    case 4:
+        strcpy(tabla, "ASIENTO");
+        break;
+    case 5:
+        strcpy(tabla, "PELICULA");
+        break;
+    case 6:
+        strcpy(tabla, "SALA");
+        break;
+    }
     printf("Escribe el id de los datos a borrar?\n");
     fgets(id, 5, stdin);
-    //funcion buscar id
-    
+    eliminarFila();
 }
 
 void menuAnadirDatos()

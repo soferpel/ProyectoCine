@@ -14,12 +14,16 @@ char opcionCharPpal[2];
 int opcionIntAD;
 char opcionCharAD[2];
 
+int opcionIntEliminar;
+char opcionCharEliminar[4];
+
 int autenticacionExitosa;
 
 char nombre[16];
 char apellido[20];
 char nombreUsuario[16];
 char contrasena[16];
+char tabla[20];
 char id[5];
 
 //funciones de los menus

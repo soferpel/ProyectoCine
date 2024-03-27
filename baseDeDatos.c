@@ -22,7 +22,7 @@ void guardarUsuario()
     sqlite3_bind_text(stmt, 4, contrasena, strlen(contrasena) + 1, SQLITE_STATIC);
 
     sqlite3_step(stmt);
-
+    autenticacionExitosa = 1;
     sqlite3_finalize(stmt);
     sqlite3_close(db);
 }
@@ -50,6 +50,7 @@ void validarUsuario()
 
     if (validacionUsuario == 1) {
         printf("El usuario es correcto\n");
+        autenticacionExitosa = 1;
     } else {
         printf("Usuario o contrasena incorrectos\n");
         menuBienvenida();
@@ -71,4 +72,23 @@ int callbackUsuario(void *data, int argc, char **argv, char **col_names) {
     }
 
     return validacionUsuario;
+}
+
+void eliminarFila() {
+    sqlite3 *db;
+    char *err_msg = 0;
+    int rc = sqlite3_open("cine.db", &db);
+
+    char sql_delete[100];
+    snprintf(sql_delete, sizeof(sql_delete), "DELETE FROM %s WHERE ID = '%s';", tabla, id);
+
+    rc = sqlite3_exec(db, sql_delete, 0, 0, &err_msg);
+
+    if (rc != SQLITE_OK) {
+        fprintf(stderr, "Error al eliminar datos: %s\n", err_msg);
+        sqlite3_free(err_msg);
+    } else {
+        printf("Fila eliminada correctamente de la tabla %s y id %s\n", tabla);
+    }
+    sqlite3_close(db);
 }

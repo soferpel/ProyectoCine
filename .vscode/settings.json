@@ -1,6 +1,8 @@
 {
     "files.associations": {
         "stdio.h": "c",
-        "menus.h": "c"
+        "menus.h": "c",
+        "basededatos.h": "c",
+        "stdlib.h": "c"
     }
 }
