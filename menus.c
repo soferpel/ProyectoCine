@@ -95,16 +95,17 @@ void menuBorrarDatos()
 
 void menuAnadirAsiento()
 {
-    fgetc(stdin);
+    printf("\n============\nANADIR ASIENTO\n============\n\n");
     printf("Introduce el id de la sala en la que esta el asiento: ");
-    fgets(idSala, 3, stdin);
+    fgets(idSalaCharAsiento, 4, stdin);
+    sscanf(idSalaCharAsiento, "%d", &idSalaIntAsiento);
     printf("Introduce la fila del asiento: ");
-    fgets(filaAsiento, 3, stdin);
+    fgets(filaAsiento, 5, stdin);
     printf("Introduce el numero del asiento: ");
-    fgets(numeroAsiento, 3, stdin);
+    fgets(numeroAsiento, 4, stdin);
     printf("Introduce la fecha del asiento: ");
     fgets(fechaAsiento, 12, stdin);
-    anadirAsiento();
+
 }
 
 void menuAnadirDatos()
@@ -116,40 +117,7 @@ void menuAnadirDatos()
     fflush(stdin);
     fgets(opcionCharAD, 2, stdin);
     sscanf(opcionCharAD, "%d", &opcionIntAD);
-    switch (opcionIntAD)
-    {
-        case 1:
-            menuRegistro();
-            break;
-        case 2:
-            menuAnadirAsiento();
-            break;
-        // case 3:
-        //     menuAnadirPelicula();
-        //     break;
-        // case 4:
-        //     menuAnadirActor();
-        //     break;
-        // case 5:
-        //     menuAnadirCine();
-        //     break;
-        // case 6:
-        //     menuAnadirSala();
-        //     break;
-        case 7:
-            printf("Adios!\n");
-            break;
-    }
 }
-
-/*
-void menuAnadirAsientos()
-{
-    printf("\n============\nANADIR ASIENTOS\n============\n\n");
-    printf("A que sala pertenece este asiento?\n\n");
-    fgets(opcionCharAD, 2, stdin);
-}
-*/
 
 void menuAnadirCine()
 {
@@ -163,6 +131,33 @@ void menuAnadirCine()
     fgets(ciudadCine, 20, stdin);
     anadirCine();
     hayQueAnadirDatos = 0;
+}
+
+void menuAnadirSala()
+{
+    printf("\n============\nANADIR SALA\n============\n\n");
+    printf("Introduce el id del cine en la que esta la sala: ");
+    fflush(stdin);
+    fgets(idCineChar, 3, stdin);
+    sscanf(idCineChar, "%d", &idCineInt);
+    printf("Cual es el numero de filas que contiene la sala? ");
+    fgets(nFilasSala, 20, stdin);
+    printf("Cual es el numero de columnas que contiene la sala? ");
+    fgets(nColumnasSala, 20, stdin);
+    printf("Cual es el numero de la sala? ");
+    fgets(numeroSala, 20, stdin);
+    anadirSala();
+}
+
+void menuAnadirActor()
+{
+    printf("\n============\nANADIR ACTOR\n============\n\n");
+
+}
+
+void menuAnadirPelicula()
+{
+    printf("\n============\nANADIR PELICULA\n============\n\n");
 }
 
 void menuPrincipal()

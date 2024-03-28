@@ -46,6 +46,7 @@ int main(void)
                             menuAnadirCine();
                             break;
                         case 6:
+                            menuAnadirSala();
                             break;
                         case 7:
                             printf("\nAdios!\n");

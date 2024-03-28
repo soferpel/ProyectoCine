@@ -76,8 +76,8 @@ void validarUsuario()
         return;
     }
 
-    char *sql_select = "SELECT NOMBRE, CONTRASENA FROM USUARIO;";
-    rc = sqlite3_exec(db, sql_select, callbackUsuario, 0, &err_msg);
+    char *sql_select_Usuario = "SELECT CORREO, CONTRASENA FROM USUARIO;";
+    rc = sqlite3_exec(db, sql_select_Usuario, callbackUsuario, 0, &err_msg);
 
     if (rc != SQLITE_OK) {
         fprintf(stderr, "Error al realizar la consulta SELECT: %s\n", err_msg);
@@ -108,6 +108,48 @@ int callbackUsuario(void *data, int argc, char **argv, char **col_names) {
     }
 
     return validacionUsuario;
+}
+
+void validarCine()
+{
+    validacionCine = 0;
+    sqlite3 *db;
+    char *err_msg = 0;
+    int rc = sqlite3_open("cine.db", &db);
+
+    if (rc != SQLITE_OK) {
+        fprintf(stderr, "Error al abrir la base de datos: %s\n", sqlite3_errmsg(db));
+        sqlite3_close(db);
+        return;
+    }
+
+    char *sql_select_Cine = "SELECT ID_CINE, CIUDAD FROM CINE;";
+    rc = sqlite3_exec(db, sql_select_Cine, callbackCine, 0, &err_msg);
+
+    if (rc != SQLITE_OK) {
+        fprintf(stderr, "Error al realizar la consulta SELECT: %s\n", err_msg);
+        sqlite3_free(err_msg);
+    }
+    if (validacionCine == 1) {
+        printf("El cine es correcto\n");
+    } else {
+        printf("El cine introducido no existe\n");
+    }
+    sqlite3_close(db);
+}
+
+int callbackCine(void *data, int argc, char **argv, char **col_names)
+{
+    for (int i = 0; i < argc; i++) {
+        int idCine = atoi(argv[i]);
+        if (idCineInt == idCine)
+        {
+            validacionCine = 1;
+            break;
+        }
+    }
+
+    return validacionCine;
 }
 
 void eliminarFila() {
@@ -168,22 +210,26 @@ void anadirCine() {
 }
 
 void anadirSala() {
-    sqlite3 *db;
-    char *err_msg = 0;
-    int rc = sqlite3_open("cine.db", &db);
+    validarCine();
+    if (validacionCine == 1)
+    {
+        sqlite3 *db;
+        char *err_msg = 0;
+        int rc = sqlite3_open("cine.db", &db);
 
-    char sql_anadir[100];
-    snprintf(sql_anadir, sizeof(sql_anadir), "INSERT INTO SALA (ID_CINE, NUMERO, NCOLUMNAS, NFILAS) VALUES ('%i', '%s', '%s', '%s');", idCine, numeroSala, nColumnasSala, nFilasSala);
+        char sql_anadir[100];
+        snprintf(sql_anadir, sizeof(sql_anadir), "INSERT INTO SALA (ID_CINE, NUMERO, NCOLUMNAS, NFILAS) VALUES ('%i', '%s', '%s', '%s');", idCineInt, numeroSala, nColumnasSala, nFilasSala);
 
-    rc = sqlite3_exec(db, sql_anadir, 0, 0, &err_msg);
+        rc = sqlite3_exec(db, sql_anadir, 0, 0, &err_msg);
 
-    if (rc != SQLITE_OK) {
-        fprintf(stderr, "Error al anadir LA SALA: %s\n", err_msg);
-        sqlite3_free(err_msg);
-    } else {
-        printf("Fila anadida correctamente\n");
+        if (rc != SQLITE_OK) {
+            fprintf(stderr, "Error al anadir LA SALA: %s\n", err_msg);
+            sqlite3_free(err_msg);
+        } else {
+            printf("Fila anadida correctamente\n");
+        }
+        sqlite3_close(db);
     }
-    sqlite3_close(db);
 }
 
 void anadirPelicula()
@@ -193,7 +239,7 @@ void anadirPelicula()
     int rc = sqlite3_open("cine.db", &db);
 
     char sql_anadir[100];
-    snprintf(sql_anadir, sizeof(sql_anadir), "INSERT INTO PELICULA (TITULO, SINOPSIS, HORARIO, ID_SALA) VALUES ('%s', '%s', '%s', '%i');", titulo, sinopsis, horario, idSala);
+    snprintf(sql_anadir, sizeof(sql_anadir), "INSERT INTO PELICULA (ID_SALA, TITULO, SINOPSIS, HORARIO) VALUES ('%i', '%s', '%s', '%s');", idSalaIntPelicula, titulo, sinopsis, horario);
 
     rc = sqlite3_exec(db, sql_anadir, 0, 0, &err_msg);
 
