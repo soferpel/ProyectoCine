@@ -93,6 +93,20 @@ void menuBorrarDatos()
     eliminarFila();
 }
 
+void menuAnadirAsiento()
+{
+    fgetc(stdin);
+    printf("Introduce el id de la sala en la que esta el asiento: ");
+    fgets(idSala, 3, stdin);
+    printf("Introduce la fila del asiento: ");
+    fgets(filaAsiento, 3, stdin);
+    printf("Introduce el numero del asiento: ");
+    fgets(numeroAsiento, 3, stdin);
+    printf("Introduce la fecha del asiento: ");
+    fgets(fechaAsiento, 12, stdin);
+    anadirAsiento();
+}
+
 void menuAnadirDatos()
 {
     hayQueAnadirDatos = 1;
@@ -102,6 +116,30 @@ void menuAnadirDatos()
     fflush(stdin);
     fgets(opcionCharAD, 2, stdin);
     sscanf(opcionCharAD, "%d", &opcionIntAD);
+    switch (opcionIntAD)
+    {
+        case 1:
+            menuRegistro();
+            break;
+        case 2:
+            menuAnadirAsiento();
+            break;
+        // case 3:
+        //     menuAnadirPelicula();
+        //     break;
+        // case 4:
+        //     menuAnadirActor();
+        //     break;
+        // case 5:
+        //     menuAnadirCine();
+        //     break;
+        // case 6:
+        //     menuAnadirSala();
+        //     break;
+        case 7:
+            printf("Adios!\n");
+            break;
+    }
 }
 
 /*

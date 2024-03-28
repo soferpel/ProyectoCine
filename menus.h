@@ -26,6 +26,10 @@ char correo[20];
 char contrasena[16];
 char tabla[20];
 char id[5];
+//ASIENTO
+int filaAsiento;
+int numeroAsiento;
+char fechaAsiento[12];
 
 //CINE
 char nombreCine[20];
@@ -38,6 +42,12 @@ char numeroSala[20];
 char nColumnasSala[20];
 char nFilasSala[20];
 
+//PELICULA
+int idSala;
+char titulo[20];
+char sinopsis[100];
+char horario[20];
+
 //funciones de los menus
 void menuBienvenida();
 void menuInicioSesion();
@@ -45,6 +55,11 @@ void menuRegistro();
 void menuModificarDatos();
 void menuBorrarDatos();
 void menuAnadirDatos();
+void menuAnadirAsiento();
+// void menuAnadirPelicula();
+// void menuAnadirActor();
+// void menuAnadirCine();
+// void menuAnadirSala();
 void menuAdministrador();
 void menuMisEntradas();
 void menuComprarEntradas();
