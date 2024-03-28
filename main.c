@@ -2,76 +2,82 @@
 #include <stdlib.h>
 #include "menus.h"
 #include "baseDeDatos.h"
-
+int programaOperando = 1;
 int main(void)
 {
-
-    menuBienvenida();
-    switch (opcionIntBvda)
+    crearTabla();
+    autenticacionExitosa = 0;
+    while (programaOperando == 1)
     {
-    case 1:
-        menuInicioSesion();
-        //TODO si el usuario es correcto, mostrar menuPrincipal
-        break;
-    case 2:
-        menuRegistro();
-        //TODO si el proceso ha ido bien, mostrar menuPrincipal
-        break;
-    case 3:
-        printf("\nAdios!\n");
-        break;
-    }
-
-    if (autenticacionExitosa == 1)
-    {
-        menuAdministrador();
-        printf("%d", opcionIntAd);
-        switch (opcionIntAd)
+        hayQueAnadirDatos = 0;
+        if (autenticacionExitosa == 1)
         {
-        case 1:
-            menuModificarDatos();
-            printf("Modificar datos\n"); //Son textos informativos temporales hasta que se implementen las funciones
-            break;
-        case 2:
-            menuBorrarDatos();
-            printf("Borrar datos\n"); //Son textos informativos temporales hasta que se implementen las funciones
-            break;
+                menuAdministrador();
+                switch (opcionIntAd)
+                {
+                case 1:
+                    menuModificarDatos();
+                    printf("Modificar datos\n"); //Son textos informativos temporales hasta que se implementen las funciones
+                    break;
+                case 2:
+                    menuBorrarDatos();
+                    printf("Borrar datos\n"); //Son textos informativos temporales hasta que se implementen las funciones
+                    break;
         
-        case 3:
-            menuAnadirDatos();
-            printf("Anadir datos\n"); //Son textos informativos temporales hasta que se implementen las funciones
-            switch (opcionIntAD)
+                case 3:
+                    menuAnadirDatos();
+                    printf("Anadir datos\n"); //Son textos informativos temporales hasta que se implementen las funciones
+                    if (hayQueAnadirDatos == 1)
+                    {
+                        hayQueAnadirDatos = 0;
+                        switch (opcionIntAD)
+                        {
+                        case 1:
+                            menuRegistro();
+                            break;
+                        case 2:
+                            //menu añadir asiento
+                            break;
+                        case 3:
+                            break;
+                        case 4:
+                            break;
+                        case 5:
+                            menuAnadirCine();
+                            break;
+                        case 6:
+                            break;
+                        case 7:
+                            printf("\nAdios!\n");
+                            programaOperando = 0;
+                            break;
+                        }
+                    }
+                    break;
+                case 4:
+                    printf("\nAdios!\n");
+                    programaOperando = 0;
+                    break;
+            }   
+        }  
+        else
+        {
+            menuBienvenida();
+            switch (opcionIntBvda)
             {
-            case 1:
-                menuRegistro();
-                break;
-            case 2:
-                //menu añadir asiento
-                break;
-            case 3:
-                break;
-            case 4:
-                break;
-            case 5:
-                break;
-            case 6:
-                break;
-            case 7:
-                printf("\nAdios!\n");
-                break;
+                case 1:
+                    menuInicioSesion();
+                    break;
+                 case 2:
+                    menuRegistro();
+                        break;
+                case 3:
+                    printf("\nAdios!\n");
+                    programaOperando = 0;
+                    break;
             }
-            break;
-
-        case 4:
-            printf("\nAdios!\n");
-            break;
         }
     }
-    else
-    {
-        printf("Error de autentificacion");
-    }
 
-    //menuPrincipal();
     return 0;
 }
