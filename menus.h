@@ -22,7 +22,7 @@ int hayQueAnadirDatos;
 
 char nombre[16];
 char respuesta[20];
-char correo[16];
+char correo[20];
 char contrasena[16];
 char tabla[20];
 char id[5];
