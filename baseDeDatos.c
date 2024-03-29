@@ -123,7 +123,7 @@ void validarCine()
         return;
     }
 
-    char *sql_select_Cine = "SELECT ID_CINE, CIUDAD FROM CINE;";
+    char *sql_select_Cine = "SELECT ID_CINE FROM CINE;";
     rc = sqlite3_exec(db, sql_select_Cine, callbackCine, 0, &err_msg);
 
     if (rc != SQLITE_OK) {
@@ -152,13 +152,55 @@ int callbackCine(void *data, int argc, char **argv, char **col_names)
     return validacionCine;
 }
 
+void validarSala()
+{
+    validacionSala = 0;
+    sqlite3 *db;
+    char *err_msg = 0;
+    int rc = sqlite3_open("cine.db", &db);
+
+    if (rc != SQLITE_OK) {
+        fprintf(stderr, "Error al abrir la base de datos: %s\n", sqlite3_errmsg(db));
+        sqlite3_close(db);
+        return;
+    }
+
+    char *sql_select_Cine = "SELECT ID_SALA FROM SALA;";
+    rc = sqlite3_exec(db, sql_select_Cine, callbackSala, 0, &err_msg);
+
+    if (rc != SQLITE_OK) {
+        fprintf(stderr, "Error al realizar la consulta SELECT: %s\n", err_msg);
+        sqlite3_free(err_msg);
+    }
+    if (validacionSala == 1) {
+        printf("La sala es correcta\n");
+    } else {
+        printf("La sala introducido no existe\n");
+    }
+    sqlite3_close(db);
+}
+
+int callbackSala(void *data, int argc, char **argv, char **col_names)
+{
+    for (int i = 0; i < argc; i++) {
+        int idSala = atoi(argv[i]);
+        if (idSalaIntAsiento == idSala)
+        {
+            validacionSala = 1;
+            break;
+        }
+    }
+
+    return validacionCine;
+}
+
 void eliminarFila() {
     sqlite3 *db;
     char *err_msg = 0;
     int rc = sqlite3_open("cine.db", &db);
 
     char sql_delete[100];
-    snprintf(sql_delete, sizeof(sql_delete), "DELETE FROM %s WHERE ID_USUARIO = '%s';", tabla, id);
+    snprintf(sql_delete, sizeof(sql_delete), "DELETE FROM %s WHERE ID_%s = '%s';", tabla, tabla, id);
 
     rc = sqlite3_exec(db, sql_delete, 0, 0, &err_msg);
 
@@ -172,22 +214,27 @@ void eliminarFila() {
 }
 
 void anadirAsiento() {
-    sqlite3 *db;
-    char *err_msg = 0;
-    int rc = sqlite3_open("cine.db", &db);
+    validarSala();
+    if (validacionSala == 1)
+    {
+        sqlite3 *db;
+        char *err_msg = 0;
+        int rc = sqlite3_open("cine.db", &db);
 
-    char sql_anadir[100];
-    snprintf(sql_anadir, sizeof(sql_anadir), "INSERT INTO ASIENTO () VALUES ('%s', '%s', '%s');");
+        char sql_anadir[100];
+        snprintf(sql_anadir, sizeof(sql_anadir), "INSERT INTO ASIENTO (ID_SALA, FILA, NUMERO, FECHA) VALUES ('%i', '%s', '%s', '%s');", idSalaIntAsiento, filaAsiento, numeroAsiento, fechaAsiento);
 
-    rc = sqlite3_exec(db, sql_anadir, 0, 0, &err_msg);
-
-    if (rc != SQLITE_OK) {
-        fprintf(stderr, "Error al anadir asientos: %s\n", err_msg);
-        sqlite3_free(err_msg);
-    } else {
-        printf("Fila anadida correctamente\n");
+        rc = sqlite3_exec(db, sql_anadir, 0, 0, &err_msg);
+        
+        if (rc != SQLITE_OK) {
+            fprintf(stderr, "Error al añadir asientos: %s\n", err_msg);
+            sqlite3_free(err_msg);
+        } else {
+            printf("Fila anadida correctamente\n");
+        }
+        
+        sqlite3_close(db);
     }
-    sqlite3_close(db);
 }
 
 void anadirCine() {

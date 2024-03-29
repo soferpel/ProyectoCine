@@ -36,7 +36,7 @@ int main(void)
                             menuRegistro();
                             break;
                         case 2:
-                            //menu añadir asiento
+                            menuAnadirAsiento();
                             break;
                         case 3:
                             break;

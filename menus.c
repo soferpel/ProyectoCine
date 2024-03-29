@@ -97,6 +97,7 @@ void menuAnadirAsiento()
 {
     printf("\n============\nANADIR ASIENTO\n============\n\n");
     printf("Introduce el id de la sala en la que esta el asiento: ");
+    fflush(stdin);
     fgets(idSalaCharAsiento, 4, stdin);
     sscanf(idSalaCharAsiento, "%d", &idSalaIntAsiento);
     printf("Introduce la fila del asiento: ");
@@ -105,7 +106,8 @@ void menuAnadirAsiento()
     fgets(numeroAsiento, 4, stdin);
     printf("Introduce la fecha del asiento: ");
     fgets(fechaAsiento, 12, stdin);
-
+    anadirAsiento();
+    hayQueAnadirDatos = 0;
 }
 
 void menuAnadirDatos()
@@ -147,6 +149,7 @@ void menuAnadirSala()
     printf("Cual es el numero de la sala? ");
     fgets(numeroSala, 20, stdin);
     anadirSala();
+    hayQueAnadirDatos = 0;
 }
 
 void menuAnadirActor()
