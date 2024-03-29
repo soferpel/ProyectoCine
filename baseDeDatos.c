@@ -10,7 +10,7 @@ void crearTabla() {
     char *error_message = 0;
     char *sentencia_sql0 = "CREATE TABLE IF NOT EXISTS USUARIO (ID_USUARIO INTEGER PRIMARY KEY, NOMBRE TEXT, RESPUESTA TEXT, CORREO TEXT, CONTRASENA TEXT);";
     char *sentencia_sql1 = "CREATE TABLE IF NOT EXISTS PELICULA (ID_PELICULA INTEGER PRIMARY KEY, ID_SALA INTEGER, TITULO TEXT, SINOPSIS TEXT, HORARIO TEXT);";
-    char *sentencia_sql2 = "CREATE TABLE IF NOT EXISTS ACTOR (ID_ACTOR INTEGER PRIMARY KEY, NOMBRE TEXT, ID_PELICLA);";
+    char *sentencia_sql2 = "CREATE TABLE IF NOT EXISTS ACTOR (ID_ACTOR INTEGER PRIMARY KEY, ID_PELICLA, NOMBRE TEXT);";
     char *sentencia_sql3 = "CREATE TABLE IF NOT EXISTS CINE (ID_CINE INTEGER PRIMARY KEY, NOMBRE TEXT, DIRECCION TEXT, CIUDAD TEXT);";
     char *sentencia_sql4 = "CREATE TABLE IF NOT EXISTS ASIENTO (ID_ASIENTO INTEGER PRIMARY KEY, ID_SALA INTEGER,  FILA TEXT, NUMERO TEXT, FECHA TEXT);";
     char *sentencia_sql5 = "CREATE TABLE IF NOT EXISTS SALA (ID_SALA INTEGER PRIMARY KEY, ID_CINE INTEGER, NUMERO TEXT, NCOLUMNAS TEXT, NFILAS TEXT);";
@@ -39,6 +39,25 @@ void crearTabla() {
 
     // Cerrar la base de datos
     sqlite3_close(db);
+}
+
+void borrarTablas()
+{
+    sqlite3 *db;
+    char *error_message = 0;
+    char *sql_drop = "DROP TABLE IF EXISTS USUARIO;";
+    char *sql_drop1 = "DROP TABLE IF EXISTS PELICULA;";
+    char *sql_drop2 = "DROP TABLE IF EXISTS ACTOR;";
+    char *sql_drop3 = "DROP TABLE IF EXISTS CINE;";
+    char *sql_drop4 = "DROP TABLE IF EXISTS ASIENTO;";
+    char *sql_drop5 = "DROP TABLE IF EXISTS SALA;";
+    int rc = sqlite3_open("cine.db", &db);
+    rc = sqlite3_exec(db, sql_drop, 0, 0, &error_message);
+    rc = sqlite3_exec(db, sql_drop1, 0, 0, &error_message);
+    rc = sqlite3_exec(db, sql_drop2, 0, 0, &error_message);
+    rc = sqlite3_exec(db, sql_drop3, 0, 0, &error_message);
+    rc = sqlite3_exec(db, sql_drop4, 0, 0, &error_message);
+    rc = sqlite3_exec(db, sql_drop5, 0, 0, &error_message);
 }
 
 void guardarUsuario()

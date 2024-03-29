@@ -6,6 +6,7 @@ int validacionCine;
 int validacionSala;
 
 void crearTabla();
+void borrarTablas();
 void eliminarFila();
 void anadirAsiento();
 void anadirSala();
