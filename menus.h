@@ -39,8 +39,8 @@ char direccionCine[20];
 char ciudadCine[20];
 
 //SALA
-char idCineChar[4];
 int idCineInt;
+char idCineChar[4];
 char numeroSala[20];
 char nColumnasSala[20];
 char nFilasSala[20];
@@ -49,6 +49,11 @@ char nFilasSala[20];
 char titulo[20];
 char sinopsis[100];
 char horario[20];
+
+//ACTOR
+int idPeliculaInt;
+char idPeliculaChar[4];
+char nombreActor[20];
 
 //funciones de los menus
 void menuBienvenida();

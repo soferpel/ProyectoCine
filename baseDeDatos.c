@@ -10,7 +10,7 @@ void crearTabla() {
     char *error_message = 0;
     char *sentencia_sql0 = "CREATE TABLE IF NOT EXISTS USUARIO (ID_USUARIO INTEGER PRIMARY KEY, NOMBRE TEXT, RESPUESTA TEXT, CORREO TEXT, CONTRASENA TEXT);";
     char *sentencia_sql1 = "CREATE TABLE IF NOT EXISTS PELICULA (ID_PELICULA INTEGER PRIMARY KEY, ID_SALA INTEGER, TITULO TEXT, SINOPSIS TEXT, HORARIO TEXT);";
-    char *sentencia_sql2 = "CREATE TABLE IF NOT EXISTS ACTOR (ID_ACTOR INTEGER PRIMARY KEY, ID_PELICLA, NOMBRE TEXT);";
+    char *sentencia_sql2 = "CREATE TABLE IF NOT EXISTS ACTOR (ID_ACTOR INTEGER PRIMARY KEY, ID_PELICULA, NOMBRE TEXT);";
     char *sentencia_sql3 = "CREATE TABLE IF NOT EXISTS CINE (ID_CINE INTEGER PRIMARY KEY, NOMBRE TEXT, DIRECCION TEXT, CIUDAD TEXT);";
     char *sentencia_sql4 = "CREATE TABLE IF NOT EXISTS ASIENTO (ID_ASIENTO INTEGER PRIMARY KEY, ID_SALA INTEGER,  FILA TEXT, NUMERO TEXT, FECHA TEXT);";
     char *sentencia_sql5 = "CREATE TABLE IF NOT EXISTS SALA (ID_SALA INTEGER PRIMARY KEY, ID_CINE INTEGER, NUMERO TEXT, NCOLUMNAS TEXT, NFILAS TEXT);";
@@ -194,7 +194,7 @@ void validarSala()
     if (validacionSala == 1) {
         printf("La sala es correcta\n");
     } else {
-        printf("La sala introducido no existe\n");
+        printf("La sala introducida no existe\n");
     }
     sqlite3_close(db);
 }
@@ -211,6 +211,48 @@ int callbackSala(void *data, int argc, char **argv, char **col_names)
     }
 
     return validacionCine;
+}
+
+void validarPelicula()
+{
+    validacionPelicula = 0;
+    sqlite3 *db;
+    char *err_msg = 0;
+    int rc = sqlite3_open("cine.db", &db);
+
+    if (rc != SQLITE_OK) {
+        fprintf(stderr, "Error al abrir la base de datos: %s\n", sqlite3_errmsg(db));
+        sqlite3_close(db);
+        return;
+    }
+
+    char *sql_select_Cine = "SELECT ID_PELICULA FROM PELICULA;";
+    rc = sqlite3_exec(db, sql_select_Cine, callbackPelicula, 0, &err_msg);
+
+    if (rc != SQLITE_OK) {
+        fprintf(stderr, "Error al realizar la consulta SELECT: %s\n", err_msg);
+        sqlite3_free(err_msg);
+    }
+    if (validacionPelicula == 1) {
+        printf("La pelicula es correcta\n");
+    } else {
+        printf("La pelicula introducida no existe\n");
+    }
+    sqlite3_close(db);
+}
+
+int callbackPelicula(void *data, int argc, char **argv, char **col_names)
+{
+    for (int i = 0; i < argc; i++) {
+        int idPelicula = atoi(argv[i]);
+        if (idPeliculaInt == idPelicula)
+        {
+            validacionPelicula = 1;
+            break;
+        }
+    }
+
+    return validacionPelicula;
 }
 
 void eliminarFila() {
@@ -306,9 +348,33 @@ void anadirPelicula()
         sqlite3 *db;
         char *err_msg = 0;
         int rc = sqlite3_open("cine.db", &db);
-
         char sql_anadir[100];
         snprintf(sql_anadir, sizeof(sql_anadir), "INSERT INTO PELICULA (ID_SALA, TITULO, SINOPSIS, HORARIO) VALUES ('%i', '%s', '%s', '%s');", idSalaInt, titulo, sinopsis, horario);
+
+        rc = sqlite3_exec(db, sql_anadir, 0, 0, &err_msg);
+
+        if (rc != SQLITE_OK) {
+            fprintf(stderr, "Error al anadir la pelicula: %s\n", err_msg);
+            sqlite3_free(err_msg);
+        } else {
+            printf("Fila anadida correctamente\n");
+        }
+
+        sqlite3_close(db);
+    }
+}
+
+void anadirActor()
+{
+    validarPelicula();
+    if (validacionPelicula == 1)
+    {
+        sqlite3 *db;
+        char *err_msg = 0;
+        int rc = sqlite3_open("cine.db", &db);
+
+        char sql_anadir[100];
+        snprintf(sql_anadir, sizeof(sql_anadir), "INSERT INTO ACTOR (ID_PELICULA, NOMBRE) VALUES ('%i', '%s');", idPeliculaInt, nombreActor);
 
         rc = sqlite3_exec(db, sql_anadir, 0, 0, &err_msg);
 

@@ -157,7 +157,15 @@ void menuAnadirSala()
 void menuAnadirActor()
 {
     printf("\n============\nANADIR ACTOR\n============\n\n");
-
+    printf("Introduce el id de la pelicula en la que actua el actor: ");
+    fflush(stdin);
+    fgets(idPeliculaChar, 3, stdin);
+    sscanf(idPeliculaChar, "%d", &idPeliculaInt);
+    printf("Cual es el nombre del actor? ");
+    fgets(nombreActor, 20, stdin);
+    anadirActor();
+    validacionPelicula = 0;
+    hayQueAnadirDatos = 0;
 }
 
 void menuAnadirPelicula()

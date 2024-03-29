@@ -4,6 +4,7 @@
 int validacionUsuario;
 int validacionCine;
 int validacionSala;
+int validacionPelicula;
 
 void crearTabla();
 void borrarTablas();
@@ -22,5 +23,7 @@ void validarCine();
 int callbackCine(void *data, int argc, char **argv, char **col_names);
 void validarSala();
 int callbackSala(void *data, int argc, char **argv, char **col_names);
+void validarPelicula();
+int callbackPelicula(void *data, int argc, char **argv, char **col_names);
 
 #endif

@@ -5,6 +5,7 @@
 int programaOperando = 1;
 int main(void)
 {
+    borrarTablas();
     crearTabla();
     autenticacionExitosa = 0;
     while (programaOperando == 1)
@@ -42,6 +43,7 @@ int main(void)
                             menuAnadirPelicula();
                             break;
                         case 4:
+                            menuAnadirActor();
                             break;
                         case 5:
                             menuAnadirCine();
