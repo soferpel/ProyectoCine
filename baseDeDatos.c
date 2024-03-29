@@ -108,7 +108,6 @@ void validarUsuario()
         autenticacionExitosa = 1;
     } else {
         printf("Usuario o contrasena incorrectos\n");
-        menuBienvenida();
     }
     sqlite3_close(db);
 }

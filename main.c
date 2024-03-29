@@ -5,7 +5,6 @@
 int programaOperando = 1;
 int main(void)
 {
-    borrarTablas();
     crearTabla();
     autenticacionExitosa = 0;
     while (programaOperando == 1)
