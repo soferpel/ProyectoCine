@@ -98,8 +98,8 @@ void menuAnadirAsiento()
     printf("\n============\nANADIR ASIENTO\n============\n\n");
     printf("Introduce el id de la sala en la que esta el asiento: ");
     fflush(stdin);
-    fgets(idSalaCharAsiento, 4, stdin);
-    sscanf(idSalaCharAsiento, "%d", &idSalaIntAsiento);
+    fgets(idSalaChar, 4, stdin);
+    sscanf(idSalaChar, "%d", &idSalaInt);
     printf("Introduce la fila del asiento: ");
     fgets(filaAsiento, 5, stdin);
     printf("Introduce el numero del asiento: ");
@@ -107,6 +107,7 @@ void menuAnadirAsiento()
     printf("Introduce la fecha del asiento: ");
     fgets(fechaAsiento, 12, stdin);
     anadirAsiento();
+    validacionSala = 0;
     hayQueAnadirDatos = 0;
 }
 
@@ -149,6 +150,7 @@ void menuAnadirSala()
     printf("Cual es el numero de la sala? ");
     fgets(numeroSala, 20, stdin);
     anadirSala();
+    validacionCine = 0;
     hayQueAnadirDatos = 0;
 }
 
@@ -161,6 +163,19 @@ void menuAnadirActor()
 void menuAnadirPelicula()
 {
     printf("\n============\nANADIR PELICULA\n============\n\n");
+    printf("Introduce el id de la sala en la que se ve la pelicula: ");
+    fflush(stdin);
+    fgets(idSalaChar, 4, stdin);
+    sscanf(idSalaChar, "%d", &idSalaInt);
+    printf("Introduce el titulo de la pelicula: ");
+    fgets(titulo, 20, stdin);
+    printf("Introduce la sinopsis de la pelicula: ");
+    fgets(sinopsis, 20, stdin);
+    printf("Introduce el horario de la pelicula: ");
+    fgets(horario, 20, stdin);
+    anadirPelicula();
+    validacionSala = 0;
+    hayQueAnadirDatos = 0;
 }
 
 void menuPrincipal()

@@ -27,8 +27,8 @@ char contrasena[16];
 char tabla[20];
 char id[5];
 //ASIENTO
-int idSalaIntAsiento;
-char idSalaCharAsiento[4];
+int idSalaInt;
+char idSalaChar[4];
 char filaAsiento[5];
 char numeroAsiento[4];
 char fechaAsiento[12];
@@ -46,8 +46,6 @@ char nColumnasSala[20];
 char nFilasSala[20];
 
 //PELICULA
-int idSalaIntPelicula;
-char idSalaCharPelicula[4];
 char titulo[20];
 char sinopsis[100];
 char horario[20];

@@ -203,7 +203,7 @@ int callbackSala(void *data, int argc, char **argv, char **col_names)
 {
     for (int i = 0; i < argc; i++) {
         int idSala = atoi(argv[i]);
-        if (idSalaIntAsiento == idSala)
+        if (idSalaInt == idSala)
         {
             validacionSala = 1;
             break;
@@ -241,7 +241,7 @@ void anadirAsiento() {
         int rc = sqlite3_open("cine.db", &db);
 
         char sql_anadir[100];
-        snprintf(sql_anadir, sizeof(sql_anadir), "INSERT INTO ASIENTO (ID_SALA, FILA, NUMERO, FECHA) VALUES ('%i', '%s', '%s', '%s');", idSalaIntAsiento, filaAsiento, numeroAsiento, fechaAsiento);
+        snprintf(sql_anadir, sizeof(sql_anadir), "INSERT INTO ASIENTO (ID_SALA, FILA, NUMERO, FECHA) VALUES ('%i', '%s', '%s', '%s');", idSalaInt, filaAsiento, numeroAsiento, fechaAsiento);
 
         rc = sqlite3_exec(db, sql_anadir, 0, 0, &err_msg);
         
@@ -300,22 +300,25 @@ void anadirSala() {
 
 void anadirPelicula()
 {
-    sqlite3 *db;
-    char *err_msg = 0;
-    int rc = sqlite3_open("cine.db", &db);
+    validarSala();
+    if (validacionSala == 1)
+    {
+        sqlite3 *db;
+        char *err_msg = 0;
+        int rc = sqlite3_open("cine.db", &db);
 
-    char sql_anadir[100];
-    snprintf(sql_anadir, sizeof(sql_anadir), "INSERT INTO PELICULA (ID_SALA, TITULO, SINOPSIS, HORARIO) VALUES ('%i', '%s', '%s', '%s');", idSalaIntPelicula, titulo, sinopsis, horario);
+        char sql_anadir[100];
+        snprintf(sql_anadir, sizeof(sql_anadir), "INSERT INTO PELICULA (ID_SALA, TITULO, SINOPSIS, HORARIO) VALUES ('%i', '%s', '%s', '%s');", idSalaInt, titulo, sinopsis, horario);
 
-    rc = sqlite3_exec(db, sql_anadir, 0, 0, &err_msg);
+        rc = sqlite3_exec(db, sql_anadir, 0, 0, &err_msg);
 
-    if (rc != SQLITE_OK) {
-        fprintf(stderr, "Error al anadir LA PELICULA: %s\n", err_msg);
-        sqlite3_free(err_msg);
-    } else {
-        printf("Fila anadida correctamente\n");
+        if (rc != SQLITE_OK) {
+            fprintf(stderr, "Error al anadir LA PELICULA: %s\n", err_msg);
+            sqlite3_free(err_msg);
+        } else {
+            printf("Fila anadida correctamente\n");
+        }
+
+        sqlite3_close(db);
     }
-
-    sqlite3_close(db);
-
 }
