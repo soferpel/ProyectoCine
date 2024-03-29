@@ -260,7 +260,7 @@ void eliminarFila() {
     int rc = sqlite3_open("cine.db", &db);
 
     char sql_delete[100];
-    snprintf(sql_delete, sizeof(sql_delete), "DELETE FROM %s WHERE ID_%s = '%s';", tabla, tabla, id);
+    snprintf(sql_delete, sizeof(sql_delete), "DELETE FROM %s WHERE ID_%s = '%s';", tablaEliminar, tablaEliminar, idEliminar);
 
     rc = sqlite3_exec(db, sql_delete, 0, 0, &err_msg);
 
@@ -356,7 +356,7 @@ void anadirPelicula()
             fprintf(stderr, "Error al anadir la pelicula: %s\n", err_msg);
             sqlite3_free(err_msg);
         } else {
-            printf("Fila anadida correctamente\n");
+            printf("Fila anadir correctamente\n");
         }
 
         sqlite3_close(db);
@@ -385,5 +385,38 @@ void anadirActor()
         }
 
         sqlite3_close(db);
+    }
+}
+
+void modificarPelicula() {
+    validarPelicula();
+    if (validacionPelicula == 1)
+    {
+        validarSala();
+        if(validacionSala == 1)
+        {
+            sqlite3 *db;
+            char *err_msg = 0;
+            int rc = sqlite3_open("cine.db", &db);
+
+            if (rc != SQLITE_OK) {
+                fprintf(stderr, "No se pudo abrir la base de datos: %s\n", sqlite3_errmsg(db));
+                return;
+            }
+
+            char sql_modificar[150];
+            snprintf(sql_modificar, sizeof(sql_modificar), "UPDATE PELICULA SET ID_SALA = '%i', TITULO = '%s', SINOPSIS = '%s', HORARIO = '%s' WHERE ID_PELICULA = %i;", idSalaInt, titulo, sinopsis, horario, idPeliculaInt);
+
+            rc = sqlite3_exec(db, sql_modificar, 0, 0, &err_msg);
+
+            if (rc != SQLITE_OK) {
+                fprintf(stderr, "Error al modificar la película: %s\n", err_msg);
+                sqlite3_free(err_msg);
+            } else {
+                printf("Pelicula modificada correctamente\n");
+            }
+
+            sqlite3_close(db);
+        }
     }
 }

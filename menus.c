@@ -53,10 +53,12 @@ void menuAdministrador()
 void menuModificarDatos()
 {
     printf("\n============\nMODIFICAR DATOS\n============\n\n");
-    printf("Escribe el id de los datos a modificar: \n");
-    fgets(id, 5, stdin);
-    //funcion buscar id
-
+    printf("De que tabla quieres modificar datos?\n");
+    printf("1. Usuario\n2. Cine\n3. Actor\n4. Asiento\n5. Pelicula\n6. Sala\n\n");
+    fflush(stdin);
+    fgets(opcionCharModificar, 4, stdin);
+    sscanf(opcionCharModificar, "%d", &opcionIntModificar);
+    hayQueModificarDatos = 1;
 }
 
 void menuBorrarDatos()
@@ -70,26 +72,26 @@ void menuBorrarDatos()
     switch (opcionIntEliminar)
     {
     case 1:
-        strcpy(tabla, "USUARIO");
+        strcpy(tablaEliminar, "USUARIO");
         break;
     case 2:
-        strcpy(tabla, "CINE");
+        strcpy(tablaEliminar, "CINE");
         break;
     case 3:
-        strcpy(tabla, "ACTOR");
+        strcpy(tablaEliminar, "ACTOR");
         break;
     case 4:
-        strcpy(tabla, "ASIENTO");
+        strcpy(tablaEliminar, "ASIENTO");
         break;
     case 5:
-        strcpy(tabla, "PELICULA");
+        strcpy(tablaEliminar, "PELICULA");
         break;
     case 6:
-        strcpy(tabla, "SALA");
+        strcpy(tablaEliminar, "SALA");
         break;
     }
     printf("Escribe el id de los datos a borrar?\n");
-    fgets(id, 5, stdin);
+    fgets(idEliminar, 5, stdin);
     eliminarFila();
 }
 
@@ -184,6 +186,28 @@ void menuAnadirPelicula()
     anadirPelicula();
     validacionSala = 0;
     hayQueAnadirDatos = 0;
+}
+
+void menuModificarPelicula()
+{
+    printf("\n============\nMODIFICAR PELICULA\n============\n\n");
+    printf("Introduce el id de la pelicula a modificar: ");
+    fflush(stdin);
+    fgets(idPeliculaChar, 4, stdin);
+    sscanf(idPeliculaChar, "%d", &idPeliculaInt);
+    printf("Introduce el id de la sala en la que se ve la pelicula: ");
+    fflush(stdin);
+    fgets(idSalaChar, 4, stdin);
+    sscanf(idSalaChar, "%d", &idSalaInt);
+    printf("Introduce el nuevo titulo de la pelicula: ");
+    fgets(titulo, 20, stdin);
+    printf("Introduce la nueva sinopsis de la pelicula: ");
+    fgets(sinopsis, 20, stdin);
+    printf("Introduce el nuevo horario de la pelicula: ");
+    fgets(horario, 20, stdin);
+    modificarPelicula();
+    validacionPelicula = 0;
+    hayQueModificarDatos = 0;
 }
 
 void menuPrincipal()

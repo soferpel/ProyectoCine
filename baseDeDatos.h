@@ -15,6 +15,7 @@ void anadirActor();
 void anadirPelicula();
 void anadirCine();
 void guardarUsuario();
+void modificarPelicula();
 
 //VALIDACIONES Y CALLBACKS
 void validarUsuario();

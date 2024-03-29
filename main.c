@@ -17,16 +17,42 @@ int main(void)
                 {
                 case 1:
                     menuModificarDatos();
-                    printf("Modificar datos\n"); //Son textos informativos temporales hasta que se implementen las funciones
+                    if (hayQueModificarDatos == 1)
+                    {
+                        hayQueModificarDatos = 0;
+                        switch (opcionIntModificar)
+                        {
+                        case 1:
+                            //USUARIO
+                            break;
+                        case 2:
+                            //CINE
+                            break;
+                        case 3:
+                            //ACTOR
+                            break;
+                        case 4:
+                            //ASIENTO
+                            break;
+                        case 5:
+                            menuModificarPelicula();
+                            break;
+                        case 6:
+                            //SALA
+                            break;
+                        case 7:
+                            printf("\nAdios!\n");
+                            programaOperando = 0;
+                            break;
+                        }
+                    }
                     break;
                 case 2:
                     menuBorrarDatos();
-                    printf("Borrar datos\n"); //Son textos informativos temporales hasta que se implementen las funciones
                     break;
         
                 case 3:
                     menuAnadirDatos();
-                    printf("Anadir datos\n"); //Son textos informativos temporales hasta que se implementen las funciones
                     if (hayQueAnadirDatos == 1)
                     {
                         hayQueAnadirDatos = 0;

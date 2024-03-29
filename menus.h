@@ -17,15 +17,20 @@ char opcionCharAD[2];
 int opcionIntEliminar;
 char opcionCharEliminar[4];
 
+int opcionIntModificar;
+char opcionCharModificar[4];
+
 int autenticacionExitosa;
 int hayQueAnadirDatos;
+int hayQueModificarDatos;
 
 char nombre[16];
 char respuesta[20];
 char correo[20];
 char contrasena[16];
-char tabla[20];
-char id[5];
+char tablaEliminar[20];
+char idEliminar[5];
+
 //ASIENTO
 int idSalaInt;
 char idSalaChar[4];
@@ -60,6 +65,7 @@ void menuBienvenida();
 void menuInicioSesion();
 void menuRegistro();
 void menuModificarDatos();
+void menuModificarPelicula();
 void menuBorrarDatos();
 void menuAnadirDatos();
 void menuAnadirAsiento();
