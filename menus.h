@@ -31,6 +31,10 @@ char contrasena[16];
 char tablaEliminar[20];
 char idEliminar[5];
 
+//USUARIO
+int idUsuarioInt;
+char idUsuarioChar[4];
+
 //ASIENTO
 int idSalaInt;
 char idSalaChar[4];
@@ -66,6 +70,7 @@ void menuInicioSesion();
 void menuRegistro();
 void menuModificarDatos();
 void menuModificarPelicula();
+void menuModificarUsuario();
 void menuBorrarDatos();
 void menuAnadirDatos();
 void menuAnadirAsiento();

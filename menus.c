@@ -210,6 +210,27 @@ void menuModificarPelicula()
     hayQueModificarDatos = 0;
 }
 
+void menuModificarUsuario()
+{
+    printf("\n============\nMODIFICAR USUARIO\n============\n\n");
+    printf("Introduce el id del usuario a modificar: ");
+    fflush(stdin);
+    fgets(idUsuarioChar, 4, stdin);
+    sscanf(idUsuarioChar, "%d", &idUsuarioInt);
+    printf("Introduce el nuevo nombre del usuario: ");
+    fflush(stdin);
+    fgets(nombre, 16, stdin);
+    printf("Introduce la nueva respuesta de seguridad: ");
+    fgets(respuesta, 20, stdin);
+    printf("Introduce el nuevo correo electronico");
+    fgets(correo, 20, stdin);
+    printf("Introduce la nueva contrasena: ");
+    fgets(contrasena, 16, stdin);
+    modificarUsuario();
+    validacionUsuario = 0;
+    hayQueModificarDatos = 0;
+}
+
 void menuPrincipal()
 {
     printf("\n===============\nMENU PRINCIPAL\n===============\n\n");
