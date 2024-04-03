@@ -11,7 +11,6 @@ void leerConfiguracion(const char *filename, struct Configuracion *configuracion
     }
 
     char line[100];
-
     while (fgets(line, sizeof(line), file)) {
         char key[100];
         char value[100];
