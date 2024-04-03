@@ -2,9 +2,17 @@
 #include <stdlib.h>
 #include "menus.h"
 #include "baseDeDatos.h"
+#include "configuracion.h"
+
 int programaOperando = 1;
+
 int main(void)
 {
+    
+    struct Configuracion configuracion;
+    leerConfiguracion("configuracion.txt", &configuracion);
+    printf("Ruta de base de datos: %s\n", configuracion.pathDB);
+
     crearTabla();
     autenticacionExitosa = 0;
     while (programaOperando == 1)
@@ -111,6 +119,7 @@ int main(void)
             }
         }
     }
+
 
     return 0;
 }

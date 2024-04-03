@@ -1,0 +1,2 @@
+//path de la database
+pathDB = cine.db
