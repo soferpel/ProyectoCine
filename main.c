@@ -23,13 +23,13 @@ int main(void)
                         switch (opcionIntModificar)
                         {
                         case 1:
-                            //USUARIO
+                            menuModificarUsuario();
                             break;
                         case 2:
-                            //CINE
+                            menuModificarCine();
                             break;
                         case 3:
-                            //ACTOR
+                            menuModificarActor();
                             break;
                         case 4:
                             //ASIENTO
@@ -104,6 +104,10 @@ int main(void)
                     printf("\nAdios!\n");
                     programaOperando = 0;
                     break;
+                
+                default:
+                    menuBienvenida();
+
             }
         }
     }

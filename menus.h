@@ -60,6 +60,8 @@ char sinopsis[100];
 char horario[20];
 
 //ACTOR
+char idActorChar[3];
+int idActorInt;
 int idPeliculaInt;
 char idPeliculaChar[4];
 char nombreActor[20];
@@ -71,6 +73,10 @@ void menuRegistro();
 void menuModificarDatos();
 void menuModificarPelicula();
 void menuModificarUsuario();
+void menuModificarCine();
+void menuModificarActor();
+void menuModificarSala();
+void menuModificarAsiento();
 void menuBorrarDatos();
 void menuAnadirDatos();
 void menuAnadirAsiento();

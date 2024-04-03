@@ -183,8 +183,8 @@ void validarSala()
         return;
     }
 
-    char *sql_select_Cine = "SELECT ID_SALA FROM SALA;";
-    rc = sqlite3_exec(db, sql_select_Cine, callbackSala, 0, &err_msg);
+    char *sql_select_Sala = "SELECT ID_SALA FROM SALA;";
+    rc = sqlite3_exec(db, sql_select_Sala, callbackSala, 0, &err_msg);
 
     if (rc != SQLITE_OK) {
         fprintf(stderr, "Error al realizar la consulta SELECT: %s\n", err_msg);
@@ -225,8 +225,8 @@ void validarPelicula()
         return;
     }
 
-    char *sql_select_Cine = "SELECT ID_PELICULA FROM PELICULA;";
-    rc = sqlite3_exec(db, sql_select_Cine, callbackPelicula, 0, &err_msg);
+    char *sql_select_Pelicula = "SELECT ID_PELICULA FROM PELICULA;";
+    rc = sqlite3_exec(db, sql_select_Pelicula, callbackPelicula, 0, &err_msg);
 
     if (rc != SQLITE_OK) {
         fprintf(stderr, "Error al realizar la consulta SELECT: %s\n", err_msg);
@@ -247,6 +247,48 @@ int callbackPelicula(void *data, int argc, char **argv, char **col_names)
         if (idPeliculaInt == idPelicula)
         {
             validacionPelicula = 1;
+            break;
+        }
+    }
+
+    return validacionPelicula;
+}
+
+void validarActor()
+{
+    validacionActor = 0;
+    sqlite3 *db;
+    char *err_msg = 0;
+    int rc = sqlite3_open("cine.db", &db);
+
+    if (rc != SQLITE_OK) {
+        fprintf(stderr, "Error al abrir la base de datos: %s\n", sqlite3_errmsg(db));
+        sqlite3_close(db);
+        return;
+    }
+
+    char *sql_select_Actor = "SELECT ID_ACTOR FROM ACTOR;";
+    rc = sqlite3_exec(db, sql_select_Actor, callbackActor, 0, &err_msg);
+
+    if (rc != SQLITE_OK) {
+        fprintf(stderr, "Error al realizar la consulta SELECT: %s\n", err_msg);
+        sqlite3_free(err_msg);
+    }
+    if (validacionActor == 1) {
+        printf("El actor es correcto\n");
+    } else {
+        printf("El actor introducido no existe\n");
+    }
+    sqlite3_close(db);
+}
+
+int callbackActor(void *data, int argc, char **argv, char **col_names)
+{
+    for (int i = 0; i < argc; i++) {
+        int idActor = atoi(argv[i]);
+        if (idActorInt == idActor)
+        {
+            validacionActor = 1;
             break;
         }
     }
@@ -414,6 +456,100 @@ void modificarPelicula() {
                 sqlite3_free(err_msg);
             } else {
                 printf("Pelicula modificada correctamente\n");
+            }
+
+            sqlite3_close(db);
+        }
+    }
+}
+
+void modificarUsuario()
+{
+    validarUsuario();
+    if(validacionUsuario == 1)
+    {
+         sqlite3 *db;
+            char *err_msg = 0;
+            int rc = sqlite3_open("cine.db", &db);
+
+            if (rc != SQLITE_OK) {
+                fprintf(stderr, "No se pudo abrir la base de datos: %s\n", sqlite3_errmsg(db));
+                return;
+            }
+
+            char sql_modificar[150];
+            snprintf(sql_modificar, sizeof(sql_modificar), "UPDATE USUARIO SET ID_USUARIO = '%i', NOMBRE = '%s', RESPUESTA = '%s', CORREO = '%s', CONTRASENA = '%s WHERE ID_USUARIO = %i;", idUsuarioInt, nombre, respuesta, correo, contrasena, idUsuarioInt);
+
+            rc = sqlite3_exec(db, sql_modificar, 0, 0, &err_msg);
+
+            if (rc != SQLITE_OK) {
+                fprintf(stderr, "Error al modificar el usuario: %s\n", err_msg);
+                sqlite3_free(err_msg);
+            } else {
+                printf("Usuario modificado correctamente\n");
+            }
+
+            sqlite3_close(db);
+    }
+}
+
+void modificarCine()
+{
+    validarCine();
+    if(validacionCine == 1)
+    {
+        sqlite3 *db;
+            char *err_msg = 0;
+            int rc = sqlite3_open("cine.db", &db);
+
+            if (rc != SQLITE_OK) {
+                fprintf(stderr, "No se pudo abrir la base de datos: %s\n", sqlite3_errmsg(db));
+                return;
+            }
+
+            char sql_modificar[150];
+            snprintf(sql_modificar, sizeof(sql_modificar), "UPDATE CINE SET ID_CINE = '%i', NOMBRE = '%s', DIRECCION = '%s', CIUDAD = '%s' WHERE ID_CINE = %i;", idCineInt, nombreCine, direccionCine, ciudadCine, idCineInt);
+
+            rc = sqlite3_exec(db, sql_modificar, 0, 0, &err_msg);
+
+            if (rc != SQLITE_OK) {
+                fprintf(stderr, "Error al modificar el usuario: %s\n", err_msg);
+                sqlite3_free(err_msg);
+            } else {
+                printf("Usuario modificado correctamente\n");
+            }
+
+            sqlite3_close(db);
+    }
+}
+
+void modificarActor()
+{
+    validarActor();
+    if(validacionActor == 1)
+    {
+        validarPelicula();
+        if(validacionPelicula == 1)
+        {
+            sqlite3 *db;
+            char *err_msg = 0;
+            int rc = sqlite3_open("cine.db", &db);
+
+            if (rc != SQLITE_OK) {
+                fprintf(stderr, "No se pudo abrir la base de datos: %s\n", sqlite3_errmsg(db));
+                return;
+            }
+
+            char sql_modificar[150];
+            snprintf(sql_modificar, sizeof(sql_modificar), "UPDATE ACTOR SET ID_ACTOR = '%i', ID_PELICULA = '%i', NOMBRE = '%s' WHERE ID_ACTOR = %i;", idActorInt, idPeliculaInt, nombreActor, idActorInt);
+
+            rc = sqlite3_exec(db, sql_modificar, 0, 0, &err_msg);
+
+            if (rc != SQLITE_OK) {
+                fprintf(stderr, "Error al modificar el usuario: %s\n", err_msg);
+                sqlite3_free(err_msg);
+            } else {
+                printf("Usuario modificado correctamente\n");
             }
 
             sqlite3_close(db);

@@ -16,7 +16,7 @@ void menuBienvenida()
 void menuInicioSesion()
 {
     printf("\n===============\nINICIAR SESION\n===============\n\n");
-    printf("Introduce tu nombre de usuario: ");
+    printf("Introduce tu correo electronico: ");
     fgetc(stdin);
     fgets(correo, 16, stdin);
     printf("Introduce tu contrasena: ");
@@ -222,12 +222,49 @@ void menuModificarUsuario()
     fgets(nombre, 16, stdin);
     printf("Introduce la nueva respuesta de seguridad: ");
     fgets(respuesta, 20, stdin);
-    printf("Introduce el nuevo correo electronico");
+    printf("Introduce el nuevo correo electronico: s");
     fgets(correo, 20, stdin);
     printf("Introduce la nueva contrasena: ");
     fgets(contrasena, 16, stdin);
     modificarUsuario();
     validacionUsuario = 0;
+    hayQueModificarDatos = 0;
+}
+
+void menuModificarCine()
+{
+    printf("\n=========\nMODIFICAR CINE\n=========\n\n");
+    printf("Introduce el id del cine a modificar: ");
+    fflush(stdin);
+    fgets(idCineChar, 4, stdin);
+    sscanf(idCineChar, "%d", &idCineInt);
+    printf("Introduce el nuevo nombre del cine: ");
+    fflush(stdin);
+    fgets(nombreCine, 16, stdin);
+    printf("Introduce la nueva direccion del cine: ");
+    fgets(direccionCine, 20, stdin);
+    printf("Introduce la nueva ciudad del cine:");
+    fgets(ciudadCine, 20, stdin);
+    modificarCine();
+    validacionCine = 0;
+    hayQueModificarDatos = 0;
+}
+
+void menuModificarActor()
+{
+    printf("\n===========\nMODIFICAR ACTOR\n===========\n\n");
+    printf("Introduce el id del actor a modificar: ");
+    fflush(stdin);
+    fgets(idActorChar, 4, stdin);
+    sscanf(idActorChar, "%d", &idActorInt);
+    printf("Introduce el nuevo id de la pelicula en la que actua el actor: ");
+    fflush(stdin);
+    fgets(idPeliculaChar, 4, stdin);
+    sscanf(idPeliculaChar, "%d", &idPeliculaInt);
+    printf("Introduce el nuevo nombre del actor: ");
+    fgets(nombreActor, 20, stdin);
+    modificarActor();
+    validacionActor = 0;
     hayQueModificarDatos = 0;
 }
 
