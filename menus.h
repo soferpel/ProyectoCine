@@ -50,9 +50,12 @@ char ciudadCine[20];
 //SALA
 int idCineInt;
 char idCineChar[4];
-char numeroSala[20];
-char nColumnasSala[20];
-char nFilasSala[20];
+char numeroSalaChar[3];
+int numeroSalaInt;
+char nColumnasSalaChar[3];
+int nColumnasSalaInt;
+char nFilasSalaChar[3];
+int nFilasSalaInt;
 
 //PELICULA
 char titulo[20];

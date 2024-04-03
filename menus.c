@@ -146,11 +146,14 @@ void menuAnadirSala()
     fgets(idCineChar, 3, stdin);
     sscanf(idCineChar, "%d", &idCineInt);
     printf("Cual es el numero de filas que contiene la sala? ");
-    fgets(nFilasSala, 20, stdin);
+    fgets(nFilasSalaChar, 3, stdin);
+    sscanf(nFilasSalaChar, "%d", nFilasSalaInt);
     printf("Cual es el numero de columnas que contiene la sala? ");
-    fgets(nColumnasSala, 20, stdin);
+    fgets(nColumnasSalaChar, 3, stdin);
+    sscanf(nColumnasSalaChar, "%d", nColumnasSalaInt);
     printf("Cual es el numero de la sala? ");
-    fgets(numeroSala, 20, stdin);
+    fgets(numeroSalaChar, 3, stdin);
+    sscanf(numeroSalaChar, "%d", numeroSalaInt);
     anadirSala();
     validacionCine = 0;
     hayQueAnadirDatos = 0;

@@ -367,7 +367,7 @@ void anadirSala() {
         int rc = sqlite3_open("cine.db", &db);
 
         char sql_anadir[100];
-        snprintf(sql_anadir, sizeof(sql_anadir), "INSERT INTO SALA (ID_CINE, NUMERO, NCOLUMNAS, NFILAS) VALUES ('%i', '%s', '%s', '%s');", idCineInt, numeroSala, nColumnasSala, nFilasSala);
+        snprintf(sql_anadir, sizeof(sql_anadir), "INSERT INTO SALA (ID_CINE, NUMERO, NCOLUMNAS, NFILAS) VALUES ('%i', '%i', '%i', '%i');", idCineInt, numeroSalaInt, nColumnasSalaInt, nFilasSalaInt);
 
         rc = sqlite3_exec(db, sql_anadir, 0, 0, &err_msg);
 
@@ -513,10 +513,10 @@ void modificarCine()
             rc = sqlite3_exec(db, sql_modificar, 0, 0, &err_msg);
 
             if (rc != SQLITE_OK) {
-                fprintf(stderr, "Error al modificar el usuario: %s\n", err_msg);
+                fprintf(stderr, "Error al modificar el cine: %s\n", err_msg);
                 sqlite3_free(err_msg);
             } else {
-                printf("Usuario modificado correctamente\n");
+                printf("Cine modificado correctamente\n");
             }
 
             sqlite3_close(db);
@@ -546,10 +546,44 @@ void modificarActor()
             rc = sqlite3_exec(db, sql_modificar, 0, 0, &err_msg);
 
             if (rc != SQLITE_OK) {
-                fprintf(stderr, "Error al modificar el usuario: %s\n", err_msg);
+                fprintf(stderr, "Error al modificar el actor: %s\n", err_msg);
                 sqlite3_free(err_msg);
             } else {
-                printf("Usuario modificado correctamente\n");
+                printf("Actor modificado correctamente\n");
+            }
+
+            sqlite3_close(db);
+        }
+    }
+}
+
+void modificarSala()
+{
+    validarSala();
+    if(validacionSala == 1)
+    {
+        validarCine();
+        if(validacionCine == 1)
+        {
+            sqlite3 *db;
+            char *err_msg = 0;
+            int rc = sqlite3_open("cine.db", &db);
+
+            if (rc != SQLITE_OK) {
+                fprintf(stderr, "No se pudo abrir la base de datos: %s\n", sqlite3_errmsg(db));
+                return;
+            }
+
+            char sql_modificar[150];
+            snprintf(sql_modificar, sizeof(sql_modificar), "UPDATE SALA SET ID_SALA = '%i', ID_CINE = '%i', NUMERO = '%i', NCOLUMNAS = '%i', NFILAS = '%i WHERE ID_SALA = %i;", idSalaInt, idCineInt, numeroSalaInt, nColumnasSalaInt, nFilasSalaInt, idSalaInt);
+
+            rc = sqlite3_exec(db, sql_modificar, 0, 0, &err_msg);
+
+            if (rc != SQLITE_OK) {
+                fprintf(stderr, "Error al modificar la sala: %s\n", err_msg);
+                sqlite3_free(err_msg);
+            } else {
+                printf("Sala modificado correctamente\n");
             }
 
             sqlite3_close(db);
