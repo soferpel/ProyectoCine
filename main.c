@@ -3,12 +3,12 @@
 #include "menus.h"
 #include "baseDeDatos.h"
 #include "configuracion.h"
+#include <windows.h>
 
 int programaOperando = 1;
 
 int main(void)
 {
-    
     struct Configuracion configuracion;
     leerConfiguracion("configuracion.txt", &configuracion);
     printf("Ruta de base de datos: %s\n", configuracion.pathDB);
