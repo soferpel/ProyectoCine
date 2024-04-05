@@ -36,10 +36,14 @@ int idUsuarioInt;
 char idUsuarioChar[4];
 
 //ASIENTO
+char idAsientoChar[5];
+int idAsientoInt;
 int idSalaInt;
 char idSalaChar[4];
-char filaAsiento[5];
-char numeroAsiento[4];
+char filaAsientoChar[3];
+int filaAsientoInt;
+char numeroAsientoChar[3];
+int numeroAsientoInt;
 char fechaAsiento[12];
 
 //CINE

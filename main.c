@@ -10,7 +10,6 @@ int programaOperando = 1;
 int main(void)
 {
     PathDB rutaDB = leerConfiguracion("configuracion.txt");
-    printf("%s\n", rutaDB.ruta);
 
     crearTabla(rutaDB);
     autenticacionExitosa = 0;
@@ -19,45 +18,51 @@ int main(void)
         hayQueAnadirDatos = 0;
         if (autenticacionExitosa == 1)
         {
-                menuAdministrador(rutaDB);
+                menuAdministrador();
                 switch (opcionIntAd)
                 {
                 case 1:
-                    menuModificarDatos(rutaDB);
+                    menuModificarDatos();
                     if (hayQueModificarDatos == 1)
                     {
                         hayQueModificarDatos = 0;
                         switch (opcionIntModificar)
                         {
                         case 1:
-                            menuModificarUsuario(rutaDB);
+                            menuModificarUsuario();
                             modificarUsuario(rutaDB);
                             validacionUsuario = 0;
                             hayQueModificarDatos = 0;
                             break;
                         case 2:
-                            menuModificarCine(rutaDB);
+                            menuModificarCine();
                             modificarCine(rutaDB);
                             validacionCine = 0;
                             hayQueModificarDatos = 0;
                             break;
                         case 3:
-                            menuModificarActor(rutaDB);
+                            menuModificarActor();
                             modificarActor(rutaDB);
                             validacionActor = 0;
                             hayQueModificarDatos = 0;
                             break;
                         case 4:
-                            //ASIENTO
+                            menuModificarAsiento();
+                            modificarAsiento(rutaDB);
+                            validacionAsiento = 0;
+                            hayQueModificarDatos = 0;
                             break;
                         case 5:
-                            menuModificarPelicula(rutaDB);
+                            menuModificarPelicula();
                             modificarPelicula(rutaDB);
                             validacionPelicula = 0;
                             hayQueModificarDatos = 0;
                             break;
                         case 6:
-                            //SALA
+                            menuModificarSala();
+                            modificarSala(rutaDB);
+                            validacionSala = 0;
+                            hayQueModificarDatos = 0;
                             break;
                         case 7:
                             printf("\nAdios!\n");
@@ -67,46 +72,46 @@ int main(void)
                     }
                     break;
                 case 2:
-                    menuBorrarDatos(rutaDB);
+                    menuBorrarDatos();
                     eliminarFila(rutaDB);
                     break;
         
                 case 3:
-                    menuAnadirDatos(rutaDB);
+                    menuAnadirDatos();
                     if (hayQueAnadirDatos == 1)
                     {
                         hayQueAnadirDatos = 0;
                         switch (opcionIntAD)
                         {
                         case 1:
-                            menuRegistro(rutaDB);
+                            menuRegistro();
                             guardarUsuario(rutaDB);
                             break;
                         case 2:
-                            menuAnadirAsiento(rutaDB);
+                            menuAnadirAsiento();
                             anadirAsiento(rutaDB);
                             validacionSala = 0;
                             hayQueAnadirDatos = 0;
                             break;
                         case 3:
-                            menuAnadirPelicula(rutaDB);
+                            menuAnadirPelicula();
                             anadirPelicula(rutaDB);
                             validacionSala = 0;
                             hayQueAnadirDatos = 0;
                             break;
                         case 4:
-                            menuAnadirActor(rutaDB);
+                            menuAnadirActor();
                             anadirActor(rutaDB);
                             validacionPelicula = 0;
                             hayQueAnadirDatos = 0;
                             break;
                         case 5:
-                            menuAnadirCine(rutaDB);
+                            menuAnadirCine();
                             anadirCine(rutaDB);
                             hayQueAnadirDatos = 0;
                             break;
                         case 6:
-                            menuAnadirSala(rutaDB);
+                            menuAnadirSala();
                             anadirSala(rutaDB);
                             validacionCine = 0;
                             hayQueAnadirDatos = 0;
@@ -126,15 +131,15 @@ int main(void)
         }  
         else
         {
-            menuBienvenida(rutaDB);
+            menuBienvenida();
             switch (opcionIntBvda)
             {
                 case 1:
-                    menuInicioSesion(rutaDB);
+                    menuInicioSesion();
                     validarUsuario(rutaDB);
                     break;
                  case 2:
-                    menuRegistro(rutaDB);
+                    menuRegistro();
                     guardarUsuario(rutaDB);
                     break;
                 case 3:
@@ -143,7 +148,7 @@ int main(void)
                     break;
                 
                 default:
-                    menuBienvenida(rutaDB);
+                    menuBienvenida();
 
             }
         }

@@ -7,6 +7,7 @@ int validacionCine;
 int validacionSala;
 int validacionPelicula;
 int validacionActor;
+int validacionAsiento;
 
 void crearTabla(PathDB rutaDB);
 void borrarTablas(PathDB rutaDB);
