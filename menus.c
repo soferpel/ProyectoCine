@@ -6,7 +6,7 @@
 
 void menuBienvenida()
 {
-    printf("\n===========\nBIENVENID@\n===========\n\n");
+    printf("\n==========\nBIENVENID@\n==========\n\n");
     printf("Que quieres hacer?\n\n");
     printf(" 1. Iniciar sesion\n 2. Registrarse\n 3. Salir\n\n");
     fgets(opcionCharBvda, 2, stdin);
@@ -15,7 +15,7 @@ void menuBienvenida()
 
 void menuInicioSesion()
 {
-    printf("\n===============\nINICIAR SESION\n===============\n\n");
+    printf("\n==============\nINICIAR SESION\n==============\n\n");
     printf("Introduce tu correo electronico: ");
     fgetc(stdin);
     fgets(correo, 20, stdin);
@@ -42,7 +42,7 @@ void menuRegistro()
 
 void menuAdministrador()
 {
-    printf("\n============\nADMINISTRADOR\n============\n\n");
+    printf("\n=============\nADMINISTRADOR\n=============\n\n");
     printf("Que quieres hacer?\n\n");
     printf(" 1. Modificar datos\n 2. Eliminar datos\n 3. Anadir datos\n 4. Salir\n\n");
     fgets(opcionCharAd, 2, stdin);
