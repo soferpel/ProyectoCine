@@ -8,9 +8,6 @@ char opcionCharBvda[2];   //Se llaman asi para diferenciarlas
 int opcionIntAd;
 char opcionCharAd[2];
 
-int opcionIntPpal;
-char opcionCharPpal[2];
-
 int opcionIntAD;
 char opcionCharAD[2];
 
@@ -44,7 +41,7 @@ char filaAsientoChar[3];
 int filaAsientoInt;
 char numeroAsientoChar[3];
 int numeroAsientoInt;
-char fechaAsiento[12];
+char fechaAsiento[11];
 
 //CINE
 char nombreCine[20];

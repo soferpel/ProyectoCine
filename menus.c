@@ -18,7 +18,7 @@ void menuInicioSesion()
     printf("\n===============\nINICIAR SESION\n===============\n\n");
     printf("Introduce tu correo electronico: ");
     fgetc(stdin);
-    fgets(correo, 16, stdin);
+    fgets(correo, 20, stdin);
     printf("Introduce tu contrasena: ");
     fgets(contrasena, 16, stdin);
     printf("\n");
@@ -102,13 +102,13 @@ void menuAnadirAsiento()
     fgets(idSalaChar, 4, stdin);
     sscanf(idSalaChar, "%d", &idSalaInt);
     printf("Introduce la fila del asiento: ");
-    fgets(filaAsientoChar, 5, stdin);
+    fgets(filaAsientoChar, 3, stdin);
     sscanf(filaAsientoChar, "%d", &filaAsientoInt);
     printf("Introduce el numero del asiento: ");
-    fgets(numeroAsientoChar, 4, stdin);
+    fgets(numeroAsientoChar, 3, stdin);
     sscanf(numeroAsientoChar, "%d", &numeroAsientoInt);
     printf("Introduce la fecha del asiento: ");
-    fgets(fechaAsiento, 12, stdin);
+    fgets(fechaAsiento, 11, stdin);
 
 }
 
@@ -141,7 +141,7 @@ void menuAnadirSala()
     printf("\n============\nANADIR SALA\n============\n\n");
     printf("Introduce el id del cine en la que esta la sala: ");
     fflush(stdin);
-    fgets(idCineChar, 3, stdin);
+    fgets(idCineChar, 4, stdin);
     sscanf(idCineChar, "%d", &idCineInt);
     printf("Cual es el numero de filas que contiene la sala? ");
     fgets(nFilasSalaChar, 3, stdin);
@@ -160,7 +160,7 @@ void menuAnadirActor()
     printf("\n============\nANADIR ACTOR\n============\n\n");
     printf("Introduce el id de la pelicula en la que actua el actor: ");
     fflush(stdin);
-    fgets(idPeliculaChar, 3, stdin);
+    fgets(idPeliculaChar, 4, stdin);
     sscanf(idPeliculaChar, "%d", &idPeliculaInt);
     printf("Cual es el nombre del actor? ");
     fgets(nombreActor, 20, stdin);
@@ -177,7 +177,7 @@ void menuAnadirPelicula()
     printf("Introduce el titulo de la pelicula: ");
     fgets(titulo, 20, stdin);
     printf("Introduce la sinopsis de la pelicula: ");
-    fgets(sinopsis, 20, stdin);
+    fgets(sinopsis, 100, stdin);
     printf("Introduce el horario de la pelicula: ");
     fgets(horario, 20, stdin);
 
@@ -231,7 +231,7 @@ void menuModificarCine()
     sscanf(idCineChar, "%d", &idCineInt);
     printf("Introduce el nuevo nombre del cine: ");
     fflush(stdin);
-    fgets(nombreCine, 16, stdin);
+    fgets(nombreCine, 20, stdin);
     printf("Introduce la nueva direccion del cine: ");
     fgets(direccionCine, 20, stdin);
     printf("Introduce la nueva ciudad del cine:");
@@ -260,20 +260,20 @@ void menuModificarSala()
     printf("\n===========\nMODIFICAR SALA\n===========\n\n");
     printf("Introduce el id de la sala a modificar: ");
     fflush(stdin);
-    fgets(idSalaChar, 3, stdin);
+    fgets(idSalaChar, 4, stdin);
     sscanf(idSalaChar, "%d", &idSalaInt);
     printf("Introduce el nuevo id del cine en el que está la sala: ");
     fflush(stdin);
     fgets(idCineChar, 4, stdin);
     sscanf(idCineChar, "%d", &idCineInt);
     printf("Introduce el nuevo numero de la sala: ");
-    fgets(numeroSalaChar, 20, stdin);
+    fgets(numeroSalaChar, 3, stdin);
     sscanf(numeroSalaChar, "%d", &numeroSalaInt);
     printf("Introduce el nuevo numero de columnas de la sala: ");
-    fgets(nColumnasSalaChar, 20, stdin);
+    fgets(nColumnasSalaChar, 3, stdin);
     sscanf(nColumnasSalaChar, "%d", &nColumnasSalaInt);
     printf("Introduce el nuevo numero de filas de la sala: ");
-    fgets(nFilasSalaChar, 20, stdin);
+    fgets(nFilasSalaChar, 3, stdin);
     sscanf(nFilasSalaChar, "%d", &nFilasSalaInt);
    
 }
@@ -283,7 +283,7 @@ void menuModificarAsiento()
     printf("\n===========\nMODIFICAR ASIENTO\n===========\n\n");
     printf("Introduce el id del asiento a modificar: ");
     fflush(stdin);
-    fgets(idAsientoChar, 5, stdin);
+    fgets(idAsientoChar, 4, stdin);
     sscanf(idAsientoChar, "%d", &idAsientoInt);
     printf("Introduce el nuevo id de la sala en la que esta el asiento: ");
     fflush(stdin);
@@ -296,7 +296,7 @@ void menuModificarAsiento()
     fgets(numeroAsientoChar, 3, stdin);
     sscanf(numeroAsientoChar, "%d", &numeroAsientoInt);
     printf("Introduce la nueva fecha del asiento: ");
-    fgets(fechaAsiento, 20, stdin);
+    fgets(fechaAsiento, 11, stdin);
    
 }
 
