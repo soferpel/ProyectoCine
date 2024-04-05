@@ -1,12 +1,19 @@
 #ifndef CONFIGURACION_H
 #define CONFIGURACION_H
 
-struct Configuracion {
-    char pathDB[100];
+// struct Configuracion {
+//     char pathDB[];
 
-};
+// };
+
+typedef struct
+{
+    char* ruta;
+    int tamanyo;
+
+} PathDB;
 
 
-void leerConfiguracion(const char *filename, struct Configuracion *configuracion);
+PathDB leerConfiguracion(char *fichero);
 
 #endif

@@ -23,7 +23,6 @@ void menuInicioSesion()
     fgets(contrasena, 16, stdin);
     printf("\n");
     printf("\n");
-    validarUsuario();
 }
 
 void menuRegistro()
@@ -38,7 +37,7 @@ void menuRegistro()
     fgets(correo, 16, stdin);
     printf("Introduce tu contrasena: ");
     fgets(contrasena, 16, stdin);
-    guardarUsuario();
+    
 }
 
 void menuAdministrador()
@@ -92,7 +91,7 @@ void menuBorrarDatos()
     }
     printf("Escribe el id de los datos a borrar?\n");
     fgets(idEliminar, 5, stdin);
-    eliminarFila();
+
 }
 
 void menuAnadirAsiento()
@@ -108,9 +107,7 @@ void menuAnadirAsiento()
     fgets(numeroAsiento, 4, stdin);
     printf("Introduce la fecha del asiento: ");
     fgets(fechaAsiento, 12, stdin);
-    anadirAsiento();
-    validacionSala = 0;
-    hayQueAnadirDatos = 0;
+
 }
 
 void menuAnadirDatos()
@@ -134,8 +131,7 @@ void menuAnadirCine()
     fgets(direccionCine, 20, stdin);
     printf("Cual es la ciudad del cine?\n");
     fgets(ciudadCine, 20, stdin);
-    anadirCine();
-    hayQueAnadirDatos = 0;
+
 }
 
 void menuAnadirSala()
@@ -154,9 +150,7 @@ void menuAnadirSala()
     printf("Cual es el numero de la sala? ");
     fgets(numeroSalaChar, 3, stdin);
     sscanf(numeroSalaChar, "%d", numeroSalaInt);
-    anadirSala();
-    validacionCine = 0;
-    hayQueAnadirDatos = 0;
+
 }
 
 void menuAnadirActor()
@@ -168,9 +162,7 @@ void menuAnadirActor()
     sscanf(idPeliculaChar, "%d", &idPeliculaInt);
     printf("Cual es el nombre del actor? ");
     fgets(nombreActor, 20, stdin);
-    anadirActor();
-    validacionPelicula = 0;
-    hayQueAnadirDatos = 0;
+
 }
 
 void menuAnadirPelicula()
@@ -186,9 +178,7 @@ void menuAnadirPelicula()
     fgets(sinopsis, 20, stdin);
     printf("Introduce el horario de la pelicula: ");
     fgets(horario, 20, stdin);
-    anadirPelicula();
-    validacionSala = 0;
-    hayQueAnadirDatos = 0;
+
 }
 
 void menuModificarPelicula()
@@ -208,9 +198,7 @@ void menuModificarPelicula()
     fgets(sinopsis, 20, stdin);
     printf("Introduce el nuevo horario de la pelicula: ");
     fgets(horario, 20, stdin);
-    modificarPelicula();
-    validacionPelicula = 0;
-    hayQueModificarDatos = 0;
+
 }
 
 void menuModificarUsuario()
@@ -229,9 +217,7 @@ void menuModificarUsuario()
     fgets(correo, 20, stdin);
     printf("Introduce la nueva contrasena: ");
     fgets(contrasena, 16, stdin);
-    modificarUsuario();
-    validacionUsuario = 0;
-    hayQueModificarDatos = 0;
+
 }
 
 void menuModificarCine()
@@ -248,9 +234,7 @@ void menuModificarCine()
     fgets(direccionCine, 20, stdin);
     printf("Introduce la nueva ciudad del cine:");
     fgets(ciudadCine, 20, stdin);
-    modificarCine();
-    validacionCine = 0;
-    hayQueModificarDatos = 0;
+    
 }
 
 void menuModificarActor()
@@ -266,9 +250,7 @@ void menuModificarActor()
     sscanf(idPeliculaChar, "%d", &idPeliculaInt);
     printf("Introduce el nuevo nombre del actor: ");
     fgets(nombreActor, 20, stdin);
-    modificarActor();
-    validacionActor = 0;
-    hayQueModificarDatos = 0;
+   
 }
 
 void menuPrincipal()

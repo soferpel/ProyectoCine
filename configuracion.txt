@@ -1,5 +1,1 @@
-//path de la database
-
-pathDB=C:\Users\sofia\OneDrive\Documentos\GitHub\ProyectoCine
-
-
+cine.db

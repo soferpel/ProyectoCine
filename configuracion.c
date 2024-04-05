@@ -3,24 +3,29 @@
 #include <string.h>
 #include "configuracion.h" 
 
-void leerConfiguracion(const char *filename, struct Configuracion *configuracion) {
-    FILE *file = fopen(filename, "r");
-    if (file == NULL) {
+PathDB leerConfiguracion(char* fichero) {
+    
+    PathDB rutaDB;
+    rutaDB.tamanyo = 8;
+    rutaDB.ruta = (char*) malloc(sizeof(char) * rutaDB.tamanyo);
+    FILE* f;
+    f = fopen(fichero, "r");
+    if (f == NULL) {
         perror("Error al abrir el archivo");
         exit(EXIT_FAILURE);
     }
 
-    char line[100];
-    while (fgets(line, sizeof(line), file)) {
-        char key[100];
-        char value[100];
-        if (sscanf(line, "%[^=]= %[^\n]", key, value) == 2) {
-            if (strcmp(key, "pathDB") == 0) {
-                strcpy(configuracion->pathDB, value);
-            }
-        }
-    }
+    int path = 0; 
+    int i = 0;
+    do {
+        path = fgetc(f);
+        rutaDB.ruta[i] = path;
+        i++;
+    } while (path != EOF);
+    rutaDB.ruta[i - 1] = '\0';
 
-    fclose(file);
+    fclose(f);
+
+    return rutaDB;
 }
 

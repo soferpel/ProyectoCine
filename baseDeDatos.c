@@ -5,7 +5,7 @@
 #include "menus.h"
 #include "sqlite3.h"
 
-void crearTabla() {
+void crearTabla(PathDB rutaDB) {
     sqlite3 *db;
     char *error_message = 0;
     char *sentencia_sql0 = "CREATE TABLE IF NOT EXISTS USUARIO (ID_USUARIO INTEGER PRIMARY KEY, NOMBRE TEXT, RESPUESTA TEXT, CORREO TEXT, CONTRASENA TEXT);";
@@ -15,7 +15,7 @@ void crearTabla() {
     char *sentencia_sql4 = "CREATE TABLE IF NOT EXISTS ASIENTO (ID_ASIENTO INTEGER PRIMARY KEY, ID_SALA INTEGER,  FILA TEXT, NUMERO TEXT, FECHA TEXT);";
     char *sentencia_sql5 = "CREATE TABLE IF NOT EXISTS SALA (ID_SALA INTEGER PRIMARY KEY, ID_CINE INTEGER, NUMERO TEXT, NCOLUMNAS TEXT, NFILAS TEXT);";
 
-    int rc = sqlite3_open("cine.db", &db);
+    int rc = sqlite3_open(rutaDB.ruta, &db);
 
     if (rc) {
         fprintf(stderr, "No se puede abrir la base de datos: %s\n", sqlite3_errmsg(db));
@@ -41,7 +41,7 @@ void crearTabla() {
     sqlite3_close(db);
 }
 
-void borrarTablas()
+void borrarTablas(PathDB rutaDB)
 {
     sqlite3 *db;
     char *error_message = 0;
@@ -51,7 +51,7 @@ void borrarTablas()
     char *sql_drop3 = "DROP TABLE IF EXISTS CINE;";
     char *sql_drop4 = "DROP TABLE IF EXISTS ASIENTO;";
     char *sql_drop5 = "DROP TABLE IF EXISTS SALA;";
-    int rc = sqlite3_open("cine.db", &db);
+    int rc = sqlite3_open(rutaDB.ruta, &db);
     rc = sqlite3_exec(db, sql_drop, 0, 0, &error_message);
     rc = sqlite3_exec(db, sql_drop1, 0, 0, &error_message);
     rc = sqlite3_exec(db, sql_drop2, 0, 0, &error_message);
@@ -60,11 +60,11 @@ void borrarTablas()
     rc = sqlite3_exec(db, sql_drop5, 0, 0, &error_message);
 }
 
-void guardarUsuario()
+void guardarUsuario(PathDB rutaDB)
 {
     //Abrir la base de datos
     sqlite3 *db;
-    int rc = sqlite3_open("cine.db", &db);
+    int rc = sqlite3_open(rutaDB.ruta, &db);
 
     //Insertar usuario
     sqlite3_stmt *stmt;
@@ -82,12 +82,12 @@ void guardarUsuario()
     autenticacionExitosa = 1;
 }
 
-void validarUsuario()
+void validarUsuario(PathDB rutaDB)
 {
     validacionUsuario = 0;
     sqlite3 *db;
     char *err_msg = 0;
-    int rc = sqlite3_open("cine.db", &db);
+    int rc = sqlite3_open(rutaDB.ruta, &db);
 
     if (rc != SQLITE_OK) {
         fprintf(stderr, "Error al abrir la base de datos: %s\n", sqlite3_errmsg(db));
@@ -128,12 +128,12 @@ int callbackUsuario(void *data, int argc, char **argv, char **col_names) {
     return validacionUsuario;
 }
 
-void validarCine()
+void validarCine(PathDB rutaDB)
 {
     validacionCine = 0;
     sqlite3 *db;
     char *err_msg = 0;
-    int rc = sqlite3_open("cine.db", &db);
+    int rc = sqlite3_open(rutaDB.ruta, &db);
 
     if (rc != SQLITE_OK) {
         fprintf(stderr, "Error al abrir la base de datos: %s\n", sqlite3_errmsg(db));
@@ -170,12 +170,12 @@ int callbackCine(void *data, int argc, char **argv, char **col_names)
     return validacionCine;
 }
 
-void validarSala()
+void validarSala(PathDB rutaDB)
 {
     validacionSala = 0;
     sqlite3 *db;
     char *err_msg = 0;
-    int rc = sqlite3_open("cine.db", &db);
+    int rc = sqlite3_open(rutaDB.ruta, &db);
 
     if (rc != SQLITE_OK) {
         fprintf(stderr, "Error al abrir la base de datos: %s\n", sqlite3_errmsg(db));
@@ -212,12 +212,12 @@ int callbackSala(void *data, int argc, char **argv, char **col_names)
     return validacionCine;
 }
 
-void validarPelicula()
+void validarPelicula(PathDB rutaDB)
 {
     validacionPelicula = 0;
     sqlite3 *db;
     char *err_msg = 0;
-    int rc = sqlite3_open("cine.db", &db);
+    int rc = sqlite3_open(rutaDB.ruta, &db);
 
     if (rc != SQLITE_OK) {
         fprintf(stderr, "Error al abrir la base de datos: %s\n", sqlite3_errmsg(db));
@@ -254,12 +254,12 @@ int callbackPelicula(void *data, int argc, char **argv, char **col_names)
     return validacionPelicula;
 }
 
-void validarActor()
+void validarActor(PathDB rutaDB)
 {
     validacionActor = 0;
     sqlite3 *db;
     char *err_msg = 0;
-    int rc = sqlite3_open("cine.db", &db);
+    int rc = sqlite3_open(rutaDB.ruta, &db);
 
     if (rc != SQLITE_OK) {
         fprintf(stderr, "Error al abrir la base de datos: %s\n", sqlite3_errmsg(db));
@@ -296,10 +296,10 @@ int callbackActor(void *data, int argc, char **argv, char **col_names)
     return validacionPelicula;
 }
 
-void eliminarFila() {
+void eliminarFila(PathDB rutaDB) {
     sqlite3 *db;
     char *err_msg = 0;
-    int rc = sqlite3_open("cine.db", &db);
+    int rc = sqlite3_open(rutaDB.ruta, &db);
 
     char sql_delete[100];
     snprintf(sql_delete, sizeof(sql_delete), "DELETE FROM %s WHERE ID_%s = '%s';", tablaEliminar, tablaEliminar, idEliminar);
@@ -315,13 +315,13 @@ void eliminarFila() {
     sqlite3_close(db);
 }
 
-void anadirAsiento() {
-    validarSala();
+void anadirAsiento(PathDB rutaDB) {
+    validarSala(rutaDB);
     if (validacionSala == 1)
     {
         sqlite3 *db;
         char *err_msg = 0;
-        int rc = sqlite3_open("cine.db", &db);
+        int rc = sqlite3_open(rutaDB.ruta, &db);
 
         char sql_anadir[100];
         snprintf(sql_anadir, sizeof(sql_anadir), "INSERT INTO ASIENTO (ID_SALA, FILA, NUMERO, FECHA) VALUES ('%i', '%s', '%s', '%s');", idSalaInt, filaAsiento, numeroAsiento, fechaAsiento);
@@ -339,10 +339,10 @@ void anadirAsiento() {
     }
 }
 
-void anadirCine() {
+void anadirCine(PathDB rutaDB) {
     sqlite3 *db;
     char *err_msg = 0;
-    int rc = sqlite3_open("cine.db", &db);
+    int rc = sqlite3_open(rutaDB.ruta, &db);
 
     char sql_anadir[100];
     snprintf(sql_anadir, sizeof(sql_anadir), "INSERT INTO CINE (NOMBRE, DIRECCION, CIUDAD) VALUES ('%s', '%s', '%s');", nombreCine, direccionCine, ciudadCine);
@@ -358,13 +358,13 @@ void anadirCine() {
     sqlite3_close(db);
 }
 
-void anadirSala() {
-    validarCine();
+void anadirSala(PathDB rutaDB) {
+    validarCine(rutaDB);
     if (validacionCine == 1)
     {
         sqlite3 *db;
         char *err_msg = 0;
-        int rc = sqlite3_open("cine.db", &db);
+        int rc = sqlite3_open(rutaDB.ruta, &db);
 
         char sql_anadir[100];
         snprintf(sql_anadir, sizeof(sql_anadir), "INSERT INTO SALA (ID_CINE, NUMERO, NCOLUMNAS, NFILAS) VALUES ('%i', '%i', '%i', '%i');", idCineInt, numeroSalaInt, nColumnasSalaInt, nFilasSalaInt);
@@ -381,14 +381,14 @@ void anadirSala() {
     }
 }
 
-void anadirPelicula()
+void anadirPelicula(PathDB rutaDB)
 {
-    validarSala();
+    validarSala(rutaDB);
     if (validacionSala == 1)
     {
         sqlite3 *db;
         char *err_msg = 0;
-        int rc = sqlite3_open("cine.db", &db);
+        int rc = sqlite3_open(rutaDB.ruta, &db);
         char sql_anadir[100];
         snprintf(sql_anadir, sizeof(sql_anadir), "INSERT INTO PELICULA (ID_SALA, TITULO, SINOPSIS, HORARIO) VALUES ('%i', '%s', '%s', '%s');", idSalaInt, titulo, sinopsis, horario);
 
@@ -405,14 +405,14 @@ void anadirPelicula()
     }
 }
 
-void anadirActor()
+void anadirActor(PathDB rutaDB)
 {
-    validarPelicula();
+    validarPelicula(rutaDB);
     if (validacionPelicula == 1)
     {
         sqlite3 *db;
         char *err_msg = 0;
-        int rc = sqlite3_open("cine.db", &db);
+        int rc = sqlite3_open(rutaDB.ruta, &db);
 
         char sql_anadir[100];
         snprintf(sql_anadir, sizeof(sql_anadir), "INSERT INTO ACTOR (ID_PELICULA, NOMBRE) VALUES ('%i', '%s');", idPeliculaInt, nombreActor);
@@ -430,16 +430,16 @@ void anadirActor()
     }
 }
 
-void modificarPelicula() {
-    validarPelicula();
+void modificarPelicula(PathDB rutaDB) {
+    validarPelicula(rutaDB);
     if (validacionPelicula == 1)
     {
-        validarSala();
+        validarSala(rutaDB);
         if(validacionSala == 1)
         {
             sqlite3 *db;
             char *err_msg = 0;
-            int rc = sqlite3_open("cine.db", &db);
+            int rc = sqlite3_open(rutaDB.ruta, &db);
 
             if (rc != SQLITE_OK) {
                 fprintf(stderr, "No se pudo abrir la base de datos: %s\n", sqlite3_errmsg(db));
@@ -463,14 +463,14 @@ void modificarPelicula() {
     }
 }
 
-void modificarUsuario()
+void modificarUsuario(PathDB rutaDB)
 {
-    validarUsuario();
+    validarUsuario(rutaDB);
     if(validacionUsuario == 1)
     {
          sqlite3 *db;
             char *err_msg = 0;
-            int rc = sqlite3_open("cine.db", &db);
+            int rc = sqlite3_open(rutaDB.ruta, &db);
 
             if (rc != SQLITE_OK) {
                 fprintf(stderr, "No se pudo abrir la base de datos: %s\n", sqlite3_errmsg(db));
@@ -493,14 +493,14 @@ void modificarUsuario()
     }
 }
 
-void modificarCine()
+void modificarCine(PathDB rutaDB)
 {
-    validarCine();
+    validarCine(rutaDB);
     if(validacionCine == 1)
     {
         sqlite3 *db;
             char *err_msg = 0;
-            int rc = sqlite3_open("cine.db", &db);
+            int rc = sqlite3_open(rutaDB.ruta, &db);
 
             if (rc != SQLITE_OK) {
                 fprintf(stderr, "No se pudo abrir la base de datos: %s\n", sqlite3_errmsg(db));
@@ -523,17 +523,17 @@ void modificarCine()
     }
 }
 
-void modificarActor()
+void modificarActor(PathDB rutaDB)
 {
-    validarActor();
+    validarActor(rutaDB);
     if(validacionActor == 1)
     {
-        validarPelicula();
+        validarPelicula(rutaDB);
         if(validacionPelicula == 1)
         {
             sqlite3 *db;
             char *err_msg = 0;
-            int rc = sqlite3_open("cine.db", &db);
+            int rc = sqlite3_open(rutaDB.ruta, &db);
 
             if (rc != SQLITE_OK) {
                 fprintf(stderr, "No se pudo abrir la base de datos: %s\n", sqlite3_errmsg(db));
@@ -557,17 +557,17 @@ void modificarActor()
     }
 }
 
-void modificarSala()
+void modificarSala(PathDB rutaDB)
 {
-    validarSala();
+    validarSala(rutaDB);
     if(validacionSala == 1)
     {
-        validarCine();
+        validarCine(rutaDB);
         if(validacionCine == 1)
         {
             sqlite3 *db;
             char *err_msg = 0;
-            int rc = sqlite3_open("cine.db", &db);
+            int rc = sqlite3_open(rutaDB.ruta, &db);
 
             if (rc != SQLITE_OK) {
                 fprintf(stderr, "No se pudo abrir la base de datos: %s\n", sqlite3_errmsg(db));
