@@ -18,7 +18,7 @@ void menuInicioSesion()
     printf("\n==============\nINICIAR SESION\n==============\n\n");
     printf("Introduce tu correo electronico: ");
     fgetc(stdin);
-    fgets(correo, 20, stdin);
+    fgets(correo, 30, stdin);
     printf("Introduce tu contrasena: ");
     fgets(contrasena, 16, stdin);
     printf("\n");
@@ -34,7 +34,7 @@ void menuRegistro()
     printf("Respuesta de seguridad: Cual es tu pelicula favorita? ");
     fgets(respuesta, 20, stdin);
     printf("Introduce tu correo: ");
-    fgets(correo, 16, stdin);
+    fgets(correo, 30, stdin);
     printf("Introduce tu contrasena: ");
     fgets(contrasena, 16, stdin);
     
@@ -116,7 +116,7 @@ void menuAnadirDatos()
 {
     hayQueAnadirDatos = 1;
     printf("\n============\nANADIR DATOS\n============\n\n");
-    printf("Que Datos quieres anadir?\n\n");
+    printf("Que datos quieres anadir?\n\n");
     printf(" 1. Usuario\n 2. Asiento\n 3. Pelicula\n 4. Actor\n 5. Cine\n 6. Sala\n 7. Salir\n\n");
     fflush(stdin);
     fgets(opcionCharAD, 2, stdin);
@@ -197,7 +197,7 @@ void menuModificarPelicula()
     printf("Introduce el nuevo titulo de la pelicula: ");
     fgets(titulo, 20, stdin);
     printf("Introduce la nueva sinopsis de la pelicula: ");
-    fgets(sinopsis, 20, stdin);
+    fgets(sinopsis, 100, stdin);
     printf("Introduce el nuevo horario de la pelicula: ");
     fgets(horario, 20, stdin);
 
@@ -215,8 +215,8 @@ void menuModificarUsuario()
     fgets(nombre, 16, stdin);
     printf("Introduce la nueva respuesta de seguridad: ");
     fgets(respuesta, 20, stdin);
-    printf("Introduce el nuevo correo electronico: s");
-    fgets(correo, 20, stdin);
+    printf("Introduce el nuevo correo electronico: ");
+    fgets(correo, 30, stdin);
     printf("Introduce la nueva contrasena: ");
     fgets(contrasena, 16, stdin);
 

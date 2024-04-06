@@ -68,6 +68,9 @@ int main(void)
                             printf("\nAdios!\n");
                             programaOperando = 0;
                             break;
+                        
+                        default:
+                            menuModificarDatos();
                         }
                     }
                     break;
@@ -120,6 +123,9 @@ int main(void)
                             printf("\nAdios!\n");
                             programaOperando = 0;
                             break;
+                        
+                        default:
+                            menuAnadirDatos();
                         }
                     }
                     break;
@@ -127,6 +133,9 @@ int main(void)
                     printf("\nAdios!\n");
                     programaOperando = 0;
                     break;
+                
+                default:
+                    menuAdministrador();
             }   
         }  
         else

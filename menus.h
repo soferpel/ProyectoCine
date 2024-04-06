@@ -23,7 +23,7 @@ int hayQueModificarDatos;
 
 char nombre[16];
 char respuesta[20];
-char correo[20];
+char correo[30];
 char contrasena[16];
 char tablaEliminar[20];
 char idEliminar[5];

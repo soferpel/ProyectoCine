@@ -146,10 +146,10 @@ void validarCine(PathDB rutaDB)
     char *sql_select_Cine = "SELECT ID_CINE FROM CINE;";
     rc = sqlite3_exec(db, sql_select_Cine, callbackCine, 0, &err_msg);
 
-    if (rc != SQLITE_OK) {
-        fprintf(stderr, "Error al realizar la consulta SELECT: %s\n", err_msg);
-        sqlite3_free(err_msg);
-    }
+    // if (rc != SQLITE_OK) {
+    //     fprintf(stderr, "Error al realizar la consulta SELECT: %s\n", err_msg);
+    //     sqlite3_free(err_msg);
+    // }
     if (validacionCine == 1) {
         printf("El cine es correcto\n");
     } else {
@@ -188,10 +188,10 @@ void validarSala(PathDB rutaDB)
     char *sql_select_Sala = "SELECT ID_SALA FROM SALA;";
     rc = sqlite3_exec(db, sql_select_Sala, callbackSala, 0, &err_msg);
 
-    if (rc != SQLITE_OK) {
-        fprintf(stderr, "Error al realizar la consulta SELECT: %s\n", err_msg);
-        sqlite3_free(err_msg);
-    }
+    // if (rc != SQLITE_OK) {
+    //     fprintf(stderr, "Error al realizar la consulta SELECT: %s\n", err_msg);
+    //     sqlite3_free(err_msg);
+    // }
     if (validacionSala == 1) {
         printf("La sala es correcta\n");
     } else {
@@ -230,10 +230,10 @@ void validarPelicula(PathDB rutaDB)
     char *sql_select_Pelicula = "SELECT ID_PELICULA FROM PELICULA;";
     rc = sqlite3_exec(db, sql_select_Pelicula, callbackPelicula, 0, &err_msg);
 
-    if (rc != SQLITE_OK) {
-        fprintf(stderr, "Error al realizar la consulta SELECT: %s\n", err_msg);
-        sqlite3_free(err_msg);
-    }
+    // if (rc != SQLITE_OK) {
+    //     fprintf(stderr, "Error al realizar la consulta SELECT: %s\n", err_msg);
+    //     sqlite3_free(err_msg);
+    // }
     if (validacionPelicula == 1) {
         printf("La pelicula es correcta\n");
     } else {
@@ -272,10 +272,10 @@ void validarActor(PathDB rutaDB)
     char *sql_select_Actor = "SELECT ID_ACTOR FROM ACTOR;";
     rc = sqlite3_exec(db, sql_select_Actor, callbackActor, 0, &err_msg);
 
-    if (rc != SQLITE_OK) {
-        fprintf(stderr, "Error al realizar la consulta SELECT: %s\n", err_msg);
-        sqlite3_free(err_msg);
-    }
+    // if (rc != SQLITE_OK) {
+    //     fprintf(stderr, "Error al realizar la consulta SELECT: %s\n", err_msg);
+    //     sqlite3_free(err_msg);
+    // }
     if (validacionActor == 1) {
         printf("El actor es correcto\n");
     } else {
@@ -314,10 +314,10 @@ void validarAsiento(PathDB rutaDB)
     char *sql_select_Actor = "SELECT ID_ASIENTO FROM ASIENTO;";
     rc = sqlite3_exec(db, sql_select_Actor, callbackActor, 0, &err_msg);
 
-    if (rc != SQLITE_OK) {
-        fprintf(stderr, "Error al realizar la consulta SELECT: %s\n", err_msg);
-        sqlite3_free(err_msg);
-    }
+    // if (rc != SQLITE_OK) {
+    //     fprintf(stderr, "Error al realizar la consulta SELECT: %s\n", err_msg);
+    //     sqlite3_free(err_msg);
+    // }
     if (validacionActor == 1) {
         printf("El asiento es correcto\n");
     } else {
