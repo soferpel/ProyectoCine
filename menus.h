@@ -1,6 +1,7 @@
 #ifndef MENUPRINCIPAL_H
 #define MENUPRINCIPAL_H
 
+
 //variables para opciones de los menus
 int opcionIntBvda;
 char opcionCharBvda[2];   //Se llaman asi para diferenciarlas
@@ -92,5 +93,6 @@ void menuAdministrador();
 void menuMisEntradas();
 void menuComprarEntradas();
 void menuPrincipal();
+void seleccionarCine();
 
 #endif
