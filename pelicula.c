@@ -56,7 +56,7 @@ void anadirPelicula(PathDB rutaDB)
         char *err_msg = 0;
         int rc = sqlite3_open(rutaDB.ruta, &db);
         char sql_anadir[100];
-        snprintf(sql_anadir, sizeof(sql_anadir), "INSERT INTO PELICULA (ID_SALA, TITULO, SINOPSIS, HORARIO) VALUES ('%i', '%s', '%s', '%s');", idSalaInt, pelicula.titulo, pelicula.sinopsis, pelicula.horario);
+        snprintf(sql_anadir, sizeof(sql_anadir), "INSERT INTO PELICULA (ID_SALA, TITULO, SINOPSIS, HORARIO) VALUES ('%i', '%s', '%s', '%s');", sala.idSalaInt, pelicula.titulo, pelicula.sinopsis, pelicula.horario);
 
         rc = sqlite3_exec(db, sql_anadir, 0, 0, &err_msg);
 
@@ -88,7 +88,7 @@ void modificarPelicula(PathDB rutaDB) {
             }
 
             char sql_modificar[150];
-            snprintf(sql_modificar, sizeof(sql_modificar), "UPDATE PELICULA SET ID_SALA = '%i', TITULO = '%s', SINOPSIS = '%s', HORARIO = '%s' WHERE ID_PELICULA = %i;", idSalaInt, pelicula.titulo, pelicula.sinopsis, pelicula.horario, pelicula.idPeliculaInt);
+            snprintf(sql_modificar, sizeof(sql_modificar), "UPDATE PELICULA SET ID_SALA = '%i', TITULO = '%s', SINOPSIS = '%s', HORARIO = '%s' WHERE ID_PELICULA = %i;", sala.idSalaInt, pelicula.titulo, pelicula.sinopsis, pelicula.horario, pelicula.idPeliculaInt);
 
             rc = sqlite3_exec(db, sql_modificar, 0, 0, &err_msg);
 

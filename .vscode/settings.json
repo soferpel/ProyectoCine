@@ -3,7 +3,11 @@
         "stdlib.h": "c",
         "string.h": "c",
         "configuracion.h": "c",
-        "asiento.h": "c"
+        "asiento.h": "c",
+        "sqlite3.h": "c",
+        "sala.h": "c",
+        "cine.h": "c",
+        "actor.h": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
