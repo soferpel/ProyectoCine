@@ -3,6 +3,8 @@
 #include "configuracion.h"
 #include "usuario.h"
 #include "asiento.h"
+#include "sala.h"
+#include "cine.h"
 #include "sqlite3.h"
 
 //VALIDACIONES 
@@ -15,29 +17,17 @@ int validacionAsiento;
 
 Usuario usuario;
 Asiento asiento;
+Cine cine;
+Sala sala;
 
 //GESTION DE USUARIOS
 int autenticacionExitosa;
 
 //ASIENTO
 
-
 //CINE
-int idCineInt;
-char idCineChar[4];
-char nombreCine[20];
-char direccionCine[20];
-char ciudadCine[20];
 
 //SALA
-int idSalaInt;
-char idSalaChar[4];
-char numeroSalaChar[3];
-int numeroSalaInt;
-char nColumnasSalaChar[3];
-int nColumnasSalaInt;
-char nFilasSalaChar[3];
-int nFilasSalaInt;
 
 //PELICULA
 int idPeliculaInt;
@@ -61,22 +51,14 @@ void crearTabla(PathDB rutaDB);
 void borrarTablas(PathDB rutaDB);
 void eliminarFila(PathDB rutaDB);
 
-void anadirSala(PathDB rutaDB);
 void anadirActor(PathDB rutaDB);
 void anadirPelicula(PathDB rutaDB);
-void anadirCine(PathDB rutaDB);
 void modificarPelicula(PathDB rutaDB);
-void modificarCine(PathDB rutaDB);
 void modificarActor(PathDB rutaDB);
-void modificarSala(PathDB rutaDB);
 
 
 //VALIDACIONES Y CALLBACKS
 
-void validarCine(PathDB rutaDB);
-int callbackCine(void *data, int argc, char **argv, char **col_names);
-void validarSala(PathDB rutaDB);
-int callbackSala(void *data, int argc, char **argv, char **col_names);
 void validarPelicula(PathDB rutaDB);
 int callbackPelicula(void *data, int argc, char **argv, char **col_names);
 void validarActor(PathDB rutaDB);
