@@ -161,10 +161,10 @@ void menuAnadirActor()
     printf("\n============\nANADIR ACTOR\n============\n\n");
     printf("Introduce el id de la pelicula en la que actua el actor: ");
     fflush(stdin);
-    fgets(idPeliculaChar, 4, stdin);
-    sscanf(idPeliculaChar, "%i", &idPeliculaInt);
+    fgets(pelicula.idPeliculaChar, 4, stdin);
+    sscanf(pelicula.idPeliculaChar, "%i", &pelicula.idPeliculaInt);
     printf("Cual es el nombre del actor? ");
-    fgets(nombreActor, 20, stdin);
+    fgets(actor.nombreActor, 20, stdin);
 
 }
 
@@ -176,11 +176,11 @@ void menuAnadirPelicula()
     fgets(sala.idSalaChar, 4, stdin);
     sscanf(sala.idSalaChar, "%i", &sala.idSalaInt);
     printf("Introduce el titulo de la pelicula: ");
-    fgets(titulo, 20, stdin);
+    fgets(pelicula.titulo, 20, stdin);
     printf("Introduce la sinopsis de la pelicula: ");
-    fgets(sinopsis, 100, stdin);
+    fgets(pelicula.sinopsis, 100, stdin);
     printf("Introduce el horario de la pelicula: ");
-    fgets(horario, 20, stdin);
+    fgets(pelicula.horario, 20, stdin);
 
 }
 
@@ -189,18 +189,18 @@ void menuModificarPelicula()
     printf("\n============\nMODIFICAR PELICULA\n============\n\n");
     printf("Introduce el id de la pelicula a modificar: ");
     fflush(stdin);
-    fgets(idPeliculaChar, 4, stdin);
-    sscanf(idPeliculaChar, "%i", &idPeliculaInt);
+    fgets(pelicula.idPeliculaChar, 4, stdin);
+    sscanf(pelicula.idPeliculaChar, "%i", &pelicula.idPeliculaInt);
     printf("Introduce el id de la sala en la que se ve la pelicula: ");
     fflush(stdin);
     fgets(sala.idSalaChar, 4, stdin);
     sscanf(sala.idSalaChar, "%i", &sala.idSalaInt);
     printf("Introduce el nuevo titulo de la pelicula: ");
-    fgets(titulo, 20, stdin);
+    fgets(pelicula.titulo, 20, stdin);
     printf("Introduce la nueva sinopsis de la pelicula: ");
-    fgets(sinopsis, 100, stdin);
+    fgets(pelicula.sinopsis, 100, stdin);
     printf("Introduce el nuevo horario de la pelicula: ");
-    fgets(horario, 20, stdin);
+    fgets(pelicula.horario, 20, stdin);
 
 }
 
@@ -245,14 +245,14 @@ void menuModificarActor()
     printf("\n===========\nMODIFICAR ACTOR\n===========\n\n");
     printf("Introduce el id del actor a modificar: ");
     fflush(stdin);
-    fgets(idActorChar, 4, stdin);
-    sscanf(idActorChar, "%i", &idActorInt);
+    fgets(actor.idActorChar, 4, stdin);
+    sscanf(actor.idActorChar, "%i", &actor.idActorInt);
     printf("Introduce el nuevo id de la pelicula en la que actua el actor: ");
     fflush(stdin);
-    fgets(idPeliculaChar, 4, stdin);
-    sscanf(idPeliculaChar, "%i", &idPeliculaInt);
+    fgets(pelicula.idPeliculaChar, 4, stdin);
+    sscanf(pelicula.idPeliculaChar, "%i", &pelicula.idPeliculaInt);
     printf("Introduce el nuevo nombre del actor: ");
-    fgets(nombreActor, 20, stdin);
+    fgets(actor.nombreActor, 20, stdin);
    
 }
 

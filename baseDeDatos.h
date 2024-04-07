@@ -5,6 +5,8 @@
 #include "asiento.h"
 #include "sala.h"
 #include "cine.h"
+#include "pelicula.h"
+#include "actor.h"
 #include "sqlite3.h"
 
 //VALIDACIONES 
@@ -19,27 +21,11 @@ Usuario usuario;
 Asiento asiento;
 Cine cine;
 Sala sala;
+Pelicula pelicula;
+Actor actor;
 
 //GESTION DE USUARIOS
 int autenticacionExitosa;
-
-//ASIENTO
-
-//CINE
-
-//SALA
-
-//PELICULA
-int idPeliculaInt;
-char idPeliculaChar[4];
-char titulo[20];
-char sinopsis[100];
-char horario[20];
-
-//ACTOR
-char idActorChar[3];
-int idActorInt;
-char nombreActor[20];
 
 //OTROS
 char tablaEliminar[20];
@@ -50,12 +36,6 @@ int hayQueModificarDatos;
 void crearTabla(PathDB rutaDB);
 void borrarTablas(PathDB rutaDB);
 void eliminarFila(PathDB rutaDB);
-
-void anadirActor(PathDB rutaDB);
-void anadirPelicula(PathDB rutaDB);
-void modificarPelicula(PathDB rutaDB);
-void modificarActor(PathDB rutaDB);
-
 
 //VALIDACIONES Y CALLBACKS
 
