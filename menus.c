@@ -148,10 +148,9 @@ void menuAnadirSala() {
     printf("\n============\nANADIR SALA\n============\n\n");
     
     printf("Introduce el id del cine en la que esta la sala: ");
+    fflush(stdin);
     fgets(cine.idCineChar, 4, stdin);
-    limpiarBuffer();
     sscanf(cine.idCineChar, "%i", &cine.idCineInt);
-    
     printf("Cual es el numero de filas que contiene la sala? ");
     fgets(sala.nFilasSalaChar, 3, stdin);
     limpiarBuffer();
