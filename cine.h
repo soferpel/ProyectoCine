@@ -1,5 +1,6 @@
 #ifndef CINE_H
 #define CINE_H
+#include "configuracion.h"
 
 typedef struct 
 {
