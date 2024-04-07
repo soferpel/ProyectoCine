@@ -10,7 +10,6 @@ int programaOperando = 1;
 int main(void)
 {
     PathDB rutaDB = leerConfiguracion("configuracion.txt");
-
     crearTabla(rutaDB);
     autenticacionExitosa = 0;
     while (programaOperando == 1)
@@ -162,6 +161,7 @@ int main(void)
                 
                 default:
                     menuBienvenida();
+                    break;
 
             }
         }
