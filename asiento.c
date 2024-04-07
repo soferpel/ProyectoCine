@@ -14,7 +14,7 @@ void anadirAsiento(PathDB rutaDB) {
         int rc = sqlite3_open(rutaDB.ruta, &db);
 
         char sql_anadir[100];
-        snprintf(sql_anadir, sizeof(sql_anadir), "INSERT INTO ASIENTO (ID_SALA, FILA, NUMERO, FECHA) VALUES ('%i', '%i', '%i', '%s');", idSalaInt, asiento.filaAsientoInt, asiento.numeroAsientoInt, asiento.fechaAsiento);
+        snprintf(sql_anadir, sizeof(sql_anadir), "INSERT INTO ASIENTO (ID_SALA, FILA, NUMERO, FECHA) VALUES ('%i', '%i', '%i', '%s');", sala.idSalaInt, asiento.filaAsientoInt, asiento.numeroAsientoInt, asiento.fechaAsiento);
 
         rc = sqlite3_exec(db, sql_anadir, 0, 0, &err_msg);
         
@@ -47,7 +47,7 @@ void modificarAsiento(PathDB rutaDB)
             }
 
             char sql_modificar[150];
-            snprintf(sql_modificar, sizeof(sql_modificar), "UPDATE ASIENTO SET ID_ASIENTO = '%i', ID_SALA = '%i', FILA = '%i', NUMERO = '%i', FECHA = '%s WHERE ID_ASIENTO = %i;", asiento.idAsientoInt, idSalaInt, asiento.filaAsientoInt, asiento.numeroAsientoInt, asiento.fechaAsiento, asiento.idAsientoInt);
+            snprintf(sql_modificar, sizeof(sql_modificar), "UPDATE ASIENTO SET ID_ASIENTO = '%i', ID_SALA = '%i', FILA = '%i', NUMERO = '%i', FECHA = '%s WHERE ID_ASIENTO = %i;", asiento.idAsientoInt, sala.idSalaInt, asiento.filaAsientoInt, asiento.numeroAsientoInt, asiento.fechaAsiento, asiento.idAsientoInt);
 
             rc = sqlite3_exec(db, sql_modificar, 0, 0, &err_msg);
 

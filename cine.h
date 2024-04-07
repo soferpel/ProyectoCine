@@ -11,9 +11,9 @@ typedef struct
 
 } Cine;
 
-void anadirCine(PathDB rutaDB) 
-void modificarCine(PathDB rutaDB)
-void validarCine(PathDB rutaDB)
-int callbackCine(void *data, int argc, char **argv, char **col_names)
+void anadirCine(PathDB rutaDB); 
+void modificarCine(PathDB rutaDB);
+void validarCine(PathDB rutaDB);
+int callbackCine(void *data, int argc, char **argv, char **col_names);
 
 #endif

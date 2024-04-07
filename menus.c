@@ -100,8 +100,8 @@ void menuAnadirAsiento()
     printf("\n============\nANADIR ASIENTO\n============\n\n");
     printf("Introduce el id de la sala en la que esta el asiento: ");
     fflush(stdin);
-    fgets(idSalaChar, 4, stdin);
-    sscanf(idSalaChar, "%i", &idSalaInt);
+    fgets(sala.idSalaChar, 4, stdin);
+    sscanf(sala.idSalaChar, "%i", &sala.idSalaInt);
     printf("Introduce la fila del asiento: ");
     fgets(asiento.filaAsientoChar, 3, stdin);
     sscanf(asiento.filaAsientoChar, "%i", &asiento.filaAsientoInt);
@@ -129,11 +129,11 @@ void menuAnadirCine()
     printf("\n============\nANADIR CINE\n============\n\n");
     printf("Cual es el nombre del cine?\n");
     fflush(stdin);
-    fgets(nombreCine, 20, stdin);
+    fgets(cine.nombreCine, 20, stdin);
     printf("Cual es la direccion del cine?\n");
-    fgets(direccionCine, 20, stdin);
+    fgets(cine.direccionCine, 20, stdin);
     printf("Cual es la ciudad del cine?\n");
-    fgets(ciudadCine, 20, stdin);
+    fgets(cine.ciudadCine, 20, stdin);
 
 }
 
@@ -142,17 +142,17 @@ void menuAnadirSala()
     printf("\n============\nANADIR SALA\n============\n\n");
     printf("Introduce el id del cine en la que esta la sala: ");
     fflush(stdin);
-    fgets(idCineChar, 4, stdin);
-    sscanf(idCineChar, "%i", &idCineInt);
+    fgets(cine.idCineChar, 4, stdin);
+    sscanf(cine.idCineChar, "%i", &cine.idCineInt);
     printf("Cual es el numero de filas que contiene la sala? ");
-    fgets(nFilasSalaChar, 3, stdin);
-    sscanf(nFilasSalaChar, "%i", nFilasSalaInt);
+    fgets(sala.nFilasSalaChar, 3, stdin);
+    sscanf(sala.nFilasSalaChar, "%i", sala.nFilasSalaInt);
     printf("Cual es el numero de columnas que contiene la sala? ");
-    fgets(nColumnasSalaChar, 3, stdin);
-    sscanf(nColumnasSalaChar, "%i", nColumnasSalaInt);
+    fgets(sala.nColumnasSalaChar, 3, stdin);
+    sscanf(sala.nColumnasSalaChar, "%i", sala.nColumnasSalaInt);
     printf("Cual es el numero de la sala? ");
-    fgets(numeroSalaChar, 3, stdin);
-    sscanf(numeroSalaChar, "%i", numeroSalaInt);
+    fgets(sala.numeroSalaChar, 3, stdin);
+    sscanf(sala.numeroSalaChar, "%i", sala.numeroSalaInt);
 
 }
 
@@ -173,8 +173,8 @@ void menuAnadirPelicula()
     printf("\n============\nANADIR PELICULA\n============\n\n");
     printf("Introduce el id de la sala en la que se ve la pelicula: ");
     fflush(stdin);
-    fgets(idSalaChar, 4, stdin);
-    sscanf(idSalaChar, "%i", &idSalaInt);
+    fgets(sala.idSalaChar, 4, stdin);
+    sscanf(sala.idSalaChar, "%i", &sala.idSalaInt);
     printf("Introduce el titulo de la pelicula: ");
     fgets(titulo, 20, stdin);
     printf("Introduce la sinopsis de la pelicula: ");
@@ -193,8 +193,8 @@ void menuModificarPelicula()
     sscanf(idPeliculaChar, "%i", &idPeliculaInt);
     printf("Introduce el id de la sala en la que se ve la pelicula: ");
     fflush(stdin);
-    fgets(idSalaChar, 4, stdin);
-    sscanf(idSalaChar, "%i", &idSalaInt);
+    fgets(sala.idSalaChar, 4, stdin);
+    sscanf(sala.idSalaChar, "%i", &sala.idSalaInt);
     printf("Introduce el nuevo titulo de la pelicula: ");
     fgets(titulo, 20, stdin);
     printf("Introduce la nueva sinopsis de la pelicula: ");
@@ -228,15 +228,15 @@ void menuModificarCine()
     printf("\n=========\nMODIFICAR CINE\n=========\n\n");
     printf("Introduce el id del cine a modificar: ");
     fflush(stdin);
-    fgets(idCineChar, 4, stdin);
-    sscanf(idCineChar, "%i", &idCineInt);
+    fgets(cine.idCineChar, 4, stdin);
+    sscanf(cine.idCineChar, "%i", &cine.idCineInt);
     printf("Introduce el nuevo nombre del cine: ");
     fflush(stdin);
-    fgets(nombreCine, 20, stdin);
+    fgets(cine.nombreCine, 20, stdin);
     printf("Introduce la nueva direccion del cine: ");
-    fgets(direccionCine, 20, stdin);
+    fgets(cine.direccionCine, 20, stdin);
     printf("Introduce la nueva ciudad del cine:");
-    fgets(ciudadCine, 20, stdin);
+    fgets(cine.ciudadCine, 20, stdin);
     
 }
 
@@ -261,21 +261,21 @@ void menuModificarSala()
     printf("\n===========\nMODIFICAR SALA\n===========\n\n");
     printf("Introduce el id de la sala a modificar: ");
     fflush(stdin);
-    fgets(idSalaChar, 4, stdin);
-    sscanf(idSalaChar, "%i", &idSalaInt);
+    fgets(sala.idSalaChar, 4, stdin);
+    sscanf(sala.idSalaChar, "%i", &sala.idSalaInt);
     printf("Introduce el nuevo id del cine en el que está la sala: ");
     fflush(stdin);
-    fgets(idCineChar, 4, stdin);
-    sscanf(idCineChar, "%i", &idCineInt);
+    fgets(cine.idCineChar, 4, stdin);
+    sscanf(cine.idCineChar, "%i", &cine.idCineInt);
     printf("Introduce el nuevo numero de la sala: ");
-    fgets(numeroSalaChar, 3, stdin);
-    sscanf(numeroSalaChar, "%i", &numeroSalaInt);
+    fgets(sala.numeroSalaChar, 3, stdin);
+    sscanf(sala.numeroSalaChar, "%i", &sala.numeroSalaInt);
     printf("Introduce el nuevo numero de columnas de la sala: ");
-    fgets(nColumnasSalaChar, 3, stdin);
-    sscanf(nColumnasSalaChar, "%i", &nColumnasSalaInt);
+    fgets(sala.nColumnasSalaChar, 3, stdin);
+    sscanf(sala.nColumnasSalaChar, "%i", &sala.nColumnasSalaInt);
     printf("Introduce el nuevo numero de filas de la sala: ");
-    fgets(nFilasSalaChar, 3, stdin);
-    sscanf(nFilasSalaChar, "%i", &nFilasSalaInt);
+    fgets(sala.nFilasSalaChar, 3, stdin);
+    sscanf(sala.nFilasSalaChar, "%i", &sala.nFilasSalaInt);
    
 }
 
@@ -288,8 +288,8 @@ void menuModificarAsiento()
     sscanf(asiento.idAsientoChar, "%i", &asiento.idAsientoInt);
     printf("Introduce el nuevo id de la sala en la que esta el asiento: ");
     fflush(stdin);
-    fgets(idSalaChar, 4, stdin);
-    sscanf(idSalaChar, "%i", &idSalaInt);
+    fgets(sala.idSalaChar, 4, stdin);
+    sscanf(sala.idSalaChar, "%i", &sala.idSalaInt);
     printf("Introduce la nueva fila del asiento: ");
     fgets(asiento.filaAsientoChar, 3, stdin);
     sscanf(asiento.filaAsientoChar, "%i", &asiento.filaAsientoInt);

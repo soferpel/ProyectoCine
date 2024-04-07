@@ -11,7 +11,7 @@ void anadirCine(PathDB rutaDB) {
     int rc = sqlite3_open(rutaDB.ruta, &db);
 
     char sql_anadir[100];
-    snprintf(sql_anadir, sizeof(sql_anadir), "INSERT INTO CINE (NOMBRE, DIRECCION, CIUDAD) VALUES ('%s', '%s', '%s');", nombreCine, direccionCine, ciudadCine);
+    snprintf(sql_anadir, sizeof(sql_anadir), "INSERT INTO CINE (NOMBRE, DIRECCION, CIUDAD) VALUES ('%s', '%s', '%s');", cine.nombreCine, cine.direccionCine, cine.ciudadCine);
 
     rc = sqlite3_exec(db, sql_anadir, 0, 0, &err_msg);
 
@@ -39,7 +39,7 @@ void modificarCine(PathDB rutaDB)
             }
 
             char sql_modificar[150];
-            snprintf(sql_modificar, sizeof(sql_modificar), "UPDATE CINE SET ID_CINE = '%i', NOMBRE = '%s', DIRECCION = '%s', CIUDAD = '%s' WHERE ID_CINE = %i;", idCineInt, nombreCine, direccionCine, ciudadCine, idCineInt);
+            snprintf(sql_modificar, sizeof(sql_modificar), "UPDATE CINE SET ID_CINE = '%i', NOMBRE = '%s', DIRECCION = '%s', CIUDAD = '%s' WHERE ID_CINE = %i;", cine.idCineInt, cine.nombreCine, cine.direccionCine, cine.ciudadCine, cine.idCineInt);
 
             rc = sqlite3_exec(db, sql_modificar, 0, 0, &err_msg);
 
@@ -86,7 +86,7 @@ int callbackCine(void *data, int argc, char **argv, char **col_names)
 {
     for (int i = 0; i < argc; i++) {
         int idCine = atoi(argv[i]);
-        if (idCineInt == idCine)
+        if (cine.idCineInt == idCine)
         {
             validacionCine = 1;
             break;

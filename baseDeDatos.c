@@ -144,10 +144,6 @@ int callbackActor(void *data, int argc, char **argv, char **col_names)
     return validacionPelicula;
 }
 
-
-
-
-
 void eliminarFila(PathDB rutaDB) {
     sqlite3 *db;
     char *err_msg = 0;
@@ -179,7 +175,7 @@ void anadirPelicula(PathDB rutaDB)
         char *err_msg = 0;
         int rc = sqlite3_open(rutaDB.ruta, &db);
         char sql_anadir[100];
-        snprintf(sql_anadir, sizeof(sql_anadir), "INSERT INTO PELICULA (ID_SALA, TITULO, SINOPSIS, HORARIO) VALUES ('%i', '%s', '%s', '%s');", idSalaInt, titulo, sinopsis, horario);
+        snprintf(sql_anadir, sizeof(sql_anadir), "INSERT INTO PELICULA (ID_SALA, TITULO, SINOPSIS, HORARIO) VALUES ('%i', '%s', '%s', '%s');", sala.idSalaInt, titulo, sinopsis, horario);
 
         rc = sqlite3_exec(db, sql_anadir, 0, 0, &err_msg);
 
@@ -236,7 +232,7 @@ void modificarPelicula(PathDB rutaDB) {
             }
 
             char sql_modificar[150];
-            snprintf(sql_modificar, sizeof(sql_modificar), "UPDATE PELICULA SET ID_SALA = '%i', TITULO = '%s', SINOPSIS = '%s', HORARIO = '%s' WHERE ID_PELICULA = %i;", idSalaInt, titulo, sinopsis, horario, idPeliculaInt);
+            snprintf(sql_modificar, sizeof(sql_modificar), "UPDATE PELICULA SET ID_SALA = '%i', TITULO = '%s', SINOPSIS = '%s', HORARIO = '%s' WHERE ID_PELICULA = %i;", sala.idSalaInt, titulo, sinopsis, horario, idPeliculaInt);
 
             rc = sqlite3_exec(db, sql_modificar, 0, 0, &err_msg);
 
@@ -251,10 +247,6 @@ void modificarPelicula(PathDB rutaDB) {
         }
     }
 }
-
-
-
-
 
 void modificarActor(PathDB rutaDB)
 {
