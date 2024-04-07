@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include "baseDeDatos.h"
-#include "menus.h"
 #include "sqlite3.h"
 
 void crearTabla(PathDB rutaDB) {

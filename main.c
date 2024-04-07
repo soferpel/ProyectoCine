@@ -67,6 +67,7 @@ int main(void)
                         case 7:
                             printf("\nAdios!\n");
                             programaOperando = 0;
+                            free(rutaDB.ruta);
                             break;
                         
                         default:
@@ -122,6 +123,7 @@ int main(void)
                         case 7:
                             printf("\nAdios!\n");
                             programaOperando = 0;
+                            free(rutaDB.ruta);
                             break;
                         
                         default:
@@ -132,6 +134,7 @@ int main(void)
                 case 4:
                     printf("\nAdios!\n");
                     programaOperando = 0;
+                    free(rutaDB.ruta);
                     break;
                 
                 default:
@@ -154,6 +157,7 @@ int main(void)
                 case 3:
                     printf("\nAdios!\n");
                     programaOperando = 0;
+                    free(rutaDB.ruta);
                     break;
                 
                 default:

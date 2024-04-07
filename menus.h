@@ -18,58 +18,6 @@ char opcionCharEliminar[4];
 int opcionIntModificar;
 char opcionCharModificar[4];
 
-int autenticacionExitosa;
-int hayQueAnadirDatos;
-int hayQueModificarDatos;
-
-char nombre[16];
-char respuesta[20];
-char correo[30];
-char contrasena[16];
-char tablaEliminar[20];
-char idEliminar[5];
-
-//USUARIO
-int idUsuarioInt;
-char idUsuarioChar[4];
-
-//ASIENTO
-char idAsientoChar[5];
-int idAsientoInt;
-int idSalaInt;
-char idSalaChar[4];
-char filaAsientoChar[3];
-int filaAsientoInt;
-char numeroAsientoChar[3];
-int numeroAsientoInt;
-char fechaAsiento[11];
-
-//CINE
-char nombreCine[20];
-char direccionCine[20];
-char ciudadCine[20];
-
-//SALA
-int idCineInt;
-char idCineChar[4];
-char numeroSalaChar[3];
-int numeroSalaInt;
-char nColumnasSalaChar[3];
-int nColumnasSalaInt;
-char nFilasSalaChar[3];
-int nFilasSalaInt;
-
-//PELICULA
-char titulo[20];
-char sinopsis[100];
-char horario[20];
-
-//ACTOR
-char idActorChar[3];
-int idActorInt;
-int idPeliculaInt;
-char idPeliculaChar[4];
-char nombreActor[20];
 
 //funciones de los menus
 void menuBienvenida();
