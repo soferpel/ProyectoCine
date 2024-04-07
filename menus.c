@@ -137,23 +137,38 @@ void menuAnadirCine()
 
 }
 
+
+void limpiarBuffer() {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF) {
+        // Vaciar el búfer de entrada
+    }
+    if (c == EOF) {
+        // Si se alcanza el final de archivo, salir del programa
+        printf("Error: Se ha alcanzado el final del archivo.\n");
+        exit(EXIT_FAILURE);
+    }
+}
+
 void menuAnadirSala()
 {
     printf("\n============\nANADIR SALA\n============\n\n");
     printf("Introduce el id del cine en la que esta la sala: ");
-    fflush(stdin);
     fgets(cine.idCineChar, 4, stdin);
+    limpiarBuffer();
     sscanf(cine.idCineChar, "%i", &cine.idCineInt);
     printf("Cual es el numero de filas que contiene la sala? ");
     fgets(sala.nFilasSalaChar, 3, stdin);
+    limpiarBuffer();
     sscanf(sala.nFilasSalaChar, "%i", sala.nFilasSalaInt);
     printf("Cual es el numero de columnas que contiene la sala? ");
     fgets(sala.nColumnasSalaChar, 3, stdin);
+    limpiarBuffer();
     sscanf(sala.nColumnasSalaChar, "%i", sala.nColumnasSalaInt);
     printf("Cual es el numero de la sala? ");
     fgets(sala.numeroSalaChar, 3, stdin);
+    limpiarBuffer();
     sscanf(sala.numeroSalaChar, "%i", sala.numeroSalaInt);
-
 }
 
 void menuAnadirActor()

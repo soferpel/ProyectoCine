@@ -75,10 +75,10 @@ void validarUsuario(PathDB rutaDB)
     char *sql_select_Usuario = "SELECT CORREO, CONTRASENA FROM USUARIO;";
     rc = sqlite3_exec(db, sql_select_Usuario, callbackUsuario, 0, &err_msg);
 
-    // if (rc != SQLITE_OK) {
-    //     fprintf(stderr, "Error al realizar la consulta SELECT: %s\n", err_msg);
-    //     sqlite3_free(err_msg);
-    // }
+    if (rc != SQLITE_OK) {
+        fprintf(stderr, "Error al realizar la consulta SELECT: %s\n", err_msg);
+        sqlite3_free(err_msg);
+    }
 
     if (validacionUsuario == 1) {
         printf("El usuario es correcto\n");

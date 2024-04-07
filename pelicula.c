@@ -21,10 +21,10 @@ void validarPelicula(PathDB rutaDB)
     char *sql_select_Pelicula = "SELECT ID_PELICULA FROM PELICULA;";
     rc = sqlite3_exec(db, sql_select_Pelicula, callbackPelicula, 0, &err_msg);
 
-    // if (rc != SQLITE_OK) {
-    //     fprintf(stderr, "Error al realizar la consulta SELECT: %s\n", err_msg);
-    //     sqlite3_free(err_msg);
-    // }
+    if (rc != SQLITE_OK) {
+        fprintf(stderr, "Error al realizar la consulta SELECT: %s\n", err_msg);
+        sqlite3_free(err_msg);
+    }
     if (validacionPelicula == 1) {
         printf("La pelicula es correcta\n");
     } else {

@@ -78,10 +78,10 @@ void validarSala(PathDB rutaDB)
     char *sql_select_Sala = "SELECT ID_SALA FROM SALA;";
     rc = sqlite3_exec(db, sql_select_Sala, callbackSala, 0, &err_msg);
 
-    // if (rc != SQLITE_OK) {
-    //     fprintf(stderr, "Error al realizar la consulta SELECT: %s\n", err_msg);
-    //     sqlite3_free(err_msg);
-    // }
+    if (rc != SQLITE_OK) {
+        fprintf(stderr, "Error al realizar la consulta SELECT: %s\n", err_msg);
+        sqlite3_free(err_msg);
+    }
     if (validacionSala == 1) {
         printf("La sala es correcta\n");
     } else {

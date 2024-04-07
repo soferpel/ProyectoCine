@@ -79,10 +79,10 @@ void validarAsiento(PathDB rutaDB)
     char *sql_select_Actor = "SELECT ID_ASIENTO FROM ASIENTO;";
     rc = sqlite3_exec(db, sql_select_Actor, callbackAsiento, 0, &err_msg);
 
-    // if (rc != SQLITE_OK) {
-    //     fprintf(stderr, "Error al realizar la consulta SELECT: %s\n", err_msg);
-    //     sqlite3_free(err_msg);
-    // }
+    if (rc != SQLITE_OK) {
+        fprintf(stderr, "Error al realizar la consulta SELECT: %s\n", err_msg);
+        sqlite3_free(err_msg);
+    }
     if (validacionAsiento == 1) {
         printf("El asiento es correcto\n");
     } else {

@@ -22,10 +22,10 @@ void validarActor(PathDB rutaDB)
     char *sql_select_Actor = "SELECT ID_ACTOR FROM ACTOR;";
     rc = sqlite3_exec(db, sql_select_Actor, callbackActor, 0, &err_msg);
 
-    // if (rc != SQLITE_OK) {
-    //     fprintf(stderr, "Error al realizar la consulta SELECT: %s\n", err_msg);
-    //     sqlite3_free(err_msg);
-    // }
+    if (rc != SQLITE_OK) {
+        fprintf(stderr, "Error al realizar la consulta SELECT: %s\n", err_msg);
+        sqlite3_free(err_msg);
+    }
     if (validacionActor == 1) {
         printf("El actor es correcto\n");
     } else {
