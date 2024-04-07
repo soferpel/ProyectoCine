@@ -4,6 +4,7 @@
 #include "menus.h"
 #include "baseDeDatos.h"
 
+
 void menuBienvenida()
 {
     printf("\n==========\nBIENVENID@\n==========\n\n");
@@ -18,9 +19,9 @@ void menuInicioSesion()
     printf("\n==============\nINICIAR SESION\n==============\n\n");
     printf("Introduce tu correo electronico: ");
     fgetc(stdin);
-    fgets(correo, 30, stdin);
+    fgets(usuario.correo, 30, stdin);
     printf("Introduce tu contrasena: ");
-    fgets(contrasena, 16, stdin);
+    fgets(usuario.contrasena, 16, stdin);
     printf("\n");
     printf("\n");
 }
@@ -30,13 +31,13 @@ void menuRegistro()
     printf("\n============\nREGISTRARSE\n============\n\n");
     printf("Introduce tu nombre: ");
     fgetc(stdin);
-    fgets(nombre, 16, stdin);
+    fgets(usuario.nombre, 16, stdin);
     printf("Respuesta de seguridad: Cual es tu pelicula favorita? ");
-    fgets(respuesta, 20, stdin);
+    fgets(usuario.respuesta, 20, stdin);
     printf("Introduce tu correo: ");
-    fgets(correo, 30, stdin);
+    fgets(usuario.correo, 30, stdin);
     printf("Introduce tu contrasena: ");
-    fgets(contrasena, 16, stdin);
+    fgets(usuario.contrasena, 16, stdin);
     
 }
 
@@ -102,13 +103,13 @@ void menuAnadirAsiento()
     fgets(idSalaChar, 4, stdin);
     sscanf(idSalaChar, "%i", &idSalaInt);
     printf("Introduce la fila del asiento: ");
-    fgets(filaAsientoChar, 3, stdin);
-    sscanf(filaAsientoChar, "%i", &filaAsientoInt);
+    fgets(asiento.filaAsientoChar, 3, stdin);
+    sscanf(asiento.filaAsientoChar, "%i", &asiento.filaAsientoInt);
     printf("Introduce el numero del asiento: ");
-    fgets(numeroAsientoChar, 3, stdin);
-    sscanf(numeroAsientoChar, "%i", &numeroAsientoInt);
+    fgets(asiento.numeroAsientoChar, 3, stdin);
+    sscanf(asiento.numeroAsientoChar, "%i", &asiento.numeroAsientoInt);
     printf("Introduce la fecha del asiento: ");
-    fgets(fechaAsiento, 11, stdin);
+    fgets(asiento.fechaAsiento, 11, stdin);
 
 }
 
@@ -208,17 +209,17 @@ void menuModificarUsuario()
     printf("\n============\nMODIFICAR USUARIO\n============\n\n");
     printf("Introduce el id del usuario a modificar: ");
     fflush(stdin);
-    fgets(idUsuarioChar, 4, stdin);
-    sscanf(idUsuarioChar, "%i", &idUsuarioInt);
+    fgets(usuario.idUsuarioChar, 4, stdin);
+    sscanf(usuario.idUsuarioChar, "%i", &usuario.idUsuarioInt);
     printf("Introduce el nuevo nombre del usuario: ");
     fflush(stdin);
-    fgets(nombre, 16, stdin);
+    fgets(usuario.nombre, 16, stdin);
     printf("Introduce la nueva respuesta de seguridad: ");
-    fgets(respuesta, 20, stdin);
+    fgets(usuario.respuesta, 20, stdin);
     printf("Introduce el nuevo correo electronico: ");
-    fgets(correo, 30, stdin);
+    fgets(usuario.correo, 30, stdin);
     printf("Introduce la nueva contrasena: ");
-    fgets(contrasena, 16, stdin);
+    fgets(usuario.contrasena, 16, stdin);
 
 }
 
@@ -283,20 +284,20 @@ void menuModificarAsiento()
     printf("\n===========\nMODIFICAR ASIENTO\n===========\n\n");
     printf("Introduce el id del asiento a modificar: ");
     fflush(stdin);
-    fgets(idAsientoChar, 4, stdin);
-    sscanf(idAsientoChar, "%i", &idAsientoInt);
+    fgets(asiento.idAsientoChar, 4, stdin);
+    sscanf(asiento.idAsientoChar, "%i", &asiento.idAsientoInt);
     printf("Introduce el nuevo id de la sala en la que esta el asiento: ");
     fflush(stdin);
     fgets(idSalaChar, 4, stdin);
     sscanf(idSalaChar, "%i", &idSalaInt);
     printf("Introduce la nueva fila del asiento: ");
-    fgets(filaAsientoChar, 3, stdin);
-    sscanf(filaAsientoChar, "%i", &filaAsientoInt);
+    fgets(asiento.filaAsientoChar, 3, stdin);
+    sscanf(asiento.filaAsientoChar, "%i", &asiento.filaAsientoInt);
     printf("Introduce el nuevo numero del asiento: ");
-    fgets(numeroAsientoChar, 3, stdin);
-    sscanf(numeroAsientoChar, "%i", &numeroAsientoInt);
+    fgets(asiento.numeroAsientoChar, 3, stdin);
+    sscanf(asiento.numeroAsientoChar, "%i", &asiento.numeroAsientoInt);
     printf("Introduce la nueva fecha del asiento: ");
-    fgets(fechaAsiento, 11, stdin);
+    fgets(asiento.fechaAsiento, 11, stdin);
    
 }
 

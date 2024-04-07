@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "baseDeDatos.h"
-#include "sqlite3.h"
+
 
 void crearTabla(PathDB rutaDB) {
     sqlite3 *db;
@@ -59,75 +59,9 @@ void borrarTablas(PathDB rutaDB)
     rc = sqlite3_exec(db, sql_drop5, 0, 0, &error_message);
 }
 
-void guardarUsuario(PathDB rutaDB)
-{
-    //TODO: si el usuario ya existe, notificar al usuario
 
-    //Abrir la base de datos
-    sqlite3 *db;
-    int rc = sqlite3_open(rutaDB.ruta, &db);
 
-    //Insertar usuario
-    sqlite3_stmt *stmt;
-    char insertUsuario[] = "INSERT INTO USUARIO (NOMBRE, RESPUESTA, CORREO, CONTRASENA) VALUES (?, ?, ?, ?);";
-    sqlite3_prepare_v2(db, insertUsuario, strlen(insertUsuario) + 1, &stmt, NULL);
 
-    sqlite3_bind_text(stmt, 1, nombre, strlen(nombre) + 1, SQLITE_STATIC);
-    sqlite3_bind_text(stmt, 2, respuesta, strlen(respuesta) + 1, SQLITE_STATIC);
-    sqlite3_bind_text(stmt, 3, correo, strlen(correo) + 1, SQLITE_STATIC);
-    sqlite3_bind_text(stmt, 4, contrasena, strlen(contrasena) + 1, SQLITE_STATIC);
-
-    sqlite3_step(stmt);
-    sqlite3_finalize(stmt);
-    sqlite3_close(db);
-    autenticacionExitosa = 1;
-}
-
-void validarUsuario(PathDB rutaDB)
-{
-    validacionUsuario = 0;
-    sqlite3 *db;
-    char *err_msg = 0;
-    int rc = sqlite3_open(rutaDB.ruta, &db);
-
-    if (rc != SQLITE_OK) {
-        fprintf(stderr, "Error al abrir la base de datos: %s\n", sqlite3_errmsg(db));
-        sqlite3_close(db);
-        return;
-    }
-
-    char *sql_select_Usuario = "SELECT CORREO, CONTRASENA FROM USUARIO;";
-    rc = sqlite3_exec(db, sql_select_Usuario, callbackUsuario, 0, &err_msg);
-
-    // if (rc != SQLITE_OK) {
-    //     fprintf(stderr, "Error al realizar la consulta SELECT: %s\n", err_msg);
-    //     sqlite3_free(err_msg);
-    // }
-
-    if (validacionUsuario == 1) {
-        printf("El usuario es correcto\n");
-        autenticacionExitosa = 1;
-    } else {
-        printf("Usuario o contrasena incorrectos\n");
-    }
-    sqlite3_close(db);
-}
-
-int callbackUsuario(void *data, int argc, char **argv, char **col_names) {
-
-    for (int i = 0; i < argc; i++) {
-        if (strcmp(correo, argv[0]) == 0)
-        {
-            if (strcmp(contrasena, argv[1]) == 0)
-            {
-                validacionUsuario = 1;
-                break;
-            }
-        }
-    }
-
-    return validacionUsuario;
-}
 
 void validarCine(PathDB rutaDB)
 {
@@ -297,33 +231,7 @@ int callbackActor(void *data, int argc, char **argv, char **col_names)
     return validacionPelicula;
 }
 
-void validarAsiento(PathDB rutaDB)
-{
-    validacionAsiento = 0;
-    sqlite3 *db;
-    char *err_msg = 0;
-    int rc = sqlite3_open(rutaDB.ruta, &db);
 
-    if (rc != SQLITE_OK) {
-        fprintf(stderr, "Error al abrir la base de datos: %s\n", sqlite3_errmsg(db));
-        sqlite3_close(db);
-        return;
-    }
-
-    char *sql_select_Actor = "SELECT ID_ASIENTO FROM ASIENTO;";
-    rc = sqlite3_exec(db, sql_select_Actor, callbackActor, 0, &err_msg);
-
-    // if (rc != SQLITE_OK) {
-    //     fprintf(stderr, "Error al realizar la consulta SELECT: %s\n", err_msg);
-    //     sqlite3_free(err_msg);
-    // }
-    if (validacionActor == 1) {
-        printf("El asiento es correcto\n");
-    } else {
-        printf("El asiento introducido no existe\n");
-    }
-    sqlite3_close(db);
-}
 
 
 
@@ -346,29 +254,7 @@ void eliminarFila(PathDB rutaDB) {
     sqlite3_close(db);
 }
 
-void anadirAsiento(PathDB rutaDB) {
-    validarSala(rutaDB);
-    if (validacionSala == 1)
-    {
-        sqlite3 *db;
-        char *err_msg = 0;
-        int rc = sqlite3_open(rutaDB.ruta, &db);
 
-        char sql_anadir[100];
-        snprintf(sql_anadir, sizeof(sql_anadir), "INSERT INTO ASIENTO (ID_SALA, FILA, NUMERO, FECHA) VALUES ('%i', '%i', '%i', '%s');", idSalaInt, filaAsientoInt, numeroAsientoInt, fechaAsiento);
-
-        rc = sqlite3_exec(db, sql_anadir, 0, 0, &err_msg);
-        
-        if (rc != SQLITE_OK) {
-            fprintf(stderr, "Error al añadir asientos: %s\n", err_msg);
-            sqlite3_free(err_msg);
-        } else {
-            printf("Fila anadida correctamente\n");
-        }
-        
-        sqlite3_close(db);
-    }
-}
 
 void anadirCine(PathDB rutaDB) {
     sqlite3 *db;
@@ -494,35 +380,7 @@ void modificarPelicula(PathDB rutaDB) {
     }
 }
 
-void modificarUsuario(PathDB rutaDB)
-{
-    validarUsuario(rutaDB);
-    if(validacionUsuario == 1)
-    {
-         sqlite3 *db;
-            char *err_msg = 0;
-            int rc = sqlite3_open(rutaDB.ruta, &db);
 
-            if (rc != SQLITE_OK) {
-                fprintf(stderr, "No se pudo abrir la base de datos: %s\n", sqlite3_errmsg(db));
-                return;
-            }
-
-            char sql_modificar[150];
-            snprintf(sql_modificar, sizeof(sql_modificar), "UPDATE USUARIO SET ID_USUARIO = '%i', NOMBRE = '%s', RESPUESTA = '%s', CORREO = '%s', CONTRASENA = '%s WHERE ID_USUARIO = %i;", idUsuarioInt, nombre, respuesta, correo, contrasena, idUsuarioInt);
-
-            rc = sqlite3_exec(db, sql_modificar, 0, 0, &err_msg);
-
-            if (rc != SQLITE_OK) {
-                fprintf(stderr, "Error al modificar el usuario: %s\n", err_msg);
-                sqlite3_free(err_msg);
-            } else {
-                printf("Usuario modificado correctamente\n");
-            }
-
-            sqlite3_close(db);
-    }
-}
 
 void modificarCine(PathDB rutaDB)
 {
@@ -622,36 +480,3 @@ void modificarSala(PathDB rutaDB)
     }
 }
 
-void modificarAsiento(PathDB rutaDB)
-{
-    validarAsiento(rutaDB);
-    if(validacionAsiento == 1)
-    {
-        validarSala(rutaDB);
-        if(validacionSala == 1)
-        {
-            sqlite3 *db;
-            char *err_msg = 0;
-            int rc = sqlite3_open(rutaDB.ruta, &db);
-
-            if (rc != SQLITE_OK) {
-                fprintf(stderr, "No se pudo abrir la base de datos: %s\n", sqlite3_errmsg(db));
-                return;
-            }
-
-            char sql_modificar[150];
-            snprintf(sql_modificar, sizeof(sql_modificar), "UPDATE ASIENTO SET ID_ASIENTO = '%i', ID_SALA = '%i', FILA = '%i', NUMERO = '%i', FECHA = '%s WHERE ID_ASIENTO = %i;", idAsientoInt, idSalaInt, filaAsientoInt, numeroAsientoInt, fechaAsiento, idAsientoInt);
-
-            rc = sqlite3_exec(db, sql_modificar, 0, 0, &err_msg);
-
-            if (rc != SQLITE_OK) {
-                fprintf(stderr, "Error al modificar el asiento: %s\n", err_msg);
-                sqlite3_free(err_msg);
-            } else {
-                printf("Asiento modificado correctamente\n");
-            }
-
-            sqlite3_close(db);
-        }
-    }
-}
