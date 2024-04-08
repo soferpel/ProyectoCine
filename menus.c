@@ -185,7 +185,7 @@ void menuAnadirPelicula()
     printf("Introduce el titulo de la pelicula: ");
     fgets(pelicula.titulo, 20, stdin);
     printf("Introduce la sinopsis de la pelicula: ");
-    fgets(pelicula.sinopsis, 500, stdin);
+    fgets(pelicula.sinopsis, 200, stdin);
     printf("Introduce el horario de la pelicula: ");
     fgets(pelicula.horario, 20, stdin);
 
@@ -205,7 +205,7 @@ void menuModificarPelicula()
     printf("Introduce el nuevo titulo de la pelicula: ");
     fgets(pelicula.titulo, 20, stdin);
     printf("Introduce la nueva sinopsis de la pelicula: ");
-    fgets(pelicula.sinopsis, 500, stdin);
+    fgets(pelicula.sinopsis, 200, stdin);
     printf("Introduce el nuevo horario de la pelicula: ");
     fgets(pelicula.horario, 20, stdin);
 
