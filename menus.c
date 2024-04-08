@@ -131,7 +131,7 @@ void menuAnadirCine()
     fflush(stdin);
     fgets(cine.nombreCine, 20, stdin);
     printf("Cual es la direccion del cine?\n");
-    fgets(cine.direccionCine, 20, stdin);
+    fgets(cine.direccionCine, 40, stdin);
     printf("Cual es la ciudad del cine?\n");
     fgets(cine.ciudadCine, 20, stdin);
 
@@ -185,7 +185,7 @@ void menuAnadirPelicula()
     printf("Introduce el titulo de la pelicula: ");
     fgets(pelicula.titulo, 20, stdin);
     printf("Introduce la sinopsis de la pelicula: ");
-    fgets(pelicula.sinopsis, 100, stdin);
+    fgets(pelicula.sinopsis, 500, stdin);
     printf("Introduce el horario de la pelicula: ");
     fgets(pelicula.horario, 20, stdin);
 
@@ -205,7 +205,7 @@ void menuModificarPelicula()
     printf("Introduce el nuevo titulo de la pelicula: ");
     fgets(pelicula.titulo, 20, stdin);
     printf("Introduce la nueva sinopsis de la pelicula: ");
-    fgets(pelicula.sinopsis, 100, stdin);
+    fgets(pelicula.sinopsis, 500, stdin);
     printf("Introduce el nuevo horario de la pelicula: ");
     fgets(pelicula.horario, 20, stdin);
 
@@ -241,7 +241,7 @@ void menuModificarCine()
     fflush(stdin);
     fgets(cine.nombreCine, 20, stdin);
     printf("Introduce la nueva direccion del cine: ");
-    fgets(cine.direccionCine, 20, stdin);
+    fgets(cine.direccionCine, 40, stdin);
     printf("Introduce la nueva ciudad del cine:");
     fgets(cine.ciudadCine, 20, stdin);
     
