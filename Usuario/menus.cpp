@@ -83,9 +83,9 @@ namespace menus
         cout << " INICIAR SESION " << endl;
         cout << "================" << endl;
         cout << endl;
-        cout << "Ingrese su nombre de usuario:";
+        cout << "Ingrese su nombre de usuario: ";
         cin >> this->nombreUsuario;
-        cout << "Ingrese su contrasena:";
+        cout << "Ingrese su contrasena: ";
         cin >> this->contrasena;
         MenuPrincipal menuPrincipal;
         menuPrincipal.mostrar();
@@ -117,13 +117,13 @@ namespace menus
         cout << " REGISTRARSE " << endl;
         cout << "=============" << endl;
         cout << endl;
-        cout << "Ingrese su nombre de usuario:";
+        cout << "Ingrese su nombre de usuario: ";
         cin >> this->nombreUsuario;
-        cout << "Ingrese su correo electronico:";
+        cout << "Ingrese su correo electronico: ";
         cin >> this->correoElectronico;
-        cout << "Ingrese su contrasena:";
+        cout << "Ingrese su contrasena: ";
         cin >> this->contrasena;
-        cout << "Responda esta pregunta de seguridad (Cual es su pelicula favorita?):";
+        cout << "Responda esta pregunta de seguridad (Cual es su pelicula favorita?): ";
         cin >> this->respuestaSeguridad;
     }
 
@@ -146,4 +146,95 @@ namespace menus
     {
         return this->respuestaSeguridad;
     }
-}
+
+    MenuComprarEntradas::MenuComprarEntradas()
+    {
+
+    }
+
+    MenuComprarEntradas::~MenuComprarEntradas()
+    {
+
+    }
+
+    void MenuComprarEntradas::mostrar()
+    {
+        cout << "==================" << endl;
+        cout << " COMPRAR ENTRADAS " << endl;
+        cout << "==================" << endl;
+        cout << endl;
+        cout << "Escriba el nombre de su ciudad: ";
+        cin >> this->ciudadCine;
+        cout << "Elija el cine: ";
+        cin >> this->opcionCine;
+        cout << "Elija la pelicula que desea ver: ";
+        cin >> this->opcionPelicula;
+        //sinopsis de la pelicula
+        //duración de la pelicula
+        //reparto de la pelicula
+        cout << "Desea proceder con la compra? (s/n): ";
+        cin >> this->confirmarCompra;
+        cout << "Escriba la fecha en la que desea ver la pelicula (dd-MM-yyyy): ";
+        cin >> this->fecha;
+        //no vamos a contemplar el caso de que 
+        //la pelicula no este disponible ese dia
+    }
+
+    string MenuComprarEntradas::getCiudadCine()
+    {
+        return this->ciudadCine;
+    }
+
+    int MenuComprarEntradas::getOpcionCine()
+    {
+        return this->opcionCine;
+    }
+
+    int MenuComprarEntradas::getOpcionPelicula()
+    {
+        return this->opcionPelicula;
+    }
+
+    string MenuComprarEntradas::getConfirmarCompra()
+    {
+        return this->confirmarCompra;
+    }
+
+    string MenuComprarEntradas::getFecha()
+    {
+        return this->fecha;
+    }
+
+    MenuCatalogoPeliculas::MenuCatalogoPeliculas()
+    {
+
+    }
+
+    MenuCatalogoPeliculas::~MenuCatalogoPeliculas()
+    {
+
+    }
+
+    void MenuCatalogoPeliculas::mostrar()
+    {
+        cout << "====================" << endl;
+        cout << " CATALOGO PELICULAS " << endl;
+        cout << "====================" << endl;
+        cout << endl;
+        cout << "Escriba el nombre de su ciudad: ";
+        cin >> this->ciudadCine;
+        cout << "Elija el cine: ";
+        cin >> this->opcionCine;
+        cout << "Elija la pelicula que desea ver: ";
+        cin >> this->opcionPelicula;
+        //sinopsis de la pelicula
+        //duración de la pelicula
+        //reparto de la pelicula
+        cout << "Desea proceder con la compra? (s/n): ";
+        cin >> this->confirmarCompra;
+        cout << "Escriba la fecha en la que desea ver la pelicula (dd-MM-yyyy): ";
+        cin >> this->fecha;
+        //no vamos a contemplar el caso de que 
+        //la pelicula no este disponible ese dia
+    }
+

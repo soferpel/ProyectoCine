@@ -62,6 +62,47 @@ namespace menus
             string getContrasena();
             string getRespuestaSeguridad();
     };
+
+    class MenuComprarEntradas
+    {
+        private:
+            string ciudadCine;
+            int opcionCine;
+            int opcionPelicula;
+            string confirmarCompra;
+            string fecha;
+        public:
+            MenuComprarEntradas();
+            ~MenuComprarEntradas();
+
+            void mostrar();
+            string getCiudadCine();
+            int getOpcionCine();
+            int getOpcionPelicula();
+            string getConfirmarCompra();
+            string getFecha();
+
+    };
+
+    class MenuCatalogoPeliculas
+    {
+        private:
+            string ciudadCine;
+            int opcionCine;
+            int opcionPelicula;
+            int confirmarCompra;
+            string fecha;
+        public:
+            MenuCatalogoPeliculas();
+            ~MenuCatalogoPeliculas();
+
+            void mostrar();
+            string getCiudadCine();
+            int getOpcionCine();
+            int getOpcionPelicula();
+            int getConfirmarCompra();
+            string getFecha();
+    };
 }
 
 #endif
