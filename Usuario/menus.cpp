@@ -178,6 +178,28 @@ namespace menus
         cin >> this->fecha;
         //no vamos a contemplar el caso de que 
         //la pelicula no este disponible ese dia
+        cout << "1. 15:00" << endl;
+        cout << "2. 17:00" << endl;
+        cout << "3. 19:30" << endl;
+        cout << "4. 21:15" << endl;
+        cout << "5. 23:00" << endl;
+        //los horarios podemos ponerlos fijos o hacer 
+        //que cada pelicula tenga sus propios horarios
+        //la segunda opcion es mas complicada obviamente
+        cin >> this->opcionHorario;
+        cout << "Numero de entradas (6,99/entrada): ";
+        cin >> this->numEntradas;
+        cout << "SALA 4" << endl;
+        //podemos poner numeros de sala aleatorios
+        //o qe cada pelicula tenga su sala en cada cine
+        //la segunda opcion es mas complicada obviamente
+        //yo creo que lo mejor es numeros aleatorios
+        cout << "    ______________    " << endl;
+        cout << "       pantalla       " << endl;
+        //dependiendo de la sala habra mas filas y columnas
+        //sino, para facilitarnos la vida
+        //todas las salas tienen las mismas filas y columnas
+        cout << "1 |[][][][][][][][][][]";
     }
 
     string MenuComprarEntradas::getCiudadCine()
@@ -225,16 +247,41 @@ namespace menus
         cin >> this->ciudadCine;
         cout << "Elija el cine: ";
         cin >> this->opcionCine;
-        cout << "Elija la pelicula que desea ver: ";
+        cout << "Elija la pelicula de la que desea ver la informacion: ";
         cin >> this->opcionPelicula;
         //sinopsis de la pelicula
         //duración de la pelicula
         //reparto de la pelicula
-        cout << "Desea proceder con la compra? (s/n): ";
+        cout << "Desea comprar una entrada para esta pelicula? (s/n): ";
         cin >> this->confirmarCompra;
         cout << "Escriba la fecha en la que desea ver la pelicula (dd-MM-yyyy): ";
         cin >> this->fecha;
         //no vamos a contemplar el caso de que 
         //la pelicula no este disponible ese dia
+    }
+
+    string MenuCatalogoPeliculas::getCiudadCine()
+    {
+        return this->ciudadCine;
+    }
+
+    int MenuCatalogoPeliculas::getOpcionCine()
+    {
+        return this->opcionCine;
+    }
+
+    int MenuCatalogoPeliculas::getOpcionPelicula()
+    {
+        return this->opcionPelicula;
+    }
+
+    int MenuCatalogoPeliculas::getConfirmarCompra()
+    {
+        return this->confirmarCompra;
+    }
+
+    string MenuCatalogoPeliculas::getFecha()
+    {
+        return this->fecha;
     }
 

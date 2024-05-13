@@ -71,6 +71,8 @@ namespace menus
             int opcionPelicula;
             string confirmarCompra;
             string fecha;
+            int opcionHorario;
+            int numEntradas;
         public:
             MenuComprarEntradas();
             ~MenuComprarEntradas();
