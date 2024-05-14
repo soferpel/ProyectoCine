@@ -6,6 +6,18 @@ using namespace std;
 
 namespace menus
 {
+    class MenuEleccionModo
+    {
+        private:
+            int opcion;
+        public:
+            MenuEleccionModo();
+            ~MenuEleccionModo();
+
+            void mostrar();
+            int getOpcion();
+    };
+
     class MenuBienvenida
     {
         private:
@@ -19,13 +31,25 @@ namespace menus
             int getOpcion();
     };
 
-    class MenuPrincipal
+    class MenuPrincipalCliente
     {
         private:
             int opcion;
         public:
-            MenuPrincipal();
-            ~MenuPrincipal();
+            MenuPrincipalCliente();
+            ~MenuPrincipalCliente();
+
+            void mostrar();
+            int getOpcion();
+    };
+
+    class MenuPrincipalAdministrador
+    {
+        private:
+            int opcion;
+        public:
+            MenuPrincipalAdministrador();
+            ~MenuPrincipalAdministrador();
 
             void mostrar();
             int getOpcion();
@@ -34,77 +58,103 @@ namespace menus
     class MenuIniciarSesion
     {
         private:
-            char correoUsuario[30];
+            char correo[30];
             char contrasena[16];
         public:
             MenuIniciarSesion();
             ~MenuIniciarSesion();
 
             void mostrar();
-            char* getCorreoUsuario();
+            char* getCorreo();
             char* getContrasena();
     };
 
     class MenuRegistrarse
     {
         private:
-            char nombreUsuario[16];
-            char correoElectronico[30];
+            char nombre[16];
+            char correo[30];
             char contrasena[16];
-            char respuestaSeguridad;
+            char respuestaSeguridad[20];
         public:
             MenuRegistrarse();
             ~MenuRegistrarse();
 
             void mostrar();
-            char* getNombreUsuario();
-            char* getCorreoElectronico();
+            char* getNombre();
+            char* getCorreo();
             char* getContrasena();
             char* getRespuestaSeguridad();
     };
 
-    class MenuComprarEntradas
+    class MenuModificarDatos
     {
         private:
-            char ciudadCine[20];
-            int opcionCine;
-            int opcionPelicula;
-            char confirmarCompra;
-            char fecha;
-            int opcionHorario;
-            int numEntradas;
+            int opcion;
         public:
-            MenuComprarEntradas();
-            ~MenuComprarEntradas();
+            MenuModificarDatos();
+            ~MenuModificarDatos();
 
             void mostrar();
-            string getCiudadCine();
-            int getOpcionCine();
-            int getOpcionPelicula();
-            string getConfirmarCompra();
-            string getFecha();
-
+            int getOpcion();
     };
-
-    class MenuCatalogoPeliculas
+    
+    class MenuModificarPelicula
     {
         private:
-            char ciudadCine[20];
-            int opcionCine;
-            int opcionPelicula;
-            int confirmarCompra;
-            string fecha;
+            int idAModificar;
+            int idSala;
+            char titulo[20];
+            char sinopsis[200];
+            char horario[6];
         public:
-            MenuCatalogoPeliculas();
-            ~MenuCatalogoPeliculas();
+            MenuModificarPelicula();
+            ~MenuModificarPelicula();
 
             void mostrar();
-            string getCiudadCine();
-            int getOpcionCine();
-            int getOpcionPelicula();
-            int getConfirmarCompra();
-            string getFecha();
+            int getIdAModificar();
+            int getIdSala();
+            char* getTitulo();
+            char* getSinopsis();
+            char* getHorario();
     };
+
+    class MenuModificarUsuario
+    {
+        private:
+            char correo[30];
+            char contrasena[16];
+            char nombre[16];
+            char respuestaSeguridad[20];
+        public:
+            MenuModificarUsuario();
+            ~MenuModificarUsuario();
+
+            void mostrar();
+            char* getCorreo();
+            char* getContrasena();
+            char* getNombre();
+            char* getRespuestaSeguridad();
+    };
+
+    class MenuModificarCine
+    {
+        private:
+            int idAModificar;
+            char nombre[20];
+            char direccion[40];
+            char ciudad[20];
+        public:
+            MenuModificarCine();
+            ~MenuModificarCine();
+
+            void mostrar();
+            int getIdAModificar();
+            char* getNombre();
+            char* getDireccion();
+            char* getCiudad();
+    };
+
 }
 
 #endif

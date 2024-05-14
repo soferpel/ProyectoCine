@@ -5,6 +5,29 @@ using namespace std;
 
 namespace menus
 {
+    MenuEleccionModo::MenuEleccionModo()
+    {
+
+    }
+
+    MenuEleccionModo::~MenuEleccionModo()
+    {
+
+    }
+
+    void MenuEleccionModo::mostrar()
+    {
+        cout << "===============" << endl;
+        cout << " ELECCION MODO " << endl;
+        cout << "===============" << endl;
+        cout << endl;
+        cout << "1. Cliente" << endl;
+        cout << "2. Administrador" << endl;
+        cout << "3. Salir" << endl;
+        cout << endl;
+        cin >> this->opcion;
+    }
+
     MenuBienvenida::MenuBienvenida()
     {
 
@@ -35,36 +58,62 @@ namespace menus
         return this->opcion;
     }
 
-    MenuPrincipal::MenuPrincipal()
+    MenuPrincipalCliente::MenuPrincipalCliente()
     {
 
     }
 
-    MenuPrincipal::~MenuPrincipal()
+    MenuPrincipalCliente::~MenuPrincipalCliente()
     {
 
     }
 
-    void MenuPrincipal::mostrar()
+    void MenuPrincipalCliente::mostrar()
     {
-        cout << "================" << endl;
-        cout << " MENU PRINCIPAL " << endl;
-        cout << "================" << endl;
+        cout << "=========" << endl;
+        cout << " CLIENTE " << endl;
+        cout << "=========" << endl;
         cout << endl;
         cout << "Que desea hacer?" << endl;
         cout << endl;
-        cout << "1. Ver catalogo de peliculas" << endl;
-        cout << "2. Comprar entradas" << endl;
-        cout << "3. Mis entradas" << endl;
-        cout << "4. Modificar usuario" << endl;
-        cout << "5. Salir" << endl;
+        cout << "1. Visualizar cines" << endl;
+        cout << "2. Modificar datos" << endl;
+        cout << "3. Salir" << endl;
         cout << endl;
         cin >> this->opcion;
     }
 
-    int MenuPrincipal::getOpcion()
+
+
+    int MenuPrincipalCliente::getOpcion()
     {
         return this->opcion;
+    }
+
+    MenuPrincipalAdministrador::MenuPrincipalAdministrador()
+    {
+
+    }
+
+    MenuPrincipalAdministrador::~MenuPrincipalAdministrador()
+    {
+
+    }
+
+    void MenuPrincipalAdministrador::mostrar()
+    {
+        cout << "===============" << endl;
+        cout << " ADMINISTRADOR " << endl;
+        cout << "===============" << endl;
+        cout << endl;
+        cout << "Que desea hacer?" << endl;
+        cout << endl;
+        cout << "1. Modificar datos" << endl;
+        cout << "2. Eliminar datos" << endl;
+        cout << "3. Anadir datos" << endl;
+        cout << "4. Salir" << endl;
+        cout << endl;
+        cin >> this->opcion;
     }
 
     MenuIniciarSesion::MenuIniciarSesion()
@@ -145,141 +194,317 @@ namespace menus
         return this->respuestaSeguridad;
     }
 
-    MenuComprarEntradas::MenuComprarEntradas()
+    MenuModificarDatos::MenuModificarDatos()
     {
 
     }
 
-    MenuComprarEntradas::~MenuComprarEntradas()
+    MenuModificarDatos::~MenuModificarDatos()
     {
 
     }
 
-    void MenuComprarEntradas::mostrar()
+    void MenuModificarDatos::mostrar()
     {
-        cout << "==================" << endl;
-        cout << " COMPRAR ENTRADAS " << endl;
-        cout << "==================" << endl;
+        cout << "================" << endl;
+        cout << " MODIFICAR DATOS " << endl;
+        cout << "================" << endl;
         cout << endl;
-        cout << "Escriba el nombre de su ciudad: ";
-        cin >> this->ciudadCine;
-        cout << "Elija el cine: ";
-        cin >> this->opcionCine;
-        cout << "Elija la pelicula que desea ver: ";
-        cin >> this->opcionPelicula;
-        //sinopsis de la pelicula
-        //duración de la pelicula
-        //reparto de la pelicula
-        cout << "Desea proceder con la compra? (s/n): ";
-        cin >> this->confirmarCompra;
-        cout << "Escriba la fecha en la que desea ver la pelicula (dd-MM-yyyy): ";
-        cin >> this->fecha;
-        //no vamos a contemplar el caso de que 
-        //la pelicula no este disponible ese dia
-        cout << "1. 15:00" << endl;
-        cout << "2. 17:00" << endl;
-        cout << "3. 19:30" << endl;
-        cout << "4. 21:15" << endl;
-        cout << "5. 23:00" << endl;
-        //los horarios podemos ponerlos fijos o hacer 
-        //que cada pelicula tenga sus propios horarios
-        //la segunda opcion es mas complicada obviamente
-        cin >> this->opcionHorario;
-        cout << "Numero de entradas (6,99/entrada): ";
-        cin >> this->numEntradas;
-        cout << "SALA 4" << endl;
-        //podemos poner numeros de sala aleatorios
-        //o qe cada pelicula tenga su sala en cada cine
-        //la segunda opcion es mas complicada obviamente
-        //yo creo que lo mejor es numeros aleatorios
-        cout << "    ______________    " << endl;
-        cout << "       pantalla       " << endl;
-        //dependiendo de la sala habra mas filas y columnas
-        //sino, para facilitarnos la vida
-        //todas las salas tienen las mismas filas y columnas
-        cout << "1 |[][][][][][][][][][]";
+        cout << "Que desea modificar?" << endl;
+        cout << endl;
+        cout << "1. Pelicula" << endl;
+        cout << "2. Usuario" << endl;
+        cout << "3. Cine" << endl;
+        cout << "4. Actor" << endl;
+        cout << "5. Sala" << endl;
+        cout << "6. Asiento" << endl;
+        cout << "7. Salir" << endl;
+        cout << endl;
+        cin >> this->opcion;
     }
 
-    string MenuComprarEntradas::getCiudadCine()
+    int MenuModificarDatos::getOpcion()
     {
-        return this->ciudadCine;
+        return this->opcion;
     }
 
-    int MenuComprarEntradas::getOpcionCine()
-    {
-        return this->opcionCine;
-    }
-
-    int MenuComprarEntradas::getOpcionPelicula()
-    {
-        return this->opcionPelicula;
-    }
-
-    string MenuComprarEntradas::getConfirmarCompra()
-    {
-        return this->confirmarCompra;
-    }
-
-    string MenuComprarEntradas::getFecha()
-    {
-        return this->fecha;
-    }
-
-    MenuCatalogoPeliculas::MenuCatalogoPeliculas()
+    MenuModificarPelicula::MenuModificarPelicula()
     {
 
     }
 
-    MenuCatalogoPeliculas::~MenuCatalogoPeliculas()
+    MenuModificarPelicula::~MenuModificarPelicula()
     {
 
     }
 
-    void MenuCatalogoPeliculas::mostrar()
+    void MenuModificarPelicula::mostrar()
     {
         cout << "====================" << endl;
-        cout << " CATALOGO PELICULAS " << endl;
+        cout << " MODIFICAR PELICULA " << endl;
         cout << "====================" << endl;
         cout << endl;
-        cout << "Escriba el nombre de su ciudad: ";
-        cin >> this->ciudadCine;
-        cout << "Elija el cine: ";
-        cin >> this->opcionCine;
-        cout << "Elija la pelicula de la que desea ver la informacion: ";
-        cin >> this->opcionPelicula;
-        //sinopsis de la pelicula
-        //duración de la pelicula
-        //reparto de la pelicula
-        cout << "Desea comprar una entrada para esta pelicula? (s/n): ";
-        cin >> this->confirmarCompra;
-        cout << "Escriba la fecha en la que desea ver la pelicula (dd-MM-yyyy): ";
+        cout << "Introduce el ID de la pelicula a modificar: ";
+        cin >> this->idAModificar;
+        cout << "Introduce el ID de la sala en la que se la pelicula: ";
+        cin >> this->idSala;
+        cout << "Introduce el nuevo titulo de la pelicula: ";
+        cin >> this->titulo;
+        cout << "Introduce la nueva sinopsis de la pelicula: ";
+        cin >> this->sinopsis;
+        cout << "Introduce el nuevo horario de la pelicula: ";
+        cin >> this->horario;
+        cout << endl;
+    }
+
+    int MenuModificarPelicula::getIdAModificar()
+    {
+        return this->idAModificar;
+    }
+
+    int MenuModificarPelicula::getIdSala()
+    {
+        return this->idSala;
+    }
+
+    char* MenuModificarPelicula::getTitulo()
+    {
+        return this->titulo;
+    }
+
+    char* MenuModificarPelicula::getSinopsis()
+    {
+        return this->sinopsis;
+    }
+
+    char* MenuModificarPelicula::getHorario()
+    {
+        return this->horario;
+    }
+
+    MenuModificarUsuario::MenuModificarUsuario()
+    {
+
+    }
+
+    MenuModificarUsuario::~MenuModificarUsuario()
+    {
+
+    }
+
+    void MenuModificarUsuario::mostrar()
+    {
+        cout << "===================" << endl;
+        cout << " MODIFICAR USUARIO " << endl;
+        cout << "===================" << endl;
+        cout << endl;
+        cout << "<< Solo podras modificartus propoios datos >>" << endl;
+        cout << endl;
+        cout << "Introduce tu correo electronico: ";
+        cin >> this->correo;
+        cout << "Introduce tu nuevo nombre: ";
+        cin >> this->nombre;
+        cout << "Introduce tu nuevo correo electronico: ";
+        cin >> this->correo;
+        cout << "Introduce tu neva contrasena: ";
+        cin >> this->contrasena;
+        cout << "Introduce tu nueva respuesta de seguridad (Cal es tu pelicula favorita?): ";
+        cin >> this->respuestaSeguridad;
+        cout << endl;
+    }
+
+    char* MenuModificarUsuario::getCorreo()
+    {
+        return this->correo;
+    }
+
+    char* MenuModificarUsuario::getContrasena()
+    {
+        return this->contrasena;
+    }
+
+    char* MenuModificarUsuario::getNombre()
+    {
+        return this->nombre;
+    }
+
+    char* MenuModificarUsuario::getRespuestaSeguridad()
+    {
+        return this->respuestaSeguridad;
+    }
+
+    MenuModificarCine::MenuModificarCine()
+    {
+
+    }
+
+    MenuModificarCine::~MenuModificarCine()
+    {
+
+    }
+
+    void MenuModificarCine::mostrar()
+    {
+        cout << "================" << endl;
+        cout << " MODIFICAR CINE " << endl;
+        cout << "================" << endl;
+        cout << endl;
+        cout << "Introduce el ID del cine a modificar: ";
+        cin >> this->idAModificar;
+        cout << "Introduce el nuevo nombre del cine: ";
+        cin >> this->nombre;
+        cout << "Introduce la nueva direccion del cine: ";
+        cin >> this->direccion;
+        cout << "Introduce la nueva ciudad del cine: ";
+        cin >> this->ciudad;
+        cout << endl;
+    }
+
+    int MenuModificarCine::getIdAModificar()
+    {
+        return this->idAModificar;
+    }
+
+    char* MenuModificarCine::getNombre()
+    {
+        return this->nombre;
+    }
+
+    char* MenuModificarCine::getDireccion()
+    {
+        return this->direccion;
+    }
+
+    char* MenuModificarCine::getCiudad()
+    {
+        return this->ciudad;
+    }
+
+    MenuModificarActor::MenuModificarActor()
+    {
+
+    }
+
+    MenuModificarActor::~MenuModificarActor()
+    {
+
+    }
+
+    void MenuModificarActor::mostrar()
+    {
+        cout << "=================" << endl;
+        cout << " MODIFICAR ACTOR " << endl;
+        cout << "=================" << endl;
+        cout << endl;
+        cout << "Introduce el ID del actor a modificar: ";
+        cin >> this->idAModificar;
+        cout << "Introduce el nuevo nombre del actor: ";
+        cin >> this->nombre;
+        cout << "Introduce el ID de la nueva pelicula en la que actua: ";
+        cin >> this->idPelicula;
+        cout << endl;
+    }
+
+    int MenuModificarActor::getIdAModificar()
+    {
+        return this->idAModificar;
+    }
+
+    char* MenuModificarActor::getNombre()
+    {
+        return this->nombre;
+    }
+
+    int MenuModificarActor::getIdPelicula()
+    {
+        return this->idPelicula;
+    }
+
+    MenuModificarSala::MenuModificarSala()
+    {
+
+    }
+
+    MenuModificarSala::~MenuModificarSala()
+    {
+
+    }
+
+    void MenuModificarSala::mostrar()
+    {
+        cout << "================" << endl;
+        cout << " MODIFICAR SALA " << endl;
+        cout << "================" << endl;
+        cout << endl;
+        cout << "Introduce el ID de la sala a modificar: ";
+        cin >> this->idAModificar;
+        cout << "Introduce el nuevo numero de la sala: ";
+        cin >> this->numero;
+        cout << "Introduce el nuevo numero de columnas de la sala: "
+        cin >> this->numColumnas;
+        cout << "Introduce el nuevo numero de filas de la sala: "
+        cin >> this->numFilas;
+        cout << "Introduce el nuevo ID del cine al que pertenece la sala: ";
+        cin >> this->idCine;
+        cout << endl;
+    }
+
+    int MenuModificarSala::getIdAModificar()
+    {
+        return this->idAModificar;
+    }
+
+    int MenuModificarSala::getNumero()
+    {
+        return this->numero;
+    }
+
+    int MenuModificarSala::getNumColumnas()
+    {
+        return this->numColumnas;
+    }
+
+    int MenuModificarSala::getNumFilas()
+    {
+        return this->numFilas;
+    }
+
+    int MenuModificarSala::getIdCine()
+    {
+        return this->idCine;
+    }
+
+    MenuModificarAsiento::MenuModificarAsiento()
+    {
+
+    }
+
+    MenuModificarAsiento::~MenuModificarAsiento()
+    {
+
+    }
+
+    void MenuModificarAsiento::mostrar()
+    {
+        cout << "===================" << endl;
+        cout << " MODIFICAR ASIENTO " << endl;
+        cout << "===================" << endl;
+        cout << endl;
+        cout << "Introduce el ID del asiento a modificar: ";
+        cin >> this->idAModificar;
+        cout << "Introduce la nueva fila del asiento: ";
+        cin >> this->fila;
+        cout << "Introduce la nueva columna del asiento: ";
+        cin >> this->columna;
+        cout << "Introduce la nueva fecha del asiento (dd-MM-yyyy): ";
         cin >> this->fecha;
-        //no vamos a contemplar el caso de que 
-        //la pelicula no este disponible ese dia
+        cout << "Introduce el nuevo ID de la sala a la que pertenece el asiento: ";
+        cin >> this->idSala;
+        cout << endl;
     }
 
-    string MenuCatalogoPeliculas::getCiudadCine()
-    {
-        return this->ciudadCine;
-    }
 
-    int MenuCatalogoPeliculas::getOpcionCine()
-    {
-        return this->opcionCine;
-    }
 
-    int MenuCatalogoPeliculas::getOpcionPelicula()
-    {
-        return this->opcionPelicula;
-    }
 
-    int MenuCatalogoPeliculas::getConfirmarCompra()
-    {
-        return this->confirmarCompra;
-    }
 
-    string MenuCatalogoPeliculas::getFecha()
-    {
-        return this->fecha;
-    }
-
+}

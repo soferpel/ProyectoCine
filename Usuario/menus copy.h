@@ -20,10 +20,10 @@ char opcionCharModificar[4];
 
 
 //funciones de los menus
-void menuBienvenida();
-void menuInicioSesion();
-void menuRegistro();
-void menuModificarDatos();
+void menuBienvenida(); 
+void menuInicioSesion(); 
+void menuRegistro(); 
+void menuModificarDatos(); 
 void menuModificarPelicula();
 void menuModificarUsuario();
 void menuModificarCine();
@@ -37,7 +37,7 @@ void menuAnadirPelicula();
 void menuAnadirActor();
 void menuAnadirCine();
 void menuAnadirSala();
-void menuAdministrador();
+void menuAdministrador(); 
 void menuMisEntradas();
 void menuComprarEntradas();
 void menuPrincipal();

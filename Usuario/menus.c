@@ -5,7 +5,7 @@
 #include "baseDeDatos.h"
 
 
-void menuBienvenida()
+void menuBienvenida() //hecho
 {
     printf("\n==========\nBIENVENID@\n==========\n\n");
     printf("Que quieres hacer?\n\n");
@@ -14,7 +14,7 @@ void menuBienvenida()
     sscanf(opcionCharBvda, "%i", &opcionIntBvda);
 }
 
-void menuInicioSesion()
+void menuInicioSesion() //hecho
 {
     printf("\n==============\nINICIAR SESION\n==============\n\n");
     printf("Introduce tu correo electronico: ");
@@ -26,7 +26,7 @@ void menuInicioSesion()
     printf("\n");
 }
 
-void menuRegistro()
+void menuRegistro() //hecho
 {
     printf("\n============\nREGISTRARSE\n============\n\n");
     printf("Introduce tu nombre: ");
@@ -41,7 +41,7 @@ void menuRegistro()
     
 }
 
-void menuAdministrador()
+void menuAdministrador() //hecho
 {
     printf("\n=============\nADMINISTRADOR\n=============\n\n");
     printf("Que quieres hacer?\n\n");
@@ -50,7 +50,7 @@ void menuAdministrador()
     sscanf(opcionCharAd, "%i", &opcionIntAd);
 }
 
-void menuModificarDatos()
+void menuModificarDatos() //hecho
 {
     printf("\n============\nMODIFICAR DATOS\n============\n\n");
     printf("De que tabla quieres modificar datos?\n");
