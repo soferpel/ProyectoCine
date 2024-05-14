@@ -34,14 +34,14 @@ namespace menus
     class MenuIniciarSesion
     {
         private:
-            string nombreUsuario;
+            string correoUsuario;
             string contrasena;
         public:
             MenuIniciarSesion();
             ~MenuIniciarSesion();
 
             void mostrar();
-            string getNombreUsuario();
+            string getCorreoUsuario();
             string getContrasena();
     };
 

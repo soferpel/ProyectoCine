@@ -7,7 +7,14 @@
         "sqlite3.h": "c",
         "sala.h": "c",
         "cine.h": "c",
-        "actor.h": "c"
+        "actor.h": "c",
+        "stdio.h": "c",
+        "winsock2.h": "c",
+        "usuario.h": "c",
+        "basededatos.h": "c",
+        "iostream": "cpp",
+        "ostream": "cpp",
+        "xstring": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

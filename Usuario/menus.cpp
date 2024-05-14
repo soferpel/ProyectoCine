@@ -83,17 +83,15 @@ namespace menus
         cout << " INICIAR SESION " << endl;
         cout << "================" << endl;
         cout << endl;
-        cout << "Ingrese su nombre de usuario: ";
-        cin >> this->nombreUsuario;
+        cout << "Ingrese su correo de usuario: ";
+        cin >> this->correoUsuario;
         cout << "Ingrese su contrasena: ";
         cin >> this->contrasena;
-        MenuPrincipal menuPrincipal;
-        menuPrincipal.mostrar();
     }
 
-    string MenuIniciarSesion::getNombreUsuario()
+    string MenuIniciarSesion::getCorreoUsuario()
     {
-        return this->nombreUsuario;
+        return this->correoUsuario;
     }
 
     string MenuIniciarSesion::getContrasena()
