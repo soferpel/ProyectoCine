@@ -34,43 +34,43 @@ namespace menus
     class MenuIniciarSesion
     {
         private:
-            string correoUsuario;
-            string contrasena;
+            char correoUsuario[30];
+            char contrasena[16];
         public:
             MenuIniciarSesion();
             ~MenuIniciarSesion();
 
             void mostrar();
-            string getCorreoUsuario();
-            string getContrasena();
+            char* getCorreoUsuario();
+            char* getContrasena();
     };
 
     class MenuRegistrarse
     {
         private:
-            string nombreUsuario;
-            string correoElectronico;
-            string contrasena;
-            string respuestaSeguridad;
+            char nombreUsuario[16];
+            char correoElectronico[30];
+            char contrasena[16];
+            char respuestaSeguridad;
         public:
             MenuRegistrarse();
             ~MenuRegistrarse();
 
             void mostrar();
-            string getNombreUsuario();
-            string getCorreoElectronico();
-            string getContrasena();
-            string getRespuestaSeguridad();
+            char* getNombreUsuario();
+            char* getCorreoElectronico();
+            char* getContrasena();
+            char* getRespuestaSeguridad();
     };
 
     class MenuComprarEntradas
     {
         private:
-            string ciudadCine;
+            char ciudadCine[20];
             int opcionCine;
             int opcionPelicula;
-            string confirmarCompra;
-            string fecha;
+            char confirmarCompra;
+            char fecha;
             int opcionHorario;
             int numEntradas;
         public:
@@ -89,7 +89,7 @@ namespace menus
     class MenuCatalogoPeliculas
     {
         private:
-            string ciudadCine;
+            char ciudadCine[20];
             int opcionCine;
             int opcionPelicula;
             int confirmarCompra;
