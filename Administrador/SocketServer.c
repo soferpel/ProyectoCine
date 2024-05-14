@@ -106,6 +106,16 @@ int main(int argc, char *argv[]) {
 			send(comm_socket, sendBuff, sizeof(sendBuff), 0);
 			printf("Response sent: %s \n", sendBuff);
         }
+
+		if (strcmp(recvBuff, "REGISTRO") == 0)
+		{
+			int iteracion = 0;
+            recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			while (strcmp(recvBuff, "REGISTRO-END") != 0)
+			{
+
+			}
+		}
     
     if (strcmp(recvBuff, "EXIT") == 0)
 		break;
