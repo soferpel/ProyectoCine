@@ -1,4 +1,6 @@
 #include "menus.h"
+#include "configuracion.h"
+#include "baseDeDatos.h"
 #include <iostream>
 #include <string>
 #include <stdio.h>
@@ -9,6 +11,8 @@
 
 using namespace std;
 using namespace menus;
+
+int programaOperando = 1;
 
 int main(int argc, char *argv[])
 {
@@ -53,8 +57,123 @@ int main(int argc, char *argv[])
 			ntohs(server.sin_port));
 
 	//SEND and RECEIVE data (CLIENT/SERVER PROTOCOL)
-    do
+	autenticacionExitosa = 0;
+    
+	do
 	{
+		strcpy(sendBuff, "CREARTABLAS");
+		send(s, sendBuff, sizeof(sendBuff), 0);	
+
+		MenuEleccionModo menuEleccionModo;
+		menuEleccionModo.mostrar();
+		switch (menuEleccionModo.getOpcion())
+		{
+		case 1:
+			//CLIENTE
+			break;
+		case 2:
+			if (autenticacionExitosa == 1)
+			{
+				hayQueAnadirDatos = 0;
+				MenuPrincipalAdministrador menuPrincipalAdministrador;
+				menuPrincipalAdministrador.mostrar();
+				switch(menuPrincipalAdministrador.getOpcion)
+				{
+					case 1:
+						MenuModificarDatos menuModificarDatos;
+						menuModificarDatos.mostrar();
+						strcpy(sendBuff, "MODIFICARDATOS");
+						send(s, sendBuff, sizeof(sendBuff), 0);
+						recv(s, recvBuff, sizeof(recvBuff), 0);
+						if(recvBuff == 1)
+						{
+							hayQueModificarDatos = 0;
+							switch(menuModificarDatos.getOpcion())
+							{
+								case 1:
+									MenuModificarPelicula menuModificarPelicula;
+									menuModificarelcula.mostrar();
+									strcpy(sendBuff, "MODIFICARPELICULA");
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, menuModificarPelicula.getIdAModificar);
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, menuModificarPelicula.getIdSala);
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, menuModificarPelicula.getTitulo);
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, menuModificarPelicula.getSinopsis);
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, menuModificarPelicula.getHorario);
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									recv(s, recvBuff, sizeof(recvBuff), 0);
+									if(recvBuff == 1)
+									{
+										hayQueModificarDatos = 0;
+									}
+									break;
+
+							}
+						}
+						break;
+				}
+			}
+			else
+			{
+				MenuBienvenida menuBienvenida;
+				menuBienvenida.mostrar();
+				switch(menuBienvenida.getOpcion())
+				{
+					case 1:
+						MenuIniciarSesion menuIniciarSesion;
+						menuIniciarSesion.mostrar();
+						strcpy(sendBuff, "INICIARSESION");
+						send(s, sendBuff, sizeof(sendBuff), 0);
+						strcpy(sendBuff, menuIniciarSesion.getCorreoUsuario());
+						send(s, sendBuff, sizeof(sendBuff), 0);
+						strcpy(sendBuff, menuIniciarSesion.getContrasena());
+						send(s, sendBuff, sizeof(sendBuff), 0);
+						recv(s, recvBuff, sizeof(recvBuff), 0);
+						if (recvBuff == 1)
+						{
+							MenuPrincipalCliente menuPrincipalCliente;
+							menuPrincipalCliente.mostrar();
+						}
+						break;
+					
+					case 2:
+						MenuRegistrarse menuRegistrarse;
+						menuRegistrarse.mostrar();
+						strcpy(sendbuff, "REGISTRARSE");
+						send(s, sendBuff, sizeof(sendBuff), 0);
+						strcpy(sendBuff, menuRegistrarse.getNombre());
+						send(s, sendBuff, sizeof(sendBuff), 0);
+						strcpy(sendBuff, menuRegistrarse.getCorreoUsuario());
+						send(s, sendBuff, sizeof(sendBuff), 0);
+						strcpy(sendBuff, menuRegistrarse.getContrasena());
+						send(s, sendBuff, sizeof(sendBuff), 0);
+						strcpy(sendBuff, menuRegistrarse.getRespuestaSeguridad());
+						send(s, sendBuff, sizeof(sendBuff), 0);
+						recv(s, recvBuff, sizeof(recvBuff), 0);
+						if (recvBuff == 1)
+						{
+							MenuPrincipalCliente menuPrincipalCliente;
+							menuPrincipalCliente.mostrar();
+						}
+						break;
+				}
+			break;
+		case 3:
+			cout << "Hasta luego!" << endl;
+			strcpy(sendbuff, "EXIT");
+			send(s, sendBuff, sizeof(sendBuff), 0);
+			break;
+		default:
+			menuBienvenida.mostrar();
+			break;
+		}
+
+		
+		
 		MenuBienvenida menuBienvenida;
         MenuIniciarSesion menuIniciarSesion;
         MenuRegistrarse menuRegistrarse;
@@ -94,10 +213,12 @@ int main(int argc, char *argv[])
             menuBienvenida.mostrar();
         }
 		
-    }while (menuBienvenida.getOpcion() != 3);
+    }while (programaOperando == 1);
 
     closesocket(s);
 	WSACleanup();
 
-    return 0;
+
+	}    
+	return 0;
 }

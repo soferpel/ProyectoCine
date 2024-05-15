@@ -9,7 +9,8 @@
 #define SERVER_IP "127.0.0.1"
 #define SERVER_PORT 6000
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[]) 
+{
 
     PathDB rutaDB = leerConfiguracion("configuracion.txt");
 	WSADATA wsaData;
@@ -82,6 +83,11 @@ int main(int argc, char *argv[]) {
 
 		printf("Command received: %s \n", recvBuff);
 
+		if(strcmp(recvBuff, "CREARTABLAS") == 0)
+		{
+			crearTabla(rutaDB);
+		}
+
         if (strcmp(recvBuff, "INICIARSESION") == 0)
 		{
             int iteracion = 0;
@@ -107,18 +113,95 @@ int main(int argc, char *argv[]) {
 			printf("Response sent: %s \n", sendBuff);
         }
 
-		if (strcmp(recvBuff, "REGISTRO") == 0)
+		if (strcmp(recvBuff, "REGISTRARSE") == 0)
 		{
 			int iteracion = 0;
             recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
 			while (strcmp(recvBuff, "REGISTRO-END") != 0)
 			{
+				if(iteracion == 0)
+				{
+					strcpy(usuario.nombre, recvBuff);
+				}
+				else if (iteracion == 1)
+				{
+					strcpy(usuario.correo, recvBuff);
+				}
+				else if (iteracion == 2)
+				{
+					strcpy(usuario.contrasena, recvBuff);
+				}
+				else if (iteracion == 3)
+				{
+					strcpy(usuario.respuesta, recvBuff);
+				}
+				else if (iteracion == 4)
+				{
+					guardarUsuario(rutaDB);
+				}
+				iteracion += 1;
+			}
+			sprintf(sendBuff, "%i", validacionUsuario);
+			send(comm_socket, sendBuff, sizeof(sendBuff), 0);
+			printf("Response sent: %s \n", sendBuff);
+		}
+	
 
+		//NO SE SI ESTA PARTE ESTA BIEN
+		if(strcmp(recvBuff, "MODIFICARDATOS") == 0)
+		{
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			while (strcmp(recvBuff, "MODIFICARDATOS-END") != 0)
+			{
+				hayQueModificarDatos = 1;
+				sprintf(sendBuff, "%i", hayQueModificarDatos);
+				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
 			}
 		}
-    
-    if (strcmp(recvBuff, "EXIT") == 0)
-		break;
-    } while (1);
-    
+		//--------------------------------
+
+		if(strcmp(recvBuff, "MODIFICARPELICULA") == 0)
+		{
+			int iteracion = 0;
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			while (strcmp(recvBuff, "MODIFICARPELICULA-END") != 0)
+			{
+				if(iteracion == 0)
+				{
+					strcpy(pelicula.idPeliculaInt, recvBuff);
+				}
+				else if (iteracion == 1)
+				{
+					strcpy(sala.idSalaInt, recvBuff);
+				}
+				else if (iteracion == 2)
+				{
+					strcpy(pelicula.titulo, recvBuff);
+				}
+				else if (iteracion == 3)
+				{
+					strcpy(pelicula.sinopsis, recvBuff);
+				}
+				else if (iteracion == 4)
+				{
+					strcpy(pelicula.horario, recvBuff);
+				}
+				else if (iteracion == 5)
+				{
+					modificarPelicula(rutaDB);
+				}
+				iteracion += 1;
+				sprintf(sendBuff, "%i", hayQueModificarDatos);
+				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
+				printf("Response sent: %s \n", sendBuff);
+
+			}
+		
+		}
+
+    	if (strcmp(recvBuff, "EXIT") == 0)
+		{
+			break;
+		}
+    } while (1);  
 }

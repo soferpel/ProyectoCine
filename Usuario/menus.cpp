@@ -503,8 +503,28 @@ namespace menus
         cout << endl;
     }
 
+    int MenuModificarAsiento::getIdAModificar()
+    {
+        return this->idAModificar;
+    }
 
+    int MenuModificarAsiento::getFila()
+    {
+        return this->fila;
+    }
 
+    int MenuModificarAsiento::getColumna()
+    {
+        return this->columna;
+    }
 
+    string MenuModificarAsiento::getFecha()
+    {
+        return this->fecha;
+    }
 
+    int MenuModificarAsiento::getIdSala()
+    {
+        return this->idSala;
+    }
 }
