@@ -112,6 +112,29 @@ int main(int argc, char *argv[])
 									}
 									break;
 
+								case 2:
+
+									MenuModificarUsuario menuModificarUsuario;
+									menuModificarUsuario.mostrar();
+									strcpy(sendBuff, "MODIFICARUSUARIO");
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, menuModificarUsuario.getCorreo);
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, menuModificarUsuario.getNombre);
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, menuModificarUsuario.getCorreo);
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, menuModificarUsuario.getContrasena);
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, menuModificarUsuario.getRespuestaSeguridad);
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									if(recvBuff == 1)
+									{
+										hayQueModificarDatos = 0;
+									}
+									break;
+
+
 							}
 						}
 						break;

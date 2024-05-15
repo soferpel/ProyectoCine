@@ -199,6 +199,45 @@ int main(int argc, char *argv[])
 		
 		}
 
+		if(strcmp(recvBuff, "MODIFICARUSUARIO") == 0)
+		{
+			int iteracion = 0;
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			while (strcmp(recvBuff, "MODIFICARUSUARIO-END") != 0)
+			{
+				if(iteracion == 0)
+				{
+					strcpy(usuario.correo, recvBuff);
+				}
+				else if (iteracion == 1)
+				{
+					strcpy(usuario.nombre, recvBuff);
+				}
+				else if (iteracion == 2)
+				{
+					strcpy(usuario.correo, recvBuff);
+				}
+				else if (iteracion == 3)
+				{
+					strcpy(usuario.contrasena, recvBuff);
+				}
+				else if (iteracion == 4)
+				{
+					strcpy(usuario.respuesta, recvBuff);
+				}
+				else if (iteracion == 5)
+				{
+					modificarUsuario(rutaDB);
+				}
+				iteracion += 1;
+				sprintf(sendBuff, "%i", hayQueModificarDatos);
+				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
+				printf("Response sent: %s \n", sendBuff);
+
+			}
+		
+		}
+
     	if (strcmp(recvBuff, "EXIT") == 0)
 		{
 			break;

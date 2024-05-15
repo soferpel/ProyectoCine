@@ -298,7 +298,7 @@ namespace menus
         cout << " MODIFICAR USUARIO " << endl;
         cout << "===================" << endl;
         cout << endl;
-        cout << "<< Solo podras modificartus propoios datos >>" << endl;
+        cout << "<< Solo podras modificar tus propios datos >>" << endl;
         cout << endl;
         cout << "Introduce tu correo electronico: ";
         cin >> this->correo;
