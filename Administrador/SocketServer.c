@@ -90,24 +90,14 @@ int main(int argc, char *argv[])
 
         if (strcmp(recvBuff, "INICIARSESION") == 0)
 		{
-            int iteracion = 0;
             recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
-			while (strcmp(recvBuff, "INICIARSESION-END") != 0)
-			{
-                if(iteracion == 0)
-                {
-                    strcpy(usuario.correo, recvBuff);
-                }
-                else if (iteracion == 1)
-                {
-                    strcpy(usuario.contrasena, recvBuff);
-                }
-                else if (iteracion == 2)
-                {
-                    validarUsuario(rutaDB);
-                }
-                iteracion += 1;
-            }
+            strcpy(usuario.correo, recvBuff);
+            
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+            strcpy(usuario.contrasena, recvBuff);
+
+            validarUsuario(rutaDB);
+            
             sprintf(sendBuff, "%i", validacionUsuario);
 			send(comm_socket, sendBuff, sizeof(sendBuff), 0);
 			printf("Response sent: %s \n", sendBuff);
@@ -115,32 +105,20 @@ int main(int argc, char *argv[])
 
 		if (strcmp(recvBuff, "REGISTRARSE") == 0)
 		{
-			int iteracion = 0;
             recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
-			while (strcmp(recvBuff, "REGISTRO-END") != 0)
-			{
-				if(iteracion == 0)
-				{
-					strcpy(usuario.nombre, recvBuff);
-				}
-				else if (iteracion == 1)
-				{
-					strcpy(usuario.correo, recvBuff);
-				}
-				else if (iteracion == 2)
-				{
-					strcpy(usuario.contrasena, recvBuff);
-				}
-				else if (iteracion == 3)
-				{
-					strcpy(usuario.respuesta, recvBuff);
-				}
-				else if (iteracion == 4)
-				{
-					guardarUsuario(rutaDB);
-				}
-				iteracion += 1;
-			}
+			strcpy(usuario.nombre, recvBuff);
+
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			strcpy(usuario.correo, recvBuff);
+
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);		
+			strcpy(usuario.contrasena, recvBuff);
+			
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			strcpy(usuario.respuesta, recvBuff);
+			
+			guardarUsuario(rutaDB);
+
 			sprintf(sendBuff, "%i", validacionUsuario);
 			send(comm_socket, sendBuff, sizeof(sendBuff), 0);
 			printf("Response sent: %s \n", sendBuff);
@@ -162,81 +140,143 @@ int main(int argc, char *argv[])
 
 		if(strcmp(recvBuff, "MODIFICARPELICULA") == 0)
 		{
-			int iteracion = 0;
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
-			while (strcmp(recvBuff, "MODIFICARPELICULA-END") != 0)
-			{
-				if(iteracion == 0)
-				{
-					strcpy(pelicula.idPeliculaInt, recvBuff);
-				}
-				else if (iteracion == 1)
-				{
-					strcpy(sala.idSalaInt, recvBuff);
-				}
-				else if (iteracion == 2)
-				{
-					strcpy(pelicula.titulo, recvBuff);
-				}
-				else if (iteracion == 3)
-				{
-					strcpy(pelicula.sinopsis, recvBuff);
-				}
-				else if (iteracion == 4)
-				{
-					strcpy(pelicula.horario, recvBuff);
-				}
-				else if (iteracion == 5)
-				{
-					modificarPelicula(rutaDB);
-				}
-				iteracion += 1;
-				sprintf(sendBuff, "%i", hayQueModificarDatos);
-				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
-				printf("Response sent: %s \n", sendBuff);
-
-			}
+			strcpy(pelicula.idPeliculaInt, recvBuff);
+			
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			strcpy(sala.idSalaInt, recvBuff);
+			
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			strcpy(pelicula.titulo, recvBuff);
+			
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			strcpy(pelicula.sinopsis, recvBuff);
+			
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			strcpy(pelicula.horario, recvBuff);
+				
+			modificarPelicula(rutaDB);
+			
+			sprintf(sendBuff, "%i", hayQueModificarDatos);
+			send(comm_socket, sendBuff, sizeof(sendBuff), 0);
+			printf("Response sent: %s \n", sendBuff);
 		
 		}
 
 		if(strcmp(recvBuff, "MODIFICARUSUARIO") == 0)
 		{
-			int iteracion = 0;
+			
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
-			while (strcmp(recvBuff, "MODIFICARUSUARIO-END") != 0)
-			{
-				if(iteracion == 0)
-				{
-					strcpy(usuario.correo, recvBuff);
-				}
-				else if (iteracion == 1)
-				{
-					strcpy(usuario.nombre, recvBuff);
-				}
-				else if (iteracion == 2)
-				{
-					strcpy(usuario.correo, recvBuff);
-				}
-				else if (iteracion == 3)
-				{
-					strcpy(usuario.contrasena, recvBuff);
-				}
-				else if (iteracion == 4)
-				{
-					strcpy(usuario.respuesta, recvBuff);
-				}
-				else if (iteracion == 5)
-				{
-					modificarUsuario(rutaDB);
-				}
-				iteracion += 1;
-				sprintf(sendBuff, "%i", hayQueModificarDatos);
-				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
-				printf("Response sent: %s \n", sendBuff);
+			strcpy(usuario.correo, recvBuff);
+			
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			strcpy(usuario.nombre, recvBuff);
 
-			}
-		
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			strcpy(usuario.correo, recvBuff);
+
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);	
+			strcpy(usuario.contrasena, recvBuff);
+
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);	
+			strcpy(usuario.respuesta, recvBuff);
+				
+			modificarUsuario(rutaDB);
+				
+			sprintf(sendBuff, "%i", hayQueModificarDatos);
+			send(comm_socket, sendBuff, sizeof(sendBuff), 0);
+			printf("Response sent: %s \n", sendBuff);
+
 		}
+
+		if(strcmp(recvBuff, "MODIFICARCINE") == 0)
+		{
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			strcpy(cine.idCineInt, recvBuff);
+			
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			strcpy(cine.nombre, recvBuff);
+			
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			strcpy(cine.direccion, recvBuff);
+			
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			strcpy(cine.ciudad, recvBuff);
+			
+			modificarCine(rutaDB);
+			
+			sprintf(sendBuff, "%i", hayQueModificarDatos);
+			send(comm_socket, sendBuff, sizeof(sendBuff), 0);
+			printf("Response sent: %s \n", sendBuff);
+		}
+
+		if(strcmp(recvBuff, "MODIFICARACTOR") == 0)
+		{
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			strcpy(actor.idActorInt, recvBuff);
+			
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			strcpy(actor.nombre, recvBuff);
+			
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			strcpy(actor.idPeliculaInt, recvBuff);
+			
+			modificarActor(rutaDB);
+			
+			sprintf(sendBuff, "%i", hayQueModificarDatos);
+			send(comm_socket, sendBuff, sizeof(sendBuff), 0);
+			printf("Response sent: %s \n", sendBuff);
+		}
+
+		if(strcmp(recvBuff, "MODIFICARASIENTO") == 0)
+		{
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			strcpy(asiento.idAsientoInt, recvBuff);
+			
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			strcpy(asiento.filaAsientoInt, recvBuff);
+			
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			strcpy(asiento.numeroAsientoInt, recvBuff);
+			
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			strcpy(asiento.fechaAsiento, recvBuff);
+			
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			strcpy(sala.idSalaInt, recvBuff);
+
+			modificarAsiento(rutaDB);
+			
+			sprintf(sendBuff, "%i", hayQueModificarDatos);
+			send(comm_socket, sendBuff, sizeof(sendBuff), 0);
+			printf("Response sent: %s \n", sendBuff);
+		}
+
+		if(strcmp(recvBuff, "MODIFICARSALA") == 0)
+		{
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			strcpy(sala.idSalaInt, recvBuff);
+			
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			strcpy(sala.numeroSalaInt, recvBuff);
+
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			strcpy(sala.nColumnasSalaInt, recvBuff);
+
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			strcpy(sala.nFilasSalaInt, recvBuff);
+
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			strcpy(cine.idCineInt, recvBuff);
+
+			modificarSala(rutaDB);
+
+			sprintf(sendBuff, "%i", hayQueModificarDatos);
+			send(comm_socket, sendBuff, sizeof(sendBuff), 0);
+			printf("Response sent: %s \n", sendBuff);
+		}
+		
+		
 
     	if (strcmp(recvBuff, "EXIT") == 0)
 		{

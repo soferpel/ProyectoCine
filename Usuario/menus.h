@@ -155,6 +155,62 @@ namespace menus
             char* getCiudad();
     };
 
+    class MenuModificarActor
+    {
+        private:
+            int idAModificar;
+            char nombre[20];
+            int idPelicula;
+        public:
+            MenuModificarActor();
+            ~MenuModificarActor();
+
+            void mostrar();
+            int getIdAModificar();
+            char* getNombre();
+            int getIdPelicula();
+    };
+
+    class MenuModificarAsiento
+    {
+        private:
+            int idAModificar;
+            int fila;
+            int numero;
+            char fecha[11];
+            int idSala;
+        public:
+            MenuModificarAsiento();
+            ~MenuModificarAsiento();
+
+            void mostrar();
+            int getIdAModificar();
+            int getFila();
+            int getNumero();
+            char* getFecha();
+    };
+
+    class MenuModificarSala
+    {
+        private:
+            int idAModificar;
+            int numero;
+            int nColumnas;
+            int nFilas;
+            int idCine;
+        public:
+            MenuModificarSala();
+            ~MenuModificarSala();
+
+            void mostrar();
+            int getIdAModificar();
+            int getNumero();
+            int getNColumnas();
+            int getNFilas();
+            int getIdCine();
+            
+    };
+
 }
 
 #endif

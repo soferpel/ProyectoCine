@@ -494,8 +494,8 @@ namespace menus
         cin >> this->idAModificar;
         cout << "Introduce la nueva fila del asiento: ";
         cin >> this->fila;
-        cout << "Introduce la nueva columna del asiento: ";
-        cin >> this->columna;
+        cout << "Introduce el nuevo numero del asiento: ";
+        cin >> this->numero;
         cout << "Introduce la nueva fecha del asiento (dd-MM-yyyy): ";
         cin >> this->fecha;
         cout << "Introduce el nuevo ID de la sala a la que pertenece el asiento: ";

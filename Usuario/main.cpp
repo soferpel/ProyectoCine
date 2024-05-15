@@ -91,21 +91,20 @@ int main(int argc, char *argv[])
 							switch(menuModificarDatos.getOpcion())
 							{
 								case 1:
-									MenuModificarPelicula menuModificarPelicula;
-									menuModificarelcula.mostrar();
-									strcpy(sendBuff, "MODIFICARPELICULA");
+									MenuModificarUsuario menuModificarUsuario;
+									menuModificarUsuario.mostrar();
+									strcpy(sendBuff, "MODIFICARUSUARIO");
 									send(s, sendBuff, sizeof(sendBuff), 0);
-									strcpy(sendBuff, menuModificarPelicula.getIdAModificar);
+									strcpy(sendBuff, menuModificarUsuario.getCorreo());
 									send(s, sendBuff, sizeof(sendBuff), 0);
-									strcpy(sendBuff, menuModificarPelicula.getIdSala);
+									strcpy(sendBuff, menuModificarUsuario.getNombre());
 									send(s, sendBuff, sizeof(sendBuff), 0);
-									strcpy(sendBuff, menuModificarPelicula.getTitulo);
+									strcpy(sendBuff, menuModificarUsuario.getCorreo());
 									send(s, sendBuff, sizeof(sendBuff), 0);
-									strcpy(sendBuff, menuModificarPelicula.getSinopsis);
+									strcpy(sendBuff, menuModificarUsuario.getContrasena());
 									send(s, sendBuff, sizeof(sendBuff), 0);
-									strcpy(sendBuff, menuModificarPelicula.getHorario);
+									strcpy(sendBuff, menuModificarUsuario.getRespuestaSeguridad());
 									send(s, sendBuff, sizeof(sendBuff), 0);
-									recv(s, recvBuff, sizeof(recvBuff), 0);
 									if(recvBuff == 1)
 									{
 										hayQueModificarDatos = 0;
@@ -113,20 +112,17 @@ int main(int argc, char *argv[])
 									break;
 
 								case 2:
-
-									MenuModificarUsuario menuModificarUsuario;
-									menuModificarUsuario.mostrar();
-									strcpy(sendBuff, "MODIFICARUSUARIO");
+									MenuModificarCine menuModificarCine;
+									menuModificarCine.mostrar();
+									strcpy(sendBuff, "MODIFICARCINE");
 									send(s, sendBuff, sizeof(sendBuff), 0);
-									strcpy(sendBuff, menuModificarUsuario.getCorreo);
+									strcpy(sendBuff, menuModificarCine.getIdAModificar());
 									send(s, sendBuff, sizeof(sendBuff), 0);
-									strcpy(sendBuff, menuModificarUsuario.getNombre);
+									strcpy(sendBuff, menuModificarCine.getNombre());
 									send(s, sendBuff, sizeof(sendBuff), 0);
-									strcpy(sendBuff, menuModificarUsuario.getCorreo);
+									strcpy(sendBuff, menuModificarCine.getDireccion());
 									send(s, sendBuff, sizeof(sendBuff), 0);
-									strcpy(sendBuff, menuModificarUsuario.getContrasena);
-									send(s, sendBuff, sizeof(sendBuff), 0);
-									strcpy(sendBuff, menuModificarUsuario.getRespuestaSeguridad);
+									strcpy(sendBuff, menuModificarCine.getCiudad());
 									send(s, sendBuff, sizeof(sendBuff), 0);
 									if(recvBuff == 1)
 									{
@@ -134,7 +130,91 @@ int main(int argc, char *argv[])
 									}
 									break;
 
+								case 3:
+									MenuModificarActor menuModificarActor;
+									menuModificarActor.mostrar();
+									strcpy(sendBuff, "MODIFICARACTOR");
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, menuModificarActor.getIdAModificar());
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, menuModificarActor.getNombre());
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, menuModificarActor.getIdPelicula());
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									if(recvBuff == 1)
+									{
+										hayQueModificarDatos = 0;
+									}
+									break;
+								
+								case 4:
+									MenuModificarAsiento menuModificarAsiento;
+									menuModificarAsiento.mostrar();
+									strcpy(sendBuff, "MODIFICARASIENTO");
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, menuModificarAsiento.getIdAModificar());
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, menuModificarAsiento.getFila());
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, menuModificarAsiento.getNumero());
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, menuModificarAsiento.getFecha());
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, menuModificarAsiento.getIdSala());
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									if(recvBuff == 1)
+									{
+										hayQueModificarDatos = 0;
+									}
+									break;
 
+								case 5:
+									MenuModificarPelicula menuModificarPelicula;
+									menuModificarPelicula.mostrar();
+									strcpy(sendBuff, "MODIFICARPELICULA");
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, menuModificarPelicula.getIdAModificar());
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, menuModificarPelicula.getIdSala());
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, menuModificarPelicula.getTitulo());
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, menuModificarPelicula.getSinopsis());
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, menuModificarPelicula.getHorario());
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									if(recvBuff == 1)
+									{
+										hayQueModificarDatos = 0;
+									}
+									break;
+
+								case 6:
+									MenuModificarSala menuModificarSala;
+									menuModificarSala.mostrar();
+									strcpy(sendBuff, "MODIFICARSALA");
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, menuModificarSala.getIdAModificar());
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, menuModificarSala.getNumero());
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, menuModificarSala.getNColumnas());
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, menuModificarSala.getNFilas());
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, menuModificarSala.getIdCine());
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									if(recvBuff == 1)
+									{
+										hayQueModificarDatos = 0;
+									}
+									break;
+								
+								case 7:
+									cout << "Hasta luego!" << endl;
+									strcpy(sendBuff, "EXIT");
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									break;
 							}
 						}
 						break;
@@ -166,7 +246,7 @@ int main(int argc, char *argv[])
 					case 2:
 						MenuRegistrarse menuRegistrarse;
 						menuRegistrarse.mostrar();
-						strcpy(sendbuff, "REGISTRARSE");
+						strcpy(sendBuff, "REGISTRARSE");
 						send(s, sendBuff, sizeof(sendBuff), 0);
 						strcpy(sendBuff, menuRegistrarse.getNombre());
 						send(s, sendBuff, sizeof(sendBuff), 0);
@@ -187,56 +267,15 @@ int main(int argc, char *argv[])
 			break;
 		case 3:
 			cout << "Hasta luego!" << endl;
-			strcpy(sendbuff, "EXIT");
+			strcpy(sendBuff, "EXIT");
 			send(s, sendBuff, sizeof(sendBuff), 0);
 			break;
 		default:
 			menuBienvenida.mostrar();
 			break;
 		}
-
 		
-		
-		MenuBienvenida menuBienvenida;
-        MenuIniciarSesion menuIniciarSesion;
-        MenuRegistrarse menuRegistrarse;
-
-        menuBienvenida.mostrar();
-
-		if (menuBienvenida.getOpcion() == '1')
-        {
-            menuIniciarSesion.mostrar();
-            strcpy(sendBuff, "INICIARSESION");
-			send(s, sendBuff, sizeof(sendBuff), 0);
-            strcpy(sendBuff, menuIniciarSesion.getCorreoUsuario());
-			send(s, sendBuff, sizeof(sendBuff), 0);
-            strcpy(sendBuff, menuIniciarSesion.getContrasena());
-			send(s, sendBuff, sizeof(sendBuff), 0);
-            recv(s, recvBuff, sizeof(recvBuff), 0);
-            if (recvBuff == 1)
-            {
-                MenuPrincipal menuPrincipal;
-                menuPrincipal.mostrar();
-            }
-            
-        }
-        else if (menuBienvenida.getOpcion() == '2')
-        {
-            menuRegistrarse.mostrar();
-        }
-        else if (menuBienvenida.getOpcion() == '3')
-        {
-            cout << "Hasta luego!" << endl;
-            // SENDING command EXIT
-			strcpy(sendBuff, "EXIT");
-			send(s, sendBuff, sizeof(sendBuff), 0);
-        }
-        else
-        {
-            menuBienvenida.mostrar();
-        }
-		
-    }while (programaOperando == 1);
+    } while (programaOperando == 1);
 
     closesocket(s);
 	WSACleanup();
