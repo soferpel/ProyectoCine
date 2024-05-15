@@ -77,3 +77,29 @@ void eliminarFila(PathDB rutaDB) {
     }
     sqlite3_close(db);
 }
+
+void visualizarDatosPorID(PathDB rutaDB) {
+    sqlite3 *db;
+    char *err_msg = 0;
+    int rc = sqlite3_open(rutaDB.ruta, &db);
+
+    char sql_query[100];
+    snprintf(sql_query, sizeof(sql_query), "SELECT * FROM %s WHERE ID_%s = %d;", tablaVisualizar, tablaVisualizar, idVisualizar);
+
+    rc = sqlite3_exec(db, sql_query, callbackVisualizarDatos, 0, &err_msg);
+
+    if (rc != SQLITE_OK) {
+        fprintf(stderr, "Error al visualizar datos: %s\n", err_msg);
+        sqlite3_free(err_msg);
+    }
+    sqlite3_close(db);
+}
+
+int callbackVisualizarDatos(void *data, int argc, char **argv, char **azColName) {
+    int i;
+    for (i = 0; i < argc; i++) {
+        printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
+    }
+    printf("\n");
+    return 0;
+}

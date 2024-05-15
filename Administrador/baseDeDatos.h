@@ -30,12 +30,15 @@ int autenticacionExitosa;
 //OTROS
 char tablaEliminar[20];
 char idEliminar[5];
+char tablaVisualizar[20];
+char idVisualizar[5];
 int hayQueAnadirDatos;
 int hayQueModificarDatos;
 
 void crearTabla(PathDB rutaDB);
 void borrarTablas(PathDB rutaDB);
 void eliminarFila(PathDB rutaDB);
+void visualizarDatosPorID(PathDB rutaDB);
 
 //VALIDACIONES Y CALLBACKS
 
