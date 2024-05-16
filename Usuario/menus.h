@@ -5,6 +5,10 @@
 using namespace std;
 int opcionModo;
 int opcionEliminar;
+int opcionCliente;
+int opcionAD;
+char tablaEliminar[20];
+char idEliminar[5];
 namespace menus
 {
     class MenuEleccionModo
