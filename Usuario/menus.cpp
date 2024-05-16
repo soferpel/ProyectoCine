@@ -318,7 +318,7 @@ void menuAnadirDatos()
     cin >> opcionAD;
 }
 
-void menuAnadirCine()//pendiente
+void menuAnadirCine()
 {
     char nombreCine[20];
     char direccionCine[20];
