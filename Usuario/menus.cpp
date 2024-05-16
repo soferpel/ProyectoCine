@@ -178,20 +178,26 @@ void MenuModificarUsuario()
     cout << endl;
 }
 
-void MenuModificarCine()//pendiente
+void MenuModificarCine()
 {
+    char nombreCine[20];
+    char direccionCine[20];
+    char ciudadCine[20];
     cout << "================" << endl;
     cout << " MODIFICAR CINE " << endl;
     cout << "================" << endl;
     cout << endl;
     cout << "Introduce el ID del cine a modificar: ";
-    cin >> idAModificar;
+    cin >> cineAModificar;
     cout << "Introduce el nuevo nombre del cine: ";
-    cin >> nombre;
+    cin >> nombreCine;
+    cine.setNombreCine(nombreCine);
     cout << "Introduce la nueva direccion del cine: ";
-    cin >> direccion;
+    cin >> direccionCine;
+    cine.setDireccionCine(direccionCine);
     cout << "Introduce la nueva ciudad del cine: ";
-    cin >> ciudad;
+    cin >> ciudadCine;
+    cine.setCiudadCine(ciudadCine);
     cout << endl;
 }
 
@@ -214,43 +220,59 @@ void MenuModificarActor()
     cout << endl;
 }
 
-void MenuModificarSala()//pendiente
+void MenuModificarSala()
 {
+    int idCine;
+    int numeroSala;
+    int nColumnasSala;
+    int nFilasSala;
     cout << "================" << endl;
     cout << " MODIFICAR SALA " << endl;
     cout << "================" << endl;
     cout << endl;
     cout << "Introduce el ID de la sala a modificar: ";
-    cin >> idAModificar;
+    cin >> salaAModificar;
     cout << "Introduce el nuevo numero de la sala: ";
-    cin >> numero;
+    cin >> numeroSala;
+    sala.setNumeroSala(numeroSala);
     cout << "Introduce el nuevo numero de columnas de la sala: "
-    cin >> numColumnas;
+    cin >> nColumnasSala;
+    sala.setNColumnasSala(nColumnasSala);
     cout << "Introduce el nuevo numero de filas de la sala: "
-    cin >> numFilas;
+    cin >> nFilasSala;
+    sala.setNFilasSala(nFilasSala);
     cout << "Introduce el nuevo ID del cine al que pertenece la sala: ";
     cin >> idCine;
+    sala.setIdCine(idCine);
     cout << endl;
 }
 
-void MenuModificarAsiento()//pendiente
-    {
-        cout << "===================" << endl;
-        cout << " MODIFICAR ASIENTO " << endl;
-        cout << "===================" << endl;
-        cout << endl;
-        cout << "Introduce el ID del asiento a modificar: ";
-        cin >> idAModificar;
-        cout << "Introduce la nueva fila del asiento: ";
-        cin >> fila;
-        cout << "Introduce el nuevo numero del asiento: ";
-        cin >> numero;
-        cout << "Introduce la nueva fecha del asiento (dd-MM-yyyy): ";
-        cin >> fecha;
-        cout << "Introduce el nuevo ID de la sala a la que pertenece el asiento: ";
-        cin >> idSala;
-        cout << endl;
-    }
+void MenuModificarAsiento()
+{
+    int idSala;
+    int filaAsiento;
+    int numeroAsiento;
+    char fechaAsiento[11];
+    cout << "===================" << endl;
+    cout << " MODIFICAR ASIENTO " << endl;
+    cout << "===================" << endl;
+    cout << endl;
+    cout << "Introduce el ID del asiento a modificar: ";
+    cin >> asientoAModificar;
+    cout << "Introduce la nueva fila del asiento: ";
+    cin >> filaAsiento;
+    asiento.setFilaAsiento(filaAsiento);
+    cout << "Introduce el nuevo numero del asiento: ";
+    cin >> numeroAsiento;
+    asiento.setNumeroAsiento(numeroAsiento);
+    cout << "Introduce la nueva fecha del asiento (dd-MM-yyyy): ";
+    cin >> fechaAsiento;
+    asiento.setFechaAsiento(fechaAsiento);
+    cout << "Introduce el nuevo ID de la sala a la que pertenece el asiento: ";
+    cin >> idSala;
+    asiento.setIdSala(idSala);
+    cout << endl;
+}
 
 void menuBorrarDatos()
 {
@@ -287,25 +309,28 @@ void menuBorrarDatos()
     cin >> idEliminar;
 }
 
-void menuAnadirAsiento()//pendiente
+void menuAnadirAsiento()
 {
+    int idSala;
+    int filaAsiento;
+    int numeroAsiento;
+    char fechaAsiento[11];
     cout << "===============" << endl;
     cout << " ANADIR ASIENTO " << endl;
     cout << "===============" << endl;
     cout << "Introduce el id de la sala en la que esta el asiento: " << endl;
     fflush(stdin);
-    cin >> idEliminar;
-    fgets(sala.idSalaChar, 4, stdin);
-    sscanf(sala.idSalaChar, "%i", &sala.idSalaInt);
-    printf("Introduce la fila del asiento: ");
-    fgets(asiento.filaAsientoChar, 3, stdin);
-    sscanf(asiento.filaAsientoChar, "%i", &asiento.filaAsientoInt);
-    printf("Introduce el numero del asiento: ");
-    fgets(asiento.numeroAsientoChar, 3, stdin);
-    sscanf(asiento.numeroAsientoChar, "%i", &asiento.numeroAsientoInt);
-    printf("Introduce la fecha del asiento: ");
-    fgets(asiento.fechaAsiento, 11, stdin);
-
+    cin >> idSala;
+    asiento.setIdSala(idSala);
+    cout << "Introduce la fila del asiento: " << endl;
+    cin >> filaAsiento;
+    asiento.setFilaAsiento(filaAsiento);
+    cout << "Introduce el numero del asiento: " << endl;
+    cin >> numeroAsiento;
+    asiento.setNumeroAsiento(numeroAsiento);
+    cout << "Introduce la fecha del asiento: " << endl;
+    cin >> fechaAsiento;
+    asiento.setFechaAsiento(fechaAsiento);
 }
 
 void menuAnadirDatos()

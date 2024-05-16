@@ -6,6 +6,7 @@
 #include "actor.h"
 #include "cine.h"
 #include "sala.h"
+#include "asiento.h"
 
 using namespace std;
 int opcionModo;
@@ -29,6 +30,9 @@ int salaAModificar;
 
 Cine cine;
 int cineAModificar;
+
+Asiento asiento;
+int asientoAModificar;
 
 char tablaEliminar[20];
 char idEliminar[5];
