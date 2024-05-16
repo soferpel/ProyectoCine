@@ -3,7 +3,8 @@
 #include <string>
 
 using namespace std;
-
+int opcionModo;
+int opcionEliminar;
 namespace menus
 {
     class MenuEleccionModo
@@ -209,6 +210,86 @@ namespace menus
             int getNFilas();
             int getIdCine();
             
+    };
+
+    class MenuAnyadirAsiente
+    {
+        private:
+            int idSala;
+            int filaAsiento;
+            int nAsiento;
+            char fechaAsiento[11];
+        public:
+            MenuAnyadirAsiente();
+            ~MenuAnyadirAsiente();
+
+            void mostrar();
+            int getIdSala();
+            int getNAsiento();
+            int getNFilasAsiento();
+            char* getFAsiento();
+            
+    };
+
+    class MenuAnyadirDatos
+    {
+        private:
+            int opcion;
+        public:
+            MenuAnyadirDatos();
+            ~MenuAnyadirDatos();
+
+            void mostrar();
+            int getOpcion();
+            
+    };
+
+    class MenuAnadirCine
+    {
+        private:
+            char nombreCine[20];
+            char direccionCine[20];
+            char ciudadCine[20];
+        public:
+            MenuAnadirCine();
+            ~MenuAnadirCine();
+
+            void mostrar();
+            char* getNombreCine();
+            char* getDireccionCine();
+            char* getCiudadCine();
+    };
+
+    class MenuAnadirSala
+    {
+        private:
+            int idCine;
+            int numeroSala;
+            int nColumnasSala;
+            int nFilasSala;
+        public:
+            MenuAnadirSala();
+            ~MenuAnadirSala();
+
+            void mostrar();
+            int getIdCine();
+            char* getNSala();
+            char* getNColumnasSala();
+            char* getNFilasSala();
+    };
+
+    class MenuAnadirActor
+    {
+        private:
+            char nombreActor[20];
+            int idPelicula;
+        public:
+            MenuAnadirCine();
+            ~MenuAnadirCine();
+
+            void mostrar();
+            int getIdPelicula();
+            char* getNombreActor();
     };
 
 }
