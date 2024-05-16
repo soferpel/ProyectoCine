@@ -320,37 +320,44 @@ void menuAnadirDatos()
 
 void menuAnadirCine()//pendiente
 {
+    char nombreCine[20];
+    char direccionCine[20];
+    char ciudadCine[20];
     cout << "===============" << endl;
     cout << " ANADIR CINE " << endl;
     cout << "===============" << endl;
     cout << "Cual es el nombre del cine?" << endl;
-    fflush(stdin);
-    fgets(cine.nombreCine, 20, stdin);
-    printf("Cual es la direccion del cine?\n");
-    fgets(cine.direccionCine, 40, stdin);
-    printf("Cual es la ciudad del cine?\n");
-    fgets(cine.ciudadCine, 20, stdin);
-
+    cin >> nombreCine;
+    cine.setCiudadCine(nombreCine);
+    cout << "Cual es la direccion del cine?" << endl;
+    cin >> direccionCine;
+    cine.setDireccionCine(direccionCine);
+    cout << "Cual es la ciudad del cine?" << endl;
+    cin >> ciudadCine;
+    cine.setCiudadCine(ciudadCine);
 }
 
-void menuAnadirSala()//pendiente
+void menuAnadirSala()
 {
+    int idCine;
+    int numeroSala;
+    int nColumnasSala;
+    int nFilasSala;
     cout << "===============" << endl;
     cout << " ANADIR SALA " << endl;
     cout << "===============" << endl;
     cout << "Introduce el id del cine en la que esta la sala: " << endl;
-    fflush(stdin);
-    fgets(cine.idCineChar, 4, stdin);
-    sscanf(cine.idCineChar, "%i", &cine.idCineInt);
-    printf("Cual es el numero de filas que contiene la sala? ");
-    fgets(sala.nFilasSalaChar, 3, stdin);
-    sscanf(sala.nFilasSalaChar, "%i", &sala.nFilasSalaInt);
-    printf("Cual es el numero de columnas que contiene la sala? ");
-    fgets(sala.nColumnasSalaChar, 3, stdin);
-    sscanf(sala.nColumnasSalaChar, "%i", &sala.nColumnasSalaInt);
-    printf("Cual es el numero de la sala? ");
-    fgets(sala.numeroSalaChar, 3, stdin);
-    sscanf(sala.numeroSalaChar, "%i", &sala.numeroSalaInt);
+    cin >> idCine;
+    sala.setIdCine(idCine);
+    cout << "Cual es el numero de filas que contiene la sala? " << endl;
+    cin >> nFilasSala;
+    sala.setNFilasSala(nFilasSala);
+    cout << "Cual es el numero de columnas que contiene la sala? " << endl;
+    cin >> nColumnasSala;
+    sala.setNColumnasSala(nColumnasSala);
+    cout << "Cual es el numero de la sala? " << endl;
+    cin >> numeroSala;
+    sala.setNumeroSala(numeroSala);
 }
 
 void menuAnadirActor()
