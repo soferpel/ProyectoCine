@@ -276,7 +276,72 @@ int main(int argc, char *argv[])
 			printf("Response sent: %s \n", sendBuff);
 		}
 		
-		
+		if (strcmp(recvBuff, "BORRARDATOS") == 0)
+		{
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			strcpy(tablaEliminar, recvBuff);
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			strcpy(idEliminar, recvBuff);
+			eliminarFila(rutaDB);
+		}
+
+		if (strcmp(recvBuff, "ANADIRASIENTO") == 0)
+		{
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			strcpy(asiento.fechaAsiento, recvBuff);
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			strcpy(asiento.filaAsientoInt, recvBuff);
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			strcpy(sala.idSalaInt, recvBuff);
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			strcpy(asiento.numeroAsientoInt, recvBuff);
+			anadirAsiento(rutaDB);
+		}
+
+		if (strcmp(recvBuff, "ANADIRPELICULA") == 0)
+		{
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			strcpy(pelicula.horario, recvBuff);
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			strcpy(cine.idCineInt, recvBuff);
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			strcpy(pelicula.sinopsis, recvBuff);
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			strcpy(pelicula.titulo, recvBuff);
+			anadirPelicula(rutaDB);
+		}
+
+		if (strcmp(recvBuff, "ANADIRACTOR") == 0)
+		{
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			strcpy(pelicula.idPeliculaInt, recvBuff);
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			strcpy(actor.nombreActor, recvBuff);
+			anadirActor(rutaDB);
+		}
+
+		if (strcmp(recvBuff, "ANADIRCINE") == 0)
+		{
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			strcpy(cine.ciudadCine, recvBuff);
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			strcpy(cine.direccionCine, recvBuff);
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			strcpy(cine.nombreCine, recvBuff);
+			anadirCine(rutaDB);
+		}
+
+		if (strcmp(recvBuff, "ANADIRSALA") == 0)
+		{
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			strcpy(cine.idCineInt, recvBuff);
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			strcpy(sala.nColumnasSalaInt, recvBuff);
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			strcpy(sala.nFilasSalaInt, recvBuff);
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			strcpy(sala.numeroSalaInt recvBuff);
+		}
 
     	if (strcmp(recvBuff, "EXIT") == 0)
 		{

@@ -15,6 +15,7 @@ int opcionCliente;
 int opcionAD;
 int opcionAdministrador;
 int opcionModificar;
+int opcionBvda;
 
 Usuario usuario;
 char usuarioAModificar[30];
@@ -36,6 +37,30 @@ int asientoAModificar;
 
 char tablaEliminar[20];
 char idEliminar[5];
+
+void menuBienvenida(); 
+void menuInicioSesion(); 
+void menuRegistro(); 
+void menuModificarDatos(); 
+void menuModificarPelicula();
+void menuModificarUsuario();
+void menuModificarCine();
+void menuModificarActor();
+void menuModificarSala();
+void menuModificarAsiento();
+void menuBorrarDatos();
+void menuAnadirDatos();
+void menuAnadirAsiento();
+void menuAnadirPelicula();
+void menuAnadirActor();
+void menuAnadirCine();
+void menuAnadirSala();
+void menuAdministrador(); 
+void menuMisEntradas();
+void menuComprarEntradas();
+void menuPrincipal();
+void seleccionarCine();
+
 namespace menus
 {
     class MenuEleccionModo
