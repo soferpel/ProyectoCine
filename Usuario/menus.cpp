@@ -45,6 +45,199 @@ void MenuPrincipalCliente()
     cout << "3. Salir" << endl;
     cout << endl;
     cin >> opcionCliente;
+}
+
+void MenuPrincipalAdministrador()
+{
+    cout << "===============" << endl;
+    cout << " ADMINISTRADOR " << endl;
+    cout << "===============" << endl;
+    cout << endl;
+    cout << "Que desea hacer?" << endl;
+    cout << endl;
+    cout << "1. Modificar datos" << endl;
+    cout << "2. Eliminar datos" << endl;
+    cout << "3. Anadir datos" << endl;
+    cout << "4. Salir" << endl;
+    cout << endl;
+    cin >> opcionAdministrador;
+}
+
+void MenuIniciarSesion()
+{
+    char correo[30];
+    char contrasena[16]
+    cout << "================" << endl;
+    cout << " INICIAR SESION " << endl;
+    cout << "================" << endl;
+    cout << endl;
+    cout << "Ingrese su correo de usuario: ";
+    cin >> correo;
+    usuario.setCorreo(correo);
+    cout << "Ingrese su contrasena: ";
+    cin >> contrasena;
+    usuario.setContrasena(contrasena);
+}
+
+void MenuRegistrarse()
+{
+    char nombreUsuario[16];
+    char correo[30];
+    char contrasena[16];
+    char respuestaSeguridad[20];
+    cout << "=============" << endl;
+    cout << " REGISTRARSE " << endl;
+    cout << "=============" << endl;
+    cout << endl;
+    cout << "Ingrese su nombre de usuario: ";
+    cin >> nombreUsuario;
+    usuario.setNombre(nombreUsuario);
+    cout << "Ingrese su correo electronico: ";
+    cin >> correo;
+    usuario.setCorreo(correo);
+    cout << "Ingrese su contrasena: ";
+    cin >> contrasena;
+    usuario.setContrasena(contrasena);
+    cout << "Responda esta pregunta de seguridad (Cual es su pelicula favorita?): ";
+    cin >> respuestaSeguridad;
+    usuario.setRespuesta(respuestaSeguridad);
+}
+
+void MenuModificarDatos()
+{
+    cout << "================" << endl;
+    cout << " MODIFICAR DATOS " << endl;
+    cout << "================" << endl;
+    cout << endl;
+    cout << "Que desea modificar?" << endl;
+    cout << endl;
+    cout << "1. Pelicula" << endl;
+    cout << "2. Usuario" << endl;
+    cout << "3. Cine" << endl;
+    cout << "4. Actor" << endl;
+    cout << "5. Sala" << endl;
+    cout << "6. Asiento" << endl;
+    cout << "7. Salir" << endl;
+    cout << endl;
+    cin >> opcionModificar;
+}
+
+void MenuModificarPelicula()//pendiente
+{
+    cout << "====================" << endl;
+    cout << " MODIFICAR PELICULA " << endl;
+    cout << "====================" << endl;
+    cout << endl;
+    cout << "Introduce el ID de la pelicula a modificar: ";
+    cin >> idAModificar;
+    cout << "Introduce el ID de la sala en la que se la pelicula: ";
+    cin >> idSala;
+    cout << "Introduce el nuevo titulo de la pelicula: ";
+    cin >> titulo;
+    cout << "Introduce la nueva sinopsis de la pelicula: ";
+    cin >> sinopsis;
+    cout << "Introduce el nuevo horario de la pelicula: ";
+    cin >> horario;
+    cout << endl;
+}
+
+void MenuModificarUsuario()
+{
+    char nombreUsuario[16];
+    char correoNuevo[30];
+    char contrasena[16];
+    char respuestaSeguridad[20];
+    cout << "===================" << endl;
+    cout << " MODIFICAR USUARIO " << endl;
+    cout << "===================" << endl;
+    cout << endl;
+    cout << "<< Solo podras modificar tus propios datos >>" << endl;
+    cout << endl;
+    cout << "Introduce tu correo electronico: ";
+    cin >> usuarioAModificar;
+    cout << "Introduce tu nuevo nombre: ";
+    cin >> nombreUsuario;
+    usuario.setNombre(nombreUsuario);
+    cout << "Introduce tu nuevo correo electronico: ";
+    cin >> correoNuevo;
+    usuario.setCorreo(correoNuevo);
+    cout << "Introduce tu neva contrasena: ";
+    cin >> contrasena;
+    usuario.setContrasena(contrasena);
+    cout << "Introduce tu nueva respuesta de seguridad (Cal es tu pelicula favorita?): ";
+    cin >> respuestaSeguridad;
+    usuario.setRespuesta(respuestaSeguridad);
+    cout << endl;
+}
+
+void MenuModificarCine()//pendiente
+{
+    cout << "================" << endl;
+    cout << " MODIFICAR CINE " << endl;
+    cout << "================" << endl;
+    cout << endl;
+    cout << "Introduce el ID del cine a modificar: ";
+    cin >> idAModificar;
+    cout << "Introduce el nuevo nombre del cine: ";
+    cin >> nombre;
+    cout << "Introduce la nueva direccion del cine: ";
+    cin >> direccion;
+    cout << "Introduce la nueva ciudad del cine: ";
+    cin >> ciudad;
+    cout << endl;
+}
+
+void MenuModificarActor()//pendiente
+{
+    cout << "=================" << endl;
+    cout << " MODIFICAR ACTOR " << endl;
+    cout << "=================" << endl;
+    cout << endl;
+    cout << "Introduce el ID del actor a modificar: ";
+    cin >> idAModificar;
+    cout << "Introduce el nuevo nombre del actor: ";
+    cin >> nombre;
+    cout << "Introduce el ID de la nueva pelicula en la que actua: ";
+    cin >> idPelicula;
+    cout << endl;
+}
+
+void MenuModificarSala()//pendiente
+{
+    cout << "================" << endl;
+    cout << " MODIFICAR SALA " << endl;
+    cout << "================" << endl;
+    cout << endl;
+    cout << "Introduce el ID de la sala a modificar: ";
+    cin >> idAModificar;
+    cout << "Introduce el nuevo numero de la sala: ";
+    cin >> numero;
+    cout << "Introduce el nuevo numero de columnas de la sala: "
+    cin >> numColumnas;
+    cout << "Introduce el nuevo numero de filas de la sala: "
+    cin >> numFilas;
+    cout << "Introduce el nuevo ID del cine al que pertenece la sala: ";
+    cin >> idCine;
+    cout << endl;
+}
+
+void MenuModificarAsiento()//pendiente
+    {
+        cout << "===================" << endl;
+        cout << " MODIFICAR ASIENTO " << endl;
+        cout << "===================" << endl;
+        cout << endl;
+        cout << "Introduce el ID del asiento a modificar: ";
+        cin >> idAModificar;
+        cout << "Introduce la nueva fila del asiento: ";
+        cin >> fila;
+        cout << "Introduce el nuevo numero del asiento: ";
+        cin >> numero;
+        cout << "Introduce la nueva fecha del asiento (dd-MM-yyyy): ";
+        cin >> fecha;
+        cout << "Introduce el nuevo ID de la sala a la que pertenece el asiento: ";
+        cin >> idSala;
+        cout << endl;
     }
 
 void menuBorrarDatos()
@@ -103,14 +296,13 @@ void menuAnadirAsiento()//pendiente
 
 }
 
-void menuAnadirDatos()//pendiente
+void menuAnadirDatos()
 {
     cout << "===============" << endl;
     cout << " ANADIR DATOS " << endl;
     cout << "===============" << endl;
     cout << "Que datos quieres anadir?" << endl;
-    cout << "1. Usuario\n 2. Asiento\n 3. Pelicula\n 4. Actor\n 5. Cine\n 6. Sala\n 7. Salir\n\n" << endl;
-    printf(" 1. Usuario\n 2. Asiento\n 3. Pelicula\n 4. Actor\n 5. Cine\n 6. Sala\n 7. Salir\n\n");
+    cout << "1. Usuario\n 2. Asiento\n 3. Pelicula\n 4. Actor\n 5. Cine\n 6. Sala\n 7. Salir" << endl;
     cin >> opcionAD;
 }
 

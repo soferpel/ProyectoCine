@@ -1,12 +1,19 @@
 #ifndef MENUS_H
 #define MENUS_H
 #include <string>
+#include "usuario.h"
 
 using namespace std;
 int opcionModo;
 int opcionEliminar;
 int opcionCliente;
 int opcionAD;
+int opcionAdministrador;
+int opcionModificar;
+
+Usuario usuario;
+char usuarioAModificar[30];
+
 char tablaEliminar[20];
 char idEliminar[5];
 namespace menus
