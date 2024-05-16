@@ -10,14 +10,13 @@ class Usuario
         char contrasena[16];
         int idUsuario;
     public:
-        Usuario(char nombre[16], char respuesta[20], char correo[30], char contrasena[16], int idUsuario);
+        Usuario(char nombre[16], char respuesta[20], char correo[30], char contrasena[16]);
         ~Usuario();
 
         void setNombre(char nombre[16]);
         void setRespuesta(char respuesta[20]);
         void setCorreo(char correo[30]);
         void setContrasena(char contrasena[16]);
-        void setIdUsuario(int idUsuario);
         char* getNombre();
         char* getRespuesta();
         char* getCorreo();

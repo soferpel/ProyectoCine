@@ -1,6 +1,6 @@
 #include "usuario.h"
 
-Usuario::Usuario(char nombre[16], char respuesta[20], char correo[30], char contrasena[16], int idUsuario)
+Usuario::Usuario(char nombre[16], char respuesta[20], char correo[30], char contrasena[16])
 {
     this->nombre = new char[16];
     strcpy(this->nombre, nombre);
@@ -39,11 +39,6 @@ void Usuario::setCorreo(char correo[30])
 void Usuario::setContrasena(char contrasena[16])
 {
     strcpy(this->contrasena, contrasena);
-}
-
-void Usuario::setIdUsuario(int idUsuario)
-{
-    this->idUsuario = idUsuario;
 }
 
 char* Usuario::getNombre()
