@@ -2,6 +2,8 @@
 #define MENUS_H
 #include <string>
 #include "usuario.h"
+#include "pelicula.h"
+#include "actor.h"
 
 using namespace std;
 int opcionModo;
@@ -13,6 +15,12 @@ int opcionModificar;
 
 Usuario usuario;
 char usuarioAModificar[30];
+
+Pelicula pelicula;
+int PeliculaAModificar;
+
+Actor actor;
+int actorAModificar;
 
 char tablaEliminar[20];
 char idEliminar[5];

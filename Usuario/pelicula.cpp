@@ -1,6 +1,6 @@
 #include "pelicula.h"
 
-Pelicula::Pelicula(char titulo[20], char sinopsis[100], char horario[20], int idCine)
+Pelicula::Pelicula(char titulo[20], char sinopsis[100], char horario[20], int idSala)
 {
     this->titulo = new char[20];
     strcpy(this->titulo, titulo);
@@ -8,7 +8,7 @@ Pelicula::Pelicula(char titulo[20], char sinopsis[100], char horario[20], int id
     strcpy(this->sinopsis, sinopsis);
     this->horario = new char[20];
     strcpy(this->horario, horario);
-    this->idCine = idCine;
+    this->idSala = idSala;
 }
 
 Pelicula::~Pelicula()
@@ -33,9 +33,9 @@ void Pelicula::setHorario(char horario[20])
     strcpy(this->horario, horario);
 }
 
-void Pelicula::setIdCine(int idCine)
+void Pelicula::setIdSala(int idSala)
 {
-    this->idCine = idCine;
+    this->idSala = idSala;
 }
 
 int Pelicula::getIdPelicula()
@@ -58,7 +58,7 @@ char* Pelicula::getHorario()
     return this->horario;
 }
 
-int Pelicula::getIdCine()
+int Pelicula::getIdSala()
 {
-    return this->idCine;
+    return this->idSala;
 }

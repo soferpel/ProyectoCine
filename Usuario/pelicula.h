@@ -8,21 +8,21 @@ class Pelicula
         char titulo[20];
         char sinopsis[100];
         char horario[20];
-        int idCine;
+        int idSala;
 
     public:
-        Pelicula(char titulo[20], char sinopsis[100], char horario[20], int idCine);
+        Pelicula(char titulo[20], char sinopsis[100], char horario[20], int idSala);
         ~Pelicula();
 
         void setTitulo(char titulo[20]);
         void setSinopsis(char sinopsis[100]);
         void setHorario(char horario[20]);
-        void setIdCine(int idCine);
+        void setIdSala(int idSala);
         int getIdPelicula();
         char* getTitulo();
         char* getSinopsis();
         char* getHorario();
-        int getIdCine();
+        int getIdSala();
 
 };
 

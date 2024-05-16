@@ -122,22 +122,30 @@ void MenuModificarDatos()
     cin >> opcionModificar;
 }
 
-void MenuModificarPelicula()//pendiente
+void MenuModificarPelicula()
 {
+    char titulo[20];
+    char sinopsis[100];
+    char horario[20];
+    int idSala;
     cout << "====================" << endl;
     cout << " MODIFICAR PELICULA " << endl;
     cout << "====================" << endl;
     cout << endl;
     cout << "Introduce el ID de la pelicula a modificar: ";
-    cin >> idAModificar;
+    cin >> PeliculaAModificar;
     cout << "Introduce el ID de la sala en la que se la pelicula: ";
     cin >> idSala;
+    pelicula.setIdSala(idSala);
     cout << "Introduce el nuevo titulo de la pelicula: ";
     cin >> titulo;
+    pelicula.setTitulo(titulo);
     cout << "Introduce la nueva sinopsis de la pelicula: ";
     cin >> sinopsis;
+    pelicula.setSinopsis(sinopsis);
     cout << "Introduce el nuevo horario de la pelicula: ";
     cin >> horario;
+    pelicula.setHorario(horario);
     cout << endl;
 }
 
@@ -187,18 +195,22 @@ void MenuModificarCine()//pendiente
     cout << endl;
 }
 
-void MenuModificarActor()//pendiente
+void MenuModificarActor()
 {
+    char nombreActor[20];
+    int idPelicula;
     cout << "=================" << endl;
     cout << " MODIFICAR ACTOR " << endl;
     cout << "=================" << endl;
     cout << endl;
     cout << "Introduce el ID del actor a modificar: ";
-    cin >> idAModificar;
+    cin >> actorAModificar;
     cout << "Introduce el nuevo nombre del actor: ";
-    cin >> nombre;
+    cin >> nombreActor;
+    actor.setNombreActor(nombreActor);
     cout << "Introduce el ID de la nueva pelicula en la que actua: ";
     cin >> idPelicula;
+    actor.setIdPelicula(idPelicula);
     cout << endl;
 }
 
@@ -341,34 +353,41 @@ void menuAnadirSala()//pendiente
     sscanf(sala.numeroSalaChar, "%i", &sala.numeroSalaInt);
 }
 
-void menuAnadirActor()//pendiente
+void menuAnadirActor()
 {
+    char nombreActor[20];
+    int idPelicula;
     cout << "===============" << endl;
     cout << " ANADIR ACTOR " << endl;
     cout << "===============" << endl;
     cout << "Introduce el id de la pelicula en la que actua el actor: " << endl;
-    fflush(stdin);
-    fgets(pelicula.idPeliculaChar, 4, stdin);
-    sscanf(pelicula.idPeliculaChar, "%i", &pelicula.idPeliculaInt);
-    printf("Cual es el nombre del actor? ");
-    fgets(actor.nombreActor, 20, stdin);
-
+    cin >> idPelicula;
+    actor.setIdPelicula(idPelicula);
+    cout << "Cual es el nombre del actor? " << endl;
+    cin >> nombreActor;
+    actor.setNombreActor(nombreActor);
 }
 
-void menuAnadirPelicula()//pendiente
+void menuAnadirPelicula()
 {
+    int idSala;
+    char titulo[20];
+    char sinopsis[100];
+    char horario[20];
+    int idSala;
     cout << "===============" << endl;
     cout << " ANADIR PELICULA " << endl;
     cout << "===============" << endl;
     cout << "Introduce el id de la sala en la que se ve la pelicula: " << endl;
-    fflush(stdin);
-    fgets(sala.idSalaChar, 4, stdin);
-    sscanf(sala.idSalaChar, "%i", &sala.idSalaInt);
-    printf("Introduce el titulo de la pelicula: ");
-    fgets(pelicula.titulo, 20, stdin);
-    printf("Introduce la sinopsis de la pelicula: ");
-    fgets(pelicula.sinopsis, 200, stdin);
-    printf("Introduce el horario de la pelicula: ");
-    fgets(pelicula.horario, 20, stdin);
-
+    cin >> idSala;
+    pelicula.setIdSala(idSala);
+    cout << "Introduce el titulo de la pelicula: " << endl;
+    cin >> titulo;
+    pelicula.setTitulo(titulo);
+    cout << "Introduce la sinopsis de la pelicula: " << endl;
+    cin >> sinopsis;
+    pelicula.setSinopsis(sinopsis);
+    cout << "Introduce el horario de la pelicula: " << endl;
+    cin >> idSala;
+    pelicula.setHorario(idSala);
 }
