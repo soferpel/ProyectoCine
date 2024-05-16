@@ -38,6 +38,10 @@ int asientoAModificar;
 char tablaEliminar[20];
 char idEliminar[5];
 
+char tablaVisualizar[20];
+char idVisualizar[5];
+
+void MenuVisualizarDatos();
 void menuBienvenida(); 
 void menuInicioSesion(); 
 void menuRegistro(); 

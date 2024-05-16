@@ -68,7 +68,26 @@ int main(int argc, char *argv[])
 		switch (opcionModo)
 		{
 		case 1:
-			//CLIENTE
+			switch (opcionCliente)
+			{
+			case 1:
+				MenuVisualizarDatos();
+				strcpy(sendBuff, "VISUALIZARDATOS");
+				send(s, sendBuff, sizeof(sendBuff), 0);
+				strcpy(sendBuff, tablaVisualizar);
+				send(s, sendBuff, sizeof(sendBuff), 0);
+				strcpy(sendBuff, idVisualizar);
+				send(s, sendBuff, sizeof(sendBuff), 0);
+				break;
+			case 2:
+				/* code */
+				break;
+			case 3:
+				/* code */
+				break;
+			default:
+				break;
+			}
 			break;
 		case 2:
 			if (autenticacionExitosa == 1)

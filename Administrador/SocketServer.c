@@ -340,7 +340,17 @@ int main(int argc, char *argv[])
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
 			strcpy(sala.nFilasSalaInt, recvBuff);
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
-			strcpy(sala.numeroSalaInt recvBuff);
+			strcpy(sala.numeroSalaInt, recvBuff);
+			anadirSala(rutaDB);
+		}
+
+		if (strcmp(recvBuff, "VISUALIZARDATOS") == 0)
+		{
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			strcpy(tablaVisualizar, recvBuff);
+			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			strcpy(idVisualizar, recvBuff);
+			visualizarDatosPorID(rutaDB);
 		}
 
     	if (strcmp(recvBuff, "EXIT") == 0)

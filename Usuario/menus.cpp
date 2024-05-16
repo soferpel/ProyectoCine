@@ -40,11 +40,23 @@ void MenuPrincipalCliente()
     cout << endl;
     cout << "Que desea hacer?" << endl;
     cout << endl;
-    cout << "1. Visualizar cines" << endl;
+    cout << "1. Visualizar datos" << endl;
     cout << "2. Modificar datos" << endl;
     cout << "3. Salir" << endl;
     cout << endl;
     cin >> opcionCliente;
+}
+
+void MenuVisualizarDatos()
+{
+    cout << "==================" << endl;
+    cout << " VISUALIZAR DATOS " << endl;
+    cout << "==================" << endl;
+    cout << endl;
+    cout << "Que tabla desea visualizar?" << endl;
+    cin >> tablaVisualizar;
+    cout << "Cual es el id del dato a visualizar" << endl;
+    cin >> idVisualizar;
 }
 
 void MenuPrincipalAdministrador()
