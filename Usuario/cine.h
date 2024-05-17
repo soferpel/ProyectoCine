@@ -4,18 +4,18 @@
 class Cine
 {
     private:
-        int idCine;
-        char nombreCine[20];
-        char direccionCine[20];
-        char ciudadCine[20];
+        char* idCine;
+        char* nombreCine;
+        char* direccionCine;
+        char* ciudadCine;
     public:
-        Cine(char nombreCine[20], char direccionCine[20], char ciudadCine[20]);
+        Cine(char* nombreCine, char* direccionCine, char* ciudadCine);
         ~Cine();
         
-        void setNombreCine(char nombreCine[20]);
-        void setDireccionCine(char direccionCine[20]);
-        void setCiudadCine(char ciudadCine[20]);
-        int getIdCine();
+        void setNombreCine(char* nombreCine);
+        void setDireccionCine(char* direccionCine);
+        void setCiudadCine(char* ciudadCine);
+        char* getIdCine();
         char* getNombreCine();
         char* getDireccionCine();
         char* getCiudadCine();

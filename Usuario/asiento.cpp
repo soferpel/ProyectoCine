@@ -1,10 +1,14 @@
 #include "asiento.h"
+#include <string.h>
 
-Asiento::Asiento(int filaAsiento, int numeroAsiento, char* fechaAsiento, int idSala)
+Asiento::Asiento(char* filaAsiento, char* numeroAsiento, char* fechaAsiento, char* idSala)
 {
-    this->filaAsiento = filaAsiento;
-    this->numeroAsiento = numeroAsiento;
-    this->idSala = idSala;
+    this->filaAsiento = new char[strlen(filaAsiento) + 1 ];
+    strcpy(this->filaAsiento, filaAsiento);
+    this->numeroAsiento = new char[strlen(numeroAsiento) + 1 ];
+    strcpy(this->numeroAsiento, numeroAsiento);
+    this->idSala = new char[strlen(idSala) + 1 ];
+    strcpy(this->idSala, idSala);
     this->fechaAsiento = new char[strlen(fechaAsiento) + 1 ];
     strcpy(this->fechaAsiento, fechaAsiento);
 }
@@ -12,6 +16,9 @@ Asiento::Asiento(int filaAsiento, int numeroAsiento, char* fechaAsiento, int idS
 Asiento::~Asiento()
 {
     delete[] this->fechaAsiento;
+    delete[] this->filaAsiento;
+    delete[] this->numeroAsiento;
+    delete[] this->idSala;
 }
 
 void Asiento::setFilaAsiento(int filaAsiento)
@@ -34,17 +41,17 @@ void Asiento::setIdSala(int idSala)
     this->idSala = idSala;
 }
 
-int Asiento::getIdAsiento()
+char* Asiento::getIdAsiento()
 {
     return this->idAsiento;
 }
 
-int Asiento::getFilaAsiento()
+char* Asiento::getFilaAsiento()
 {
     return this->filaAsiento;
 }  
 
-int Asiento::getNumeroAsiento()
+char* Asiento::getNumeroAsiento()
 {
     return this->numeroAsiento;
 }
@@ -54,7 +61,7 @@ char* Asiento::getFechaAsiento()
     return this->fechaAsiento;
 }
 
-int Asiento::getIdSala()
+char* Asiento::getIdSala()
 {
     return this->idSala;
 }

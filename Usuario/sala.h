@@ -9,7 +9,7 @@ class Sala{
         int nColumnasSala;
         int nFilasSala;
     public:
-        Sala(int numeroSala, int nColumnasSala, int nFilasSala);
+        Sala(int numeroSala, int nColumnasSala, int nFilasSala, int idCine);
         ~Sala();
 
         void setNumeroSala(int numeroSala);

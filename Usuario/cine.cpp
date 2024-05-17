@@ -1,4 +1,5 @@
 #include "cine.h"
+#include <string.h>
 
 Cine::Cine(char* nombreCine, char* direccionCine, char* ciudadCine)
 {
@@ -32,7 +33,7 @@ void Cine::setCiudadCine(char* ciudadCine)
     strcpy(this->ciudadCine, ciudadCine);
 }
 
-int Cine::getIdCine()
+char* Cine::getIdCine()
 {
     return idCine;
 }

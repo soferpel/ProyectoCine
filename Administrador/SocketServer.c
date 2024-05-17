@@ -141,6 +141,7 @@ int main(int argc, char *argv[])
 		if(strcmp(recvBuff, "MODIFICARPELICULA") == 0)
 		{
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			atoi(recvBuff);
 			strcpy(pelicula.idPeliculaInt, recvBuff);
 			
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
@@ -167,6 +168,7 @@ int main(int argc, char *argv[])
 		{
 			
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			atoi(recvBuff);
 			strcpy(usuario.correo, recvBuff);
 			
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
@@ -192,6 +194,7 @@ int main(int argc, char *argv[])
 		if(strcmp(recvBuff, "MODIFICARCINE") == 0)
 		{
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			atoi(recvBuff);
 			strcpy(cine.idCineInt, recvBuff);
 			
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
@@ -213,6 +216,7 @@ int main(int argc, char *argv[])
 		if(strcmp(recvBuff, "MODIFICARACTOR") == 0)
 		{
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			atoi(recvBuff);
 			strcpy(actor.idActorInt, recvBuff);
 			
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
@@ -231,6 +235,7 @@ int main(int argc, char *argv[])
 		if(strcmp(recvBuff, "MODIFICARASIENTO") == 0)
 		{
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			atoi(recvBuff);
 			strcpy(asiento.idAsientoInt, recvBuff);
 			
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
@@ -255,6 +260,7 @@ int main(int argc, char *argv[])
 		if(strcmp(recvBuff, "MODIFICARSALA") == 0)
 		{
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			atoi(recvBuff);
 			strcpy(sala.idSalaInt, recvBuff);
 			
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
@@ -290,10 +296,13 @@ int main(int argc, char *argv[])
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
 			strcpy(asiento.fechaAsiento, recvBuff);
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			atoi(recvBuff);
 			strcpy(asiento.filaAsientoInt, recvBuff);
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			atoi(recvBuff);
 			strcpy(sala.idSalaInt, recvBuff);
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			atoi(recvBuff);
 			strcpy(asiento.numeroAsientoInt, recvBuff);
 			anadirAsiento(rutaDB);
 		}
@@ -303,6 +312,7 @@ int main(int argc, char *argv[])
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
 			strcpy(pelicula.horario, recvBuff);
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			atoi(recvBuff);
 			strcpy(cine.idCineInt, recvBuff);
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
 			strcpy(pelicula.sinopsis, recvBuff);
@@ -314,6 +324,7 @@ int main(int argc, char *argv[])
 		if (strcmp(recvBuff, "ANADIRACTOR") == 0)
 		{
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			atoi(recvBuff);
 			strcpy(pelicula.idPeliculaInt, recvBuff);
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
 			strcpy(actor.nombreActor, recvBuff);
@@ -334,12 +345,16 @@ int main(int argc, char *argv[])
 		if (strcmp(recvBuff, "ANADIRSALA") == 0)
 		{
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			atoi(recvBuff);
 			strcpy(cine.idCineInt, recvBuff);
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			atoi(recvBuff);
 			strcpy(sala.nColumnasSalaInt, recvBuff);
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			atoi(recvBuff);
 			strcpy(sala.nFilasSalaInt, recvBuff);
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+			atoi(recvBuff);
 			strcpy(sala.numeroSalaInt, recvBuff);
 			anadirSala(rutaDB);
 		}

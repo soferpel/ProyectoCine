@@ -1,4 +1,5 @@
 #include "pelicula.h"
+#include <string.h>
 
 Pelicula::Pelicula(char* titulo, char* sinopsis, char* horario, int idSala)
 {

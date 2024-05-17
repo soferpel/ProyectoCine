@@ -1,4 +1,5 @@
 #include "usuario.h"
+#include <string.h>
 
 Usuario::Usuario(char* nombre, char* respuesta, char* correo, char contrasena*)
 {

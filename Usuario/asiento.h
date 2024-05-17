@@ -4,25 +4,25 @@
 class Asiento
 {
     private:
-        int idSala;
-        int idAsiento;
-        int filaAsiento;
-        int numeroAsiento;
-        char fechaAsiento[11];
+        char* idSala;
+        char* idAsiento;
+        char* filaAsiento;
+        char* numeroAsiento;
+        char* fechaAsiento;
 
     public:
-        Asiento(int filaAsientoInt, int numeroAsientoInt, char fechaAsiento[11]);
+        Asiento(char* filaAsientoInt, char* numeroAsientoInt, char* fechaAsiento, char* idSala);
         ~Asiento();
 
         void setFilaAsiento(int filaAsiento);
         void setNumeroAsiento(int numeroAsiento);
-        void setFechaAsiento(char fechaAsiento[11]);
+        void setFechaAsiento(char* fechaAsiento);
         void setIdSala(int idSala);
-        int getIdAsiento();
-        int getFilaAsiento();
-        int getNumeroAsiento();
+        char* getIdAsiento();
+        char* getFilaAsiento();
+        char* getNumeroAsiento();
         char* getFechaAsiento();
-        int getIdSala();
+        char* getIdSala();
 
 };
 

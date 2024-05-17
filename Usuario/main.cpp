@@ -1,6 +1,4 @@
 #include "menus.h"
-#include "configuracion.h"
-#include "baseDeDatos.h"
 #include <iostream>
 #include <string>
 #include <stdio.h>
@@ -10,9 +8,11 @@
 #define SERVER_PORT 6000
 
 using namespace std;
-using namespace menus;
 
 int programaOperando = 1;
+int autenticacionExitosa = 0;
+int hayQueModificarDatos = 0;
+int hayQueAnadirDatos = 0;
 
 int main(int argc, char *argv[])
 {
@@ -101,7 +101,7 @@ int main(int argc, char *argv[])
 						strcpy(sendBuff, "MODIFICARDATOS");
 						send(s, sendBuff, sizeof(sendBuff), 0);
 						recv(s, recvBuff, sizeof(recvBuff), 0);
-						if(recvBuff == 1)
+						if(*recvBuff == 1)
 						{
 							hayQueModificarDatos = 0;
 							switch(opcionModificar)
@@ -110,7 +110,7 @@ int main(int argc, char *argv[])
 									menuModificarUsuario();
 									strcpy(sendBuff, "MODIFICARUSUARIO");
 									send(s, sendBuff, sizeof(sendBuff), 0);
-									strcpy(sendBuff, usuario.getCorreo());
+									strcpy(sendBuff, usuarioAModificar);
 									send(s, sendBuff, sizeof(sendBuff), 0);
 									strcpy(sendBuff, usuario.getNombre());
 									send(s, sendBuff, sizeof(sendBuff), 0);
@@ -118,9 +118,9 @@ int main(int argc, char *argv[])
 									send(s, sendBuff, sizeof(sendBuff), 0);
 									strcpy(sendBuff, usuario.getContrasena());
 									send(s, sendBuff, sizeof(sendBuff), 0);
-									strcpy(sendBuff, usuario.getRespuestaSeguridad());
+									strcpy(sendBuff, usuario.getRespuesta());
 									send(s, sendBuff, sizeof(sendBuff), 0);
-									if(recvBuff == 1)
+									if(*recvBuff == 1)
 									{
 										hayQueModificarDatos = 0;
 									}
@@ -130,15 +130,15 @@ int main(int argc, char *argv[])
 									menuModificarCine();
 									strcpy(sendBuff, "MODIFICARCINE");
 									send(s, sendBuff, sizeof(sendBuff), 0);
-									strcpy(sendBuff, cine.getIdAModificar());
+									strcpy(sendBuff, cineAModificar);
 									send(s, sendBuff, sizeof(sendBuff), 0);
-									strcpy(sendBuff, cine.getNombre());
+									strcpy(sendBuff, cine.getNombreCine());
 									send(s, sendBuff, sizeof(sendBuff), 0);
-									strcpy(sendBuff, cine.getDireccion());
+									strcpy(sendBuff, cine.getDireccionCine());
 									send(s, sendBuff, sizeof(sendBuff), 0);
-									strcpy(sendBuff, cine.getCiudad());
+									strcpy(sendBuff, cine.getCiudadCine());
 									send(s, sendBuff, sizeof(sendBuff), 0);
-									if(recvBuff == 1)
+									if(*recvBuff == 1)
 									{
 										hayQueModificarDatos = 0;
 									}
@@ -148,9 +148,9 @@ int main(int argc, char *argv[])
 									menuModificarActor();
 									strcpy(sendBuff, "MODIFICARACTOR");
 									send(s, sendBuff, sizeof(sendBuff), 0);
-									strcpy(sendBuff, actor.getIdAModificar());
+									strcpy(sendBuff, actorAModificar);
 									send(s, sendBuff, sizeof(sendBuff), 0);
-									strcpy(sendBuff, actor.getNombre());
+									strcpy(sendBuff, actor.getNombreActor());
 									send(s, sendBuff, sizeof(sendBuff), 0);
 									strcpy(sendBuff, actor.getIdPelicula());
 									send(s, sendBuff, sizeof(sendBuff), 0);
@@ -164,13 +164,13 @@ int main(int argc, char *argv[])
 									menuModificarAsiento();
 									strcpy(sendBuff, "MODIFICARASIENTO");
 									send(s, sendBuff, sizeof(sendBuff), 0);
-									strcpy(sendBuff, asiento.getIdAModificar());
+									strcpy(sendBuff, asientoAModificar);
 									send(s, sendBuff, sizeof(sendBuff), 0);
-									strcpy(sendBuff, asiento.getFila());
+									strcpy(sendBuff, asiento.getFilaAsiento());
 									send(s, sendBuff, sizeof(sendBuff), 0);
-									strcpy(sendBuff, asiento.getNumero());
+									strcpy(sendBuff, asiento.getNumeroAsiento());
 									send(s, sendBuff, sizeof(sendBuff), 0);
-									strcpy(sendBuff, asiento.getFecha());
+									strcpy(sendBuff, asiento.getFechaAsiento());
 									send(s, sendBuff, sizeof(sendBuff), 0);
 									strcpy(sendBuff, asiento.getIdSala());
 									send(s, sendBuff, sizeof(sendBuff), 0);
@@ -184,7 +184,7 @@ int main(int argc, char *argv[])
 									menuModificarPelicula();
 									strcpy(sendBuff, "MODIFICARPELICULA");
 									send(s, sendBuff, sizeof(sendBuff), 0);
-									strcpy(sendBuff, pelicula.getIdAModificar());
+									strcpy(sendBuff, PeliculaAModificar);
 									send(s, sendBuff, sizeof(sendBuff), 0);
 									strcpy(sendBuff, pelicula.getIdSala());
 									send(s, sendBuff, sizeof(sendBuff), 0);
@@ -204,13 +204,13 @@ int main(int argc, char *argv[])
 									menuModificarSala();
 									strcpy(sendBuff, "MODIFICARSALA");
 									send(s, sendBuff, sizeof(sendBuff), 0);
-									strcpy(sendBuff, sala.getIdAModificar());
+									strcpy(sendBuff, salaAModificar);
 									send(s, sendBuff, sizeof(sendBuff), 0);
-									strcpy(sendBuff, sala.getNumero());
+									strcpy(sendBuff, sala.getNumeroSala());
 									send(s, sendBuff, sizeof(sendBuff), 0);
-									strcpy(sendBuff, sala.getNColumnas());
+									strcpy(sendBuff, sala.getNColumnasSala());
 									send(s, sendBuff, sizeof(sendBuff), 0);
-									strcpy(sendBuff, sala.getNFilas());
+									strcpy(sendBuff, sala.getNFilasSala());
 									send(s, sendBuff, sizeof(sendBuff), 0);
 									strcpy(sendBuff, sala.getIdCine());
 									send(s, sendBuff, sizeof(sendBuff), 0);

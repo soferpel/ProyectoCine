@@ -5,18 +5,18 @@ class Pelicula
 {
     private:
         int idPelicula;
-        char titulo[20];
-        char sinopsis[100];
-        char horario[20];
+        char* titulo;
+        char* sinopsis;
+        char* horario;
         int idSala;
 
     public:
-        Pelicula(char titulo[20], char sinopsis[100], char horario[20], int idSala);
+        Pelicula(char* titulo, char* sinopsis, char* horario, int idSala);
         ~Pelicula();
 
-        void setTitulo(char titulo[20]);
-        void setSinopsis(char sinopsis[100]);
-        void setHorario(char horario[20]);
+        void setTitulo(char* titulo);
+        void setSinopsis(char* sinopsis);
+        void setHorario(char* horario);
         void setIdSala(int idSala);
         int getIdPelicula();
         char* getTitulo();

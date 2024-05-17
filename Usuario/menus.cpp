@@ -145,7 +145,7 @@ void MenuModificarPelicula()
     cout << "====================" << endl;
     cout << endl;
     cout << "Introduce el ID de la pelicula a modificar: ";
-    cin >> PeliculaAModificar;
+    cin >> ;
     cout << "Introduce el ID de la sala en la que se la pelicula: ";
     cin >> idSala;
     pelicula.setIdSala(idSala);

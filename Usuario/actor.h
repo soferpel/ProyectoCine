@@ -4,18 +4,18 @@
 class Actor
 {
     private:
-        int idActorInt;
-        char nombreActor[20];
-        int idPelicula;
+        char* idActor;
+        char* nombreActor;
+        char* idPelicula;
     public:
-        Actor(char nombreActor[20], int idPelicula);
+        Actor(char* nombreActor, char* idPelicula);
         ~Actor();
 
-        void setNombreActor(char nombreActor[20]);
-        void setIdPelicula(int idPelicula);
-        int getIdActor();
+        void setNombreActor(char* nombreActor);
+        void setIdPelicula(char* idPelicula);
+        char* getIdActor();
         char* getNombreActor();
-        int getIdPelicula();
+        char* getIdPelicula();
 };
 
 #endif

@@ -4,19 +4,19 @@
 class Usuario
 {
     private:
-        char nombre[16];  
-        char respuesta[20];
-        char correo[30];
-        char contrasena[16];
+        char* nombre;  
+        char* respuesta;
+        char* correo;
+        char* contrasena;
         int idUsuario;
     public:
-        Usuario(char nombre[16], char respuesta[20], char correo[30], char contrasena[16]);
+        Usuario(char* nombre, char* respuesta, char* correo, char* contrasena);
         ~Usuario();
 
-        void setNombre(char nombre[16]);
-        void setRespuesta(char respuesta[20]);
-        void setCorreo(char correo[30]);
-        void setContrasena(char contrasena[16]);
+        void setNombre(char* nombre);
+        void setRespuesta(char* respuesta);
+        void setCorreo(char* correo);
+        void setContrasena(char* contrasena);
         char* getNombre();
         char* getRespuesta();
         char* getCorreo();
