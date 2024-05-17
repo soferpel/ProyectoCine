@@ -1,12 +1,12 @@
 #include "cine.h"
 
-Cine::Cine(char nombreCine[20], char direccionCine[20], char ciudadCine[20])
+Cine::Cine(char* nombreCine, char* direccionCine, char* ciudadCine)
 {
-    this->nombreCine = new char[20];
+    this->nombreCine = new char[strlen(nombreCine) + 1];
     strcpy(this->nombreCine, nombreCine);
-    this->direccionCine = new char[20];
+    this->direccionCine = new char[strlen(direccionCine) + 1];
     strcpy(this->direccionCine, direccionCine);
-    this->ciudadCine = new char[20];
+    this->ciudadCine = new char[strlen(ciudadCine) + 1];
     strcpy(this->ciudadCine, ciudadCine);
 }
 
@@ -17,17 +17,17 @@ Cine::~Cine()
     delete[] ciudadCine;
 }
 
-void Cine::setNombreCine(char nombreCine[20])
+void Cine::setNombreCine(char* nombreCine)
 {
     strcpy(this->nombreCine, nombreCine);
 }
 
-void Cine::setDireccionCine(char direccionCine[20])
+void Cine::setDireccionCine(char* direccionCine)
 {
     strcpy(this->direccionCine, direccionCine);
 }
 
-void Cine::setCiudadCine(char ciudadCine[20])
+void Cine::setCiudadCine(char* ciudadCine)
 {
     strcpy(this->ciudadCine, ciudadCine);
 }

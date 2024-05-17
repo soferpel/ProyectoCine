@@ -1,14 +1,14 @@
 #include "usuario.h"
 
-Usuario::Usuario(char nombre[16], char respuesta[20], char correo[30], char contrasena[16])
+Usuario::Usuario(char* nombre, char* respuesta, char* correo, char contrasena*)
 {
-    this->nombre = new char[16];
+    this->nombre = new char[strlen(nombre) + 1];
     strcpy(this->nombre, nombre);
-    this->respuesta = new char[20];
+    this->respuesta = new char[strlen(respuesta) + 1];
     strcpy(this->respuesta, respuesta);
-    this->correo = new char[30];
+    this->correo = new char[strlen(correo) + 1];
     strcpy(this->correo, correo);
-    this->contrasena = new char[16];
+    this->contrasena = new char[strlen(contrasena) + 1];
     strcpy(this->contrasena, contrasena);
     this->idUsuario = idUsuario;
 }
@@ -21,22 +21,22 @@ Usuario::~Usuario()
     delete[] this->contrasena;
 }
 
-void Usuario::setNombre(char nombre[16])
+void Usuario::setNombre(char* nombre)
 {
     strcpy(this->nombre, nombre);
 }
 
-void Usuario::setRespuesta(char respuesta[20])
+void Usuario::setRespuesta(char* respuesta)
 {
     strcpy(this->respuesta, respuesta);
 }
 
-void Usuario::setCorreo(char correo[30])
+void Usuario::setCorreo(char correo)
 {
     strcpy(this->correo, correo);
 }
 
-void Usuario::setContrasena(char contrasena[16])
+void Usuario::setContrasena(char* contrasena)
 {
     strcpy(this->contrasena, contrasena);
 }
@@ -65,3 +65,5 @@ int Usuario::getIdUsuario()
 {
     return this->idUsuario;
 }
+
+

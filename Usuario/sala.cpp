@@ -31,11 +31,6 @@ void Sala::setNFilasSala(int nFilasSala)
     this->nFilasSala = nFilasSala;
 }
 
-int Sala::getIdSala()
-{
-    return idSala;
-}
-
 int Sala::getIdCine()
 {
     return idCine;

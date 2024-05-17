@@ -1,11 +1,11 @@
 #include "asiento.h"
 
-Asiento::Asiento(int filaAsiento, int numeroAsiento, char fechaAsiento[11], int idSala)
+Asiento::Asiento(int filaAsiento, int numeroAsiento, char* fechaAsiento, int idSala)
 {
     this->filaAsiento = filaAsiento;
     this->numeroAsiento = numeroAsiento;
     this->idSala = idSala;
-    this->fechaAsiento = new char[11];
+    this->fechaAsiento = new char[strlen(fechaAsiento) + 1 ];
     strcpy(this->fechaAsiento, fechaAsiento);
 }
 
@@ -24,7 +24,7 @@ void Asiento::setNumeroAsiento(int numeroAsiento)
     this->numeroAsiento = numeroAsiento;
 }
 
-void Asiento::setFechaAsiento(char fechaAsiento[11])
+void Asiento::setFechaAsiento(char* fechaAsiento)
 {
     strcpy(this->fechaAsiento, fechaAsiento);
 }

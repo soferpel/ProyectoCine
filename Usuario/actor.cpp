@@ -1,8 +1,8 @@
 #include "actor.h"
 
-Actor::Actor(char nombreActor[20], int idPelicula)
+Actor::Actor(char* nombreActor, int idPelicula)
 {
-    this->nombreActor = new char[20];
+    this->nombreActor = new char[strlen(nombreActor) + 1];
     strcpy(this->nombreActor, nombreActor);
     this->idPelicula = idPelicula;
 }
@@ -12,7 +12,7 @@ Actor::~Actor()
     delete[] this->nombreActor;
 }
 
-void Actor::setNombreActor(char nombreActor[20])
+void Actor::setNombreActor(char* nombreActor)
 {
     strcpy(this->nombreActor, nombreActor);
 }

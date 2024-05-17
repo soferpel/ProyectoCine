@@ -1,12 +1,12 @@
 #include "pelicula.h"
 
-Pelicula::Pelicula(char titulo[20], char sinopsis[100], char horario[20], int idSala)
+Pelicula::Pelicula(char* titulo, char* sinopsis, char* horario, int idSala)
 {
-    this->titulo = new char[20];
+    this->titulo = new char[strlen(titulo) + 1];
     strcpy(this->titulo, titulo);
-    this->sinopsis = new char[100];
+    this->sinopsis = new char[strlen(sinopsis) + 1];
     strcpy(this->sinopsis, sinopsis);
-    this->horario = new char[20];
+    this->horario = new char[strlen(horario) + 1];
     strcpy(this->horario, horario);
     this->idSala = idSala;
 }
@@ -18,17 +18,17 @@ Pelicula::~Pelicula()
     delete[] this->horario;
 }
 
-void Pelicula::setTitulo(char titulo[20])
+void Pelicula::setTitulo(char* titulo)
 {
     strcpy(this->titulo, titulo);
 }
 
-void Pelicula::setSinopsis(char sinopsis[100])
+void Pelicula::setSinopsis(char* sinopsis)
 {
     strcpy(this->sinopsis, sinopsis);
 }
 
-void Pelicula::setHorario(char horario[20])
+void Pelicula::setHorario(char* horario)
 {
     strcpy(this->horario, horario);
 }
