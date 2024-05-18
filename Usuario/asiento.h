@@ -14,10 +14,10 @@ class Asiento
         Asiento(char* filaAsientoInt, char* numeroAsientoInt, char* fechaAsiento, char* idSala);
         ~Asiento();
 
-        void setFilaAsiento(int filaAsiento);
-        void setNumeroAsiento(int numeroAsiento);
+        void setFilaAsiento(char* filaAsiento);
+        void setNumeroAsiento(char* numeroAsiento);
         void setFechaAsiento(char* fechaAsiento);
-        void setIdSala(int idSala);
+        void setIdSala(char* idSala);
         char* getIdAsiento();
         char* getFilaAsiento();
         char* getNumeroAsiento();

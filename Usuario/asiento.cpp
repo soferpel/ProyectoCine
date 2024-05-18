@@ -21,12 +21,12 @@ Asiento::~Asiento()
     delete[] this->idSala;
 }
 
-void Asiento::setFilaAsiento(int filaAsiento)
+void Asiento::setFilaAsiento(char* filaAsiento)
 {
     this->filaAsiento = filaAsiento;
 }
 
-void Asiento::setNumeroAsiento(int numeroAsiento)
+void Asiento::setNumeroAsiento(char* numeroAsiento)
 {
     this->numeroAsiento = numeroAsiento;
 }
@@ -36,7 +36,7 @@ void Asiento::setFechaAsiento(char* fechaAsiento)
     strcpy(this->fechaAsiento, fechaAsiento);
 }
 
-void Asiento::setIdSala(int idSala)
+void Asiento::setIdSala(char* idSala)
 {
     this->idSala = idSala;
 }

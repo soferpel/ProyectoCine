@@ -4,6 +4,8 @@
 #include "menus.h"
 #include <iostream>
 
+using namespace std;
+
 void MenuEleccionModo()
 {
     cout << "===============" << endl;
@@ -78,7 +80,7 @@ void MenuPrincipalAdministrador()
 void MenuIniciarSesion()
 {
     char correo[30];
-    char contrasena[16]
+    char contrasena[16];
     cout << "================" << endl;
     cout << " INICIAR SESION " << endl;
     cout << "================" << endl;
@@ -139,13 +141,13 @@ void MenuModificarPelicula()
     char titulo[20];
     char sinopsis[100];
     char horario[20];
-    int idSala;
+    char idSala[5];
     cout << "====================" << endl;
     cout << " MODIFICAR PELICULA " << endl;
     cout << "====================" << endl;
     cout << endl;
     cout << "Introduce el ID de la pelicula a modificar: ";
-    cin >> ;
+    cin >> PeliculaAModificar;
     cout << "Introduce el ID de la sala en la que se la pelicula: ";
     cin >> idSala;
     pelicula.setIdSala(idSala);
@@ -216,7 +218,7 @@ void MenuModificarCine()
 void MenuModificarActor()
 {
     char nombreActor[20];
-    int idPelicula;
+    char idPelicula[5];
     cout << "=================" << endl;
     cout << " MODIFICAR ACTOR " << endl;
     cout << "=================" << endl;
@@ -234,10 +236,10 @@ void MenuModificarActor()
 
 void MenuModificarSala()
 {
-    int idCine;
-    int numeroSala;
-    int nColumnasSala;
-    int nFilasSala;
+    char idCine[5];
+    char numeroSala[5];
+    char nColumnasSala[5];
+    char nFilasSala[5];
     cout << "================" << endl;
     cout << " MODIFICAR SALA " << endl;
     cout << "================" << endl;
@@ -247,10 +249,10 @@ void MenuModificarSala()
     cout << "Introduce el nuevo numero de la sala: ";
     cin >> numeroSala;
     sala.setNumeroSala(numeroSala);
-    cout << "Introduce el nuevo numero de columnas de la sala: "
+    cout << "Introduce el nuevo numero de columnas de la sala: ";
     cin >> nColumnasSala;
     sala.setNColumnasSala(nColumnasSala);
-    cout << "Introduce el nuevo numero de filas de la sala: "
+    cout << "Introduce el nuevo numero de filas de la sala: ";
     cin >> nFilasSala;
     sala.setNFilasSala(nFilasSala);
     cout << "Introduce el nuevo ID del cine al que pertenece la sala: ";
@@ -261,9 +263,9 @@ void MenuModificarSala()
 
 void MenuModificarAsiento()
 {
-    int idSala;
-    int filaAsiento;
-    int numeroAsiento;
+    char idSala[5];
+    char filaAsiento[5];
+    char numeroAsiento[5];
     char fechaAsiento[11];
     cout << "===================" << endl;
     cout << " MODIFICAR ASIENTO " << endl;
@@ -323,9 +325,9 @@ void menuBorrarDatos()
 
 void menuAnadirAsiento()
 {
-    int idSala;
-    int filaAsiento;
-    int numeroAsiento;
+    char idSala[5];
+    char filaAsiento[5];
+    char numeroAsiento[5];
     char fechaAsiento[11];
     cout << "===============" << endl;
     cout << " ANADIR ASIENTO " << endl;
@@ -376,10 +378,10 @@ void menuAnadirCine()
 
 void menuAnadirSala()
 {
-    int idCine;
-    int numeroSala;
-    int nColumnasSala;
-    int nFilasSala;
+    char idCine[5];
+    char numeroSala[5];
+    char nColumnasSala[5];
+    char nFilasSala[5];
     cout << "===============" << endl;
     cout << " ANADIR SALA " << endl;
     cout << "===============" << endl;
@@ -400,7 +402,7 @@ void menuAnadirSala()
 void menuAnadirActor()
 {
     char nombreActor[20];
-    int idPelicula;
+    char idPelicula[5];
     cout << "===============" << endl;
     cout << " ANADIR ACTOR " << endl;
     cout << "===============" << endl;
@@ -414,11 +416,10 @@ void menuAnadirActor()
 
 void menuAnadirPelicula()
 {
-    int idSala;
+    char idSala[5];
     char titulo[20];
     char sinopsis[100];
     char horario[20];
-    int idSala;
     cout << "===============" << endl;
     cout << " ANADIR PELICULA " << endl;
     cout << "===============" << endl;

@@ -18,19 +18,19 @@ int opcionBvda;
 Usuario usuario = Usuario("", "", "", "");
 char usuarioAModificar[30];
 
-Pelicula pelicula = Pelicula("", "", "", 0);
+Pelicula pelicula = Pelicula("", "", "", "");
 char PeliculaAModificar[4];
 
-Actor actor = Actor("", 0);
+Actor actor = Actor("", "");
 char actorAModificar[4];
 
-Sala sala = Sala(0, 0, 0, 0);
+Sala sala = Sala("", "", "", "");
 char salaAModificar[4];
 
 Cine cine = Cine("", "", "");
 char cineAModificar[4];
 
-Asiento asiento = Asiento(0, 0, "", 0);
+Asiento asiento = Asiento("", "", "", "");
 char asientoAModificar[4];
 
 char tablaEliminar[20];
@@ -41,8 +41,8 @@ char idVisualizar[5];
 
 void MenuVisualizarDatos();
 void menuBienvenida(); 
-void menuInicioSesion(); 
-void menuRegistro(); 
+void MenuIniciarSesion();
+void MenuRegistrarse(); 
 void menuModificarDatos(); 
 void menuModificarPelicula();
 void menuModificarUsuario();

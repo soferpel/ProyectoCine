@@ -1,52 +1,61 @@
 #include "sala.h"
+#include <cstring>
 
-Sala::Sala(int numeroSala, int nColumnasSala, int nFilasSala, int idCine)
+Sala::Sala(char* numeroSala, char* nColumnasSala, char* nFilasSala, char* idCine)
 {
-    this->idCine = idCine;
-    this->numeroSala = numeroSala;
-    this->nColumnasSala = nColumnasSala;
-    this->nFilasSala = nFilasSala;
+    this->idCine =  new char[strlen(idCine) + 1];
+    strcpy(this->idCine, idCine);
+    this->numeroSala =  new char[strlen(numeroSala) + 1];
+    strcpy(this->numeroSala, numeroSala);
+    this->nColumnasSala =  new char[strlen(nColumnasSala) + 1];
+    strcpy(this->nColumnasSala, nColumnasSala);
+    this->nFilasSala =  new char[strlen(nFilasSala) + 1];
+    strcpy(this->nFilasSala, nFilasSala);
 }
 
 Sala::~Sala()
 {
+    delete[] this->numeroSala;
+    delete[] this->nColumnasSala;
+    delete[] this->nFilasSala;
+    delete[] this->idCine;
 }
 
-void Sala::setNumeroSala(int numeroSala)
+void Sala::setNumeroSala(char* numeroSala)
 {
-    this->numeroSala = numeroSala;
+    strcpy(this->numeroSala, numeroSala);
 }
-void Sala::setIdCine(int idCine)
+void Sala::setIdCine(char* idCine)
 {
-    this->idCine = idCine;
-}
-
-void Sala::setNColumnasSala(int nColumnasSala)
-{
-    this->nColumnasSala = nColumnasSala;
+    strcpy(this->idCine, idCine);
 }
 
-void Sala::setNFilasSala(int nFilasSala)
+void Sala::setNColumnasSala(char* nColumnasSala)
 {
-    this->nFilasSala = nFilasSala;
+    strcpy(this->nColumnasSala, nColumnasSala);
 }
 
-int Sala::getIdCine()
+void Sala::setNFilasSala(char* nFilasSala)
+{
+    strcpy(this->nFilasSala, nFilasSala);
+}
+
+char* Sala::getIdCine()
 {
     return idCine;
 }
 
-int Sala::getNumeroSala()
+char* Sala::getNumeroSala()
 {
     return numeroSala;
 }
 
-int Sala::getNColumnasSala()
+char* Sala::getNColumnasSala()
 {
     return nColumnasSala;
 }
 
-int Sala::getNFilasSala()
+char* Sala::getNFilasSala()
 {
     return nFilasSala;
 }

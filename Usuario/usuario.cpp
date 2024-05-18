@@ -1,7 +1,7 @@
 #include "usuario.h"
 #include <string.h>
 
-Usuario::Usuario(char* nombre, char* respuesta, char* correo, char contrasena*)
+Usuario::Usuario(char* nombre, char* respuesta, char* correo, char* contrasena)
 {
     this->nombre = new char[strlen(nombre) + 1];
     strcpy(this->nombre, nombre);
@@ -11,7 +11,6 @@ Usuario::Usuario(char* nombre, char* respuesta, char* correo, char contrasena*)
     strcpy(this->correo, correo);
     this->contrasena = new char[strlen(contrasena) + 1];
     strcpy(this->contrasena, contrasena);
-    this->idUsuario = idUsuario;
 }
 
 Usuario::~Usuario()
@@ -32,7 +31,7 @@ void Usuario::setRespuesta(char* respuesta)
     strcpy(this->respuesta, respuesta);
 }
 
-void Usuario::setCorreo(char correo)
+void Usuario::setCorreo(char* correo)
 {
     strcpy(this->correo, correo);
 }
@@ -61,10 +60,3 @@ char* Usuario::getContrasena()
 {
     return this->contrasena;
 }
-
-int Usuario::getIdUsuario()
-{
-    return this->idUsuario;
-}
-
-

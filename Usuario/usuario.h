@@ -8,7 +8,6 @@ class Usuario
         char* respuesta;
         char* correo;
         char* contrasena;
-        int idUsuario;
     public:
         Usuario(char* nombre, char* respuesta, char* correo, char* contrasena);
         ~Usuario();
@@ -21,7 +20,6 @@ class Usuario
         char* getRespuesta();
         char* getCorreo();
         char* getContrasena();
-        int getIdUsuario();
 };
 
 #endif
