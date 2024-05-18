@@ -16,22 +16,22 @@ extern int opcionAdministrador;
 extern int opcionModificar;
 extern int opcionBvda;
 
-extern Usuario usuario = Usuario("", "", "", "");
+extern Usuario usuario;
 extern char usuarioAModificar[30];
 
-extern Pelicula pelicula = Pelicula("", "", "", "");
+extern Pelicula pelicula;
 extern char PeliculaAModificar[4];
 
-extern Actor actor = Actor("", "");
+extern Actor actor;
 extern char actorAModificar[4];
 
-extern Sala sala = Sala("", "", "", "");
+extern Sala sala;
 extern char salaAModificar[4];
 
-extern Cine cine = Cine("", "", "");
+extern Cine cine;
 extern char cineAModificar[4];
 
-extern Asiento asiento = Asiento("", "", "", "");
+extern Asiento asiento;
 extern char asientoAModificar[4];
 
 extern char tablaEliminar[20];

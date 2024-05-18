@@ -1,10 +1,10 @@
 #ifndef MENUS_H
 #define MENUS_H
 
-void MenuVisualizarDatos();
+void menuVisualizarDatos();
 void menuBienvenida(); 
-void MenuIniciarSesion();
-void MenuRegistrarse(); 
+void menuIniciarSesion();
+void menuRegistrarse(); 
 void menuModificarDatos(); 
 void menuModificarPelicula();
 void menuModificarUsuario();

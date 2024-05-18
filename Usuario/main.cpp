@@ -72,7 +72,7 @@ int main(int argc, char *argv[])
 			switch (opcionCliente)
 			{
 			case 1:
-				MenuVisualizarDatos();
+				menuVisualizarDatos();
 				strcpy(sendBuff, "VISUALIZARDATOS");
 				send(s, sendBuff, sizeof(sendBuff), 0);
 				strcpy(sendBuff, tablaVisualizar);
@@ -244,7 +244,7 @@ int main(int argc, char *argv[])
 						switch (opcionAD)
 						{
 						case 1:
-							MenuRegistrarse();
+							menuRegistrarse();
 							strcpy(sendBuff, "REGISTRARSE");
 							send(s, sendBuff, sizeof(sendBuff), 0);
 							strcpy(sendBuff, usuario.getNombre());
@@ -338,7 +338,7 @@ int main(int argc, char *argv[])
 				switch(opcionBvda)
 				{
 					case 1:
-						MenuIniciarSesion();
+						menuIniciarSesion();
 						strcpy(sendBuff, "INICIARSESION");
 						send(s, sendBuff, sizeof(sendBuff), 0);
 						strcpy(sendBuff, usuario.getCorreo());
@@ -353,7 +353,7 @@ int main(int argc, char *argv[])
 						break;
 					
 					case 2:
-						MenuRegistrarse();
+						menuRegistrarse();
 						strcpy(sendBuff, "REGISTRARSE");
 						send(s, sendBuff, sizeof(sendBuff), 0);
 						strcpy(sendBuff, usuario.getNombre());

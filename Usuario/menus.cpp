@@ -7,7 +7,7 @@
 
 using namespace std;
 
-void MenuEleccionModo()
+void menuEleccionModo()
 {
     cout << "===============" << endl;
     cout << " ELECCION MODO " << endl;
@@ -20,7 +20,7 @@ void MenuEleccionModo()
     cin >> opcionModo;
 }
 
-void MenuBienvenida()
+void menuBienvenida()
 {
     cout << "============" << endl;
     cout << " BIENVENIDO " << endl;
@@ -35,7 +35,7 @@ void MenuBienvenida()
     cin >> opcionBvda;
 }
 
-void MenuPrincipalCliente()
+void menuPrincipalCliente()
 {
     cout << "=========" << endl;
     cout << " CLIENTE " << endl;
@@ -50,7 +50,7 @@ void MenuPrincipalCliente()
     cin >> opcionCliente;
 }
 
-void MenuVisualizarDatos()
+void menuVisualizarDatos()
 {
     cout << "==================" << endl;
     cout << " VISUALIZAR DATOS " << endl;
@@ -62,7 +62,7 @@ void MenuVisualizarDatos()
     cin >> idVisualizar;
 }
 
-void MenuPrincipalAdministrador()
+void menuPrincipalAdministrador()
 {
     cout << "===============" << endl;
     cout << " ADMINISTRADOR " << endl;
@@ -78,7 +78,7 @@ void MenuPrincipalAdministrador()
     cin >> opcionAdministrador;
 }
 
-void MenuIniciarSesion()
+void menuIniciarSesion()
 {
     char correo[30];
     char contrasena[16];
@@ -94,7 +94,7 @@ void MenuIniciarSesion()
     usuario.setContrasena(contrasena);
 }
 
-void MenuRegistrarse()
+void menuRegistrarse()
 {
     char nombreUsuario[16];
     char correo[30];
@@ -118,7 +118,7 @@ void MenuRegistrarse()
     usuario.setRespuesta(respuestaSeguridad);
 }
 
-void MenuModificarDatos()
+void menuModificarDatos()
 {
     cout << "================" << endl;
     cout << " MODIFICAR DATOS " << endl;
@@ -137,7 +137,7 @@ void MenuModificarDatos()
     cin >> opcionModificar;
 }
 
-void MenuModificarPelicula()
+void menuModificarPelicula()
 {
     char titulo[20];
     char sinopsis[100];
@@ -164,7 +164,7 @@ void MenuModificarPelicula()
     cout << endl;
 }
 
-void MenuModificarUsuario()
+void menuModificarUsuario()
 {
     char nombreUsuario[16];
     char correoNuevo[30];
@@ -193,7 +193,7 @@ void MenuModificarUsuario()
     cout << endl;
 }
 
-void MenuModificarCine()
+void menuModificarCine()
 {
     char nombreCine[20];
     char direccionCine[20];
@@ -216,7 +216,7 @@ void MenuModificarCine()
     cout << endl;
 }
 
-void MenuModificarActor()
+void menuModificarActor()
 {
     char nombreActor[20];
     char idPelicula[5];
@@ -235,7 +235,7 @@ void MenuModificarActor()
     cout << endl;
 }
 
-void MenuModificarSala()
+void menuModificarSala()
 {
     char idCine[5];
     char numeroSala[5];
@@ -262,7 +262,7 @@ void MenuModificarSala()
     cout << endl;
 }
 
-void MenuModificarAsiento()
+void menuModificarAsiento()
 {
     char idSala[5];
     char filaAsiento[5];
