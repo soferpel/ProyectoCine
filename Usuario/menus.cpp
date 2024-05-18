@@ -3,6 +3,7 @@
 #include <string.h>
 #include "menus.h"
 #include <iostream>
+#include "variables.h"
 
 using namespace std;
 
