@@ -7,6 +7,9 @@ int opcionAdministrador;
 int opcionModificar;
 int opcionBvda;
 
+int aElegidoModo = 0;
+int aIniciadoSesion = 0;
+
 Usuario usuario = Usuario("", "", "", "");
 char usuarioAModificar[30];
 

@@ -17,6 +17,7 @@ void menuEleccionModo()
     cout << "2. Administrador" << endl;
     cout << "3. Salir" << endl;
     cout << endl;
+    fflush(stdin);
     cin >> opcionModo;
     char c; while ((c = getchar()) != '\n' && c != EOF); // Vacía el buffer de entrada
 }
@@ -33,6 +34,7 @@ void menuBienvenida()
     cout << "2. Registrarse" << endl;
     cout << "3. Salir" << endl;
     cout << endl;
+    fflush(stdin);
     cin >> opcionBvda;
     char c; while ((c = getchar()) != '\n' && c != EOF); // Vacía el buffer de entrada
 }
@@ -49,6 +51,7 @@ void menuPrincipalCliente()
     cout << "2. Modificar datos" << endl;
     cout << "3. Salir" << endl;
     cout << endl;
+    fflush(stdin);
     cin >> opcionCliente;
     char c; while ((c = getchar()) != '\n' && c != EOF); // Vacía el buffer de entrada
 }
@@ -59,6 +62,7 @@ void menuVisualizarDatos()
     cout << " VISUALIZAR DATOS " << endl;
     cout << "==================" << endl;
     cout << endl;
+    fflush(stdin);
     cout << "Que tabla desea visualizar?" << endl;
     cin >> tablaVisualizar;
     cout << "Cual es el id del dato a visualizar" << endl;
@@ -79,6 +83,7 @@ void menuPrincipalAdministrador()
     cout << "3. Anadir datos" << endl;
     cout << "4. Salir" << endl;
     cout << endl;
+    fflush(stdin);
     cin >> opcionAdministrador;
     char c; while ((c = getchar()) != '\n' && c != EOF); // Vacía el buffer de entrada
 }
@@ -92,6 +97,7 @@ void menuIniciarSesion()
     cout << "================" << endl;
     cout << endl;
     cout << "Ingrese su correo de usuario: ";
+    fflush(stdin);
     cin >> correo;
     usuario.setCorreo(correo);
     cout << "Ingrese su contrasena: ";
@@ -142,6 +148,7 @@ void menuModificarDatos()
     cout << "6. Asiento" << endl;
     cout << "7. Salir" << endl;
     cout << endl;
+    fflush(stdin);
     cin >> opcionModificar;
     char c; while ((c = getchar()) != '\n' && c != EOF); // Vacía el buffer de entrada
 }
@@ -157,6 +164,7 @@ void menuModificarPelicula()
     cout << "====================" << endl;
     cout << endl;
     cout << "Introduce el ID de la pelicula a modificar: ";
+    fflush(stdin);
     cin >> PeliculaAModificar;
     cout << "Introduce el ID de la sala en la que se la pelicula: ";
     cin >> idSala;
@@ -187,6 +195,7 @@ void menuModificarUsuario()
     cout << "<< Solo podras modificar tus propios datos >>" << endl;
     cout << endl;
     cout << "Introduce tu correo electronico: ";
+    fflush(stdin);
     cin >> usuarioAModificar;
     cout << "Introduce tu nuevo nombre: ";
     cin >> nombreUsuario;
@@ -214,6 +223,7 @@ void menuModificarCine()
     cout << "================" << endl;
     cout << endl;
     cout << "Introduce el ID del cine a modificar: ";
+    fflush(stdin);
     cin >> cineAModificar;
     cout << "Introduce el nuevo nombre del cine: ";
     cin >> nombreCine;
@@ -237,6 +247,7 @@ void menuModificarActor()
     cout << "=================" << endl;
     cout << endl;
     cout << "Introduce el ID del actor a modificar: ";
+    fflush(stdin);
     cin >> actorAModificar;
     cout << "Introduce el nuevo nombre del actor: ";
     cin >> nombreActor;
@@ -259,6 +270,7 @@ void menuModificarSala()
     cout << "================" << endl;
     cout << endl;
     cout << "Introduce el ID de la sala a modificar: ";
+    fflush(stdin);
     cin >> salaAModificar;
     cout << "Introduce el nuevo numero de la sala: ";
     cin >> numeroSala;
@@ -287,6 +299,7 @@ void menuModificarAsiento()
     cout << "===================" << endl;
     cout << endl;
     cout << "Introduce el ID del asiento a modificar: ";
+    fflush(stdin);
     cin >> asientoAModificar;
     cout << "Introduce la nueva fila del asiento: ";
     cin >> filaAsiento;
@@ -372,6 +385,7 @@ void menuAnadirDatos()
     cout << "===============" << endl;
     cout << "Que datos quieres anadir?" << endl;
     cout << "1. Usuario\n 2. Asiento\n 3. Pelicula\n 4. Actor\n 5. Cine\n 6. Sala\n 7. Salir" << endl;
+    fflush(stdin);
     cin >> opcionAD;
     char c; while ((c = getchar()) != '\n' && c != EOF); // Vacía el buffer de entrada
 }
@@ -385,6 +399,7 @@ void menuAnadirCine()
     cout << " ANADIR CINE " << endl;
     cout << "===============" << endl;
     cout << "Cual es el nombre del cine?" << endl;
+    fflush(stdin);
     cin >> nombreCine;
     cine.setCiudadCine(nombreCine);
     cout << "Cual es la direccion del cine?" << endl;
@@ -406,6 +421,7 @@ void menuAnadirSala()
     cout << " ANADIR SALA " << endl;
     cout << "===============" << endl;
     cout << "Introduce el id del cine en la que esta la sala: " << endl;
+    fflush(stdin);
     cin >> idCine;
     sala.setIdCine(idCine);
     cout << "Cual es el numero de filas que contiene la sala? " << endl;
@@ -428,6 +444,7 @@ void menuAnadirActor()
     cout << " ANADIR ACTOR " << endl;
     cout << "===============" << endl;
     cout << "Introduce el id de la pelicula en la que actua el actor: " << endl;
+    fflush(stdin);
     cin >> idPelicula;
     actor.setIdPelicula(idPelicula);
     cout << "Cual es el nombre del actor? " << endl;
@@ -446,6 +463,7 @@ void menuAnadirPelicula()
     cout << " ANADIR PELICULA " << endl;
     cout << "===============" << endl;
     cout << "Introduce el id de la sala en la que se ve la pelicula: " << endl;
+    fflush(stdin);
     cin >> idSala;
     pelicula.setIdSala(idSala);
     cout << "Introduce el titulo de la pelicula: " << endl;

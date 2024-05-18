@@ -16,6 +16,9 @@ extern int opcionAdministrador;
 extern int opcionModificar;
 extern int opcionBvda;
 
+extern int aElegidoModo;
+extern int aIniciadoSesion;
+
 extern Usuario usuario;
 extern char usuarioAModificar[30];
 

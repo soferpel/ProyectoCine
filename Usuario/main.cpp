@@ -59,13 +59,16 @@ int main(int argc, char *argv[])
 
 	//SEND and RECEIVE data (CLIENT/SERVER PROTOCOL)
 	autenticacionExitosa = 0;
-    
+    strcpy(sendBuff, "CREARTABLAS");
+		send(s, sendBuff, sizeof(sendBuff), 0);	
 	do
 	{
-		strcpy(sendBuff, "CREARTABLAS");
-		send(s, sendBuff, sizeof(sendBuff), 0);	
-
-		menuEleccionModo();
+		if (aElegidoModo == 0)
+		{
+			menuEleccionModo();
+			aElegidoModo = 1;
+		}
+		
 		switch (opcionModo)
 		{
 		case 1:
@@ -91,97 +94,21 @@ int main(int argc, char *argv[])
 			}
 			break;
 		case 2:
-			if (*recvBuff == '1')
+			if (aIniciadoSesion == 1)
 			{
 				hayQueAnadirDatos = 0;
+				hayQueModificarDatos = 0;
 				menuPrincipalAdministrador();
 				switch(opcionAdministrador)
 				{
 					case 1:
-						menuModificarDatos();
-						strcpy(sendBuff, "MODIFICARDATOS");
-						send(s, sendBuff, sizeof(sendBuff), 0);
-						recv(s, recvBuff, sizeof(recvBuff), 0);
-						if(*recvBuff == '1')
+						hayQueModificarDatos = 1;
+						while (hayQueModificarDatos == 1)
 						{
-							hayQueModificarDatos = 0;
+							menuModificarDatos();
 							switch(opcionModificar)
 							{
 								case 1:
-									menuModificarUsuario();
-									strcpy(sendBuff, "MODIFICARUSUARIO");
-									send(s, sendBuff, sizeof(sendBuff), 0);
-									strcpy(sendBuff, usuarioAModificar);
-									send(s, sendBuff, sizeof(sendBuff), 0);
-									strcpy(sendBuff, usuario.getNombre());
-									send(s, sendBuff, sizeof(sendBuff), 0);
-									strcpy(sendBuff, usuario.getCorreo());
-									send(s, sendBuff, sizeof(sendBuff), 0);
-									strcpy(sendBuff, usuario.getContrasena());
-									send(s, sendBuff, sizeof(sendBuff), 0);
-									strcpy(sendBuff, usuario.getRespuesta());
-									send(s, sendBuff, sizeof(sendBuff), 0);
-									if(*recvBuff == '1')
-									{
-										hayQueModificarDatos = 0;
-									}
-									break;
-
-								case 2:
-									menuModificarCine();
-									strcpy(sendBuff, "MODIFICARCINE");
-									send(s, sendBuff, sizeof(sendBuff), 0);
-									strcpy(sendBuff, cineAModificar);
-									send(s, sendBuff, sizeof(sendBuff), 0);
-									strcpy(sendBuff, cine.getNombreCine());
-									send(s, sendBuff, sizeof(sendBuff), 0);
-									strcpy(sendBuff, cine.getDireccionCine());
-									send(s, sendBuff, sizeof(sendBuff), 0);
-									strcpy(sendBuff, cine.getCiudadCine());
-									send(s, sendBuff, sizeof(sendBuff), 0);
-									if(*recvBuff == '1')
-									{
-										hayQueModificarDatos = 0;
-									}
-									break;
-
-								case 3:
-									menuModificarActor();
-									strcpy(sendBuff, "MODIFICARACTOR");
-									send(s, sendBuff, sizeof(sendBuff), 0);
-									strcpy(sendBuff, actorAModificar);
-									send(s, sendBuff, sizeof(sendBuff), 0);
-									strcpy(sendBuff, actor.getNombreActor());
-									send(s, sendBuff, sizeof(sendBuff), 0);
-									strcpy(sendBuff, actor.getIdPelicula());
-									send(s, sendBuff, sizeof(sendBuff), 0);
-									if(*recvBuff == '1')
-									{
-										hayQueModificarDatos = 0;
-									}
-									break;
-								
-								case 4:
-									menuModificarAsiento();
-									strcpy(sendBuff, "MODIFICARASIENTO");
-									send(s, sendBuff, sizeof(sendBuff), 0);
-									strcpy(sendBuff, asientoAModificar);
-									send(s, sendBuff, sizeof(sendBuff), 0);
-									strcpy(sendBuff, asiento.getFilaAsiento());
-									send(s, sendBuff, sizeof(sendBuff), 0);
-									strcpy(sendBuff, asiento.getNumeroAsiento());
-									send(s, sendBuff, sizeof(sendBuff), 0);
-									strcpy(sendBuff, asiento.getFechaAsiento());
-									send(s, sendBuff, sizeof(sendBuff), 0);
-									strcpy(sendBuff, asiento.getIdSala());
-									send(s, sendBuff, sizeof(sendBuff), 0);
-									if(*recvBuff == '1')
-									{
-										hayQueModificarDatos = 0;
-									}
-									break;
-
-								case 5:
 									menuModificarPelicula();
 									strcpy(sendBuff, "MODIFICARPELICULA");
 									send(s, sendBuff, sizeof(sendBuff), 0);
@@ -195,13 +122,47 @@ int main(int argc, char *argv[])
 									send(s, sendBuff, sizeof(sendBuff), 0);
 									strcpy(sendBuff, pelicula.getHorario());
 									send(s, sendBuff, sizeof(sendBuff), 0);
-									if(*recvBuff == '1')
-									{
-										hayQueModificarDatos = 0;
-									}
 									break;
-
-								case 6:
+								case 2:
+									menuModificarUsuario();
+									strcpy(sendBuff, "MODIFICARUSUARIO");
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, usuarioAModificar);
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, usuario.getNombre());
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, usuario.getCorreo());
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, usuario.getContrasena());
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, usuario.getRespuesta());
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									break;
+								case 3:
+									menuModificarCine();
+									strcpy(sendBuff, "MODIFICARCINE");
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, cineAModificar);
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, cine.getNombreCine());
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, cine.getDireccionCine());
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, cine.getCiudadCine());
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									break;
+								case 4:
+									menuModificarActor();
+									strcpy(sendBuff, "MODIFICARACTOR");
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, actorAModificar);
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, actor.getNombreActor());
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, actor.getIdPelicula());
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									break;
+								case 5:
 									menuModificarSala();
 									strcpy(sendBuff, "MODIFICARSALA");
 									send(s, sendBuff, sizeof(sendBuff), 0);
@@ -215,16 +176,27 @@ int main(int argc, char *argv[])
 									send(s, sendBuff, sizeof(sendBuff), 0);
 									strcpy(sendBuff, sala.getIdCine());
 									send(s, sendBuff, sizeof(sendBuff), 0);
-									if(*recvBuff == '1')
-									{
-										hayQueModificarDatos = 0;
-									}
 									break;
-								
+								case 6:
+									menuModificarAsiento();
+									strcpy(sendBuff, "MODIFICARASIENTO");
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, asientoAModificar);
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, asiento.getFilaAsiento());
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, asiento.getNumeroAsiento());
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, asiento.getFechaAsiento());
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, asiento.getIdSala());
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									break;
 								case 7:
 									cout << "Hasta luego!" << endl;
 									strcpy(sendBuff, "EXIT");
 									send(s, sendBuff, sizeof(sendBuff), 0);
+									hayQueModificarDatos = 0;
 									break;
 							}
 						}
@@ -239,99 +211,101 @@ int main(int argc, char *argv[])
 						send(s, sendBuff, sizeof(sendBuff), 0);
 						break;
 					case 3:
-						menuAnadirDatos();
-						hayQueAnadirDatos = 0;
-						switch (opcionAD)
+						hayQueAnadirDatos = 1;
+						while (hayQueAnadirDatos == 1)
 						{
-						case 1:
-							menuRegistrarse();
-							printf("a");
-							strcpy(sendBuff, "REGISTRARSE");
-							send(s, sendBuff, sizeof(sendBuff), 0);
-							printf("aa");
-							strcpy(sendBuff, usuario.getNombre());
-							send(s, sendBuff, sizeof(sendBuff), 0);
-							printf("aaa");
-							strcpy(sendBuff, usuario.getCorreo());
-							send(s, sendBuff, sizeof(sendBuff), 0);
-							strcpy(sendBuff, usuario.getContrasena());
-							send(s, sendBuff, sizeof(sendBuff), 0);
-							strcpy(sendBuff, usuario.getRespuesta());
-							send(s, sendBuff, sizeof(sendBuff), 0);
-							recv(s, recvBuff, sizeof(recvBuff), 0);
-							break;
-						case 2:
-							menuAnadirAsiento();
-							strcpy(sendBuff, "ANADIRASIENTO");
-							send(s, sendBuff, sizeof(sendBuff), 0);
-							strcpy(sendBuff, asiento.getFechaAsiento());
-							send(s, sendBuff, sizeof(sendBuff), 0);
-							strcpy(sendBuff, asiento.getFilaAsiento());
-							send(s, sendBuff, sizeof(sendBuff), 0);
-							strcpy(sendBuff, asiento.getIdSala());
-							send(s, sendBuff, sizeof(sendBuff), 0);
-							strcpy(sendBuff, asiento.getNumeroAsiento());
-							send(s, sendBuff, sizeof(sendBuff), 0);
-							break;
-						case 3:
-							menuAnadirPelicula();
-							strcpy(sendBuff, "ANADIRPELICULA");
-							send(s, sendBuff, sizeof(sendBuff), 0);
-							strcpy(sendBuff, pelicula.getHorario());
-							send(s, sendBuff, sizeof(sendBuff), 0);
-							strcpy(sendBuff, pelicula.getIdSala());
-							send(s, sendBuff, sizeof(sendBuff), 0);
-							strcpy(sendBuff, pelicula.getSinopsis());
-							send(s, sendBuff, sizeof(sendBuff), 0);
-							strcpy(sendBuff, pelicula.getTitulo());
-							send(s, sendBuff, sizeof(sendBuff), 0);
-							break;
-						case 4:
-							menuAnadirActor();
-							strcpy(sendBuff, "ANADIRACTOR");
-							send(s, sendBuff, sizeof(sendBuff), 0);
-							strcpy(sendBuff, actor.getIdPelicula());
-							send(s, sendBuff, sizeof(sendBuff), 0);
-							strcpy(sendBuff, actor.getNombreActor());
-							send(s, sendBuff, sizeof(sendBuff), 0);
-							break;
-						case 5:
-							menuAnadirCine();
-							strcpy(sendBuff, "ANADIRCINE");
-							send(s, sendBuff, sizeof(sendBuff), 0);
-							strcpy(sendBuff, cine.getCiudadCine());
-							send(s, sendBuff, sizeof(sendBuff), 0);
-							strcpy(sendBuff, cine.getDireccionCine());
-							send(s, sendBuff, sizeof(sendBuff), 0);
-							strcpy(sendBuff, cine.getNombreCine());
-							send(s, sendBuff, sizeof(sendBuff), 0);
-							break;
-						case 6:
-							menuAnadirSala();
-							strcpy(sendBuff, "ANADIRSALA");
-							send(s, sendBuff, sizeof(sendBuff), 0);
-							strcpy(sendBuff, sala.getIdCine());
-							send(s, sendBuff, sizeof(sendBuff), 0);
-							strcpy(sendBuff, sala.getNColumnasSala());
-							send(s, sendBuff, sizeof(sendBuff), 0);
-							strcpy(sendBuff, sala.getNFilasSala());
-							send(s, sendBuff, sizeof(sendBuff), 0);
-							strcpy(sendBuff, sala.getNumeroSala());
-							send(s, sendBuff, sizeof(sendBuff), 0);
-							break;
-						case 7:
-							cout << "Hasta luego!" << endl;
-							strcpy(sendBuff, "EXIT");
-							send(s, sendBuff, sizeof(sendBuff), 0);
-							break;
-						default:
-							break;
+							menuAnadirDatos();
+							switch (opcionAD)
+							{
+							case 1:
+								menuRegistrarse();
+								strcpy(sendBuff, "REGISTRARSE");
+								send(s, sendBuff, sizeof(sendBuff), 0);
+								strcpy(sendBuff, usuario.getNombre());
+								send(s, sendBuff, sizeof(sendBuff), 0);
+								strcpy(sendBuff, usuario.getCorreo());
+								send(s, sendBuff, sizeof(sendBuff), 0);
+								strcpy(sendBuff, usuario.getContrasena());
+								send(s, sendBuff, sizeof(sendBuff), 0);
+								strcpy(sendBuff, usuario.getRespuesta());
+								send(s, sendBuff, sizeof(sendBuff), 0);
+								recv(s, recvBuff, sizeof(recvBuff), 0);
+								break;
+							case 2:
+								menuAnadirAsiento();
+								strcpy(sendBuff, "ANADIRASIENTO");
+								send(s, sendBuff, sizeof(sendBuff), 0);
+								strcpy(sendBuff, asiento.getFechaAsiento());
+								send(s, sendBuff, sizeof(sendBuff), 0);
+								strcpy(sendBuff, asiento.getFilaAsiento());
+								send(s, sendBuff, sizeof(sendBuff), 0);
+								strcpy(sendBuff, asiento.getIdSala());
+								send(s, sendBuff, sizeof(sendBuff), 0);
+								strcpy(sendBuff, asiento.getNumeroAsiento());
+								send(s, sendBuff, sizeof(sendBuff), 0);
+								break;
+							case 3:
+								menuAnadirPelicula();
+								strcpy(sendBuff, "ANADIRPELICULA");
+								send(s, sendBuff, sizeof(sendBuff), 0);
+								strcpy(sendBuff, pelicula.getHorario());
+								send(s, sendBuff, sizeof(sendBuff), 0);
+								strcpy(sendBuff, pelicula.getIdSala());
+								send(s, sendBuff, sizeof(sendBuff), 0);
+								strcpy(sendBuff, pelicula.getSinopsis());
+								send(s, sendBuff, sizeof(sendBuff), 0);
+								strcpy(sendBuff, pelicula.getTitulo());
+								send(s, sendBuff, sizeof(sendBuff), 0);
+								break;
+							case 4:
+								menuAnadirActor();
+								strcpy(sendBuff, "ANADIRACTOR");
+								send(s, sendBuff, sizeof(sendBuff), 0);
+								strcpy(sendBuff, actor.getIdPelicula());
+								send(s, sendBuff, sizeof(sendBuff), 0);
+								strcpy(sendBuff, actor.getNombreActor());
+								send(s, sendBuff, sizeof(sendBuff), 0);
+								break;
+							case 5:
+								menuAnadirCine();
+								strcpy(sendBuff, "ANADIRCINE");
+								send(s, sendBuff, sizeof(sendBuff), 0);
+								strcpy(sendBuff, cine.getCiudadCine());
+								send(s, sendBuff, sizeof(sendBuff), 0);
+								strcpy(sendBuff, cine.getDireccionCine());
+								send(s, sendBuff, sizeof(sendBuff), 0);
+								strcpy(sendBuff, cine.getNombreCine());
+								send(s, sendBuff, sizeof(sendBuff), 0);
+								break;
+							case 6:
+								menuAnadirSala();
+								strcpy(sendBuff, "ANADIRSALA");
+								send(s, sendBuff, sizeof(sendBuff), 0);
+								strcpy(sendBuff, sala.getIdCine());
+								send(s, sendBuff, sizeof(sendBuff), 0);
+								strcpy(sendBuff, sala.getNColumnasSala());
+								send(s, sendBuff, sizeof(sendBuff), 0);
+								strcpy(sendBuff, sala.getNFilasSala());
+								send(s, sendBuff, sizeof(sendBuff), 0);
+								strcpy(sendBuff, sala.getNumeroSala());
+								send(s, sendBuff, sizeof(sendBuff), 0);
+								break;
+							case 7:
+								cout << "Hasta luego!" << endl;
+								strcpy(sendBuff, "EXIT");
+								send(s, sendBuff, sizeof(sendBuff), 0);
+								hayQueAnadirDatos = 0;
+								break;
+							default:
+								break;
+							}
 						}
 						break;
 					case 4:
 						cout << "Hasta luego!" << endl;
 						strcpy(sendBuff, "EXIT");
 						send(s, sendBuff, sizeof(sendBuff), 0);
+						programaOperando = 0;
 						break;
 				}
 			}
@@ -349,15 +323,11 @@ int main(int argc, char *argv[])
 						strcpy(sendBuff, usuario.getContrasena());
 						send(s, sendBuff, sizeof(sendBuff), 0);
 						recv(s, recvBuff, sizeof(recvBuff), 0);
-						if (*recvBuff == '1')
-						{
-							menuPrincipalCliente();
-						}
+						aIniciadoSesion = 1;
 						break;
 					
 					case 2:
 						menuRegistrarse();
-						printf("dsaed");
 						strcpy(sendBuff, "REGISTRARSE");
 						send(s, sendBuff, sizeof(sendBuff), 0);
 						strcpy(sendBuff, usuario.getNombre());
@@ -369,10 +339,7 @@ int main(int argc, char *argv[])
 						strcpy(sendBuff, usuario.getRespuesta());
 						send(s, sendBuff, sizeof(sendBuff), 0);
 						recv(s, recvBuff, sizeof(recvBuff), 0);
-						if (*recvBuff == '1')
-						{
-							menuPrincipalCliente();
-						}
+						aIniciadoSesion = 1;
 						break;
 				}
 			}
@@ -381,9 +348,10 @@ int main(int argc, char *argv[])
 			cout << "Hasta luego!" << endl;
 			strcpy(sendBuff, "EXIT");
 			send(s, sendBuff, sizeof(sendBuff), 0);
+			programaOperando = 0;
 			break;
 		default:
-			menuBienvenida();
+			programaOperando = 0;
 			break;
 		}
 		

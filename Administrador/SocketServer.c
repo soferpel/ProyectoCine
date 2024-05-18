@@ -126,7 +126,7 @@ int main(int argc, char *argv[])
 		}
 	
 
-		//NO SE SI ESTA PARTE ESTA BIEN
+		/*//NO SE SI ESTA PARTE ESTA BIEN
 		if(strcmp(recvBuff, "MODIFICARDATOS") == 0)
 		{
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
@@ -137,7 +137,7 @@ int main(int argc, char *argv[])
 				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
 			}
 		}
-		//--------------------------------
+		//--------------------------------*/
 
 		if(strcmp(recvBuff, "MODIFICARPELICULA") == 0)
 		{
