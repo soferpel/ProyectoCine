@@ -13,6 +13,14 @@ Asiento::Asiento(char* filaAsiento, char* numeroAsiento, char* fechaAsiento, cha
     strcpy(this->fechaAsiento, fechaAsiento);
 }
 
+Asiento::Asiento()
+{
+    this->filaAsiento = new char[strlen(filaAsiento) + 1 ];
+    this->numeroAsiento = new char[strlen(numeroAsiento) + 1 ];
+    this->idSala = new char[strlen(idSala) + 1 ];
+    this->fechaAsiento = new char[strlen(fechaAsiento) + 1 ];
+}
+
 Asiento::~Asiento()
 {
     delete[] this->fechaAsiento;

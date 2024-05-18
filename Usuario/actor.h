@@ -9,6 +9,7 @@ class Actor
         char* idPelicula;
     public:
         Actor(char* nombreActor, char* idPelicula);
+        Actor();
         ~Actor();
 
         void setNombreActor(char* nombreActor);

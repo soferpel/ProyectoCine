@@ -11,6 +11,13 @@ Cine::Cine(char* nombreCine, char* direccionCine, char* ciudadCine)
     strcpy(this->ciudadCine, ciudadCine);
 }
 
+Cine::Cine()
+{
+    this->nombreCine = new char[strlen(nombreCine) + 1];
+    this->direccionCine = new char[strlen(direccionCine) + 1];
+    this->ciudadCine = new char[strlen(ciudadCine) + 1];
+}
+
 Cine::~Cine()
 {
     delete[] nombreCine;

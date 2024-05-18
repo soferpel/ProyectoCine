@@ -13,6 +13,14 @@ Usuario::Usuario(char* nombre, char* respuesta, char* correo, char* contrasena)
     strcpy(this->contrasena, contrasena);
 }
 
+Usuario::Usuario()
+{
+    this->nombre = new char[strlen(nombre) + 1];
+    this->respuesta = new char[strlen(respuesta) + 1];
+    this->correo = new char[strlen(correo) + 1];
+    this->contrasena = new char[strlen(contrasena) + 1];
+}
+
 Usuario::~Usuario()
 {
     delete[] this->nombre;

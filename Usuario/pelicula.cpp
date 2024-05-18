@@ -13,6 +13,14 @@ Pelicula::Pelicula(char* titulo, char* sinopsis, char* horario, char* idSala)
     strcpy(this->idSala, idSala);
 }
 
+Pelicula::Pelicula()
+{
+    this->titulo = new char[strlen(titulo) + 1];
+    this->sinopsis = new char[strlen(sinopsis) + 1];
+    this->horario = new char[strlen(horario) + 1];
+    this->idSala = new char[strlen(idSala) + 1];
+}
+
 Pelicula::~Pelicula()
 {
     delete[] this->titulo;

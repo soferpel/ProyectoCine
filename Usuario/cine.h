@@ -10,6 +10,7 @@ class Cine
         char* ciudadCine;
     public:
         Cine(char* nombreCine, char* direccionCine, char* ciudadCine);
+        Cine();
         ~Cine();
         
         void setNombreCine(char* nombreCine);

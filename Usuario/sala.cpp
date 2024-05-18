@@ -13,6 +13,14 @@ Sala::Sala(char* numeroSala, char* nColumnasSala, char* nFilasSala, char* idCine
     strcpy(this->nFilasSala, nFilasSala);
 }
 
+Sala::Sala()
+{
+    this->idCine =  new char[strlen(idCine) + 1];
+    this->numeroSala =  new char[strlen(numeroSala) + 1];
+    this->nColumnasSala =  new char[strlen(nColumnasSala) + 1];
+    this->nFilasSala =  new char[strlen(nFilasSala) + 1];
+}
+
 Sala::~Sala()
 {
     delete[] this->numeroSala;

@@ -12,6 +12,7 @@ class Pelicula
 
     public:
         Pelicula(char* titulo, char* sinopsis, char* horario, char* idSala);
+        Pelicula();
         ~Pelicula();
 
         void setTitulo(char* titulo);

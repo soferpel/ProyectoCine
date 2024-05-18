@@ -12,6 +12,7 @@ class Asiento
 
     public:
         Asiento(char* filaAsientoInt, char* numeroAsientoInt, char* fechaAsiento, char* idSala);
+        Asiento();
         ~Asiento();
 
         void setFilaAsiento(char* filaAsiento);

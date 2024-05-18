@@ -9,6 +9,12 @@ Actor::Actor(char* nombreActor, char* idPelicula)
     strcpy(this->idPelicula, idPelicula);
 }
 
+Actor::Actor()
+{
+    this->nombreActor = new char[strlen(nombreActor) + 1];
+    this->idPelicula = new char[strlen(idPelicula) + 1];
+}
+
 Actor::~Actor()
 {
     delete[] this->nombreActor;

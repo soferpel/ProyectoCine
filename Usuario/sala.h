@@ -10,6 +10,7 @@ class Sala{
         char* nFilasSala;
     public:
         Sala(char* numeroSala, char* nColumnasSala, char* nFilasSala, char* idCine);
+        Sala();
         ~Sala();
 
         void setNumeroSala(char* numeroSala);
