@@ -245,10 +245,13 @@ int main(int argc, char *argv[])
 						{
 						case 1:
 							menuRegistrarse();
+							printf("a");
 							strcpy(sendBuff, "REGISTRARSE");
 							send(s, sendBuff, sizeof(sendBuff), 0);
+							printf("aa");
 							strcpy(sendBuff, usuario.getNombre());
 							send(s, sendBuff, sizeof(sendBuff), 0);
+							printf("aaa");
 							strcpy(sendBuff, usuario.getCorreo());
 							send(s, sendBuff, sizeof(sendBuff), 0);
 							strcpy(sendBuff, usuario.getContrasena());
@@ -354,6 +357,7 @@ int main(int argc, char *argv[])
 					
 					case 2:
 						menuRegistrarse();
+						printf("dsaed");
 						strcpy(sendBuff, "REGISTRARSE");
 						send(s, sendBuff, sizeof(sendBuff), 0);
 						strcpy(sendBuff, usuario.getNombre());

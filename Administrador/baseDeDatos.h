@@ -46,5 +46,6 @@ void validarPelicula(PathDB rutaDB);
 int callbackPelicula(void *data, int argc, char **argv, char **col_names);
 void validarActor(PathDB rutaDB);
 int callbackActor(void *data, int argc, char **argv, char **col_names);
+int callbackVisualizarDatos(void *data, int argc, char **argv, char **azColName);
 
 #endif
