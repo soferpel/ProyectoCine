@@ -262,24 +262,12 @@ int main(int argc, char *argv[])
 									send(s, sendBuff, sizeof(sendBuff), 0);
 									break;
 								case 7:
-									cout << "Hasta luego!" << endl;
-									strcpy(sendBuff, "EXIT");
-									send(s, sendBuff, sizeof(sendBuff), 0);
-									closesocket(s);
-									WSACleanup();
+									cout << "Volviendo al menu principal..." << endl;
 									hayQueModificarDatos = 0;
-									programaOperando = 0;
 									break;
 								
 								default:
 									cout << "Opcion no valida" << endl;
-									cout << "Hasta luego!" << endl;
-									strcpy(sendBuff, "EXIT");
-									send(s, sendBuff, sizeof(sendBuff), 0);
-									closesocket(s);
-									WSACleanup();
-									hayQueModificarDatos = 0;
-									programaOperando = 0;
 									break;
 							}
 						}
@@ -374,23 +362,11 @@ int main(int argc, char *argv[])
 								send(s, sendBuff, sizeof(sendBuff), 0);
 								break;
 							case 7:
-								cout << "Hasta luego!" << endl;
-								strcpy(sendBuff, "EXIT");
-								send(s, sendBuff, sizeof(sendBuff), 0);
-								closesocket(s);
-								WSACleanup();
+								cout << "Volviendo al menu principal..." << endl;
 								hayQueAnadirDatos = 0;
-								programaOperando = 0;
 								break;
 							default:
 								cout << "Opcion no valida" << endl;
-								cout << "Hasta luego!" << endl;
-								strcpy(sendBuff, "EXIT");
-								send(s, sendBuff, sizeof(sendBuff), 0);
-								closesocket(s);
-								WSACleanup();
-								hayQueAnadirDatos = 0;
-								programaOperando = 0;
 								break;
 							}
 						}
@@ -406,12 +382,6 @@ int main(int argc, char *argv[])
 					
 					default:
 						cout << "Opcion no valida" << endl;
-						cout << "Hasta luego!" << endl;
-						strcpy(sendBuff, "EXIT");
-						send(s, sendBuff, sizeof(sendBuff), 0);
-						closesocket(s);
-						WSACleanup();
-						programaOperando = 0;
 						break;
 				}
 			}
@@ -452,7 +422,14 @@ int main(int argc, char *argv[])
 						strcpy(sendBuff, usuario.getRespuesta());
 						send(s, sendBuff, sizeof(sendBuff), 0);
 						recv(s, recvBuff, sizeof(recvBuff), 0);
-						aIniciadoSesion = 1;
+						if(strcmp(recvBuff, "1") == 0)
+						{
+							aIniciadoSesion = 1;
+						}
+						else if(strcmp(recvBuff, "1") != 0)
+						{
+							aIniciadoSesion = 0;
+						}
 						break;
 					
 					case 3:
@@ -462,11 +439,7 @@ int main(int argc, char *argv[])
 						programaOperando = 0;
 						break;
 					default:
-						cout << "Opcion no valida" << endl;
-						cout << "Hasta luego!" << endl;
-						strcpy(sendBuff, "EXIT");
-						send(s, sendBuff, sizeof(sendBuff), 0);
-						programaOperando = 0;		
+						cout << "Opcion no valida" << endl;		
 						break;
 				}
 			}
@@ -479,11 +452,7 @@ int main(int argc, char *argv[])
 						programaOperando = 0;
 						break;
 			default:
-				cout << "Opcion no valida" << endl;
-				cout << "Hasta luego!" << endl;
-				strcpy(sendBuff, "EXIT");
-				send(s, sendBuff, sizeof(sendBuff), 0);
-				programaOperando = 0;		
+				cout << "Opcion no valida" << endl;		
 				break;
 		}
 		

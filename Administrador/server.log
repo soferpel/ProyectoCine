@@ -38,3 +38,210 @@
 [2024-05-19 21:57:55] [INFO] Tabla creada.
 [2024-05-19 21:58:12] [INFO] Command received: EXIT
 [2024-05-19 21:58:12] [INFO] Server shutting down...
+[2024-05-19 22:16:40] [INFO] Server starting...
+[2024-05-19 22:16:40] [INFO] Initialising Winsock...
+[2024-05-19 22:16:40] [INFO] Winsock initialized.
+[2024-05-19 22:16:40] [INFO] Socket created.
+[2024-05-19 22:16:40] [INFO] Bind done.
+[2024-05-19 22:16:40] [INFO] Waiting for incoming connections...
+[2024-05-19 22:16:48] [INFO] Incoming connection from: 127.0.0.1 (52667)
+[2024-05-19 22:16:48] [INFO] Waiting for incoming commands from client...
+[2024-05-19 22:16:48] [INFO] Command received: CREARTABLAS
+[2024-05-19 22:16:48] [INFO] Tablas creadas correctamente
+[2024-05-19 22:16:48] [INFO] Tabla creada.
+[2024-05-19 22:16:56] [INFO] Command received: INICIARSESION
+[2024-05-19 22:16:56] [ERROR] Usuario o contrasena incorrectos
+[2024-05-19 22:16:56] [INFO] Response sent: 0
+[2024-05-19 22:17:19] [INFO] Command received: INICIARSESION
+[2024-05-19 22:17:19] [ERROR] Error al realizar la consulta SELECT: query aborted
+
+[2024-05-19 22:17:19] [INFO] El usuario es correcto
+[2024-05-19 22:17:19] [INFO] Response sent: 1
+[2024-05-19 22:18:12] [INFO] Command received: MODIFICARCINE
+[2024-05-19 22:18:12] [ERROR] El cine introducido no existe
+[2024-05-19 22:18:12] [INFO] Response sent: 0
+[2024-05-19 22:20:57] [INFO] Server starting...
+[2024-05-19 22:20:57] [INFO] Initialising Winsock...
+[2024-05-19 22:20:57] [INFO] Winsock initialized.
+[2024-05-19 22:20:57] [INFO] Socket created.
+[2024-05-19 22:20:57] [INFO] Bind done.
+[2024-05-19 22:20:57] [INFO] Waiting for incoming connections...
+[2024-05-19 22:21:01] [INFO] Incoming connection from: 127.0.0.1 (52704)
+[2024-05-19 22:21:01] [INFO] Waiting for incoming commands from client...
+[2024-05-19 22:21:01] [INFO] Command received: CREARTABLAS
+[2024-05-19 22:21:01] [INFO] Tablas creadas correctamente
+[2024-05-19 22:21:01] [INFO] Tabla creada.
+[2024-05-19 22:21:06] [INFO] Command received: INICIARSESION
+[2024-05-19 22:21:06] [ERROR] Error al realizar la consulta SELECT: query aborted
+
+[2024-05-19 22:21:06] [INFO] El usuario es correcto
+[2024-05-19 22:21:06] [INFO] Response sent: 1
+[2024-05-19 22:21:27] [INFO] Command received: MODIFICARCINE
+[2024-05-19 22:21:27] [ERROR] El cine introducido no existe
+[2024-05-19 22:21:27] [INFO] Response sent: 0
+[2024-05-19 22:21:44] [INFO] Command received: EXIT
+[2024-05-19 22:21:44] [INFO] Server shutting down...
+[2024-05-19 22:26:35] [INFO] Server starting...
+[2024-05-19 22:26:35] [INFO] Initialising Winsock...
+[2024-05-19 22:26:35] [INFO] Winsock initialized.
+[2024-05-19 22:26:35] [INFO] Socket created.
+[2024-05-19 22:26:35] [INFO] Bind done.
+[2024-05-19 22:26:35] [INFO] Waiting for incoming connections...
+[2024-05-19 22:26:39] [INFO] Incoming connection from: 127.0.0.1 (52779)
+[2024-05-19 22:26:39] [INFO] Waiting for incoming commands from client...
+[2024-05-19 22:26:39] [INFO] Command received: CREARTABLAS
+[2024-05-19 22:26:39] [INFO] Tablas creadas correctamente
+[2024-05-19 22:26:39] [INFO] Tabla creada.
+[2024-05-19 22:26:56] [INFO] Command received: INICIARSESION
+[2024-05-19 22:26:56] [ERROR] Error al realizar la consulta SELECT: query aborted
+
+[2024-05-19 22:26:56] [INFO] El usuario es correcto
+[2024-05-19 22:26:56] [INFO] Response sent: 1
+[2024-05-19 22:27:07] [INFO] Command received: MODIFICARCINE
+[2024-05-19 22:27:07] [INFO] 8
+[2024-05-19 22:27:07] [ERROR] El cine introducido no existe
+[2024-05-19 22:27:07] [INFO] Response sent: 0
+[2024-05-19 22:28:28] [INFO] Command received: EXIT
+[2024-05-19 22:28:28] [INFO] Server shutting down...
+[2024-05-19 22:28:37] [INFO] Server starting...
+[2024-05-19 22:28:37] [INFO] Initialising Winsock...
+[2024-05-19 22:28:37] [INFO] Winsock initialized.
+[2024-05-19 22:28:37] [INFO] Socket created.
+[2024-05-19 22:28:37] [INFO] Bind done.
+[2024-05-19 22:28:37] [INFO] Waiting for incoming connections...
+[2024-05-19 22:28:39] [INFO] Incoming connection from: 127.0.0.1 (52792)
+[2024-05-19 22:28:39] [INFO] Waiting for incoming commands from client...
+[2024-05-19 22:28:39] [INFO] Command received: CREARTABLAS
+[2024-05-19 22:28:39] [INFO] Tablas creadas correctamente
+[2024-05-19 22:28:39] [INFO] Tabla creada.
+[2024-05-19 22:28:44] [INFO] Command received: INICIARSESION
+[2024-05-19 22:28:44] [ERROR] Error al realizar la consulta SELECT: query aborted
+
+[2024-05-19 22:28:44] [INFO] El usuario es correcto
+[2024-05-19 22:28:44] [INFO] Response sent: 1
+[2024-05-19 22:28:53] [INFO] Command received: MODIFICARCINE
+[2024-05-19 22:28:53] [INFO] 8
+[2024-05-19 22:28:53] [ERROR] El cine introducido no existe
+[2024-05-19 22:28:53] [INFO] Response sent: 0
+[2024-05-19 22:29:05] [INFO] Command received: EXIT
+[2024-05-19 22:29:05] [INFO] Server shutting down...
+[2024-05-19 22:29:41] [INFO] Server starting...
+[2024-05-19 22:29:41] [INFO] Initialising Winsock...
+[2024-05-19 22:29:41] [INFO] Winsock initialized.
+[2024-05-19 22:29:41] [INFO] Socket created.
+[2024-05-19 22:29:41] [INFO] Bind done.
+[2024-05-19 22:29:41] [INFO] Waiting for incoming connections...
+[2024-05-19 22:29:48] [INFO] Incoming connection from: 127.0.0.1 (52799)
+[2024-05-19 22:29:48] [INFO] Waiting for incoming commands from client...
+[2024-05-19 22:29:48] [INFO] Command received: CREARTABLAS
+[2024-05-19 22:29:48] [INFO] Tablas creadas correctamente
+[2024-05-19 22:29:48] [INFO] Tabla creada.
+[2024-05-19 22:29:53] [INFO] Command received: INICIARSESION
+[2024-05-19 22:29:53] [ERROR] Error al realizar la consulta SELECT: query aborted
+
+[2024-05-19 22:29:53] [INFO] El usuario es correcto
+[2024-05-19 22:29:53] [INFO] Response sent: 1
+[2024-05-19 22:30:12] [INFO] Command received: MODIFICARCINE
+[2024-05-19 22:31:07] [INFO] Server starting...
+[2024-05-19 22:31:07] [INFO] Initialising Winsock...
+[2024-05-19 22:31:07] [INFO] Winsock initialized.
+[2024-05-19 22:31:07] [INFO] Socket created.
+[2024-05-19 22:31:07] [INFO] Bind done.
+[2024-05-19 22:31:07] [INFO] Waiting for incoming connections...
+[2024-05-19 22:31:09] [INFO] Incoming connection from: 127.0.0.1 (52812)
+[2024-05-19 22:31:09] [INFO] Waiting for incoming commands from client...
+[2024-05-19 22:31:09] [INFO] Command received: CREARTABLAS
+[2024-05-19 22:31:09] [INFO] Tablas creadas correctamente
+[2024-05-19 22:31:09] [INFO] Tabla creada.
+[2024-05-19 22:31:13] [INFO] Command received: INICIARSESION
+[2024-05-19 22:31:13] [ERROR] Error al realizar la consulta SELECT: query aborted
+
+[2024-05-19 22:31:13] [INFO] El usuario es correcto
+[2024-05-19 22:31:13] [INFO] Response sent: 1
+[2024-05-19 22:31:18] [INFO] Command received: MODIFICARCINE
+[2024-05-19 22:32:11] [INFO] Server starting...
+[2024-05-19 22:32:11] [INFO] Initialising Winsock...
+[2024-05-19 22:32:11] [INFO] Winsock initialized.
+[2024-05-19 22:32:11] [INFO] Socket created.
+[2024-05-19 22:32:11] [INFO] Bind done.
+[2024-05-19 22:32:11] [INFO] Waiting for incoming connections...
+[2024-05-19 22:32:16] [INFO] Incoming connection from: 127.0.0.1 (52818)
+[2024-05-19 22:32:16] [INFO] Waiting for incoming commands from client...
+[2024-05-19 22:32:16] [INFO] Command received: CREARTABLAS
+[2024-05-19 22:32:16] [INFO] Tablas creadas correctamente
+[2024-05-19 22:32:16] [INFO] Tabla creada.
+[2024-05-19 22:32:19] [INFO] Command received: INICIARSESION
+[2024-05-19 22:32:19] [ERROR] Error al realizar la consulta SELECT: query aborted
+
+[2024-05-19 22:32:19] [INFO] El usuario es correcto
+[2024-05-19 22:32:19] [INFO] Response sent: 1
+[2024-05-19 22:32:25] [INFO] Command received: MODIFICARCINE
+[2024-05-19 22:32:25] [ERROR] El cine introducido no existe
+[2024-05-19 22:32:25] [INFO] Response sent: 0
+[2024-05-19 22:32:53] [INFO] Command received: EXIT
+[2024-05-19 22:32:53] [INFO] Server shutting down...
+[2024-05-19 22:33:10] [INFO] Server starting...
+[2024-05-19 22:33:10] [INFO] Initialising Winsock...
+[2024-05-19 22:33:10] [INFO] Winsock initialized.
+[2024-05-19 22:33:10] [INFO] Socket created.
+[2024-05-19 22:33:10] [INFO] Bind done.
+[2024-05-19 22:33:10] [INFO] Waiting for incoming connections...
+[2024-05-19 22:33:14] [INFO] Incoming connection from: 127.0.0.1 (52824)
+[2024-05-19 22:33:14] [INFO] Waiting for incoming commands from client...
+[2024-05-19 22:33:14] [INFO] Command received: CREARTABLAS
+[2024-05-19 22:33:14] [INFO] Tablas creadas correctamente
+[2024-05-19 22:33:14] [INFO] Tabla creada.
+[2024-05-19 22:33:16] [INFO] Command received: INICIARSESION
+[2024-05-19 22:33:16] [ERROR] Error al realizar la consulta SELECT: query aborted
+
+[2024-05-19 22:33:16] [INFO] El usuario es correcto
+[2024-05-19 22:33:16] [INFO] Response sent: 1
+[2024-05-19 22:33:21] [INFO] Command received: MODIFICARCINE
+[2024-05-19 22:33:21] [ERROR] El cine introducido no existe
+[2024-05-19 22:33:21] [INFO] Response sent: 0
+[2024-05-19 22:33:36] [INFO] Command received: EXIT
+[2024-05-19 22:33:36] [INFO] Server shutting down...
+[2024-05-19 22:33:45] [INFO] Server starting...
+[2024-05-19 22:33:45] [INFO] Initialising Winsock...
+[2024-05-19 22:33:45] [INFO] Winsock initialized.
+[2024-05-19 22:33:45] [INFO] Socket created.
+[2024-05-19 22:33:45] [INFO] Bind done.
+[2024-05-19 22:33:45] [INFO] Waiting for incoming connections...
+[2024-05-19 22:33:49] [INFO] Incoming connection from: 127.0.0.1 (52828)
+[2024-05-19 22:33:49] [INFO] Waiting for incoming commands from client...
+[2024-05-19 22:33:49] [INFO] Command received: CREARTABLAS
+[2024-05-19 22:33:49] [INFO] Tablas creadas correctamente
+[2024-05-19 22:33:49] [INFO] Tabla creada.
+[2024-05-19 22:33:52] [INFO] Command received: INICIARSESION
+[2024-05-19 22:33:52] [ERROR] Error al realizar la consulta SELECT: query aborted
+
+[2024-05-19 22:33:52] [INFO] El usuario es correcto
+[2024-05-19 22:33:52] [INFO] Response sent: 1
+[2024-05-19 22:33:56] [INFO] Command received: MODIFICARCINE
+[2024-05-19 22:33:56] [ERROR] El cine introducido no existe
+[2024-05-19 22:33:56] [INFO] Response sent: 0
+[2024-05-19 22:38:41] [INFO] Command received: EXIT
+[2024-05-19 22:38:41] [INFO] Server shutting down...
+[2024-05-19 22:38:50] [INFO] Server starting...
+[2024-05-19 22:38:50] [INFO] Initialising Winsock...
+[2024-05-19 22:38:50] [INFO] Winsock initialized.
+[2024-05-19 22:38:50] [INFO] Socket created.
+[2024-05-19 22:38:50] [INFO] Bind done.
+[2024-05-19 22:38:50] [INFO] Waiting for incoming connections...
+[2024-05-19 22:38:54] [INFO] Incoming connection from: 127.0.0.1 (52868)
+[2024-05-19 22:38:54] [INFO] Waiting for incoming commands from client...
+[2024-05-19 22:38:54] [INFO] Command received: CREARTABLAS
+[2024-05-19 22:38:54] [INFO] Tablas creadas correctamente
+[2024-05-19 22:38:54] [INFO] Tabla creada.
+[2024-05-19 22:38:57] [INFO] Command received: INICIARSESION
+[2024-05-19 22:38:57] [ERROR] Error al realizar la consulta SELECT: query aborted
+
+[2024-05-19 22:38:57] [INFO] El usuario es correcto
+[2024-05-19 22:38:57] [INFO] Response sent: 1
+[2024-05-19 22:39:01] [INFO] Command received: MODIFICARCINE
+[2024-05-19 22:39:01] [ERROR] Error al realizar la consulta SELECT: query aborted
+[2024-05-19 22:39:01] [INFO] El cine es correcto
+[2024-05-19 22:39:01] [INFO] Cine modificado correctamente
+[2024-05-19 22:39:01] [INFO] Response sent: 0
+[2024-05-19 22:39:17] [INFO] Command received: EXIT
+[2024-05-19 22:39:17] [INFO] Server shutting down...
