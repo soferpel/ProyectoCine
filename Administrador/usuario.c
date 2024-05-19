@@ -32,7 +32,7 @@ void guardarUsuario(PathDB rutaDB, Logger *logger)
 
 void modificarUsuario(PathDB rutaDB, Logger *logger)
 {
-    validarUsuario(rutaDB);
+    validarUsuario(rutaDB, logger);
     if(validacionUsuario == 1)
     {
          sqlite3 *db;

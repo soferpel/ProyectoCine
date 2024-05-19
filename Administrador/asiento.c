@@ -7,7 +7,7 @@
 #include "logger.h"
 
 void anadirAsiento(PathDB rutaDB, Logger *logger) {
-    validarSala(rutaDB);
+    validarSala(rutaDB, logger);
     if (validacionSala == 1)
     {
         sqlite3 *db;
@@ -34,10 +34,10 @@ void anadirAsiento(PathDB rutaDB, Logger *logger) {
 
 void modificarAsiento(PathDB rutaDB, Logger *logger)
 {
-    validarAsiento(rutaDB);
+    validarAsiento(rutaDB, logger);
     if(validacionAsiento == 1)
     {
-        validarSala(rutaDB);
+        validarSala(rutaDB, logger);
         if(validacionSala == 1)
         {
             sqlite3 *db;

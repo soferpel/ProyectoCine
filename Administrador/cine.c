@@ -27,7 +27,7 @@ void anadirCine(PathDB rutaDB, Logger *logger) {
 
 void modificarCine(PathDB rutaDB, Logger *logger)
 {
-    validarCine(rutaDB);
+    validarCine(rutaDB, logger);
     if(validacionCine == 1)
     {
         sqlite3 *db;

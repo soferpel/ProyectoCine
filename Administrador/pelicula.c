@@ -52,7 +52,7 @@ int callbackPelicula(void *data, int argc, char **argv, char **col_names)
 
 void anadirPelicula(PathDB rutaDB, Logger *logger)
 {
-    validarSala(rutaDB);
+    validarSala(rutaDB, logger);
     if (validacionSala == 1)
     {
         sqlite3 *db;
@@ -75,10 +75,10 @@ void anadirPelicula(PathDB rutaDB, Logger *logger)
 }
 
 void modificarPelicula(PathDB rutaDB, Logger *logger) {
-    validarPelicula(rutaDB);
+    validarPelicula(rutaDB, logger);
     if (validacionPelicula == 1)
     {
-        validarSala(rutaDB);
+        validarSala(rutaDB, logger);
         if(validacionSala == 1)
         {
             sqlite3 *db;

@@ -55,10 +55,10 @@ int callbackActor(void *data, int argc, char **argv, char **col_names)
 
 void modificarActor(PathDB rutaDB, Logger *logger)
 {
-    validarActor(rutaDB);
+    validarActor(rutaDB, logger);
     if(validacionActor == 1)
     {
-        validarPelicula(rutaDB);
+        validarPelicula(rutaDB, logger);
         if(validacionPelicula == 1)
         {
             sqlite3 *db;
@@ -92,7 +92,7 @@ void modificarActor(PathDB rutaDB, Logger *logger)
 
 void anadirActor(PathDB rutaDB, Logger *logger)
 {
-    validarPelicula(rutaDB);
+    validarPelicula(rutaDB, logger);
     if (validacionPelicula == 1)
     {
         sqlite3 *db;

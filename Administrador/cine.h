@@ -1,6 +1,7 @@
 #ifndef CINE_H
 #define CINE_H
 #include "configuracion.h"
+#include "logger.h"
 
 typedef struct 
 {

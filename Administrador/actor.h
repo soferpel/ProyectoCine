@@ -1,6 +1,7 @@
 #ifndef ACTOR_H
 #define ACTOR_H
 #include "configuracion.h"
+#include "logger.h"
 
 typedef struct
 {

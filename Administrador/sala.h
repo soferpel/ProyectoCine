@@ -1,6 +1,7 @@
 #ifndef SALA_H
 #define SALA_H
 #include "configuracion.h"
+#include "logger.h"
 
 typedef struct 
 {

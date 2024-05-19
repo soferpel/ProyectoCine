@@ -1,6 +1,7 @@
 #ifndef ASIENTO_H
 #define ASIENTO_H
 #include "configuracion.h"
+#include "logger.h"
 
 typedef struct {
     char idAsientoChar[5];

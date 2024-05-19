@@ -1,6 +1,7 @@
 #ifndef PELICULA_H
 #define PELICULA_H
 #include "configuracion.h"
+#include "logger.h"
 
 typedef struct
 {
