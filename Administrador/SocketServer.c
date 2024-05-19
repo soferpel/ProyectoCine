@@ -102,10 +102,9 @@ int main(int argc, char *argv[])
 			send(comm_socket, sendBuff, sizeof(sendBuff), 0);
 			printf("Response sent: %s \n", sendBuff);
         }
-		printf("b");
+
 		if (strcmp(recvBuff, "REGISTRARSE") == 0)
 		{
-			printf("fserfsuyhebf");
             recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
 			strcpy(usuario.nombre, recvBuff);
 
@@ -124,20 +123,6 @@ int main(int argc, char *argv[])
 			send(comm_socket, sendBuff, sizeof(sendBuff), 0);
 			printf("Response sent: %s \n", sendBuff);
 		}
-	
-
-		/*//NO SE SI ESTA PARTE ESTA BIEN
-		if(strcmp(recvBuff, "MODIFICARDATOS") == 0)
-		{
-			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
-			while (strcmp(recvBuff, "MODIFICARDATOS-END") != 0)
-			{
-				hayQueModificarDatos = 1;
-				sprintf(sendBuff, "%i", hayQueModificarDatos);
-				send(comm_socket, sendBuff, sizeof(sendBuff), 0);
-			}
-		}
-		//--------------------------------*/
 
 		if(strcmp(recvBuff, "MODIFICARPELICULA") == 0)
 		{

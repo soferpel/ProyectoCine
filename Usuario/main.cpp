@@ -60,7 +60,7 @@ int main(int argc, char *argv[])
 	//SEND and RECEIVE data (CLIENT/SERVER PROTOCOL)
 	autenticacionExitosa = 0;
     strcpy(sendBuff, "CREARTABLAS");
-		send(s, sendBuff, sizeof(sendBuff), 0);	
+	send(s, sendBuff, sizeof(sendBuff), 0);	
 	do
 	{
 		if (aElegidoModo == 0)
@@ -71,29 +71,98 @@ int main(int argc, char *argv[])
 		
 		switch (opcionModo)
 		{
-		case 1:
-			switch (opcionCliente)
-			{
 			case 1:
-				menuVisualizarDatos();
-				strcpy(sendBuff, "VISUALIZARDATOS");
-				send(s, sendBuff, sizeof(sendBuff), 0);
-				strcpy(sendBuff, tablaVisualizar);
-				send(s, sendBuff, sizeof(sendBuff), 0);
-				strcpy(sendBuff, idVisualizar);
-				send(s, sendBuff, sizeof(sendBuff), 0);
-				break;
-			case 2:
-				/* code */
-				break;
-			case 3:
-				/* code */
-				break;
-			default:
+			if(aIniciadoSesion == 1)
+			{
+				menuPrincipalCliente();
+				switch (opcionCliente)
+				{
+				case 1:
+					menuVisualizarDatos();
+					strcpy(sendBuff, "VISUALIZARDATOS");
+					send(s, sendBuff, sizeof(sendBuff), 0);
+					strcpy(sendBuff, tablaVisualizar);
+					send(s, sendBuff, sizeof(sendBuff), 0);
+					strcpy(sendBuff, idVisualizar);
+					send(s, sendBuff, sizeof(sendBuff), 0);
+					break;
+				case 2:
+					menuModificarDatos();
+					break;
+				case 3:
+					cout << "Hasta luego!" << endl;
+					strcpy(sendBuff, "EXIT");
+					send(s, sendBuff, sizeof(sendBuff), 0);
+					programaOperando = 0;
+					break;
+				default:
+					cout << "Opcion no valida" << endl;
+					cout << "Hasta luego!" << endl;
+					strcpy(sendBuff, "EXIT");
+					send(s, sendBuff, sizeof(sendBuff), 0);
+					programaOperando = 0;
+					break;
+				}
 				break;
 			}
+			else
+			{
+				menuBienvenida();
+				switch(opcionBvda)
+				{
+					case 1:
+						menuIniciarSesion();
+						strcpy(sendBuff, "INICIARSESION");
+						send(s, sendBuff, sizeof(sendBuff), 0);
+						strcpy(sendBuff, usuario.getCorreo());
+						send(s, sendBuff, sizeof(sendBuff), 0);
+						strcpy(sendBuff, usuario.getContrasena());
+						send(s, sendBuff, sizeof(sendBuff), 0);
+						recv(s, recvBuff, sizeof(recvBuff), 0);
+						if(strcmp(recvBuff, "1") == 0)
+						{
+							aIniciadoSesion = 1;
+						}
+						else if(strcmp(recvBuff, "1") != 0)
+						{
+							aIniciadoSesion = 0;
+						}
+						break;
+					
+					case 2:
+						menuRegistrarse();
+						strcpy(sendBuff, "REGISTRARSE");
+						send(s, sendBuff, sizeof(sendBuff), 0);
+						strcpy(sendBuff, usuario.getNombre());
+						send(s, sendBuff, sizeof(sendBuff), 0);
+						strcpy(sendBuff, usuario.getCorreo());
+						send(s, sendBuff, sizeof(sendBuff), 0);
+						strcpy(sendBuff, usuario.getContrasena());
+						send(s, sendBuff, sizeof(sendBuff), 0);
+						strcpy(sendBuff, usuario.getRespuesta());
+						send(s, sendBuff, sizeof(sendBuff), 0);
+						recv(s, recvBuff, sizeof(recvBuff), 0);
+						aIniciadoSesion = 1;
+						break;
+					
+					case 3:
+						cout << "Hasta luego!" << endl;
+						strcpy(sendBuff, "EXIT");
+						send(s, sendBuff, sizeof(sendBuff), 0);
+						programaOperando = 0;
+						break;
+
+					default:
+						cout << "Opcion no valida" << endl;
+						cout << "Hasta luego!" << endl;
+						strcpy(sendBuff, "EXIT");
+						send(s, sendBuff, sizeof(sendBuff), 0);
+						programaOperando = 0;
+						break;
+				}
+			}
 			break;
-		case 2:
+			case 2:
 			if (aIniciadoSesion == 1)
 			{
 				hayQueAnadirDatos = 0;
@@ -198,6 +267,15 @@ int main(int argc, char *argv[])
 									send(s, sendBuff, sizeof(sendBuff), 0);
 									hayQueModificarDatos = 0;
 									break;
+								
+								default:
+									cout << "Opcion no valida" << endl;
+									cout << "Hasta luego!" << endl;
+									strcpy(sendBuff, "EXIT");
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									hayQueModificarDatos = 0;
+									programaOperando = 0;
+									break;
 							}
 						}
 						break;
@@ -297,11 +375,25 @@ int main(int argc, char *argv[])
 								hayQueAnadirDatos = 0;
 								break;
 							default:
+								cout << "Opcion no valida" << endl;
+								cout << "Hasta luego!" << endl;
+								strcpy(sendBuff, "EXIT");
+								send(s, sendBuff, sizeof(sendBuff), 0);
+								hayQueAnadirDatos = 0;
+								programaOperando = 0;
 								break;
 							}
 						}
 						break;
 					case 4:
+						cout << "Hasta luego!" << endl;
+						strcpy(sendBuff, "EXIT");
+						send(s, sendBuff, sizeof(sendBuff), 0);
+						programaOperando = 0;
+						break;
+					
+					default:
+						cout << "Opcion no valida" << endl;
 						cout << "Hasta luego!" << endl;
 						strcpy(sendBuff, "EXIT");
 						send(s, sendBuff, sizeof(sendBuff), 0);
@@ -323,7 +415,14 @@ int main(int argc, char *argv[])
 						strcpy(sendBuff, usuario.getContrasena());
 						send(s, sendBuff, sizeof(sendBuff), 0);
 						recv(s, recvBuff, sizeof(recvBuff), 0);
-						aIniciadoSesion = 1;
+						if(strcmp(recvBuff, "1") == 0)
+						{
+							aIniciadoSesion = 1;
+						}
+						else if(strcmp(recvBuff, "1") != 0)
+						{
+							aIniciadoSesion = 0;
+						}
 						break;
 					
 					case 2:
@@ -341,21 +440,40 @@ int main(int argc, char *argv[])
 						recv(s, recvBuff, sizeof(recvBuff), 0);
 						aIniciadoSesion = 1;
 						break;
+					
+					case 3:
+						cout << "Hasta luego!" << endl;
+						strcpy(sendBuff, "EXIT");
+						send(s, sendBuff, sizeof(sendBuff), 0);
+						programaOperando = 0;
+						break;
+					default:
+						cout << "Opcion no valida" << endl;
+						cout << "Hasta luego!" << endl;
+						strcpy(sendBuff, "EXIT");
+						send(s, sendBuff, sizeof(sendBuff), 0);
+						programaOperando = 0;		
+						break;
 				}
 			}
 			break;
-		case 3:
-			cout << "Hasta luego!" << endl;
-			strcpy(sendBuff, "EXIT");
-			send(s, sendBuff, sizeof(sendBuff), 0);
-			programaOperando = 0;
-			break;
-		default:
-			programaOperando = 0;
-			break;
+
+			case 3:
+				cout << "Hasta luego!" << endl;
+						strcpy(sendBuff, "EXIT");
+						send(s, sendBuff, sizeof(sendBuff), 0);
+						programaOperando = 0;
+						break;
+			default:
+				cout << "Opcion no valida" << endl;
+				cout << "Hasta luego!" << endl;
+				strcpy(sendBuff, "EXIT");
+				send(s, sendBuff, sizeof(sendBuff), 0);
+				programaOperando = 0;		
+				break;
 		}
 		
-    } while (programaOperando == 1);
+    } while (programaOperando != 0);
 
     closesocket(s);
 	WSACleanup();
