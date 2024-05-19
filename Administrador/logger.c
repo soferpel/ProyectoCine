@@ -51,4 +51,15 @@ void logger_log(Logger *logger, LogLevel level, const char *format, ...) {
 
     fprintf(logger->file, "\n");
     fflush(logger->file);
+
+    printf("[%04d-%02d-%02d %02d:%02d:%02d] [%s] ",
+           t->tm_year + 1900, t->tm_mon + 1, t->tm_mday,
+           t->tm_hour, t->tm_min, t->tm_sec,
+           level_strings[level]);
+
+    va_start(args, format);
+    vprintf(format, args);
+    va_end(args);
+
+    printf("\n");
 }

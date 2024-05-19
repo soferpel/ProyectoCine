@@ -36,7 +36,6 @@ void modificarCine(PathDB rutaDB, Logger *logger)
 
             if (rc != SQLITE_OK) {
                 logger_log(logger, LOG_ERROR, "No se pudo abrir la base de datos: %s", sqlite3_errmsg(db));
-                fprintf(stderr, "No se pudo abrir la base de datos: %s\n", sqlite3_errmsg(db));
                 return;
             }
 
@@ -46,10 +45,10 @@ void modificarCine(PathDB rutaDB, Logger *logger)
             rc = sqlite3_exec(db, sql_modificar, 0, 0, &err_msg);
 
             if (rc != SQLITE_OK) {
-                fprintf(stderr, "Error al modificar el cine: %s\n", err_msg);
+                logger_log(logger, LOG_ERROR, "Error al modificar el cine: %s", err_msg);
                 sqlite3_free(err_msg);
             } else {
-                printf("Cine modificado correctamente\n");
+                logger_log(logger, LOG_INFO, "Cine modificado correctamente");
             }
 
             sqlite3_close(db);
@@ -65,7 +64,6 @@ void validarCine(PathDB rutaDB, Logger *logger)
 
     if (rc != SQLITE_OK) {
         logger_log(logger, LOG_ERROR, "No se pudo abrir la base de datos: %s", sqlite3_errmsg(db));
-        fprintf(stderr, "Error al abrir la base de datos: %s\n", sqlite3_errmsg(db));
         sqlite3_close(db);
         return;
     }
@@ -75,13 +73,12 @@ void validarCine(PathDB rutaDB, Logger *logger)
 
     if (rc != SQLITE_OK) {
         logger_log(logger, LOG_ERROR, "Error al realizar la consulta SELECT: %s", err_msg);
-        fprintf(stderr, "Error al realizar la consulta SELECT: %s\n", err_msg);
         sqlite3_free(err_msg);
     }
     if (validacionCine == 1) {
-        printf("El cine es correcto\n");
+        logger_log(logger, LOG_INFO, "El cine es correcto");
     } else {
-        printf("El cine introducido no existe\n");
+        logger_log(logger, LOG_ERROR, "El cine introducido no existe");
     }
     sqlite3_close(db);
 }

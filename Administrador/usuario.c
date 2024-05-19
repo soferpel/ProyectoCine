@@ -8,26 +8,31 @@
 
 void guardarUsuario(PathDB rutaDB, Logger *logger)
 {
-    //TODO: si el usuario ya existe, notificar al usuario
+    validarUsuario(rutaDB, logger);
+    if (validacionUsuario == 1)
+    {
+        logger_log(logger, LOG_WARN, "El usuario introducido ya existe");
+    }
+    else
+    {
+        sqlite3 *db;
+        int rc = sqlite3_open(rutaDB.ruta, &db);
 
-    //Abrir la base de datos
-    sqlite3 *db;
-    int rc = sqlite3_open(rutaDB.ruta, &db);
+        sqlite3_stmt *stmt;
+        char insertUsuario[] = "INSERT INTO USUARIO (NOMBRE, RESPUESTA, CORREO, CONTRASENA) VALUES (?, ?, ?, ?);";
+        sqlite3_prepare_v2(db, insertUsuario, strlen(insertUsuario) + 1, &stmt, NULL);
 
-    //Insertar usuario
-    sqlite3_stmt *stmt;
-    char insertUsuario[] = "INSERT INTO USUARIO (NOMBRE, RESPUESTA, CORREO, CONTRASENA) VALUES (?, ?, ?, ?);";
-    sqlite3_prepare_v2(db, insertUsuario, strlen(insertUsuario) + 1, &stmt, NULL);
+        sqlite3_bind_text(stmt, 1, usuario.nombre, strlen(usuario.nombre) + 1, SQLITE_STATIC);
+        sqlite3_bind_text(stmt, 2, usuario.respuesta, strlen(usuario.respuesta) + 1, SQLITE_STATIC);
+        sqlite3_bind_text(stmt, 3, usuario.correo, strlen(usuario.correo) + 1, SQLITE_STATIC);
+        sqlite3_bind_text(stmt, 4, usuario.contrasena, strlen(usuario.contrasena) + 1, SQLITE_STATIC);
 
-    sqlite3_bind_text(stmt, 1, usuario.nombre, strlen(usuario.nombre) + 1, SQLITE_STATIC);
-    sqlite3_bind_text(stmt, 2, usuario.respuesta, strlen(usuario.respuesta) + 1, SQLITE_STATIC);
-    sqlite3_bind_text(stmt, 3, usuario.correo, strlen(usuario.correo) + 1, SQLITE_STATIC);
-    sqlite3_bind_text(stmt, 4, usuario.contrasena, strlen(usuario.contrasena) + 1, SQLITE_STATIC);
-
-    sqlite3_step(stmt);
-    sqlite3_finalize(stmt);
-    sqlite3_close(db);
-    autenticacionExitosa = 1;
+        sqlite3_step(stmt);
+        sqlite3_finalize(stmt);
+        sqlite3_close(db);
+        autenticacionExitosa = 1;
+        logger_log(logger, LOG_INFO, "Usuario registrado correctamente");
+    }
 }
 
 void modificarUsuario(PathDB rutaDB, Logger *logger)
@@ -41,7 +46,6 @@ void modificarUsuario(PathDB rutaDB, Logger *logger)
 
             if (rc != SQLITE_OK) {
                 logger_log(logger, LOG_ERROR, "No se pudo abrir la base de datos: %s", sqlite3_errmsg(db));
-                fprintf(stderr, "No se pudo abrir la base de datos: %s\n", sqlite3_errmsg(db));
                 return;
             }
 
@@ -51,10 +55,10 @@ void modificarUsuario(PathDB rutaDB, Logger *logger)
             rc = sqlite3_exec(db, sql_modificar, 0, 0, &err_msg);
 
             if (rc != SQLITE_OK) {
-                fprintf(stderr, "Error al modificar el usuario: %s\n", err_msg);
+                logger_log(logger, LOG_ERROR, "Error al modificar el usuario: %s\n", err_msg);
                 sqlite3_free(err_msg);
             } else {
-                printf("Usuario modificado correctamente\n");
+                logger_log(logger, LOG_INFO, "Usuario registrado correctamente");
             }
 
             sqlite3_close(db);
@@ -70,7 +74,6 @@ void validarUsuario(PathDB rutaDB, Logger *logger)
 
     if (rc != SQLITE_OK) {
         logger_log(logger, LOG_ERROR, "No se pudo abrir la base de datos: %s", sqlite3_errmsg(db));
-        fprintf(stderr, "Error al abrir la base de datos: %s\n", sqlite3_errmsg(db));
         sqlite3_close(db);
         return;
     }
@@ -79,14 +82,15 @@ void validarUsuario(PathDB rutaDB, Logger *logger)
     rc = sqlite3_exec(db, sql_select_Usuario, callbackUsuario, 0, &err_msg);
 
     if (rc != SQLITE_OK) {
-        fprintf(stderr, "Error al realizar la consulta SELECT: %s\n", err_msg);
+        logger_log(logger, LOG_ERROR, "Error al realizar la consulta SELECT: %s\n", err_msg);
         sqlite3_free(err_msg);
     }
 
     if (validacionUsuario == 1) {
-        printf("El usuario es correcto\n");
+        logger_log(logger, LOG_INFO, "El usuario es correcto");
         autenticacionExitosa = 1;
     } else {
+        logger_log(logger, LOG_ERROR, "Usuario o contrasena incorrectos");
         printf("Usuario o contrasena incorrectos\n");
     }
     sqlite3_close(db);

@@ -21,11 +21,9 @@ void anadirAsiento(PathDB rutaDB, Logger *logger) {
         
         if (rc != SQLITE_OK) {
             logger_log(logger, LOG_ERROR, "Error al añadir asientos: %s", err_msg);
-            fprintf(stderr, "Error al añadir asientos: %s\n", err_msg);
             sqlite3_free(err_msg);
         } else {
             logger_log(logger, LOG_INFO, "Fila anadida correctamente");
-            printf("Fila anadida correctamente\n");
         }
         
         sqlite3_close(db);
@@ -46,7 +44,6 @@ void modificarAsiento(PathDB rutaDB, Logger *logger)
 
             if (rc != SQLITE_OK) {
                 logger_log(logger, LOG_ERROR, "No se pudo abrir la base de datos: %s", sqlite3_errmsg(db));
-                fprintf(stderr, "No se pudo abrir la base de datos: %s\n", sqlite3_errmsg(db));
                 return;
             }
 
@@ -57,11 +54,9 @@ void modificarAsiento(PathDB rutaDB, Logger *logger)
 
             if (rc != SQLITE_OK) {
                 logger_log(logger, LOG_ERROR, "Error al modificar el asiento: %s", err_msg);
-                fprintf(stderr, "Error al modificar el asiento: %s\n", err_msg);
                 sqlite3_free(err_msg);
             } else {
                 logger_log(logger, LOG_INFO, "Asiento modificado correctamente");
-                printf("Asiento modificado correctamente\n");
             }
 
             sqlite3_close(db);
@@ -78,7 +73,6 @@ void validarAsiento(PathDB rutaDB, Logger *logger)
 
     if (rc != SQLITE_OK) {
         logger_log(logger, LOG_ERROR, "No se pudo abrir la base de datos: %s", sqlite3_errmsg(db));
-        fprintf(stderr, "Error al abrir la base de datos: %s\n", sqlite3_errmsg(db));
         sqlite3_close(db);
         return;
     }
@@ -88,15 +82,12 @@ void validarAsiento(PathDB rutaDB, Logger *logger)
 
     if (rc != SQLITE_OK) {
         logger_log(logger, LOG_ERROR, "Error al realizar la consulta SELECT: %s", err_msg);
-        fprintf(stderr, "Error al realizar la consulta SELECT: %s\n", err_msg);
         sqlite3_free(err_msg);
     }
     if (validacionAsiento == 1) {
         logger_log(logger, LOG_INFO, "El asiento es correcto");
-        printf("El asiento es correcto\n");
     } else {
         logger_log(logger, LOG_ERROR, "El asiento introducido no existe");
-        printf("El asiento introducido no existe\n");
     }
     sqlite3_close(db);
 }

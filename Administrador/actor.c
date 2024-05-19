@@ -16,7 +16,6 @@ void validarActor(PathDB rutaDB, Logger *logger)
 
     if (rc != SQLITE_OK) {
         logger_log(logger, LOG_ERROR, "Error al abrir la base de datos: %s", sqlite3_errmsg(db));
-        fprintf(stderr, "Error al abrir la base de datos: %s\n", sqlite3_errmsg(db));
         sqlite3_close(db);
         return;
     }
@@ -26,15 +25,12 @@ void validarActor(PathDB rutaDB, Logger *logger)
 
     if (rc != SQLITE_OK) {
         logger_log(logger, LOG_ERROR, "Error al realizar la consulta SELECT: %s", err_msg);
-        fprintf(stderr, "Error al realizar la consulta SELECT: %s\n", err_msg);
         sqlite3_free(err_msg);
     }
     if (validacionActor == 1) {
         logger_log(logger, LOG_INFO, "El actor es correcto");
-        printf("El actor es correcto\n");
     } else {
         logger_log(logger, LOG_ERROR, "El actor introducido no existe");
-        printf("El actor introducido no existe\n");
     }
     sqlite3_close(db);
 }
@@ -67,7 +63,6 @@ void modificarActor(PathDB rutaDB, Logger *logger)
 
             if (rc != SQLITE_OK) {
                 logger_log(logger, LOG_ERROR, "No se pudo abrir la base de datos: %s", sqlite3_errmsg(db));
-                fprintf(stderr, "No se pudo abrir la base de datos: %s\n", sqlite3_errmsg(db));
                 return;
             }
 
@@ -78,11 +73,9 @@ void modificarActor(PathDB rutaDB, Logger *logger)
 
             if (rc != SQLITE_OK) {
                 logger_log(logger, LOG_ERROR, "Error al modificar el actor: %s", err_msg);
-                fprintf(stderr, "Error al modificar el actor: %s\n", err_msg);
                 sqlite3_free(err_msg);
             } else {
                 logger_log(logger, LOG_INFO, "Actor modificado correctamente");
-                printf("Actor modificado correctamente\n");
             }
 
             sqlite3_close(db);
@@ -101,7 +94,6 @@ void anadirActor(PathDB rutaDB, Logger *logger)
 
         if (rc != SQLITE_OK) {
             logger_log(logger, LOG_ERROR, "No se pudo abrir la base de datos: %s", sqlite3_errmsg(db));
-            fprintf(stderr, "No se pudo abrir la base de datos: %s\n", sqlite3_errmsg(db));
             return;
         }
 
@@ -112,11 +104,9 @@ void anadirActor(PathDB rutaDB, Logger *logger)
 
         if (rc != SQLITE_OK) {
             logger_log(logger, LOG_ERROR, "Error al anadir LA PELICULA: %s\n", err_msg);
-            fprintf(stderr, "Error al anadir LA PELICULA: %s\n", err_msg);
             sqlite3_free(err_msg);
         } else {
             logger_log(logger, LOG_INFO, "Fila anadida correctamente");
-            printf("Fila anadida correctamente\n");
         }
 
         sqlite3_close(db);

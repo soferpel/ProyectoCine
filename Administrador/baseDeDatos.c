@@ -18,7 +18,6 @@ void crearTabla(PathDB rutaDB, Logger *logger) {
     int rc = sqlite3_open(rutaDB.ruta, &db);
 
     if (rc) {
-        fprintf(stderr, "No se puede abrir la base de datos: %s\n", sqlite3_errmsg(db));
         logger_log(logger, LOG_ERROR, "No se puede abrir la base de datos: %s", sqlite3_errmsg(db));
         sqlite3_close(db);
         return;
@@ -32,11 +31,9 @@ void crearTabla(PathDB rutaDB, Logger *logger) {
     rc = sqlite3_exec(db, sentencia_sql5, 0, 0, &error_message);
 
     if (rc != SQLITE_OK) {
-        fprintf(stderr, "Error al crear las tablas: %s\n", error_message);
         logger_log(logger, LOG_ERROR, "Error al crear las tablas: %s", error_message);
         sqlite3_free(error_message);
     } else {
-        printf("Tablas creadas correctamente\n");
         logger_log(logger, LOG_INFO, "Tablas creadas correctamente");
     }
 
@@ -57,7 +54,6 @@ void borrarTablas(PathDB rutaDB, Logger *logger)
     int rc = sqlite3_open(rutaDB.ruta, &db);
 
     if (rc) {
-        fprintf(stderr, "No se puede abrir la base de datos: %s\n", sqlite3_errmsg(db));
         logger_log(logger, LOG_ERROR, "No se puede abrir la base de datos: %s", sqlite3_errmsg(db));
         sqlite3_close(db);
         return;
@@ -71,11 +67,9 @@ void borrarTablas(PathDB rutaDB, Logger *logger)
     rc = sqlite3_exec(db, sql_drop5, 0, 0, &error_message);
 
     if (rc != SQLITE_OK) {
-        fprintf(stderr, "Error al eliminar las tablas: %s\n", error_message);
         logger_log(logger, LOG_ERROR, "Error al eliminar las tablas: %s", error_message);
         sqlite3_free(error_message);
     } else {
-        printf("Tablas eliminadas correctamente\n");
         logger_log(logger, LOG_INFO, "Tablas eliminadas correctamente");
     }
 }
@@ -92,11 +86,9 @@ void eliminarFila(PathDB rutaDB, Logger *logger) {
 
     if (rc != SQLITE_OK) {
         logger_log(logger, LOG_ERROR, "Error al eliminar datos: %s", err_msg);
-        fprintf(stderr, "Error al eliminar datos: %s\n", err_msg);
         sqlite3_free(err_msg);
     } else {
         logger_log(logger, LOG_INFO, "Fila eliminada correctamente");
-        printf("Fila eliminada correctamente");
     }
     sqlite3_close(db);
 }
@@ -113,11 +105,9 @@ void visualizarDatosPorID(PathDB rutaDB, Logger *logger) {
 
     if (rc != SQLITE_OK) {
         logger_log(logger, LOG_ERROR, "Error al visualizar datos: %s", err_msg);
-        fprintf(stderr, "Error al visualizar datos: %s\n", err_msg);
         sqlite3_free(err_msg);
     } else {
         logger_log(logger, LOG_INFO, "Visualizacion exitosa");
-        fprintf(stderr, "Visualizacion exitosa");
     }
     sqlite3_close(db);
 }
