@@ -13,9 +13,9 @@ typedef struct {
 
 } Asiento;
 
-void anadirAsiento(PathDB rutaDB);
-void modificarAsiento(PathDB rutaDB);
-void validarAsiento(PathDB rutaDB);
+void anadirAsiento(PathDB rutaDB, Logger *logger);
+void modificarAsiento(PathDB rutaDB, Logger *logger);
+void validarAsiento(PathDB rutaDB, Logger *logger);
 int callbackAsiento(void *data, int argc, char **argv, char **col_names);
 
 #endif

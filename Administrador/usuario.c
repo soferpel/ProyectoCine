@@ -4,8 +4,9 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include "logger.h"
 
-void guardarUsuario(PathDB rutaDB)
+void guardarUsuario(PathDB rutaDB, Logger *logger)
 {
     //TODO: si el usuario ya existe, notificar al usuario
 
@@ -29,7 +30,7 @@ void guardarUsuario(PathDB rutaDB)
     autenticacionExitosa = 1;
 }
 
-void modificarUsuario(PathDB rutaDB)
+void modificarUsuario(PathDB rutaDB, Logger *logger)
 {
     validarUsuario(rutaDB);
     if(validacionUsuario == 1)
@@ -39,6 +40,7 @@ void modificarUsuario(PathDB rutaDB)
             int rc = sqlite3_open(rutaDB.ruta, &db);
 
             if (rc != SQLITE_OK) {
+                logger_log(logger, LOG_ERROR, "No se pudo abrir la base de datos: %s", sqlite3_errmsg(db));
                 fprintf(stderr, "No se pudo abrir la base de datos: %s\n", sqlite3_errmsg(db));
                 return;
             }
@@ -59,7 +61,7 @@ void modificarUsuario(PathDB rutaDB)
     }
 }
 
-void validarUsuario(PathDB rutaDB)
+void validarUsuario(PathDB rutaDB, Logger *logger)
 {
     validacionUsuario = 0;
     sqlite3 *db;
@@ -67,6 +69,7 @@ void validarUsuario(PathDB rutaDB)
     int rc = sqlite3_open(rutaDB.ruta, &db);
 
     if (rc != SQLITE_OK) {
+        logger_log(logger, LOG_ERROR, "No se pudo abrir la base de datos: %s", sqlite3_errmsg(db));
         fprintf(stderr, "Error al abrir la base de datos: %s\n", sqlite3_errmsg(db));
         sqlite3_close(db);
         return;

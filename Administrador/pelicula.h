@@ -12,9 +12,9 @@ typedef struct
 
 } Pelicula;
 
-void validarPelicula(PathDB rutaDB);
+void validarPelicula(PathDB rutaDB, Logger *logger);
 int callbackPelicula(void *data, int argc, char **argv, char **col_names);
-void anadirPelicula(PathDB rutaDB);
-void modificarPelicula(PathDB rutaDB);
+void anadirPelicula(PathDB rutaDB, Logger *logger);
+void modificarPelicula(PathDB rutaDB, Logger *logger);
 
 #endif

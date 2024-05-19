@@ -4,8 +4,9 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include "logger.h"
 
-void anadirAsiento(PathDB rutaDB) {
+void anadirAsiento(PathDB rutaDB, Logger *logger) {
     validarSala(rutaDB);
     if (validacionSala == 1)
     {
@@ -19,9 +20,11 @@ void anadirAsiento(PathDB rutaDB) {
         rc = sqlite3_exec(db, sql_anadir, 0, 0, &err_msg);
         
         if (rc != SQLITE_OK) {
+            logger_log(logger, LOG_ERROR, "Error al añadir asientos: %s", err_msg);
             fprintf(stderr, "Error al añadir asientos: %s\n", err_msg);
             sqlite3_free(err_msg);
         } else {
+            logger_log(logger, LOG_INFO, "Fila anadida correctamente");
             printf("Fila anadida correctamente\n");
         }
         
@@ -29,7 +32,7 @@ void anadirAsiento(PathDB rutaDB) {
     }
 }
 
-void modificarAsiento(PathDB rutaDB)
+void modificarAsiento(PathDB rutaDB, Logger *logger)
 {
     validarAsiento(rutaDB);
     if(validacionAsiento == 1)
@@ -42,6 +45,7 @@ void modificarAsiento(PathDB rutaDB)
             int rc = sqlite3_open(rutaDB.ruta, &db);
 
             if (rc != SQLITE_OK) {
+                logger_log(logger, LOG_ERROR, "No se pudo abrir la base de datos: %s", sqlite3_errmsg(db));
                 fprintf(stderr, "No se pudo abrir la base de datos: %s\n", sqlite3_errmsg(db));
                 return;
             }
@@ -52,9 +56,11 @@ void modificarAsiento(PathDB rutaDB)
             rc = sqlite3_exec(db, sql_modificar, 0, 0, &err_msg);
 
             if (rc != SQLITE_OK) {
+                logger_log(logger, LOG_ERROR, "Error al modificar el asiento: %s", err_msg);
                 fprintf(stderr, "Error al modificar el asiento: %s\n", err_msg);
                 sqlite3_free(err_msg);
             } else {
+                logger_log(logger, LOG_INFO, "Asiento modificado correctamente");
                 printf("Asiento modificado correctamente\n");
             }
 
@@ -63,7 +69,7 @@ void modificarAsiento(PathDB rutaDB)
     }
 }
 
-void validarAsiento(PathDB rutaDB)
+void validarAsiento(PathDB rutaDB, Logger *logger)
 {
     validacionAsiento = 0;
     sqlite3 *db;
@@ -71,6 +77,7 @@ void validarAsiento(PathDB rutaDB)
     int rc = sqlite3_open(rutaDB.ruta, &db);
 
     if (rc != SQLITE_OK) {
+        logger_log(logger, LOG_ERROR, "No se pudo abrir la base de datos: %s", sqlite3_errmsg(db));
         fprintf(stderr, "Error al abrir la base de datos: %s\n", sqlite3_errmsg(db));
         sqlite3_close(db);
         return;
@@ -80,12 +87,15 @@ void validarAsiento(PathDB rutaDB)
     rc = sqlite3_exec(db, sql_select_Actor, callbackAsiento, 0, &err_msg);
 
     if (rc != SQLITE_OK) {
+        logger_log(logger, LOG_ERROR, "Error al realizar la consulta SELECT: %s", err_msg);
         fprintf(stderr, "Error al realizar la consulta SELECT: %s\n", err_msg);
         sqlite3_free(err_msg);
     }
     if (validacionAsiento == 1) {
+        logger_log(logger, LOG_INFO, "El asiento es correcto");
         printf("El asiento es correcto\n");
     } else {
+        logger_log(logger, LOG_ERROR, "El asiento introducido no existe");
         printf("El asiento introducido no existe\n");
     }
     sqlite3_close(db);

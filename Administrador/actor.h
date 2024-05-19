@@ -9,9 +9,9 @@ typedef struct
     char nombreActor[20];
 } Actor;
 
-void validarActor(PathDB rutaDB);
+void validarActor(PathDB rutaDB, Logger *logger);
 int callbackActor(void *data, int argc, char **argv, char **col_names);
-void anadirActor(PathDB rutaDB);
-void modificarActor(PathDB rutaDB);
+void anadirActor(PathDB rutaDB, Logger *logger);
+void modificarActor(PathDB rutaDB, Logger *logger);
 
 #endif
