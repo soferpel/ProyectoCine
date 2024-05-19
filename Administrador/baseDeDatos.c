@@ -2,9 +2,10 @@
 #include <stdlib.h>
 #include <string.h>
 #include "baseDeDatos.h"
+#include "logger.h"
 
 
-void crearTabla(PathDB rutaDB) {
+void crearTabla(PathDB rutaDB, Logger *logger) {
     sqlite3 *db;
     char *error_message = 0;
     char *sentencia_sql0 = "CREATE TABLE IF NOT EXISTS USUARIO (ID_USUARIO INTEGER PRIMARY KEY, NOMBRE TEXT, RESPUESTA TEXT, CORREO TEXT, CONTRASENA TEXT);";
@@ -18,6 +19,7 @@ void crearTabla(PathDB rutaDB) {
 
     if (rc) {
         fprintf(stderr, "No se puede abrir la base de datos: %s\n", sqlite3_errmsg(db));
+        logger_log(logger, LOG_ERROR, "No se puede abrir la base de datos: %s", sqlite3_errmsg(db));
         sqlite3_close(db);
         return;
     }
@@ -31,16 +33,18 @@ void crearTabla(PathDB rutaDB) {
 
     if (rc != SQLITE_OK) {
         fprintf(stderr, "Error al crear las tablas: %s\n", error_message);
+        logger_log(logger, LOG_ERROR, "Error al crear las tablas: %s", error_message);
         sqlite3_free(error_message);
     } else {
         printf("Tablas creadas correctamente\n");
+        logger_log(logger, LOG_INFO, "Tablas creadas correctamente");
     }
 
     // Cerrar la base de datos
     sqlite3_close(db);
 }
 
-void borrarTablas(PathDB rutaDB)
+void borrarTablas(PathDB rutaDB, Logger *logger)
 {
     sqlite3 *db;
     char *error_message = 0;
@@ -51,15 +55,32 @@ void borrarTablas(PathDB rutaDB)
     char *sql_drop4 = "DROP TABLE IF EXISTS ASIENTO;";
     char *sql_drop5 = "DROP TABLE IF EXISTS SALA;";
     int rc = sqlite3_open(rutaDB.ruta, &db);
+
+    if (rc) {
+        fprintf(stderr, "No se puede abrir la base de datos: %s\n", sqlite3_errmsg(db));
+        logger_log(logger, LOG_ERROR, "No se puede abrir la base de datos: %s", sqlite3_errmsg(db));
+        sqlite3_close(db);
+        return;
+    }
+
     rc = sqlite3_exec(db, sql_drop, 0, 0, &error_message);
     rc = sqlite3_exec(db, sql_drop1, 0, 0, &error_message);
     rc = sqlite3_exec(db, sql_drop2, 0, 0, &error_message);
     rc = sqlite3_exec(db, sql_drop3, 0, 0, &error_message);
     rc = sqlite3_exec(db, sql_drop4, 0, 0, &error_message);
     rc = sqlite3_exec(db, sql_drop5, 0, 0, &error_message);
+
+    if (rc != SQLITE_OK) {
+        fprintf(stderr, "Error al eliminar las tablas: %s\n", error_message);
+        logger_log(logger, LOG_ERROR, "Error al eliminar las tablas: %s", error_message);
+        sqlite3_free(error_message);
+    } else {
+        printf("Tablas eliminadas correctamente\n");
+        logger_log(logger, LOG_INFO, "Tablas eliminadas correctamente");
+    }
 }
 
-void eliminarFila(PathDB rutaDB) {
+void eliminarFila(PathDB rutaDB, Logger *logger) {
     sqlite3 *db;
     char *err_msg = 0;
     int rc = sqlite3_open(rutaDB.ruta, &db);
@@ -70,15 +91,17 @@ void eliminarFila(PathDB rutaDB) {
     rc = sqlite3_exec(db, sql_delete, 0, 0, &err_msg);
 
     if (rc != SQLITE_OK) {
+        logger_log(logger, LOG_ERROR, "Error al eliminar datos: %s", err_msg);
         fprintf(stderr, "Error al eliminar datos: %s\n", err_msg);
         sqlite3_free(err_msg);
     } else {
+        logger_log(logger, LOG_INFO, "Fila eliminada correctamente");
         printf("Fila eliminada correctamente");
     }
     sqlite3_close(db);
 }
 
-void visualizarDatosPorID(PathDB rutaDB) {
+void visualizarDatosPorID(PathDB rutaDB, Logger *logger) {
     sqlite3 *db;
     char *err_msg = 0;
     int rc = sqlite3_open(rutaDB.ruta, &db);
@@ -89,8 +112,12 @@ void visualizarDatosPorID(PathDB rutaDB) {
     rc = sqlite3_exec(db, sql_query, callbackVisualizarDatos, 0, &err_msg);
 
     if (rc != SQLITE_OK) {
+        logger_log(logger, LOG_ERROR, "Error al visualizar datos: %s", err_msg);
         fprintf(stderr, "Error al visualizar datos: %s\n", err_msg);
         sqlite3_free(err_msg);
+    } else {
+        logger_log(logger, LOG_INFO, "Visualizacion exitosa");
+        fprintf(stderr, "Visualizacion exitosa");
     }
     sqlite3_close(db);
 }

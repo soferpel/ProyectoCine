@@ -35,17 +35,12 @@ char idVisualizar[5];
 int hayQueAnadirDatos;
 int hayQueModificarDatos;
 
-void crearTabla(PathDB rutaDB);
-void borrarTablas(PathDB rutaDB);
-void eliminarFila(PathDB rutaDB);
-void visualizarDatosPorID(PathDB rutaDB);
+void crearTabla(PathDB rutaDB, Logger *logger);
+void borrarTablas(PathDB rutaDB, Logger *logger);
+void eliminarFila(PathDB rutaDB, Logger *logger);
+void visualizarDatosPorID(PathDB rutaDB, Logger *logger);
 
 //VALIDACIONES Y CALLBACKS
-
-void validarPelicula(PathDB rutaDB);
-int callbackPelicula(void *data, int argc, char **argv, char **col_names);
-void validarActor(PathDB rutaDB);
-int callbackActor(void *data, int argc, char **argv, char **col_names);
 int callbackVisualizarDatos(void *data, int argc, char **argv, char **azColName);
 
 #endif

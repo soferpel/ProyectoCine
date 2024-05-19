@@ -15,9 +15,9 @@ typedef struct
 
 } Sala;
 
-void anadirSala(PathDB rutaDB); 
-void modificarSala(PathDB rutaDB);
-void validarSala(PathDB rutaDB);
+void anadirSala(PathDB rutaDB, Logger *logger); 
+void modificarSala(PathDB rutaDB, Logger *logger);
+void validarSala(PathDB rutaDB, Logger *logger);
 int callbackSala(void *data, int argc, char **argv, char **col_names);
 
 #endif

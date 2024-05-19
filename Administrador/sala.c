@@ -4,8 +4,9 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include "logger.h"
 
-void anadirSala(PathDB rutaDB) {
+void anadirSala(PathDB rutaDB, Logger *logger) {
     validarCine(rutaDB);
     if (validacionCine == 1)
     {
@@ -28,7 +29,7 @@ void anadirSala(PathDB rutaDB) {
     }
 }
 
-void modificarSala(PathDB rutaDB)
+void modificarSala(PathDB rutaDB, Logger *logger)
 {
     validarSala(rutaDB);
     if(validacionSala == 1)
@@ -41,6 +42,7 @@ void modificarSala(PathDB rutaDB)
             int rc = sqlite3_open(rutaDB.ruta, &db);
 
             if (rc != SQLITE_OK) {
+                logger_log(logger, LOG_ERROR, "No se pudo abrir la base de datos: %s", sqlite3_errmsg(db));
                 fprintf(stderr, "No se pudo abrir la base de datos: %s\n", sqlite3_errmsg(db));
                 return;
             }
@@ -62,7 +64,7 @@ void modificarSala(PathDB rutaDB)
     }
 }
 
-void validarSala(PathDB rutaDB)
+void validarSala(PathDB rutaDB, Logger *logger)
 {
     validacionSala = 0;
     sqlite3 *db;
@@ -70,6 +72,7 @@ void validarSala(PathDB rutaDB)
     int rc = sqlite3_open(rutaDB.ruta, &db);
 
     if (rc != SQLITE_OK) {
+        logger_log(logger, LOG_ERROR, "No se pudo abrir la base de datos: %s", sqlite3_errmsg(db));
         fprintf(stderr, "Error al abrir la base de datos: %s\n", sqlite3_errmsg(db));
         sqlite3_close(db);
         return;

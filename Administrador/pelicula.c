@@ -4,8 +4,9 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include "logger.h"
 
-void validarPelicula(PathDB rutaDB)
+void validarPelicula(PathDB rutaDB, Logger *logger)
 {
     validacionPelicula = 0;
     sqlite3 *db;
@@ -13,6 +14,7 @@ void validarPelicula(PathDB rutaDB)
     int rc = sqlite3_open(rutaDB.ruta, &db);
 
     if (rc != SQLITE_OK) {
+        logger_log(logger, LOG_ERROR, "No se pudo abrir la base de datos: %s", sqlite3_errmsg(db));
         fprintf(stderr, "Error al abrir la base de datos: %s\n", sqlite3_errmsg(db));
         sqlite3_close(db);
         return;
@@ -22,6 +24,7 @@ void validarPelicula(PathDB rutaDB)
     rc = sqlite3_exec(db, sql_select_Pelicula, callbackPelicula, 0, &err_msg);
 
     if (rc != SQLITE_OK) {
+        logger_log(logger, LOG_ERROR, "Error al realizar la consulta SELECT: %s", err_msg);
         fprintf(stderr, "Error al realizar la consulta SELECT: %s\n", err_msg);
         sqlite3_free(err_msg);
     }
@@ -47,7 +50,7 @@ int callbackPelicula(void *data, int argc, char **argv, char **col_names)
     return validacionPelicula;
 }
 
-void anadirPelicula(PathDB rutaDB)
+void anadirPelicula(PathDB rutaDB, Logger *logger)
 {
     validarSala(rutaDB);
     if (validacionSala == 1)
@@ -71,7 +74,7 @@ void anadirPelicula(PathDB rutaDB)
     }
 }
 
-void modificarPelicula(PathDB rutaDB) {
+void modificarPelicula(PathDB rutaDB, Logger *logger) {
     validarPelicula(rutaDB);
     if (validacionPelicula == 1)
     {
@@ -83,6 +86,7 @@ void modificarPelicula(PathDB rutaDB) {
             int rc = sqlite3_open(rutaDB.ruta, &db);
 
             if (rc != SQLITE_OK) {
+                logger_log(logger, LOG_ERROR, "No se pudo abrir la base de datos: %s", sqlite3_errmsg(db));
                 fprintf(stderr, "No se pudo abrir la base de datos: %s\n", sqlite3_errmsg(db));
                 return;
             }

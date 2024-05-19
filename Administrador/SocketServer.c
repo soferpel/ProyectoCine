@@ -4,13 +4,20 @@
 #include <string.h>
 #include "usuario.h"
 #include "baseDeDatos.h"
-#include "configuracion.h" 
+#include "configuracion.h"
+#include "logger.h"
 
 #define SERVER_IP "127.0.0.1"
 #define SERVER_PORT 6000
 
 int main(int argc, char *argv[]) 
 {
+
+	Logger *logger = logger_init("server.log", LOG_INFO);
+    if (!logger) {
+        return -1;
+    }
+    logger_log(logger, LOG_INFO, "Server starting...");
 
     PathDB rutaDB = leerConfiguracion("configuracion.txt");
 	WSADATA wsaData;
@@ -20,72 +27,85 @@ int main(int argc, char *argv[])
 	struct sockaddr_in client;
 	char sendBuff[512], recvBuff[512];
 
-	printf("\nInitialising Winsock...\n");
-	if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0) {
-		printf("Failed. Error Code : %d", WSAGetLastError());
-		return -1;
-	}
+	logger_log(logger, LOG_INFO, "Initialising Winsock...");
+    if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0) {
+        logger_log(logger, LOG_ERROR, "Failed to initialize Winsock. Error Code: %d", WSAGetLastError());
+        logger_close(logger);
+        return -1;
+    }
 
-	printf("Initialised.\n");
+	logger_log(logger, LOG_INFO, "Winsock initialized.");
 
 	//SOCKET creation
 	if ((conn_socket = socket(AF_INET, SOCK_STREAM, 0)) == INVALID_SOCKET) {
-		printf("Could not create socket : %d", WSAGetLastError());
-		WSACleanup();
-		return -1;
-	}
+        logger_log(logger, LOG_ERROR, "Could not create socket: %d", WSAGetLastError());
+        WSACleanup();
+        logger_close(logger);
+        return -1;
+    }
 
-	printf("Socket created.\n");
+	logger_log(logger, LOG_INFO, "Socket created.");
 
 	server.sin_addr.s_addr = inet_addr(SERVER_IP);
 	server.sin_family = AF_INET;
 	server.sin_port = htons(SERVER_PORT);
 
 	//BIND (the IP/port with socket)
-	if (bind(conn_socket, (struct sockaddr*) &server,
-			sizeof(server)) == SOCKET_ERROR) {
-		printf("Bind failed with error code: %d", WSAGetLastError());
-		closesocket(conn_socket);
-		WSACleanup();
-		return -1;
-	}
+	if (bind(conn_socket, (struct sockaddr*)&server, sizeof(server)) == SOCKET_ERROR) {
+        logger_log(logger, LOG_ERROR, "Bind failed with error code: %d", WSAGetLastError());
+        closesocket(conn_socket);
+        WSACleanup();
+        logger_close(logger);
+        return -1;
+    }
 
-	printf("Bind done.\n");
+	logger_log(logger, LOG_INFO, "Bind done.");
 
 	//LISTEN to incoming connections (socket server moves to listening mode)
 	if (listen(conn_socket, 1) == SOCKET_ERROR) {
-		printf("Listen failed with error code: %d", WSAGetLastError());
-		closesocket(conn_socket);
-		WSACleanup();
-		return -1;
-	}
+        logger_log(logger, LOG_ERROR, "Listen failed with error code: %d", WSAGetLastError());
+        closesocket(conn_socket);
+        WSACleanup();
+        logger_close(logger);
+        return -1;
+    }
 
-	//ACCEPT incoming connections (server keeps waiting for them)
-	printf("Waiting for incoming connections...\n");
-	int stsize = sizeof(struct sockaddr);
-	comm_socket = accept(conn_socket, (struct sockaddr*) &client, &stsize);
-	// Using comm_socket is able to send/receive data to/from connected client
-	if (comm_socket == INVALID_SOCKET) {
-		printf("accept failed with error code : %d", WSAGetLastError());
-		closesocket(conn_socket);
-		WSACleanup();
-		return -1;
-	}
-	printf("Incomming connection from: %s (%d)\n", inet_ntoa(client.sin_addr),
-			ntohs(client.sin_port));
+	logger_log(logger, LOG_INFO, "Waiting for incoming connections...");
+    int stsize = sizeof(struct sockaddr);
+    comm_socket = accept(conn_socket, (struct sockaddr*)&client, &stsize);
+    if (comm_socket == INVALID_SOCKET) {
+        logger_log(logger, LOG_ERROR, "Accept failed with error code: %d", WSAGetLastError());
+        closesocket(conn_socket);
+        WSACleanup();
+        logger_close(logger);
+        return -1;
+    }
+
+	logger_log(logger, LOG_INFO, "Incoming connection from: %s (%d)", inet_ntoa(client.sin_addr), ntohs(client.sin_port));
 
 	// Closing the listening sockets (is not going to be used anymore)
 	closesocket(conn_socket);
-    printf("Waiting for incoming commands from client... \n");
+
+    logger_log(logger, LOG_INFO, "Waiting for incoming commands from client...");
+
     do
     {
-        recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+        memset(recvBuff, 0, sizeof(recvBuff));
+        int recv_size = recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
+        if (recv_size == SOCKET_ERROR) {
+            logger_log(logger, LOG_ERROR, "recv failed with error code: %d", WSAGetLastError());
+            break;
+        } else if (recv_size == 0) {
+            logger_log(logger, LOG_INFO, "Client disconnected");
+            break;
+        }
 
-		printf("Command received: %s \n", recvBuff);
+        logger_log(logger, LOG_INFO, "Command received: %s", recvBuff);
 
 		if(strcmp(recvBuff, "CREARTABLAS") == 0)
 		{
-			crearTabla(rutaDB);
+			crearTabla(rutaDB, logger);
+			logger_log(logger, LOG_INFO, "Tabla creada.");
 		}
 
         if (strcmp(recvBuff, "INICIARSESION") == 0)
@@ -96,11 +116,11 @@ int main(int argc, char *argv[])
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
             strcpy(usuario.contrasena, recvBuff);
 
-            validarUsuario(rutaDB);
+            validarUsuario(rutaDB, logger);
             
             sprintf(sendBuff, "%i", validacionUsuario);
 			send(comm_socket, sendBuff, sizeof(sendBuff), 0);
-			printf("Response sent: %s \n", sendBuff);
+			logger_log(logger, LOG_INFO, "Response sent: %s", sendBuff);
         }
 
 		if (strcmp(recvBuff, "REGISTRARSE") == 0)
@@ -117,11 +137,12 @@ int main(int argc, char *argv[])
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
 			strcpy(usuario.respuesta, recvBuff);
 			
-			guardarUsuario(rutaDB);
+			guardarUsuario(rutaDB, logger);
 
 			sprintf(sendBuff, "%i", validacionUsuario);
 			send(comm_socket, sendBuff, sizeof(sendBuff), 0);
 			printf("Response sent: %s \n", sendBuff);
+			logger_log(logger, LOG_INFO, "Response sent: %s", sendBuff);
 		}
 
 		if(strcmp(recvBuff, "MODIFICARPELICULA") == 0)
@@ -143,11 +164,11 @@ int main(int argc, char *argv[])
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
 			strcpy(pelicula.horario, recvBuff);
 
-			modificarPelicula(rutaDB);
+			modificarPelicula(rutaDB, logger);
 			
 			sprintf(sendBuff, "%i", hayQueModificarDatos);
 			send(comm_socket, sendBuff, sizeof(sendBuff), 0);
-			printf("Response sent: %s \n", sendBuff);
+			logger_log(logger, LOG_INFO, "Response sent: %s", sendBuff);
 		
 		}
 
@@ -169,11 +190,11 @@ int main(int argc, char *argv[])
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);	
 			strcpy(usuario.respuesta, recvBuff);
 				
-			modificarUsuario(rutaDB);
+			modificarUsuario(rutaDB, logger);
 				
 			sprintf(sendBuff, "%i", hayQueModificarDatos);
 			send(comm_socket, sendBuff, sizeof(sendBuff), 0);
-			printf("Response sent: %s \n", sendBuff);
+			logger_log(logger, LOG_INFO, "Response sent: %s", sendBuff);
 
 		}
 
@@ -192,11 +213,11 @@ int main(int argc, char *argv[])
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
 			strcpy(cine.ciudadCine, recvBuff);
 			
-			modificarCine(rutaDB);
+			modificarCine(rutaDB, logger);
 			
 			sprintf(sendBuff, "%i", hayQueModificarDatos);
 			send(comm_socket, sendBuff, sizeof(sendBuff), 0);
-			printf("Response sent: %s \n", sendBuff);
+			logger_log(logger, LOG_INFO, "Response sent: %s", sendBuff);
 		}
 
 		if(strcmp(recvBuff, "MODIFICARACTOR") == 0)
@@ -212,11 +233,11 @@ int main(int argc, char *argv[])
 			atoi(recvBuff);
 			pelicula.idPeliculaInt = recvBuff;
 			
-			modificarActor(rutaDB);
+			modificarActor(rutaDB, logger);
 			
 			sprintf(sendBuff, "%i", hayQueModificarDatos);
 			send(comm_socket, sendBuff, sizeof(sendBuff), 0);
-			printf("Response sent: %s \n", sendBuff);
+			logger_log(logger, LOG_INFO, "Response sent: %s", sendBuff);
 		}
 
 		if(strcmp(recvBuff, "MODIFICARASIENTO") == 0)
@@ -240,11 +261,11 @@ int main(int argc, char *argv[])
 			atoi(recvBuff);
 			sala.idSalaInt = recvBuff;
 
-			modificarAsiento(rutaDB);
+			modificarAsiento(rutaDB, logger);
 			
 			sprintf(sendBuff, "%i", hayQueModificarDatos);
 			send(comm_socket, sendBuff, sizeof(sendBuff), 0);
-			printf("Response sent: %s \n", sendBuff);
+			logger_log(logger, LOG_INFO, "Response sent: %s", sendBuff);
 		}
 
 		if(strcmp(recvBuff, "MODIFICARSALA") == 0)
@@ -269,11 +290,11 @@ int main(int argc, char *argv[])
 			atoi(recvBuff);
 			cine.idCineInt = recvBuff;
 
-			modificarSala(rutaDB);
+			modificarSala(rutaDB, logger);
 
 			sprintf(sendBuff, "%i", hayQueModificarDatos);
 			send(comm_socket, sendBuff, sizeof(sendBuff), 0);
-			printf("Response sent: %s \n", sendBuff);
+			logger_log(logger, LOG_INFO, "Response sent: %s", sendBuff);
 		}
 		
 		if (strcmp(recvBuff, "BORRARDATOS") == 0)
@@ -282,7 +303,8 @@ int main(int argc, char *argv[])
 			strcpy(tablaEliminar, recvBuff);
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
 			strcpy(idEliminar, recvBuff);
-			eliminarFila(rutaDB);
+			eliminarFila(rutaDB, logger);
+			logger_log(logger, LOG_INFO, "Fila eliminada");
 		}
 
 		if (strcmp(recvBuff, "ANADIRASIENTO") == 0)
@@ -298,7 +320,7 @@ int main(int argc, char *argv[])
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
 			atoi(recvBuff);
 			asiento.numeroAsientoInt = recvBuff;
-			anadirAsiento(rutaDB);
+			anadirAsiento(rutaDB, logger);
 		}
 
 		if (strcmp(recvBuff, "ANADIRPELICULA") == 0)
@@ -312,7 +334,7 @@ int main(int argc, char *argv[])
 			strcpy(pelicula.sinopsis, recvBuff);
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
 			strcpy(pelicula.titulo, recvBuff);
-			anadirPelicula(rutaDB);
+			anadirPelicula(rutaDB, logger);
 		}
 
 		if (strcmp(recvBuff, "ANADIRACTOR") == 0)
@@ -322,7 +344,7 @@ int main(int argc, char *argv[])
 			pelicula.idPeliculaInt = recvBuff;
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
 			strcpy(actor.nombreActor, recvBuff);
-			anadirActor(rutaDB);
+			anadirActor(rutaDB, logger);
 		}
 
 		if (strcmp(recvBuff, "ANADIRCINE") == 0)
@@ -336,7 +358,7 @@ int main(int argc, char *argv[])
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
 			strcpy(cine.nombreCine, recvBuff);
 			printf("Nombre: %s\n", cine.nombreCine);
-			anadirCine(rutaDB);
+			anadirCine(rutaDB, logger);
 		}
 
 		if (strcmp(recvBuff, "ANADIRSALA") == 0)
@@ -353,7 +375,7 @@ int main(int argc, char *argv[])
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
 			atoi(recvBuff);
 			sala.numeroSalaInt = recvBuff;
-			anadirSala(rutaDB);
+			anadirSala(rutaDB, logger);
 		}
 
 		if (strcmp(recvBuff, "VISUALIZARDATOS") == 0)
@@ -362,12 +384,17 @@ int main(int argc, char *argv[])
 			strcpy(tablaVisualizar, recvBuff);
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
 			strcpy(idVisualizar, recvBuff);
-			visualizarDatosPorID(rutaDB);
+			visualizarDatosPorID(rutaDB, logger);
 		}
 
     	if (strcmp(recvBuff, "EXIT") == 0)
 		{
 			break;
 		}
-    } while (1);  
+    } while (1);
+
+	logger_log(logger, LOG_INFO, "Server shutting down...");
+	closesocket(comm_socket);
+    WSACleanup();
+    logger_close(logger); 
 }
