@@ -265,7 +265,10 @@ int main(int argc, char *argv[])
 									cout << "Hasta luego!" << endl;
 									strcpy(sendBuff, "EXIT");
 									send(s, sendBuff, sizeof(sendBuff), 0);
+									closesocket(s);
+									WSACleanup();
 									hayQueModificarDatos = 0;
+									programaOperando = 0;
 									break;
 								
 								default:
@@ -273,6 +276,8 @@ int main(int argc, char *argv[])
 									cout << "Hasta luego!" << endl;
 									strcpy(sendBuff, "EXIT");
 									send(s, sendBuff, sizeof(sendBuff), 0);
+									closesocket(s);
+									WSACleanup();
 									hayQueModificarDatos = 0;
 									programaOperando = 0;
 									break;
@@ -372,13 +377,18 @@ int main(int argc, char *argv[])
 								cout << "Hasta luego!" << endl;
 								strcpy(sendBuff, "EXIT");
 								send(s, sendBuff, sizeof(sendBuff), 0);
+								closesocket(s);
+								WSACleanup();
 								hayQueAnadirDatos = 0;
+								programaOperando = 0;
 								break;
 							default:
 								cout << "Opcion no valida" << endl;
 								cout << "Hasta luego!" << endl;
 								strcpy(sendBuff, "EXIT");
 								send(s, sendBuff, sizeof(sendBuff), 0);
+								closesocket(s);
+								WSACleanup();
 								hayQueAnadirDatos = 0;
 								programaOperando = 0;
 								break;
@@ -389,6 +399,8 @@ int main(int argc, char *argv[])
 						cout << "Hasta luego!" << endl;
 						strcpy(sendBuff, "EXIT");
 						send(s, sendBuff, sizeof(sendBuff), 0);
+						closesocket(s);
+						WSACleanup();
 						programaOperando = 0;
 						break;
 					
@@ -397,6 +409,8 @@ int main(int argc, char *argv[])
 						cout << "Hasta luego!" << endl;
 						strcpy(sendBuff, "EXIT");
 						send(s, sendBuff, sizeof(sendBuff), 0);
+						closesocket(s);
+						WSACleanup();
 						programaOperando = 0;
 						break;
 				}

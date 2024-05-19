@@ -134,9 +134,9 @@ void menuRegistrarse()
 
 void menuModificarDatos()
 {
-    cout << "================" << endl;
+    cout << "=================" << endl;
     cout << " MODIFICAR DATOS " << endl;
-    cout << "================" << endl;
+    cout << "=================" << endl;
     cout << endl;
     cout << "Que desea modificar?" << endl;
     cout << endl;
@@ -319,9 +319,9 @@ void menuModificarAsiento()
 
 void menuBorrarDatos()
 {
-    cout << "===============" << endl;
-    cout << " ELECCION MODO " << endl;
-    cout << "===============" << endl;
+    cout << "================" << endl;
+    cout << " ELIMINAR DATOS " << endl;
+    cout << "================" << endl;
     cout << endl;
     cout << "De que tabla quieres eliminar datos?" << endl;
     cout << "1. Usuario\n2. Cine\n3. Actor\n4. Asiento\n5. Pelicula\n6. Sala" << endl;
@@ -359,9 +359,9 @@ void menuAnadirAsiento()
     char filaAsiento[5];
     char numeroAsiento[5];
     char fechaAsiento[11];
-    cout << "===============" << endl;
+    cout << "================" << endl;
     cout << " ANADIR ASIENTO " << endl;
-    cout << "===============" << endl;
+    cout << "================" << endl;
     cout << "Introduce el id de la sala en la que esta el asiento: " << endl;
     fflush(stdin);
     cin >> idSala;
@@ -380,9 +380,9 @@ void menuAnadirAsiento()
 
 void menuAnadirDatos()
 {
-    cout << "===============" << endl;
+    cout << "==============" << endl;
     cout << " ANADIR DATOS " << endl;
-    cout << "===============" << endl;
+    cout << "==============" << endl;
     cout << "Que datos quieres anadir?" << endl;
     cout << "1. Usuario\n 2. Asiento\n 3. Pelicula\n 4. Actor\n 5. Cine\n 6. Sala\n 7. Salir" << endl;
     fflush(stdin);
@@ -395,13 +395,13 @@ void menuAnadirCine()
     char nombreCine[20];
     char direccionCine[20];
     char ciudadCine[20];
-    cout << "===============" << endl;
+    cout << "=============" << endl;
     cout << " ANADIR CINE " << endl;
-    cout << "===============" << endl;
+    cout << "=============" << endl;
     cout << "Cual es el nombre del cine?" << endl;
     fflush(stdin);
     cin >> nombreCine;
-    cine.setCiudadCine(nombreCine);
+    cine.setNombreCine(nombreCine);
     cout << "Cual es la direccion del cine?" << endl;
     cin >> direccionCine;
     cine.setDireccionCine(direccionCine);
@@ -417,9 +417,9 @@ void menuAnadirSala()
     char numeroSala[5];
     char nColumnasSala[5];
     char nFilasSala[5];
-    cout << "===============" << endl;
+    cout << "=============" << endl;
     cout << " ANADIR SALA " << endl;
-    cout << "===============" << endl;
+    cout << "=============" << endl;
     cout << "Introduce el id del cine en la que esta la sala: " << endl;
     fflush(stdin);
     cin >> idCine;
@@ -440,9 +440,9 @@ void menuAnadirActor()
 {
     char nombreActor[20];
     char idPelicula[5];
-    cout << "===============" << endl;
+    cout << "==============" << endl;
     cout << " ANADIR ACTOR " << endl;
-    cout << "===============" << endl;
+    cout << "==============" << endl;
     cout << "Introduce el id de la pelicula en la que actua el actor: " << endl;
     fflush(stdin);
     cin >> idPelicula;
@@ -459,9 +459,9 @@ void menuAnadirPelicula()
     char titulo[20];
     char sinopsis[100];
     char horario[20];
-    cout << "===============" << endl;
+    cout << "=================" << endl;
     cout << " ANADIR PELICULA " << endl;
-    cout << "===============" << endl;
+    cout << "=================" << endl;
     cout << "Introduce el id de la sala en la que se ve la pelicula: " << endl;
     fflush(stdin);
     cin >> idSala;

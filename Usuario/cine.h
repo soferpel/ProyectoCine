@@ -5,9 +5,9 @@ class Cine
 {
     private:
         char* idCine;
-        char* nombreCine;
-        char* direccionCine;
-        char* ciudadCine;
+        char nombreCine[20];
+        char direccionCine[20];
+        char ciudadCine[20];
     public:
         Cine(char* nombreCine, char* direccionCine, char* ciudadCine);
         Cine();
