@@ -8,6 +8,7 @@ int opcionAD;
 int opcionAdministrador;
 int opcionModificar;
 int opcionBvda;
+int opcionResetearBD;
 
 int aElegidoModo = 0;
 int aIniciadoSesion = 0;

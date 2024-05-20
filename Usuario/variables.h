@@ -16,6 +16,7 @@ extern int opcionAD;
 extern int opcionAdministrador;
 extern int opcionModificar;
 extern int opcionBvda;
+extern int opcionResetearBD;
 
 extern int aElegidoModo;
 extern int aIniciadoSesion;

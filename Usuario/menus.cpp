@@ -498,3 +498,14 @@ void menuAnadirPelicula()
     pelicula.setHorario(idSala);
     char c; while ((c = getchar()) != '\n' && c != EOF);
 }
+
+void menuResetearBD()
+{
+    cout << "=================" << endl;
+    cout << " RESETEAR BASE DE DATOS " << endl;
+    cout << "=================" << endl;
+    cout << "Estas seguro de resetear la base de datos?\nToda la informacion dentro de la misma se perdera de forma definitiva.\n 1. SI\n2. NO" << endl;
+    fflush(stdin);
+    cin >> opcionResetearBD;
+    char c; while ((c = getchar()) != '\n' && c != EOF);
+}

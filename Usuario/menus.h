@@ -22,5 +22,6 @@ void menuAnadirSala();
 void menuPrincipalAdministrador(); 
 void menuPrincipalCliente();
 void menuEleccionModo();
+void menuResetearBD();
 
 #endif
