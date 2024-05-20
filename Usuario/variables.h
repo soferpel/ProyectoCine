@@ -10,6 +10,7 @@
 
 extern int opcionModo;
 extern int opcionEliminar;
+extern int opcionVisualizar;
 extern int opcionCliente;
 extern int opcionAD;
 extern int opcionAdministrador;

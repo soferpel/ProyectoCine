@@ -19,7 +19,7 @@ void menuEleccionModo()
     cout << endl;
     fflush(stdin);
     cin >> opcionModo;
-    char c; while ((c = getchar()) != '\n' && c != EOF); // Vacía el buffer de entrada
+    char c; while ((c = getchar()) != '\n' && c != EOF);
 }
 
 void menuBienvenida()
@@ -36,7 +36,7 @@ void menuBienvenida()
     cout << endl;
     fflush(stdin);
     cin >> opcionBvda;
-    char c; while ((c = getchar()) != '\n' && c != EOF); // Vacía el buffer de entrada
+    char c; while ((c = getchar()) != '\n' && c != EOF);
 }
 
 void menuPrincipalCliente()
@@ -53,7 +53,7 @@ void menuPrincipalCliente()
     cout << endl;
     fflush(stdin);
     cin >> opcionCliente;
-    char c; while ((c = getchar()) != '\n' && c != EOF); // Vacía el buffer de entrada
+    char c; while ((c = getchar()) != '\n' && c != EOF);
 }
 
 void menuVisualizarDatos()
@@ -64,8 +64,31 @@ void menuVisualizarDatos()
     cout << endl;
     fflush(stdin);
     cout << "Que tabla desea visualizar?" << endl;
-    cin >> tablaVisualizar;
-    char c; while ((c = getchar()) != '\n' && c != EOF); // Vacía el buffer de entrada
+    cout << "1. Usuario\n2. Cine\n3. Actor\n4. Asiento\n5. Pelicula\n6. Sala" << endl;
+    fflush(stdin);
+    cin >> opcionVisualizar;
+    switch (opcionVisualizar)
+    {
+    case 1:
+        strcpy(tablaVisualizar, "USUARIO");
+        break;
+    case 2:
+        strcpy(tablaVisualizar, "CINE");
+        break;
+    case 3:
+        strcpy(tablaVisualizar, "ACTOR");
+        break;
+    case 4:
+        strcpy(tablaVisualizar, "ASIENTO");
+        break;
+    case 5:
+        strcpy(tablaVisualizar, "PELICULA");
+        break;
+    case 6:
+        strcpy(tablaVisualizar, "SALA");
+        break;
+    }
+    char c; while ((c = getchar()) != '\n' && c != EOF);
 }
 
 void menuPrincipalAdministrador()
@@ -83,7 +106,7 @@ void menuPrincipalAdministrador()
     cout << endl;
     fflush(stdin);
     cin >> opcionAdministrador;
-    char c; while ((c = getchar()) != '\n' && c != EOF); // Vacía el buffer de entrada
+    char c; while ((c = getchar()) != '\n' && c != EOF);
 }
 
 void menuIniciarSesion()
@@ -101,7 +124,7 @@ void menuIniciarSesion()
     cout << "Ingrese su contrasena: ";
     cin >> contrasena;
     usuario.setContrasena(contrasena);
-    char c; while ((c = getchar()) != '\n' && c != EOF); // Vacía el buffer de entrada
+    char c; while ((c = getchar()) != '\n' && c != EOF);
 }
 
 void menuRegistrarse()
@@ -127,7 +150,7 @@ void menuRegistrarse()
     cout << "Responda esta pregunta de seguridad (Cual es su pelicula favorita?): ";
     cin >> respuestaSeguridad;
     usuario.setRespuesta(respuestaSeguridad);
-    char c; while ((c = getchar()) != '\n' && c != EOF); // Vacía el buffer de entrada
+    char c; while ((c = getchar()) != '\n' && c != EOF);
 }
 
 void menuModificarDatos()
@@ -148,7 +171,7 @@ void menuModificarDatos()
     cout << endl;
     fflush(stdin);
     cin >> opcionModificar;
-    char c; while ((c = getchar()) != '\n' && c != EOF); // Vacía el buffer de entrada
+    char c; while ((c = getchar()) != '\n' && c != EOF);
 }
 
 void menuModificarPelicula()
@@ -177,7 +200,7 @@ void menuModificarPelicula()
     cin >> horario;
     pelicula.setHorario(horario);
     cout << endl;
-    char c; while ((c = getchar()) != '\n' && c != EOF); // Vacía el buffer de entrada
+    char c; while ((c = getchar()) != '\n' && c != EOF);
 }
 
 void menuModificarUsuario()
@@ -208,7 +231,7 @@ void menuModificarUsuario()
     cin >> respuestaSeguridad;
     usuario.setRespuesta(respuestaSeguridad);
     cout << endl;
-    char c; while ((c = getchar()) != '\n' && c != EOF); // Vacía el buffer de entrada
+    char c; while ((c = getchar()) != '\n' && c != EOF);
 }
 
 void menuModificarCine()
@@ -233,7 +256,7 @@ void menuModificarCine()
     cin >> ciudadCine;
     cine.setCiudadCine(ciudadCine);
     cout << endl;
-    char c; while ((c = getchar()) != '\n' && c != EOF); // Vacía el buffer de entrada
+    char c; while ((c = getchar()) != '\n' && c != EOF);
 }
 
 void menuModificarActor()
@@ -254,7 +277,7 @@ void menuModificarActor()
     cin >> idPelicula;
     actor.setIdPelicula(idPelicula);
     cout << endl;
-    char c; while ((c = getchar()) != '\n' && c != EOF); // Vacía el buffer de entrada
+    char c; while ((c = getchar()) != '\n' && c != EOF);
 }
 
 void menuModificarSala()
@@ -283,7 +306,7 @@ void menuModificarSala()
     cin >> idCine;
     sala.setIdCine(idCine);
     cout << endl;
-    char c; while ((c = getchar()) != '\n' && c != EOF); // Vacía el buffer de entrada
+    char c; while ((c = getchar()) != '\n' && c != EOF);
 }
 
 void menuModificarAsiento()
@@ -312,7 +335,7 @@ void menuModificarAsiento()
     cin >> idSala;
     asiento.setIdSala(idSala);
     cout << endl;
-    char c; while ((c = getchar()) != '\n' && c != EOF); // Vacía el buffer de entrada
+    char c; while ((c = getchar()) != '\n' && c != EOF);
 }
 
 void menuBorrarDatos()
@@ -348,7 +371,7 @@ void menuBorrarDatos()
     }
     cout << "Escribe el id de los datos a borrar?" << endl;
     cin >> idEliminar;
-    char c; while ((c = getchar()) != '\n' && c != EOF); // Vacía el buffer de entrada
+    char c; while ((c = getchar()) != '\n' && c != EOF);
 }
 
 void menuAnadirAsiento()
@@ -373,7 +396,7 @@ void menuAnadirAsiento()
     cout << "Introduce la fecha del asiento: " << endl;
     cin >> fechaAsiento;
     asiento.setFechaAsiento(fechaAsiento);
-    char c; while ((c = getchar()) != '\n' && c != EOF); // Vacía el buffer de entrada
+    char c; while ((c = getchar()) != '\n' && c != EOF);
 }
 
 void menuAnadirDatos()
@@ -385,7 +408,7 @@ void menuAnadirDatos()
     cout << "1. Usuario\n 2. Asiento\n 3. Pelicula\n 4. Actor\n 5. Cine\n 6. Sala\n 7. Salir" << endl;
     fflush(stdin);
     cin >> opcionAD;
-    char c; while ((c = getchar()) != '\n' && c != EOF); // Vacía el buffer de entrada
+    char c; while ((c = getchar()) != '\n' && c != EOF);
 }
 
 void menuAnadirCine()
@@ -406,7 +429,7 @@ void menuAnadirCine()
     cout << "Cual es la ciudad del cine?" << endl;
     cin >> ciudadCine;
     cine.setCiudadCine(ciudadCine);
-    char c; while ((c = getchar()) != '\n' && c != EOF); // Vacía el buffer de entrada
+    char c; while ((c = getchar()) != '\n' && c != EOF);
 }
 
 void menuAnadirSala()
@@ -431,7 +454,7 @@ void menuAnadirSala()
     cout << "Cual es el numero de la sala? " << endl;
     cin >> numeroSala;
     sala.setNumeroSala(numeroSala);
-    char c; while ((c = getchar()) != '\n' && c != EOF); // Vacía el buffer de entrada
+    char c; while ((c = getchar()) != '\n' && c != EOF);
 }
 
 void menuAnadirActor()
@@ -448,7 +471,7 @@ void menuAnadirActor()
     cout << "Cual es el nombre del actor? " << endl;
     cin >> nombreActor;
     actor.setNombreActor(nombreActor);
-    char c; while ((c = getchar()) != '\n' && c != EOF); // Vacía el buffer de entrada
+    char c; while ((c = getchar()) != '\n' && c != EOF);
 }
 
 void menuAnadirPelicula()
@@ -473,5 +496,5 @@ void menuAnadirPelicula()
     cout << "Introduce el horario de la pelicula: " << endl;
     cin >> idSala;
     pelicula.setHorario(idSala);
-    char c; while ((c = getchar()) != '\n' && c != EOF); // Vacía el buffer de entrada
+    char c; while ((c = getchar()) != '\n' && c != EOF);
 }

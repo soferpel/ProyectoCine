@@ -2,6 +2,7 @@
 
 int opcionModo;
 int opcionEliminar;
+int opcionVisualizar;
 int opcionCliente;
 int opcionAD;
 int opcionAdministrador;
