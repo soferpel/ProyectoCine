@@ -38,7 +38,7 @@ int hayQueModificarDatos;
 void crearTabla(PathDB rutaDB, Logger *logger);
 void borrarTablas(PathDB rutaDB, Logger *logger);
 void eliminarFila(PathDB rutaDB, Logger *logger);
-void visualizarDatosPorID(PathDB rutaDB, Logger *logger);
+int visualizarDatos(PathDB rutaDB, Logger *logger);
 
 //VALIDACIONES Y CALLBACKS
 int callbackVisualizarDatos(void *data, int argc, char **argv, char **azColName);

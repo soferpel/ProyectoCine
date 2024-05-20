@@ -1,4 +1,5 @@
 #include "variables.h"
+
 int opcionModo;
 int opcionEliminar;
 int opcionCliente;
@@ -32,4 +33,3 @@ char tablaEliminar[20];
 char idEliminar[5];
 
 char tablaVisualizar[20];
-char idVisualizar[5];

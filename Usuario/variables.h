@@ -41,6 +41,6 @@ extern char tablaEliminar[20];
 extern char idEliminar[5];
 
 extern char tablaVisualizar[20];
-extern char idVisualizar[5];
 
-#endif // VARIABLES_H
+
+#endif

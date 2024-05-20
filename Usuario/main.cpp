@@ -83,8 +83,8 @@ int main(int argc, char *argv[])
 					send(s, sendBuff, sizeof(sendBuff), 0);
 					strcpy(sendBuff, tablaVisualizar);
 					send(s, sendBuff, sizeof(sendBuff), 0);
-					strcpy(sendBuff, idVisualizar);
-					send(s, sendBuff, sizeof(sendBuff), 0);
+					recv(s, recvBuff, sizeof(recvBuff), 0);
+					cout << recvBuff << endl;
 					break;
 				case 2:
 					menuModificarDatos();

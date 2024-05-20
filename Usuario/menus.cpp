@@ -65,8 +65,6 @@ void menuVisualizarDatos()
     fflush(stdin);
     cout << "Que tabla desea visualizar?" << endl;
     cin >> tablaVisualizar;
-    cout << "Cual es el id del dato a visualizar" << endl;
-    cin >> idVisualizar;
     char c; while ((c = getchar()) != '\n' && c != EOF); // Vacía el buffer de entrada
 }
 

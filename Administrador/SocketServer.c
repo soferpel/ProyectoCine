@@ -331,13 +331,10 @@ int main(int argc, char *argv[])
 		{
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
 			strcpy(cine.ciudadCine, recvBuff);
-			printf("Ciudad: %s\n", cine.ciudadCine);
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
 			strcpy(cine.direccionCine, recvBuff);
-			printf("Direccion: %s\n", cine.direccionCine);
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
 			strcpy(cine.nombreCine, recvBuff);
-			printf("Nombre: %s\n", cine.nombreCine);
 			anadirCine(rutaDB, logger);
 		}
 
@@ -356,11 +353,12 @@ int main(int argc, char *argv[])
 
 		if (strcmp(recvBuff, "VISUALIZARDATOS") == 0)
 		{
+			int datosVisualizados;
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
 			strcpy(tablaVisualizar, recvBuff);
-			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
-			strcpy(idVisualizar, recvBuff);
-			visualizarDatosPorID(rutaDB, logger);
+			datosVisualizados = visualizarDatos(rutaDB, logger);
+			sprintf(sendBuff, "%s", datosVisualizados);
+			send(comm_socket, sendBuff, sizeof(sendBuff), 0);
 		}
 
     	if (strcmp(recvBuff, "EXIT") == 0)

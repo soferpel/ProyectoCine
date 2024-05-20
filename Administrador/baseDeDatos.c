@@ -93,13 +93,13 @@ void eliminarFila(PathDB rutaDB, Logger *logger) {
     sqlite3_close(db);
 }
 
-void visualizarDatosPorID(PathDB rutaDB, Logger *logger) {
+int visualizarDatos(PathDB rutaDB, Logger *logger) {
     sqlite3 *db;
     char *err_msg = 0;
     int rc = sqlite3_open(rutaDB.ruta, &db);
 
     char sql_query[100];
-    snprintf(sql_query, sizeof(sql_query), "SELECT * FROM %s WHERE ID_%s = %d;", tablaVisualizar, tablaVisualizar, idVisualizar);
+    snprintf(sql_query, sizeof(sql_query), "SELECT * FROM %s;", tablaVisualizar);
 
     rc = sqlite3_exec(db, sql_query, callbackVisualizarDatos, 0, &err_msg);
 
@@ -110,6 +110,8 @@ void visualizarDatosPorID(PathDB rutaDB, Logger *logger) {
         logger_log(logger, LOG_INFO, "Visualizacion exitosa");
     }
     sqlite3_close(db);
+
+    return rc;
 }
 
 int callbackVisualizarDatos(void *data, int argc, char **argv, char **azColName) {
