@@ -879,3 +879,65 @@ NFILAS = 4
 
 [2024-05-20 20:06:48] [INFO] Command received: EXIT
 [2024-05-20 20:06:48] [INFO] Server shutting down...
+[2024-05-20 20:12:08] [INFO] Server starting...
+[2024-05-20 20:12:08] [INFO] Initialising Winsock...
+[2024-05-20 20:12:08] [INFO] Winsock initialized.
+[2024-05-20 20:12:08] [INFO] Socket created.
+[2024-05-20 20:12:08] [INFO] Bind done.
+[2024-05-20 20:12:08] [INFO] Waiting for incoming connections...
+[2024-05-20 20:12:10] [INFO] Incoming connection from: 127.0.0.1 (59600)
+[2024-05-20 20:12:10] [INFO] Waiting for incoming commands from client...
+[2024-05-20 20:12:10] [INFO] Command received: CREARTABLAS
+[2024-05-20 20:12:10] [INFO] Tablas creadas correctamente
+[2024-05-20 20:12:10] [INFO] Tabla creada.
+[2024-05-20 20:12:22] [INFO] Command received: INICIARSESION
+[2024-05-20 20:12:22] [ERROR] Usuario o contrasena incorrectos
+[2024-05-20 20:12:22] [INFO] Response sent: 0
+[2024-05-20 20:12:29] [INFO] Command received: INICIARSESION
+[2024-05-20 20:12:29] [ERROR] Error al realizar la consulta SELECT: query aborted
+
+[2024-05-20 20:12:29] [INFO] El usuario es correcto
+[2024-05-20 20:12:29] [INFO] Response sent: 1
+[2024-05-20 20:13:01] [INFO] Command received: BORRARDATOS
+[2024-05-20 20:13:02] [INFO] Fila eliminada correctamente
+[2024-05-20 20:13:30] [INFO] Command received: BORRARDATOS
+[2024-05-20 20:13:30] [INFO] Fila eliminada correctamente
+[2024-05-20 20:14:39] [INFO] Command received: BORRARDATOS
+[2024-05-20 20:14:39] [INFO] Fila eliminada correctamente
+[2024-05-20 20:14:58] [INFO] Command received: BORRARDATOS
+[2024-05-20 20:14:58] [INFO] Fila eliminada correctamente
+[2024-05-20 20:15:20] [INFO] Command received: BORRARDATOS
+[2024-05-20 20:15:20] [INFO] Fila eliminada correctamente
+[2024-05-20 20:15:41] [INFO] Command received: BORRARDATOS
+[2024-05-20 20:15:41] [INFO] Fila eliminada correctamente
+[2024-05-20 20:15:58] [INFO] Command received: BORRARDATOS
+[2024-05-20 20:15:58] [INFO] Fila eliminada correctamente
+[2024-05-20 20:16:25] [INFO] Command received: BORRARDATOS
+[2024-05-20 20:16:25] [INFO] Fila eliminada correctamente
+[2024-05-20 20:17:10] [INFO] Command received: REGISTRARSE
+[2024-05-20 20:17:10] [ERROR] Usuario o contrasena incorrectos
+[2024-05-20 20:17:10] [INFO] Usuario registrado correctamente
+[2024-05-20 20:17:10] [INFO] Response sent: 0
+[2024-05-20 20:17:39] [ERROR] recv failed with error code: 10054
+[2024-05-20 20:17:39] [INFO] Server shutting down...
+[2024-05-20 20:18:12] [INFO] Server starting...
+[2024-05-20 20:18:12] [INFO] Initialising Winsock...
+[2024-05-20 20:18:12] [INFO] Winsock initialized.
+[2024-05-20 20:18:12] [INFO] Socket created.
+[2024-05-20 20:18:12] [INFO] Bind done.
+[2024-05-20 20:18:12] [INFO] Waiting for incoming connections...
+[2024-05-20 20:18:16] [INFO] Incoming connection from: 127.0.0.1 (59662)
+[2024-05-20 20:18:16] [INFO] Waiting for incoming commands from client...
+[2024-05-20 20:18:16] [INFO] Command received: CREARTABLAS
+[2024-05-20 20:18:16] [INFO] Tablas creadas correctamente
+[2024-05-20 20:18:16] [INFO] Tabla creada.
+[2024-05-20 20:18:20] [INFO] Command received: INICIARSESION
+[2024-05-20 20:18:20] [ERROR] Error al realizar la consulta SELECT: query aborted
+
+[2024-05-20 20:18:20] [INFO] El usuario es correcto
+[2024-05-20 20:18:20] [INFO] Response sent: 1
+[2024-05-20 20:21:02] [INFO] Command received: ANADIRCINE
+[2024-05-20 20:21:42] [INFO] Command received: ANADIRSALA
+[2024-05-20 20:21:42] [ERROR] Error al realizar la consulta SELECT: query aborted
+[2024-05-20 20:21:42] [INFO] El cine es correcto
+[2024-05-20 20:21:42] [INFO] Fila anadida correctamente
