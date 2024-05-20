@@ -88,8 +88,107 @@ int main(int argc, char *argv[])
                     cout << recvBuff << endl;
                     break;
 				case 2:
-					menuModificarDatos();
-					break;
+					hayQueModificarDatos = 1;
+						while (hayQueModificarDatos == 1)
+						{
+							menuModificarDatos();
+							switch(opcionModificar)
+							{
+								case 1:
+									menuModificarPelicula();
+									strcpy(sendBuff, "MODIFICARPELICULA");
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, PeliculaAModificar);
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, pelicula.getIdSala());
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, pelicula.getTitulo());
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, pelicula.getSinopsis());
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, pelicula.getHorario());
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									break;
+								case 2:
+									menuModificarUsuario();
+									strcpy(sendBuff, "MODIFICARUSUARIO");
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, usuarioAModificar);
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, usuario.getNombre());
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, usuario.getCorreo());
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, usuario.getContrasena());
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, usuario.getRespuesta());
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									break;
+								case 3:
+									menuModificarCine();
+									strcpy(sendBuff, "MODIFICARCINE");
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, cineAModificar);
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, cine.getNombreCine());
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, cine.getDireccionCine());
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, cine.getCiudadCine());
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									break;
+								case 4:
+									menuModificarActor();
+									strcpy(sendBuff, "MODIFICARACTOR");
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, actorAModificar);
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, actor.getNombreActor());
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, actor.getIdPelicula());
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									break;
+								case 5:
+									menuModificarSala();
+									strcpy(sendBuff, "MODIFICARSALA");
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, salaAModificar);
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, sala.getNumeroSala());
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, sala.getNColumnasSala());
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, sala.getNFilasSala());
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, sala.getIdCine());
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									break;
+								case 6:
+									menuModificarAsiento();
+									strcpy(sendBuff, "MODIFICARASIENTO");
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, asientoAModificar);
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, asiento.getFilaAsiento());
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, asiento.getNumeroAsiento());
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, asiento.getFechaAsiento());
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									strcpy(sendBuff, asiento.getIdSala());
+									send(s, sendBuff, sizeof(sendBuff), 0);
+									break;
+								case 7:
+									cout << "Volviendo al menu principal..." << endl;
+									hayQueModificarDatos = 0;
+									break;
+								
+								default:
+									cout << "Opcion no valida" << endl;
+									break;
+							}
+						}
+						break;
 				case 3:
 					cout << "Hasta luego!" << endl;
 					strcpy(sendBuff, "EXIT");
