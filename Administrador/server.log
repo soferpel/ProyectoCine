@@ -540,3 +540,272 @@
 [2024-05-20 12:54:24] [INFO] Response sent: 1
 [2024-05-20 12:54:26] [INFO] Command received: VISUALIZARDATOS
 [2024-05-20 12:54:26] [INFO] Visualizacion exitosa
+[2024-05-20 19:10:12] [INFO] Server starting...
+[2024-05-20 19:10:12] [INFO] Initialising Winsock...
+[2024-05-20 19:10:12] [INFO] Winsock initialized.
+[2024-05-20 19:10:12] [INFO] Socket created.
+[2024-05-20 19:10:12] [INFO] Bind done.
+[2024-05-20 19:10:12] [INFO] Waiting for incoming connections...
+[2024-05-20 19:10:32] [INFO] Incoming connection from: 127.0.0.1 (50183)
+[2024-05-20 19:10:32] [INFO] Waiting for incoming commands from client...
+[2024-05-20 19:10:32] [INFO] Command received: CREARTABLAS
+[2024-05-20 19:10:32] [INFO] Tablas creadas correctamente
+[2024-05-20 19:10:32] [INFO] Tabla creada.
+[2024-05-20 19:10:36] [INFO] Command received: INICIARSESION
+[2024-05-20 19:10:36] [ERROR] Error al realizar la consulta SELECT: query aborted
+
+[2024-05-20 19:10:36] [INFO] El usuario es correcto
+[2024-05-20 19:10:36] [INFO] Response sent: 1
+[2024-05-20 19:10:46] [INFO] Command received: MODIFICARCINE
+[2024-05-20 19:10:46] [ERROR] Error al realizar la consulta SELECT: query aborted
+[2024-05-20 19:10:46] [INFO] El cine es correcto
+[2024-05-20 19:10:46] [INFO] Cine modificado correctamente
+[2024-05-20 19:10:46] [INFO] Response sent: 0
+[2024-05-20 19:11:40] [INFO] Command received: MODIFICARCINE
+[2024-05-20 19:11:40] [ERROR] Error al realizar la consulta SELECT: query aborted
+[2024-05-20 19:11:40] [INFO] El cine es correcto
+[2024-05-20 19:11:40] [INFO] Cine modificado correctamente
+[2024-05-20 19:11:40] [INFO] Response sent: 0
+[2024-05-20 19:26:12] [INFO] Command received: EXIT
+[2024-05-20 19:30:45] [INFO] Server starting...
+[2024-05-20 19:30:45] [INFO] Initialising Winsock...
+[2024-05-20 19:30:45] [INFO] Winsock initialized.
+[2024-05-20 19:30:45] [INFO] Socket created.
+[2024-05-20 19:30:45] [INFO] Bind done.
+[2024-05-20 19:30:45] [INFO] Waiting for incoming connections...
+[2024-05-20 19:30:53] [INFO] Incoming connection from: 127.0.0.1 (50331)
+[2024-05-20 19:30:53] [INFO] Waiting for incoming commands from client...
+[2024-05-20 19:30:53] [INFO] Command received: CREARTABLAS
+[2024-05-20 19:30:53] [INFO] Tablas creadas correctamente
+[2024-05-20 19:30:53] [INFO] Tabla creada.
+[2024-05-20 19:31:10] [INFO] Command received: INICIARSESION
+[2024-05-20 19:31:10] [ERROR] Error al realizar la consulta SELECT: query aborted
+
+[2024-05-20 19:31:10] [INFO] El usuario es correcto
+[2024-05-20 19:31:10] [INFO] Response sent: 1
+[2024-05-20 19:32:05] [INFO] Command received: VISUALIZARDATOS
+[2024-05-20 19:32:05] [INFO] Visualizacion exitosa
+[2024-05-20 19:32:05] [INFO] Datos enviados: ID_CINE = 2
+NOMBRE = Yelmo Cines
+
+DIRECCION = avenida madariaga 7
+CIUDAD = Bilbao
+
+
+ID_CINE = 3
+NOMBRE = cines paco
+
+DIRECCION = calle dato 23
+
+CIUDAD = Vitoria
+
+
+ID_CINE = 4
+NOMBRE = carnicas
+DIRECCION = conchi
+CIUDAD = daw
+
+ID_CINE = 5
+NOMBRE = 
+DIRECCION = Ocio
+CIUDAD = Barakaldo
+
+ID_CINE = 6
+NOMBRE = 
+DIRECCION = Ocio
+CIUDAD = Barakaldo
+
+ID_CINE = 7
+NOMBRE = 
+DIRECCION = calle
+CIUDAD = real
+
+ID_CINE = 8
+NOMBRE = a
+DIRECCION = a
+CIUDAD = a
+
+ID_CINE = 9
+NOMBRE = b
+DIRECCION = b
+CIUDAD = b
+
+ID_CINE = 10
+NOMBRE = c
+DIRECCION = c
+CIUDAD = c
+
+ID_CINE = 11
+NOMBRE = Max
+DIRECCION = Ocio
+CIUDAD = dxqaed
+
+ID_CINE = 12
+NOMBRE = Max
+DIRECCION = Ocio
+CIUDAD = Barakaldo
+
+
+[2024-05-20 19:32:37] [INFO] Command received: VISUALIZARDATOS
+[2024-05-20 19:32:37] [INFO] Visualizacion exitosa
+[2024-05-20 19:32:37] [INFO] Datos enviados: ID_SALA = 1
+ID_CINE = 3
+NUMERO = 5
+NCOLUMNAS = 6
+NFILAS = 5
+
+ID_SALA = 2
+ID_CINE = 3
+NUMERO = 5
+NCOLUMNAS = 4
+NFILAS = 2
+
+ID_SALA = 3
+ID_CINE = 2
+NUMERO = 7
+NCOLUMNAS = 6
+NFILAS = 4
+
+ID_SALA = 4
+ID_CINE = 2
+NUMERO = 1
+NCOLUMNAS = 5
+NFILAS = 4
+
+
+[2024-05-20 19:33:04] [INFO] Command received: VISUALIZARDATOS
+[2024-05-20 19:33:04] [INFO] Visualizacion exitosa
+[2024-05-20 19:33:04] [INFO] Datos enviados: ID_SALA = 1
+ID_CINE = 3
+NUMERO = 5
+NCOLUMNAS = 6
+NFILAS = 5
+
+ID_SALA = 2
+ID_CINE = 3
+NUMERO = 5
+NCOLUMNAS = 4
+NFILAS = 2
+
+ID_SALA = 3
+ID_CINE = 2
+NUMERO = 7
+NCOLUMNAS = 6
+NFILAS = 4
+
+ID_SALA = 4
+ID_CINE = 2
+NUMERO = 1
+NCOLUMNAS = 5
+NFILAS = 4
+
+
+[2024-05-20 19:34:33] [ERROR] recv failed with error code: 10054
+[2024-05-20 19:34:33] [INFO] Server shutting down...
+[2024-05-20 19:36:03] [INFO] Server starting...
+[2024-05-20 19:36:03] [INFO] Initialising Winsock...
+[2024-05-20 19:36:03] [INFO] Winsock initialized.
+[2024-05-20 19:36:03] [INFO] Socket created.
+[2024-05-20 19:36:03] [INFO] Bind done.
+[2024-05-20 19:36:03] [INFO] Waiting for incoming connections...
+[2024-05-20 19:36:10] [INFO] Incoming connection from: 127.0.0.1 (50356)
+[2024-05-20 19:36:10] [INFO] Waiting for incoming commands from client...
+[2024-05-20 19:36:10] [INFO] Command received: CREARTABLAS
+[2024-05-20 19:36:10] [INFO] Tablas creadas correctamente
+[2024-05-20 19:36:10] [INFO] Tabla creada.
+[2024-05-20 19:36:14] [INFO] Command received: INICIARSESION
+[2024-05-20 19:36:14] [ERROR] Error al realizar la consulta SELECT: query aborted
+
+[2024-05-20 19:36:14] [INFO] El usuario es correcto
+[2024-05-20 19:36:14] [INFO] Response sent: 1
+[2024-05-20 19:36:21] [INFO] Command received: VISUALIZARDATOS
+[2024-05-20 19:36:21] [INFO] Visualizacion exitosa
+[2024-05-20 19:36:21] [INFO] Datos enviados: ID_SALA = 1
+ID_CINE = 3
+NUMERO = 5
+NCOLUMNAS = 6
+NFILAS = 5
+
+ID_SALA = 2
+ID_CINE = 3
+NUMERO = 5
+NCOLUMNAS = 4
+NFILAS = 2
+
+ID_SALA = 3
+ID_CINE = 2
+NUMERO = 7
+NCOLUMNAS = 6
+NFILAS = 4
+
+ID_SALA = 4
+ID_CINE = 2
+NUMERO = 1
+NCOLUMNAS = 5
+NFILAS = 4
+
+
+[2024-05-20 19:36:35] [INFO] Command received: VISUALIZARDATOS
+[2024-05-20 19:36:35] [INFO] Visualizacion exitosa
+[2024-05-20 19:36:35] [INFO] Datos enviados: ID_CINE = 2
+NOMBRE = Yelmo Cines
+
+DIRECCION = avenida madariaga 7
+CIUDAD = Bilbao
+
+
+ID_CINE = 3
+NOMBRE = cines paco
+
+DIRECCION = calle dato 23
+
+CIUDAD = Vitoria
+
+
+ID_CINE = 4
+NOMBRE = carnicas
+DIRECCION = conchi
+CIUDAD = daw
+
+ID_CINE = 5
+NOMBRE = 
+DIRECCION = Ocio
+CIUDAD = Barakaldo
+
+ID_CINE = 6
+NOMBRE = 
+DIRECCION = Ocio
+CIUDAD = Barakaldo
+
+ID_CINE = 7
+NOMBRE = 
+DIRECCION = calle
+CIUDAD = real
+
+ID_CINE = 8
+NOMBRE = a
+DIRECCION = a
+CIUDAD = a
+
+ID_CINE = 9
+NOMBRE = b
+DIRECCION = b
+CIUDAD = b
+
+ID_CINE = 10
+NOMBRE = c
+DIRECCION = c
+CIUDAD = c
+
+ID_CINE = 11
+NOMBRE = Max
+DIRECCION = Ocio
+CIUDAD = dxqaed
+
+ID_CINE = 12
+NOMBRE = Max
+DIRECCION = Ocio
+CIUDAD = Barakaldo
+
+
+[2024-05-20 19:36:41] [INFO] Command received: VISUALIZARDATOS

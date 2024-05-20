@@ -1,3 +1,5 @@
+#define MAX_DATA_SIZE 4096
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -93,15 +95,21 @@ void eliminarFila(PathDB rutaDB, Logger *logger) {
     sqlite3_close(db);
 }
 
-int visualizarDatos(PathDB rutaDB, Logger *logger) {
+int visualizarDatos(PathDB rutaDB, Logger *logger, char *buffer) {
     sqlite3 *db;
     char *err_msg = 0;
     int rc = sqlite3_open(rutaDB.ruta, &db);
 
+    if (rc != SQLITE_OK) {
+        logger_log(logger, LOG_ERROR, "Cannot open database: %s", sqlite3_errmsg(db));
+        sqlite3_close(db);
+        return rc;
+    }
+
     char sql_query[100];
     snprintf(sql_query, sizeof(sql_query), "SELECT * FROM %s;", tablaVisualizar);
 
-    rc = sqlite3_exec(db, sql_query, callbackVisualizarDatos, 0, &err_msg);
+    rc = sqlite3_exec(db, sql_query, callbackVisualizarDatos, buffer, &err_msg);
 
     if (rc != SQLITE_OK) {
         logger_log(logger, LOG_ERROR, "Error al visualizar datos: %s", err_msg);
@@ -109,16 +117,19 @@ int visualizarDatos(PathDB rutaDB, Logger *logger) {
     } else {
         logger_log(logger, LOG_INFO, "Visualizacion exitosa");
     }
-    sqlite3_close(db);
 
+    sqlite3_close(db);
     return rc;
 }
 
 int callbackVisualizarDatos(void *data, int argc, char **argv, char **azColName) {
-    int i;
-    for (i = 0; i < argc; i++) {
-        printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
+    char *buffer = (char *)data;
+    for (int i = 0; i < argc; i++) {
+        strcat(buffer, azColName[i]);
+        strcat(buffer, " = ");
+        strcat(buffer, argv[i] ? argv[i] : "NULL");
+        strcat(buffer, "\n");
     }
-    printf("\n");
+    strcat(buffer, "\n");
     return 0;
 }

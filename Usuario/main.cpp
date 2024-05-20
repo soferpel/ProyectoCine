@@ -79,13 +79,14 @@ int main(int argc, char *argv[])
 				{
 				case 1:
 					menuVisualizarDatos();
-					strcpy(sendBuff, "VISUALIZARDATOS");
-					send(s, sendBuff, sizeof(sendBuff), 0);
-					strcpy(sendBuff, tablaVisualizar);
-					send(s, sendBuff, sizeof(sendBuff), 0);
+                    strcpy(sendBuff, "VISUALIZARDATOS");
+                    send(s, sendBuff, sizeof(sendBuff), 0);
+                    strcpy(sendBuff, tablaVisualizar);
+                    send(s, sendBuff, sizeof(sendBuff), 0);
+                    memset(recvBuff, 0, sizeof(recvBuff));
 					recv(s, recvBuff, sizeof(recvBuff), 0);
-					cout << recvBuff << endl;
-					break;
+                    cout << recvBuff << endl;
+                    break;
 				case 2:
 					menuModificarDatos();
 					break;

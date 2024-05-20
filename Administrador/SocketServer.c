@@ -9,6 +9,7 @@
 
 #define SERVER_IP "127.0.0.1"
 #define SERVER_PORT 6000
+#define MAX_DATA_SIZE 4096
 
 int main(int argc, char *argv[]) 
 {
@@ -353,12 +354,20 @@ int main(int argc, char *argv[])
 
 		if (strcmp(recvBuff, "VISUALIZARDATOS") == 0)
 		{
-			int datosVisualizados;
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
 			strcpy(tablaVisualizar, recvBuff);
-			datosVisualizados = visualizarDatos(rutaDB, logger);
-			sprintf(sendBuff, "%s", datosVisualizados);
-			send(comm_socket, sendBuff, sizeof(sendBuff), 0);
+
+			char dataBuffer[MAX_DATA_SIZE] = {0};
+
+			int result = visualizarDatos(rutaDB, logger, dataBuffer);
+			if (result == SQLITE_OK) {
+				send(comm_socket, dataBuffer, strlen(dataBuffer), 0);
+				logger_log(logger, LOG_INFO, "Datos enviados: %s", dataBuffer);
+			} else {
+				sprintf(sendBuff, "Error al visualizar datos");
+				send(comm_socket, sendBuff, strlen(sendBuff), 0);
+				logger_log(logger, LOG_ERROR, "Error al visualizar datos");
+			}
 		}
 
     	if (strcmp(recvBuff, "EXIT") == 0)
