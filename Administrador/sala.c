@@ -87,7 +87,6 @@ void validarSala(PathDB rutaDB, Logger *logger)
         logger_log(logger, LOG_INFO, "La sala es correcta");
     } else {
         logger_log(logger, LOG_ERROR, "La sala introducida no existe");
-        printf("La sala introducida no existe\n");
     }
     sqlite3_close(db);
 }

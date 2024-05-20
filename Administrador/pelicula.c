@@ -65,7 +65,7 @@ void anadirPelicula(PathDB rutaDB, Logger *logger)
             logger_log(logger, LOG_ERROR, "Error al anadir la pelicula: %s", err_msg);
             sqlite3_free(err_msg);
         } else {
-            logger_log(logger, LOG_INFO, "Cine anadido correctamente");
+            logger_log(logger, LOG_INFO, "Pelicula anadida correctamente");
         }
 
         sqlite3_close(db);

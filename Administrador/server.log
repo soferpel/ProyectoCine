@@ -1114,3 +1114,52 @@ NFILAS = 4
 
 [2024-05-20 21:09:50] [INFO] El usuario es correcto
 [2024-05-20 21:09:50] [INFO] Usuario registrado correctamente
+[2024-05-20 21:13:46] [INFO] Command received: ANADIRSALA
+[2024-05-20 21:13:46] [ERROR] El cine introducido no existe
+[2024-05-20 21:14:09] [INFO] Command received: ANADIRCINE
+[2024-05-20 21:14:21] [INFO] Command received: ANADIRSALA
+[2024-05-20 21:14:21] [ERROR] Error al realizar la consulta SELECT: query aborted
+[2024-05-20 21:14:21] [INFO] El cine es correcto
+[2024-05-20 21:14:21] [INFO] Fila anadida correctamente
+[2024-05-20 21:14:52] [INFO] Command received: ANADIRPELICULA
+[2024-05-20 21:14:52] [ERROR] Error al realizar la consulta SELECT: query aborted
+[2024-05-20 21:14:52] [ERROR] La sala introducida no existe
+[2024-05-20 21:21:38] [INFO] Server starting...
+[2024-05-20 21:21:38] [INFO] Initialising Winsock...
+[2024-05-20 21:21:38] [INFO] Winsock initialized.
+[2024-05-20 21:21:38] [INFO] Socket created.
+[2024-05-20 21:21:38] [INFO] Bind done.
+[2024-05-20 21:21:38] [INFO] Waiting for incoming connections...
+[2024-05-20 21:21:44] [INFO] Incoming connection from: 127.0.0.1 (51484)
+[2024-05-20 21:21:44] [INFO] Waiting for incoming commands from client...
+[2024-05-20 21:21:44] [INFO] Command received: CREARTABLAS
+[2024-05-20 21:21:44] [INFO] Tablas creadas correctamente
+[2024-05-20 21:21:44] [INFO] Tabla creada.
+[2024-05-20 21:21:48] [INFO] Command received: INICIARSESION
+[2024-05-20 21:21:48] [ERROR] Error al realizar la consulta SELECT: query aborted
+
+[2024-05-20 21:21:48] [INFO] El usuario es correcto
+[2024-05-20 21:21:48] [INFO] Response sent: 1
+[2024-05-20 21:22:05] [INFO] Command received: BORRARDATOS
+[2024-05-20 21:22:05] [INFO] Fila eliminada correctamente
+[2024-05-20 21:22:29] [ERROR] recv failed with error code: 10054
+[2024-05-20 21:22:29] [INFO] Server shutting down...
+[2024-05-20 21:22:31] [INFO] Server starting...
+[2024-05-20 21:22:31] [INFO] Initialising Winsock...
+[2024-05-20 21:22:31] [INFO] Winsock initialized.
+[2024-05-20 21:22:31] [INFO] Socket created.
+[2024-05-20 21:22:31] [INFO] Bind done.
+[2024-05-20 21:22:31] [INFO] Waiting for incoming connections...
+[2024-05-20 21:22:41] [INFO] Incoming connection from: 127.0.0.1 (51487)
+[2024-05-20 21:22:41] [INFO] Waiting for incoming commands from client...
+[2024-05-20 21:22:41] [INFO] Command received: CREARTABLAS
+[2024-05-20 21:22:41] [INFO] Tablas creadas correctamente
+[2024-05-20 21:22:41] [INFO] Tabla creada.
+[2024-05-20 21:22:46] [INFO] Command received: INICIARSESION
+[2024-05-20 21:22:46] [ERROR] Error al realizar la consulta SELECT: query aborted
+
+[2024-05-20 21:22:46] [INFO] El usuario es correcto
+[2024-05-20 21:22:46] [INFO] Response sent: 1
+[2024-05-20 21:23:00] [INFO] Command received: ANADIRPELICULA
+[2024-05-20 21:23:00] [INFO] La sala es correcta
+[2024-05-20 21:23:00] [INFO] Cine anadido correctamente

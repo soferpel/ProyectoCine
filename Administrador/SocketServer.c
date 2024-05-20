@@ -308,7 +308,7 @@ int main(int argc, char *argv[])
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
 			strcpy(pelicula.horario, recvBuff);
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
-			cine.idCineInt = atoi(recvBuff);
+			sala.idSalaInt = atoi(recvBuff);
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
 			strcpy(pelicula.sinopsis, recvBuff);
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
