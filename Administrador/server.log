@@ -1163,3 +1163,139 @@ NFILAS = 4
 [2024-05-20 21:23:00] [INFO] Command received: ANADIRPELICULA
 [2024-05-20 21:23:00] [INFO] La sala es correcta
 [2024-05-20 21:23:00] [INFO] Cine anadido correctamente
+[2024-05-20 21:25:35] [INFO] Server starting...
+[2024-05-20 21:25:35] [INFO] Initialising Winsock...
+[2024-05-20 21:25:35] [INFO] Winsock initialized.
+[2024-05-20 21:25:35] [INFO] Socket created.
+[2024-05-20 21:25:35] [INFO] Bind done.
+[2024-05-20 21:25:35] [INFO] Waiting for incoming connections...
+[2024-05-20 21:25:42] [INFO] Incoming connection from: 127.0.0.1 (51519)
+[2024-05-20 21:25:42] [INFO] Waiting for incoming commands from client...
+[2024-05-20 21:25:42] [INFO] Command received: CREARTABLAS
+[2024-05-20 21:25:42] [INFO] Tablas creadas correctamente
+[2024-05-20 21:25:42] [INFO] Tabla creada.
+[2024-05-20 21:25:45] [INFO] Command received: INICIARSESION
+[2024-05-20 21:25:45] [ERROR] Error al realizar la consulta SELECT: query aborted
+
+[2024-05-20 21:25:45] [INFO] El usuario es correcto
+[2024-05-20 21:25:45] [INFO] Response sent: 1
+[2024-05-20 21:25:58] [INFO] Command received: MODIFICARPELICULA
+[2024-05-20 21:25:58] [ERROR] Error al realizar la consulta SELECT: query aborted
+[2024-05-20 21:25:58] [INFO] La pelicula es correcta
+[2024-05-20 21:25:58] [INFO] La sala es correcta
+[2024-05-20 21:25:58] [INFO] Pelicula modificada correctamente
+[2024-05-20 21:25:58] [INFO] Response sent: 0
+[2024-05-20 21:27:49] [INFO] Command received: EXIT
+[2024-05-20 21:27:49] [INFO] Server shutting down...
+[2024-05-20 21:27:55] [INFO] Server starting...
+[2024-05-20 21:27:55] [INFO] Initialising Winsock...
+[2024-05-20 21:27:55] [INFO] Winsock initialized.
+[2024-05-20 21:27:55] [INFO] Socket created.
+[2024-05-20 21:27:55] [INFO] Bind done.
+[2024-05-20 21:27:55] [INFO] Waiting for incoming connections...
+[2024-05-20 21:27:57] [INFO] Incoming connection from: 127.0.0.1 (51527)
+[2024-05-20 21:27:57] [INFO] Waiting for incoming commands from client...
+[2024-05-20 21:27:57] [INFO] Command received: CREARTABLAS
+[2024-05-20 21:27:57] [INFO] Tablas creadas correctamente
+[2024-05-20 21:27:57] [INFO] Tabla creada.
+[2024-05-20 21:28:01] [INFO] Command received: INICIARSESION
+[2024-05-20 21:28:01] [ERROR] Error al realizar la consulta SELECT: query aborted
+
+[2024-05-20 21:28:01] [INFO] El usuario es correcto
+[2024-05-20 21:28:01] [INFO] Response sent: 1
+[2024-05-20 21:28:07] [INFO] Command received: VISUALIZARDATOS
+[2024-05-20 21:28:07] [INFO] Visualizacion exitosa
+[2024-05-20 21:28:07] [INFO] Datos enviados: ID_USUARIO = 1
+NOMBRE = q
+RESPUESTA = q
+CORREO = 1
+CONTRASENA = 1
+
+
+[2024-05-20 21:28:56] [INFO] Command received: EXIT
+[2024-05-20 21:28:56] [INFO] Server shutting down...
+[2024-05-20 21:31:17] [INFO] Server starting...
+[2024-05-20 21:31:17] [INFO] Initialising Winsock...
+[2024-05-20 21:31:17] [INFO] Winsock initialized.
+[2024-05-20 21:31:17] [INFO] Socket created.
+[2024-05-20 21:31:17] [INFO] Bind done.
+[2024-05-20 21:31:17] [INFO] Waiting for incoming connections...
+[2024-05-20 21:31:20] [INFO] Incoming connection from: 127.0.0.1 (51540)
+[2024-05-20 21:31:20] [INFO] Waiting for incoming commands from client...
+[2024-05-20 21:31:20] [INFO] Command received: CREARTABLAS
+[2024-05-20 21:31:20] [INFO] Tablas creadas correctamente
+[2024-05-20 21:31:20] [INFO] Tabla creada.
+[2024-05-20 21:32:46] [INFO] Command received: INICIARSESION
+[2024-05-20 21:32:46] [ERROR] Error al realizar la consulta SELECT: query aborted
+
+[2024-05-20 21:32:46] [INFO] El usuario es correcto
+[2024-05-20 21:32:46] [INFO] Response sent: 1
+[2024-05-20 21:33:09] [INFO] Command received: MODIFICARUSUARIO
+[2024-05-20 21:33:09] [ERROR] Error al realizar la consulta SELECT: query aborted
+
+[2024-05-20 21:33:09] [INFO] El usuario es correcto
+[2024-05-20 21:33:09] [INFO] Usuario registrado correctamente
+[2024-05-20 21:34:26] [INFO] Command received: ANADIRASIENTO
+[2024-05-20 21:34:26] [ERROR] La sala introducida no existe
+[2024-05-20 21:42:49] [INFO] Command received: EXIT
+[2024-05-20 21:42:49] [INFO] Server shutting down...
+[2024-05-20 21:44:03] [INFO] Server starting...
+[2024-05-20 21:44:03] [INFO] Initialising Winsock...
+[2024-05-20 21:44:03] [INFO] Winsock initialized.
+[2024-05-20 21:44:03] [INFO] Socket created.
+[2024-05-20 21:44:03] [INFO] Bind done.
+[2024-05-20 21:44:03] [INFO] Waiting for incoming connections...
+[2024-05-20 21:44:06] [INFO] Incoming connection from: 127.0.0.1 (51635)
+[2024-05-20 21:44:06] [INFO] Waiting for incoming commands from client...
+[2024-05-20 21:44:06] [INFO] Command received: CREARTABLAS
+[2024-05-20 21:44:06] [INFO] Tablas creadas correctamente
+[2024-05-20 21:44:06] [INFO] Tabla creada.
+[2024-05-20 21:44:09] [INFO] Command received: INICIARSESION
+[2024-05-20 21:44:09] [ERROR] Error al realizar la consulta SELECT: query aborted
+
+[2024-05-20 21:44:09] [INFO] El usuario es correcto
+[2024-05-20 21:44:09] [INFO] Response sent: 1
+[2024-05-20 21:44:57] [INFO] Command received: ANADIRASIENTO
+[2024-05-20 21:44:57] [ERROR] La sala introducida no existe
+[2024-05-20 21:53:22] [INFO] Command received: EXIT
+[2024-05-20 21:53:54] [INFO] Server starting...
+[2024-05-20 21:53:54] [INFO] Initialising Winsock...
+[2024-05-20 21:53:54] [INFO] Winsock initialized.
+[2024-05-20 21:53:54] [INFO] Socket created.
+[2024-05-20 21:53:54] [INFO] Bind done.
+[2024-05-20 21:53:54] [INFO] Waiting for incoming connections...
+[2024-05-20 21:54:00] [INFO] Incoming connection from: 127.0.0.1 (51720)
+[2024-05-20 21:54:00] [INFO] Waiting for incoming commands from client...
+[2024-05-20 21:54:00] [INFO] Command received: CREARTABLAS
+[2024-05-20 21:54:00] [INFO] Tablas creadas correctamente
+[2024-05-20 21:54:00] [INFO] Tabla creada.
+[2024-05-20 21:54:14] [INFO] Command received: INICIARSESION
+[2024-05-20 21:54:14] [ERROR] Error al realizar la consulta SELECT: query aborted
+
+[2024-05-20 21:54:14] [INFO] El usuario es correcto
+[2024-05-20 21:54:14] [INFO] Response sent: 1
+[2024-05-20 21:54:25] [INFO] Command received: ANADIRASIENTO
+[2024-05-20 21:54:25] [ERROR] La sala introducida no existe
+[2024-05-20 21:57:46] [INFO] Command received: EXIT
+[2024-05-20 21:57:46] [INFO] Server shutting down...
+[2024-05-20 21:57:51] [INFO] Server starting...
+[2024-05-20 21:57:51] [INFO] Initialising Winsock...
+[2024-05-20 21:57:51] [INFO] Winsock initialized.
+[2024-05-20 21:57:51] [INFO] Socket created.
+[2024-05-20 21:57:51] [INFO] Bind done.
+[2024-05-20 21:57:51] [INFO] Waiting for incoming connections...
+[2024-05-20 21:58:00] [INFO] Incoming connection from: 127.0.0.1 (51760)
+[2024-05-20 21:58:00] [INFO] Waiting for incoming commands from client...
+[2024-05-20 21:58:00] [INFO] Command received: CREARTABLAS
+[2024-05-20 21:58:00] [INFO] Tablas creadas correctamente
+[2024-05-20 21:58:00] [INFO] Tabla creada.
+[2024-05-20 21:58:03] [INFO] Command received: INICIARSESION
+[2024-05-20 21:58:03] [ERROR] Error al realizar la consulta SELECT: query aborted
+
+[2024-05-20 21:58:03] [INFO] El usuario es correcto
+[2024-05-20 21:58:03] [INFO] Response sent: 1
+[2024-05-20 21:58:13] [INFO] Command received: ANADIRASIENTO
+[2024-05-20 21:58:13] [ERROR] La sala introducida no existe
+[2024-05-20 22:01:14] [INFO] Command received: ANADIRPELICULA
+[2024-05-20 22:01:14] [INFO] La sala es correcta
+[2024-05-20 22:01:14] [INFO] Pelicula anadida correctamente

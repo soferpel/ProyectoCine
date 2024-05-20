@@ -400,6 +400,10 @@ int main(int argc, char *argv[])
 								break;
 							case 2:
 								menuAnadirAsiento();
+								printf("%s", asiento.getIdSala());
+								printf("%s", asiento.getFilaAsiento());
+								printf("%s", asiento.getNumeroAsiento());
+								printf("%s", asiento.getFechaAsiento());
 								strcpy(sendBuff, "ANADIRASIENTO");
 								send(s, sendBuff, sizeof(sendBuff), 0);
 								strcpy(sendBuff, asiento.getFechaAsiento());

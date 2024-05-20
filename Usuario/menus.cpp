@@ -373,9 +373,9 @@ void menuBorrarDatos()
 
 void menuAnadirAsiento()
 {
-    char idSala[5];
-    char filaAsiento[5];
-    char numeroAsiento[5];
+    char idSala[4];
+    char filaAsiento[3];
+    char numeroAsiento[3];
     char fechaAsiento[11];
     cout << "================" << endl;
     cout << " ANADIR ASIENTO " << endl;
@@ -393,6 +393,10 @@ void menuAnadirAsiento()
     cout << "Introduce la fecha del asiento: " << endl;
     cin >> fechaAsiento;
     asiento.setFechaAsiento(fechaAsiento);
+    printf("%s", asiento.getIdSala());
+								printf("%s", asiento.getFilaAsiento());
+								printf("%s", asiento.getNumeroAsiento());
+								printf("%s", asiento.getFechaAsiento());
     char c; while ((c = getchar()) != '\n' && c != EOF);
 }
 
