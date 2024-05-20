@@ -292,12 +292,16 @@ int main(int argc, char *argv[])
 
 		if (strcmp(recvBuff, "ANADIRASIENTO") == 0)
 		{
+			memset(recvBuff, 0, sizeof(recvBuff));
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
 			strcpy(asiento.fechaAsiento, recvBuff);
+			memset(recvBuff, 0, sizeof(recvBuff));
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
 			asiento.filaAsientoInt = atoi(recvBuff);
+			memset(recvBuff, 0, sizeof(recvBuff));
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
 			sala.idSalaInt = atoi(recvBuff);
+			memset(recvBuff, 0, sizeof(recvBuff));
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
 			asiento.numeroAsientoInt = atoi(recvBuff);
 			anadirAsiento(rutaDB, logger);

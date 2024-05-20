@@ -393,10 +393,6 @@ void menuAnadirAsiento()
     cout << "Introduce la fecha del asiento: " << endl;
     cin >> fechaAsiento;
     asiento.setFechaAsiento(fechaAsiento);
-    printf("%s", asiento.getIdSala());
-								printf("%s", asiento.getFilaAsiento());
-								printf("%s", asiento.getNumeroAsiento());
-								printf("%s", asiento.getFechaAsiento());
     char c; while ((c = getchar()) != '\n' && c != EOF);
 }
 
@@ -496,7 +492,7 @@ void menuAnadirPelicula()
     pelicula.setSinopsis(sinopsis);
     cout << "Introduce el horario de la pelicula: " << endl;
     cin >> idSala;
-    pelicula.setHorario(idSala);
+    pelicula.setHorario(horario);
     char c; while ((c = getchar()) != '\n' && c != EOF);
 }
 

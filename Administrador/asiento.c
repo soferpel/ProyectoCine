@@ -7,10 +7,6 @@
 #include "logger.h"
 
 void anadirAsiento(PathDB rutaDB, Logger *logger) {
-    printf("%i", sala.idSalaInt);
-    printf("%i", asiento.filaAsientoInt);
-    printf("%i", asiento.numeroAsientoInt);
-    printf("%s", asiento.fechaAsiento);
     validarSala(rutaDB, logger);
     if (validacionSala == 1)
     {
