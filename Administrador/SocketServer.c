@@ -109,6 +109,12 @@ int main(int argc, char *argv[])
 			logger_log(logger, LOG_INFO, "Tabla creada.");
 		}
 
+		if(strcmp(recvBuff, "RESETEARBD") == 0)
+		{
+			borrarTablas(rutaDB, logger);
+			logger_log(logger, LOG_INFO, "BD BORRADA");
+		}
+
         if (strcmp(recvBuff, "INICIARSESION") == 0)
 		{
             recv(comm_socket, recvBuff, sizeof(recvBuff), 0);

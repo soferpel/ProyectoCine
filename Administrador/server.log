@@ -809,3 +809,73 @@ CIUDAD = Barakaldo
 
 
 [2024-05-20 19:36:41] [INFO] Command received: VISUALIZARDATOS
+[2024-05-20 20:00:47] [INFO] Server starting...
+[2024-05-20 20:00:47] [INFO] Initialising Winsock...
+[2024-05-20 20:00:47] [INFO] Winsock initialized.
+[2024-05-20 20:00:47] [INFO] Socket created.
+[2024-05-20 20:00:47] [INFO] Bind done.
+[2024-05-20 20:00:47] [INFO] Waiting for incoming connections...
+[2024-05-20 20:00:52] [INFO] Incoming connection from: 127.0.0.1 (50751)
+[2024-05-20 20:00:52] [INFO] Waiting for incoming commands from client...
+[2024-05-20 20:00:52] [INFO] Command received: CREARTABLAS
+[2024-05-20 20:00:52] [INFO] Tablas creadas correctamente
+[2024-05-20 20:00:52] [INFO] Tabla creada.
+[2024-05-20 20:00:55] [INFO] Command received: INICIARSESION
+[2024-05-20 20:00:55] [ERROR] Error al realizar la consulta SELECT: query aborted
+
+[2024-05-20 20:00:55] [INFO] El usuario es correcto
+[2024-05-20 20:00:55] [INFO] Response sent: 1
+[2024-05-20 20:01:31] [INFO] Command received: MODIFICARUSUARIO
+[2024-05-20 20:01:31] [ERROR] Usuario o contrasena incorrectos
+[2024-05-20 20:01:31] [INFO] Response sent: 0
+[2024-05-20 20:01:51] [INFO] Command received: MODIFICARACTOR
+[2024-05-20 20:01:51] [INFO] El actor es correcto
+[2024-05-20 20:01:51] [ERROR] La pelicula introducida no existe
+[2024-05-20 20:01:51] [INFO] Response sent: 0
+[2024-05-20 20:02:23] [ERROR] recv failed with error code: 10054
+[2024-05-20 20:02:23] [INFO] Server shutting down...
+[2024-05-20 20:05:33] [INFO] Server starting...
+[2024-05-20 20:05:33] [INFO] Initialising Winsock...
+[2024-05-20 20:05:33] [INFO] Winsock initialized.
+[2024-05-20 20:05:33] [INFO] Socket created.
+[2024-05-20 20:05:33] [INFO] Bind done.
+[2024-05-20 20:05:33] [INFO] Waiting for incoming connections...
+[2024-05-20 20:05:40] [INFO] Incoming connection from: 127.0.0.1 (50779)
+[2024-05-20 20:05:40] [INFO] Waiting for incoming commands from client...
+[2024-05-20 20:05:40] [INFO] Command received: CREARTABLAS
+[2024-05-20 20:05:40] [INFO] Tablas creadas correctamente
+[2024-05-20 20:05:40] [INFO] Tabla creada.
+[2024-05-20 20:06:01] [INFO] Command received: INICIARSESION
+[2024-05-20 20:06:01] [ERROR] Error al realizar la consulta SELECT: query aborted
+
+[2024-05-20 20:06:01] [INFO] El usuario es correcto
+[2024-05-20 20:06:01] [INFO] Response sent: 1
+[2024-05-20 20:06:09] [INFO] Command received: VISUALIZARDATOS
+[2024-05-20 20:06:09] [INFO] Visualizacion exitosa
+[2024-05-20 20:06:09] [INFO] Datos enviados: ID_SALA = 1
+ID_CINE = 3
+NUMERO = 5
+NCOLUMNAS = 6
+NFILAS = 5
+
+ID_SALA = 2
+ID_CINE = 3
+NUMERO = 5
+NCOLUMNAS = 4
+NFILAS = 2
+
+ID_SALA = 3
+ID_CINE = 2
+NUMERO = 7
+NCOLUMNAS = 6
+NFILAS = 4
+
+ID_SALA = 4
+ID_CINE = 2
+NUMERO = 1
+NCOLUMNAS = 5
+NFILAS = 4
+
+
+[2024-05-20 20:06:48] [INFO] Command received: EXIT
+[2024-05-20 20:06:48] [INFO] Server shutting down...

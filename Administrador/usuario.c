@@ -91,7 +91,6 @@ void validarUsuario(PathDB rutaDB, Logger *logger)
         autenticacionExitosa = 1;
     } else {
         logger_log(logger, LOG_ERROR, "Usuario o contrasena incorrectos");
-        printf("Usuario o contrasena incorrectos\n");
     }
     sqlite3_close(db);
 }

@@ -373,6 +373,23 @@ int main(int argc, char *argv[])
 						}
 						break;
 					case 4:
+						menuResetearBD();
+						switch (opcionResetearBD)
+						{
+						case 1:
+							strcpy(sendBuff, "RESETEARBD");
+							send(s, sendBuff, sizeof(sendBuff), 0);
+							break;
+						case 2:
+							cout << "Volviendo al menu principal..." << endl;
+							break;
+						default:
+							cout << "Opcion no valida" << endl;
+							break;
+						}
+						break;
+
+					case 5:
 						cout << "Hasta luego!" << endl;
 						strcpy(sendBuff, "EXIT");
 						send(s, sendBuff, sizeof(sendBuff), 0);
@@ -380,7 +397,6 @@ int main(int argc, char *argv[])
 						WSACleanup();
 						programaOperando = 0;
 						break;
-					
 					default:
 						cout << "Opcion no valida" << endl;
 						break;

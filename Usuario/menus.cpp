@@ -102,7 +102,8 @@ void menuPrincipalAdministrador()
     cout << "1. Modificar datos" << endl;
     cout << "2. Eliminar datos" << endl;
     cout << "3. Anadir datos" << endl;
-    cout << "4. Salir" << endl;
+    cout << "4. Resetar base de datos" << endl;
+    cout << "5. Salir" << endl;
     cout << endl;
     fflush(stdin);
     cin >> opcionAdministrador;
