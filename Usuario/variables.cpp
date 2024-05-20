@@ -15,6 +15,7 @@ int aIniciadoSesion = 0;
 
 Usuario usuario = Usuario("", "", "", "");
 char usuarioAModificar[30];
+char contrasenaAModificar[16];
 
 Pelicula pelicula = Pelicula("", "", "", "");
 char PeliculaAModificar[4];

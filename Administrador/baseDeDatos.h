@@ -18,6 +18,7 @@ int validacionActor;
 int validacionAsiento;
 
 Usuario usuario;
+
 Asiento asiento;
 Cine cine;
 Sala sala;

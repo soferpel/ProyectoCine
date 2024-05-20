@@ -50,7 +50,7 @@ void modificarUsuario(PathDB rutaDB, Logger *logger)
             }
 
             char sql_modificar[150];
-            snprintf(sql_modificar, sizeof(sql_modificar), "UPDATE USUARIO SET ID_USUARIO = '%i', NOMBRE = '%s', RESPUESTA = '%s', CORREO = '%s', CONTRASENA = '%s WHERE ID_USUARIO = %i;", usuario.idUsuarioInt, usuario.nombre, usuario.respuesta, usuario.correo, usuario.contrasena, usuario.idUsuarioInt);
+            snprintf(sql_modificar, sizeof(sql_modificar), "UPDATE USUARIO SET NOMBRE = '%s', RESPUESTA = '%s';", usuario.nombre, usuario.respuesta);
 
             rc = sqlite3_exec(db, sql_modificar, 0, 0, &err_msg);
 

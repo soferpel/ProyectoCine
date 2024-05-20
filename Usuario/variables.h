@@ -22,7 +22,6 @@ extern int aElegidoModo;
 extern int aIniciadoSesion;
 
 extern Usuario usuario;
-extern char usuarioAModificar[30];
 
 extern Pelicula pelicula;
 extern char PeliculaAModificar[4];

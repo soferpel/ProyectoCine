@@ -113,8 +113,6 @@ int main(int argc, char *argv[])
 									menuModificarUsuario();
 									strcpy(sendBuff, "MODIFICARUSUARIO");
 									send(s, sendBuff, sizeof(sendBuff), 0);
-									strcpy(sendBuff, usuarioAModificar);
-									send(s, sendBuff, sizeof(sendBuff), 0);
 									strcpy(sendBuff, usuario.getNombre());
 									send(s, sendBuff, sizeof(sendBuff), 0);
 									strcpy(sendBuff, usuario.getCorreo());
@@ -295,8 +293,6 @@ int main(int argc, char *argv[])
 								case 2:
 									menuModificarUsuario();
 									strcpy(sendBuff, "MODIFICARUSUARIO");
-									send(s, sendBuff, sizeof(sendBuff), 0);
-									strcpy(sendBuff, usuarioAModificar);
 									send(s, sendBuff, sizeof(sendBuff), 0);
 									strcpy(sendBuff, usuario.getNombre());
 									send(s, sendBuff, sizeof(sendBuff), 0);

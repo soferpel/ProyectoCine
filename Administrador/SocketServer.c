@@ -179,10 +179,6 @@ int main(int argc, char *argv[])
 
 		if(strcmp(recvBuff, "MODIFICARUSUARIO") == 0)
 		{
-			
-			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
-			strcpy(usuario.correo, recvBuff);
-			
 			recv(comm_socket, recvBuff, sizeof(recvBuff), 0);
 			strcpy(usuario.nombre, recvBuff);
 
@@ -196,11 +192,6 @@ int main(int argc, char *argv[])
 			strcpy(usuario.respuesta, recvBuff);
 				
 			modificarUsuario(rutaDB, logger);
-				
-			sprintf(sendBuff, "%i", hayQueModificarDatos);
-			send(comm_socket, sendBuff, sizeof(sendBuff), 0);
-			logger_log(logger, LOG_INFO, "Response sent: %s", sendBuff);
-
 		}
 
 		if(strcmp(recvBuff, "MODIFICARCINE") == 0)

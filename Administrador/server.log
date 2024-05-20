@@ -941,3 +941,176 @@ NFILAS = 4
 [2024-05-20 20:21:42] [ERROR] Error al realizar la consulta SELECT: query aborted
 [2024-05-20 20:21:42] [INFO] El cine es correcto
 [2024-05-20 20:21:42] [INFO] Fila anadida correctamente
+[2024-05-20 20:43:00] [INFO] Server starting...
+[2024-05-20 20:43:00] [INFO] Initialising Winsock...
+[2024-05-20 20:43:00] [INFO] Winsock initialized.
+[2024-05-20 20:43:00] [INFO] Socket created.
+[2024-05-20 20:43:00] [INFO] Bind done.
+[2024-05-20 20:43:00] [INFO] Waiting for incoming connections...
+[2024-05-20 20:43:08] [INFO] Incoming connection from: 127.0.0.1 (51084)
+[2024-05-20 20:43:08] [INFO] Waiting for incoming commands from client...
+[2024-05-20 20:43:08] [INFO] Command received: CREARTABLAS
+[2024-05-20 20:43:08] [INFO] Tablas creadas correctamente
+[2024-05-20 20:43:08] [INFO] Tabla creada.
+[2024-05-20 20:43:14] [INFO] Command received: INICIARSESION
+[2024-05-20 20:43:14] [ERROR] Error al realizar la consulta SELECT: query aborted
+
+[2024-05-20 20:43:14] [INFO] El usuario es correcto
+[2024-05-20 20:43:14] [INFO] Response sent: 1
+[2024-05-20 20:43:43] [INFO] Command received: MODIFICARUSUARIO
+[2024-05-20 20:43:43] [ERROR] Usuario o contrasena incorrectos
+[2024-05-20 20:43:43] [INFO] Response sent: 0
+[2024-05-20 20:48:27] [ERROR] recv failed with error code: 10054
+[2024-05-20 20:48:27] [INFO] Server shutting down...
+[2024-05-20 20:48:53] [INFO] Server starting...
+[2024-05-20 20:48:53] [INFO] Initialising Winsock...
+[2024-05-20 20:48:53] [INFO] Winsock initialized.
+[2024-05-20 20:48:53] [INFO] Socket created.
+[2024-05-20 20:48:53] [INFO] Bind done.
+[2024-05-20 20:48:53] [INFO] Waiting for incoming connections...
+[2024-05-20 20:49:01] [INFO] Incoming connection from: 127.0.0.1 (51140)
+[2024-05-20 20:49:01] [INFO] Waiting for incoming commands from client...
+[2024-05-20 20:49:01] [INFO] Command received: CREARTABLAS
+[2024-05-20 20:49:01] [INFO] Tablas creadas correctamente
+[2024-05-20 20:49:01] [INFO] Tabla creada.
+[2024-05-20 20:49:06] [INFO] Command received: INICIARSESION
+[2024-05-20 20:49:06] [ERROR] Error al realizar la consulta SELECT: query aborted
+
+[2024-05-20 20:49:06] [INFO] El usuario es correcto
+[2024-05-20 20:49:06] [INFO] Response sent: 1
+[2024-05-20 20:49:22] [INFO] Command received: MODIFICARUSUARIO
+[2024-05-20 20:49:22] [ERROR] Usuario o contrasena incorrectos
+[2024-05-20 20:50:48] [INFO] Server starting...
+[2024-05-20 20:50:48] [INFO] Initialising Winsock...
+[2024-05-20 20:50:48] [INFO] Winsock initialized.
+[2024-05-20 20:50:48] [INFO] Socket created.
+[2024-05-20 20:50:48] [INFO] Bind done.
+[2024-05-20 20:50:48] [INFO] Waiting for incoming connections...
+[2024-05-20 20:50:53] [INFO] Incoming connection from: 127.0.0.1 (51149)
+[2024-05-20 20:50:53] [INFO] Waiting for incoming commands from client...
+[2024-05-20 20:50:53] [INFO] Command received: CREARTABLAS
+[2024-05-20 20:50:53] [INFO] Tablas creadas correctamente
+[2024-05-20 20:50:53] [INFO] Tabla creada.
+[2024-05-20 20:50:58] [INFO] Command received: INICIARSESION
+[2024-05-20 20:50:58] [ERROR] Usuario o contrasena incorrectos
+[2024-05-20 20:50:58] [INFO] Response sent: 0
+[2024-05-20 20:51:11] [INFO] Command received: INICIARSESION
+[2024-05-20 20:51:11] [ERROR] Usuario o contrasena incorrectos
+[2024-05-20 20:51:11] [INFO] Response sent: 0
+[2024-05-20 21:02:33] [INFO] Server starting...
+[2024-05-20 21:02:33] [INFO] Initialising Winsock...
+[2024-05-20 21:02:33] [INFO] Winsock initialized.
+[2024-05-20 21:02:33] [INFO] Socket created.
+[2024-05-20 21:02:33] [INFO] Bind done.
+[2024-05-20 21:02:33] [INFO] Waiting for incoming connections...
+[2024-05-20 21:02:38] [INFO] Incoming connection from: 127.0.0.1 (51304)
+[2024-05-20 21:02:38] [INFO] Waiting for incoming commands from client...
+[2024-05-20 21:02:38] [INFO] Command received: CREARTABLAS
+[2024-05-20 21:02:38] [INFO] Tablas creadas correctamente
+[2024-05-20 21:02:38] [INFO] Tabla creada.
+[2024-05-20 21:02:44] [INFO] Command received: INICIARSESION
+[2024-05-20 21:02:44] [ERROR] Error al realizar la consulta SELECT: query aborted
+
+[2024-05-20 21:02:44] [INFO] El usuario es correcto
+[2024-05-20 21:02:44] [INFO] Response sent: 1
+[2024-05-20 21:03:06] [INFO] Command received: MODIFICARUSUARIO
+[2024-05-20 21:03:06] [ERROR] Usuario o contrasena incorrectos
+[2024-05-20 21:03:37] [INFO] Command received: RESETEARBD
+[2024-05-20 21:03:37] [INFO] Tablas eliminadas correctamente
+[2024-05-20 21:03:37] [INFO] BD BORRADA
+[2024-05-20 21:03:46] [INFO] Command received: EXIT
+[2024-05-20 21:03:46] [INFO] Server shutting down...
+[2024-05-20 21:03:50] [INFO] Server starting...
+[2024-05-20 21:03:50] [INFO] Initialising Winsock...
+[2024-05-20 21:03:50] [INFO] Winsock initialized.
+[2024-05-20 21:03:50] [INFO] Socket created.
+[2024-05-20 21:03:50] [INFO] Bind done.
+[2024-05-20 21:03:50] [INFO] Waiting for incoming connections...
+[2024-05-20 21:03:52] [INFO] Incoming connection from: 127.0.0.1 (51306)
+[2024-05-20 21:03:52] [INFO] Waiting for incoming commands from client...
+[2024-05-20 21:03:52] [INFO] Command received: CREARTABLAS
+[2024-05-20 21:03:52] [INFO] Tablas creadas correctamente
+[2024-05-20 21:03:52] [INFO] Tabla creada.
+[2024-05-20 21:03:56] [INFO] Command received: INICIARSESION
+[2024-05-20 21:03:56] [ERROR] Usuario o contrasena incorrectos
+[2024-05-20 21:03:56] [INFO] Response sent: 0
+[2024-05-20 21:04:10] [INFO] Command received: REGISTRARSE
+[2024-05-20 21:04:10] [ERROR] Usuario o contrasena incorrectos
+[2024-05-20 21:04:10] [INFO] Usuario registrado correctamente
+[2024-05-20 21:04:10] [INFO] Response sent: 0
+[2024-05-20 21:04:16] [INFO] Command received: INICIARSESION
+[2024-05-20 21:04:16] [ERROR] Error al realizar la consulta SELECT: query aborted
+
+[2024-05-20 21:04:16] [INFO] El usuario es correcto
+[2024-05-20 21:04:16] [INFO] Response sent: 1
+[2024-05-20 21:04:29] [INFO] Command received: MODIFICARUSUARIO
+[2024-05-20 21:04:29] [ERROR] Error al realizar la consulta SELECT: query aborted
+
+[2024-05-20 21:04:29] [INFO] El usuario es correcto
+[2024-05-20 21:04:29] [ERROR] Error al modificar el usuario: unrecognized token: "'1 WHERE ID_USUARIO = 0;"
+
+[2024-05-20 21:06:28] [INFO] Server starting...
+[2024-05-20 21:06:28] [INFO] Initialising Winsock...
+[2024-05-20 21:06:28] [INFO] Winsock initialized.
+[2024-05-20 21:06:28] [INFO] Socket created.
+[2024-05-20 21:06:28] [INFO] Bind done.
+[2024-05-20 21:06:28] [INFO] Waiting for incoming connections...
+[2024-05-20 21:06:33] [INFO] Incoming connection from: 127.0.0.1 (51339)
+[2024-05-20 21:06:33] [INFO] Waiting for incoming commands from client...
+[2024-05-20 21:06:33] [INFO] Command received: CREARTABLAS
+[2024-05-20 21:06:33] [INFO] Tablas creadas correctamente
+[2024-05-20 21:06:33] [INFO] Tabla creada.
+[2024-05-20 21:06:38] [INFO] Command received: INICIARSESION
+[2024-05-20 21:06:38] [ERROR] Error al realizar la consulta SELECT: query aborted
+
+[2024-05-20 21:06:38] [INFO] El usuario es correcto
+[2024-05-20 21:06:38] [INFO] Response sent: 1
+[2024-05-20 21:06:46] [INFO] Command received: MODIFICARUSUARIO
+[2024-05-20 21:06:46] [ERROR] Error al realizar la consulta SELECT: query aborted
+
+[2024-05-20 21:06:46] [INFO] El usuario es correcto
+[2024-05-20 21:06:46] [ERROR] Error al modificar el usuario: unrecognized token: "'1;"
+
+[2024-05-20 21:08:27] [INFO] Server starting...
+[2024-05-20 21:08:27] [INFO] Initialising Winsock...
+[2024-05-20 21:08:27] [INFO] Winsock initialized.
+[2024-05-20 21:08:27] [INFO] Socket created.
+[2024-05-20 21:08:27] [INFO] Bind done.
+[2024-05-20 21:08:27] [INFO] Waiting for incoming connections...
+[2024-05-20 21:08:33] [INFO] Incoming connection from: 127.0.0.1 (51351)
+[2024-05-20 21:08:33] [INFO] Waiting for incoming commands from client...
+[2024-05-20 21:08:33] [INFO] Command received: CREARTABLAS
+[2024-05-20 21:08:33] [INFO] Tablas creadas correctamente
+[2024-05-20 21:08:33] [INFO] Tabla creada.
+[2024-05-20 21:08:36] [INFO] Command received: INICIARSESION
+[2024-05-20 21:08:36] [ERROR] Error al realizar la consulta SELECT: query aborted
+
+[2024-05-20 21:08:36] [INFO] El usuario es correcto
+[2024-05-20 21:08:36] [INFO] Response sent: 1
+[2024-05-20 21:08:42] [INFO] Command received: MODIFICARUSUARIO
+[2024-05-20 21:08:42] [ERROR] Error al realizar la consulta SELECT: query aborted
+
+[2024-05-20 21:08:42] [INFO] El usuario es correcto
+[2024-05-20 21:08:42] [ERROR] Error al modificar el usuario: unrecognized token: "'1;"
+
+[2024-05-20 21:09:37] [INFO] Server starting...
+[2024-05-20 21:09:37] [INFO] Initialising Winsock...
+[2024-05-20 21:09:37] [INFO] Winsock initialized.
+[2024-05-20 21:09:37] [INFO] Socket created.
+[2024-05-20 21:09:37] [INFO] Bind done.
+[2024-05-20 21:09:37] [INFO] Waiting for incoming connections...
+[2024-05-20 21:09:41] [INFO] Incoming connection from: 127.0.0.1 (51353)
+[2024-05-20 21:09:41] [INFO] Waiting for incoming commands from client...
+[2024-05-20 21:09:41] [INFO] Command received: CREARTABLAS
+[2024-05-20 21:09:41] [INFO] Tablas creadas correctamente
+[2024-05-20 21:09:41] [INFO] Tabla creada.
+[2024-05-20 21:09:44] [INFO] Command received: INICIARSESION
+[2024-05-20 21:09:44] [ERROR] Error al realizar la consulta SELECT: query aborted
+
+[2024-05-20 21:09:44] [INFO] El usuario es correcto
+[2024-05-20 21:09:44] [INFO] Response sent: 1
+[2024-05-20 21:09:50] [INFO] Command received: MODIFICARUSUARIO
+[2024-05-20 21:09:50] [ERROR] Error al realizar la consulta SELECT: query aborted
+
+[2024-05-20 21:09:50] [INFO] El usuario es correcto
+[2024-05-20 21:09:50] [INFO] Usuario registrado correctamente
